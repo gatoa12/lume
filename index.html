@@ -836,7 +836,7 @@ const scheduleFind=ms=>{clearTimeout(FINDT);FINDT=setTimeout(()=>{FINDT=null;aut
 async function autoFind(){if(FINDING||S.pend||Date.now()<(S.settle||0))return;FINDING=true;try{await autoFindInner()}finally{FINDING=false}}
 async function autoFindInner(){
  if(S.hold||S.dev||S.conn||S.rec||S.closing||Date.now()<(S.cool||0)||!('usb' in navigator)||(S.src!=='usb'&&S.sess))return;
- const l=await navigator.usb.getDevices(),d=l.find(PTPIF);
+ const l=await navigator.usb.getDevices(),PF=localStorage.getItem('lumen_pref'),d=(PF&&l.find(x=>(x.vendorId+':'+x.productId+':'+(x.serialNumber||''))===PF&&PTPIF(x)))||l.find(PTPIF);
  S.usbList=l.map(x=>((x.manufacturerName||'')+' '+(x.productName||'USB 0x'+x.productId.toString(16))).trim());
  if(d)openCam(d);else if(l.length){S.camMsg='Câmera vista, mas sem modo de transferência: ajuste o USB da câmera';}}
 let RECP=null;
@@ -864,10 +864,12 @@ async function pedirCamera(all){
  if(S.hold){S.hold=false;if(window.holdUi)holdUi()}
  if(!('usb' in navigator)){log('Esta página/navegador não libera USB. Veja o aviso na aba Conectar.','bad');goTab('con');envUi();conUi();return}
  if(S.sess&&S.dev&&S.src==='usb')return;
+ if(S.conn&&S.dev){log('Já conectando à câmera: aguarde, não troquei de dispositivo.');return}
  try{
   S.t0=Date.now();const d=await navigator.usb.requestDevice({filters:all?[]:[{vendorId:0x04a9},{classCode:6},{classCode:0xff}]});
-  log('Escolhido: '+(d.manufacturerName||'?')+' '+(d.productName||'?')+' (vendor 0x'+d.vendorId.toString(16)+')','ok');
-  gateOff=false;S.cool=0;S.fails=0;S.src='usb';S.sess=false;openCam(d,0,true);
+  try{localStorage.setItem('lumen_pref',d.vendorId+':'+d.productId+':'+(d.serialNumber||''))}catch(_){}log('Escolhido: '+(d.manufacturerName||'?')+' '+(d.productName||'?')+' (vendor 0x'+d.vendorId.toString(16)+')','ok');
+  if(S.sess&&S.dev&&S.dev!==d){log('Câmera atual mantida (conexão ativa).','ok');return}
+   gateOff=false;S.cool=0;S.fails=0;S.src='usb';S.sess=false;openCam(d,0,true);
  }catch(e){diag(e)}}
 $('#bCam').onclick=()=>pedirCamera(false);
 $('#bAll').onclick=()=>pedirCamera(true);
@@ -4386,5 +4388,49 @@ E('vxBAll').onclick=async()=>{if(run||batch||!dur)return;const L=vids().filter(i
 applyLook();refresh();
 }catch(e){try{log('Editor por trechos: '+e.message,'bad')}catch(_){}}})();
 
+</script>
+<script id="v60">
+/* v60: câmera fixa, aviso ao sair, guia de falha, retry PTP seguro, Conexão 2 (Lightroom) */
+(function(){
+ const $=q=>document.querySelector(q);
+ /* PTP: repete UMA vez comandos de leitura quando o erro é passageiro (já dentro da fila serial) */
+ try{const READ=new Set([0x1001,0x1005,0x1006,0x1007,0x1008,0x1014,0x9116]),_r=ptpRaw;
+  ptpRaw=async function(c,p,ms,out){
+   try{return await _r.apply(this,arguments)}
+   catch(e){const m=String((e&&e.message)||e);
+    if(e instanceof TypeError&&/null/.test(m))throw new Error('a câmera desconectou durante o comando (PTP)');
+    if(!READ.has(c)||/tempo esgotado|sem câmera|liberada/i.test(m)||!S.dev)throw e;
+    try{if(typeof unstall==='function')await unstall()}catch(_){}
+    await new Promise(r=>setTimeout(r,250));
+    return await _r.apply(this,arguments)}}}catch(e){}
+ /* câmera tem prioridade: trava de aba + tela acesa enquanto há sessão */
+ try{if(navigator.locks)navigator.locks.request('lumen-camera',()=>new Promise(()=>{}))}catch(_){}
+ let wl=null;
+ async function wake(){try{if(S.sess&&!wl&&navigator.wakeLock){wl=await navigator.wakeLock.request('screen');wl.addEventListener('release',()=>{wl=null})}}catch(_){}}
+ setInterval(wake,5000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)wake()});
+ /* avisa antes de sair com a câmera conectada */
+ addEventListener('beforeunload',e=>{if(S.sess&&S.dev){e.preventDefault();e.returnValue='A câmera está conectada. Sair agora interrompe o envio das fotos.';return e.returnValue}});
+ /* guia de falha: o que fazer, em ordem */
+ const g=document.createElement('div');
+ g.id='v60g';g.style.cssText='position:fixed;left:50%;transform:translateX(-50%);bottom:calc(150px + env(safe-area-inset-bottom,0px));z-index:120;width:min(94vw,440px);display:none;background:#1b1210;border:1px solid #f59e0b;color:#fff;border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.45';
+ g.innerHTML='<b>A conexão com a câmera falhou</b><ol style="margin:6px 0 8px 18px;padding:0"><li>Deixe o LUMEN aberto: ele tenta de novo sozinho.</li><li>Se a tela da câmera mostra bateria/carregando, desative "Alimentação via USB" e escolha o modo <b>PC Remoto</b> (ou Importação de fotos).</li><li>No Mac: aba Conectar › "Copiar comando do Terminal", cole no Terminal e deixe aberto (impede o ptpcamerad de pegar a câmera). Depois desligue e ligue a câmera e replugue o cabo.</li><li>Ainda falha? Use a <b>Conexão 2 (Lightroom)</b> na aba Conectar.</li></ol><button id="v60r" style="padding:8px 12px;border-radius:10px;border:0;background:#f59e0b;color:#000;font-weight:700">Reconectar agora</button> <button id="v60x" style="padding:8px 12px;border-radius:10px;border:1px solid #555;background:none;color:#fff">Fechar</button>';
+ document.body.appendChild(g);let shut=0;
+ $('#v60r').onclick=()=>{try{S.cool=0;S.fails=0;g.style.display='none';shut=Date.now()+60000;S.settle=0;autoFind().then(()=>setTimeout(()=>{if(!S.sess&&!S.dev&&!S.conn&&!(S.usbList&&S.usbList.length)){const b=$('#bCam');b&&b.click()}},2500))}catch(_){}};
+ $('#v60x').onclick=()=>{g.style.display='none';shut=Date.now()+120000};
+ setInterval(()=>{const bad=/falhou|falha|pausei|não responde|ocupad/i.test(S.camMsg||'')&&!S.sess&&!S.dev;
+  g.style.display=(bad&&Date.now()>shut&&performance.now()>4000)?'block':'none'},1000);
+ /* Conexão 2: Lightroom por pasta monitorada */
+ const u=$('#conUsb');if(u){const c=document.createElement('div');c.className='c';c.innerHTML='<div class="l">Conexão 2 · Lightroom (importação automática)</div><div class="sub wrap">Plano B se o cabo ficar instável no Mac. O app da câmera salva numa pasta e o Lightroom puxa as fotos sozinho.</div><ol class="steps"><li><b>Câmera: desligar a energia pelo USB.</b><small>Sony: Fornec. energia USB → Desativado. Canon: desative o carregamento com a câmera conectada. Assim ela não entra no modo "só carregar" e libera os dados.</small></li><li><b>Câmera: modo USB.</b><small>Para importar do cartão: MTP ou Armazenamento em massa. Para ver a foto na hora (tethering): PC Remoto.</small></li><li><b>Lightroom Classic › Preferências › Geral.</b><small>Marque "Mostrar caixa de diálogo de importação quando um cartão de memória for detectado".</small></li><li><b>Pasta monitorada.</b><small>Crie uma pasta vazia (ex.: Fotos_Import). No app da câmera (Imaging Edge ou EOS Utility) salve nela. No Lightroom: Arquivo › Importação Automática › Configurações, escolha a pasta e ative "Ativar importação automática".</small></li></ol><div class="sub wrap">Pronto: toda foto que cair na pasta entra no catálogo na hora.</div>';u.appendChild(c)}
+
+ /* detector de queda repetida: se a câmera cai 2x em menos de 30 s depois de pronta, para de insistir e orienta */
+ try{let up=0,drops=[];
+  setInterval(()=>{if(S.sess&&S.dev){if(!up)up=Date.now()}else if(!S.dev)up=0},1000);
+  navigator.usb.addEventListener('disconnect',()=>{const n=Date.now();
+   if(up&&n-up<30000){drops=drops.filter(t=>n-t<180000);drops.push(n)}
+   const dur=up?Math.round((n-up)/1000):0;up=0;
+   try{log('Queda do USB '+(dur?dur+' s depois de pronta':'antes de ficar pronta')+(drops.length?' ('+drops.length+'x seguidas)':''),'bad')}catch(_){}
+   if(drops.length>=2){S.cool=Date.now()+20000;S.camMsg='A câmera derrubou o USB sozinha '+drops.length+' vezes logo depois de conectar. Falhou por energia ou por o macOS ter pegado a câmera (ptpcamerad). Pausei 20 s para não insistir.'}})}catch(_){}
+ try{log('Build v60: câmera fixa, aviso ao sair, guia de falha, retry PTP, Conexão 2 Lightroom','ok')}catch(_){}
+})();
 </script>
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>

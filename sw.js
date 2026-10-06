@@ -2,7 +2,7 @@
    - Abre o app offline (cache) sem nunca prender a tela: a rede tem prioridade e, se demorar mais de 4 s, usa o cache.
    - Só guarda arquivos do próprio site. Não mexe em vídeos (Range), POST nem em outros domínios.
    - Para forçar atualização no futuro, mude o número em CACHE. */
-const CACHE = 'lumen-v1';
+const CACHE = 'lumen-v3';
 const BASICO = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'apple-touch-icon.png'];
 const ESPERA_REDE = 4000;
 
@@ -43,7 +43,9 @@ self.addEventListener('fetch', (ev) => {
     try {
       const rede = fetch(req);
       const resp = ehPagina ? await comLimite(rede, ESPERA_REDE) : await rede;
-      if (resp && resp.ok && resp.type === 'basic') cache.put(ehPagina ? 'index.html' : req, resp.clone()).catch(() => {});
+      const tam = +resp.headers.get('content-length') || 0;
+      const semCache = /no-store/i.test(resp.headers.get('cache-control') || '') || tam > 5e6;
+      if (resp && resp.ok && resp.type === 'basic' && !semCache) cache.put(ehPagina ? 'index.html' : req, resp.clone()).catch(() => {});
       return resp;
     } catch (e) {
       const guardado = (await cache.match(req, { ignoreSearch: true })) || (ehPagina && (await cache.match('index.html') || await cache.match('./')));
