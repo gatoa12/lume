@@ -4433,4 +4433,42 @@ applyLook();refresh();
  try{log('Build v60: câmera fixa, aviso ao sair, guia de falha, retry PTP, Conexão 2 Lightroom','ok')}catch(_){}
 })();
 </script>
+<script id="v61">
+/* v61: estabilidade ampla: espera adaptativa, histórico de quedas, checklist da câmera e plano B sugerido */
+(function(){
+ const $=q=>document.querySelector(q),K='lumen_drops';
+ let H=[];try{H=JSON.parse(localStorage.getItem(K)||'[]').filter(x=>Date.now()-x.t<864e5)}catch(_){}
+ const save=()=>{try{localStorage.setItem(K,JSON.stringify(H.slice(-50)))}catch(_){}};
+ let up=0;setInterval(()=>{if(S.sess&&S.dev){if(!up)up=Date.now()}else if(!S.dev)up=0},1000);
+ if(!('usb' in navigator))return;
+ /* 1) espera cresce a cada queda recente: dá tempo ao macOS/câmera de assentarem antes de tentar de novo */
+ navigator.usb.addEventListener('disconnect',()=>{const n=Date.now();H.push({t:n,s:up?Math.round((n-up)/1000):0});up=0;save();ui()});
+ navigator.usb.addEventListener('connect',()=>{
+  const rec=H.filter(x=>Date.now()-x.t<300000).length,ms=Math.min(15000,2600+rec*2500);
+  try{S.settle=Date.now()+ms-100;scheduleFind(ms);log('Esperando '+(ms/1000).toFixed(1)+' s antes de abrir a câmera (estabilizar o USB)')}catch(_){}});
+ /* 2) checklist da câmera, lembrado entre aberturas */
+ const ITENS=['Bateria da câmera cheia','Alimentação via USB: Desativada','Modo USB: PC Remoto ou Importação de fotos','Desligar automático: maior tempo / desativado','Cabo bom, ligado direto (sem hub)','Terminal do Mac rodando o comando ptpcamerad'];
+ let C={};try{C=JSON.parse(localStorage.getItem('lumen_chk')||'{}')}catch(_){}
+ const u=$('#conUsb');let box=null;
+ if(u){box=document.createElement('div');box.className='c';box.id='v61c';
+  box.innerHTML='<div class="l">Antes de conectar · evita queda e modo bateria</div><div id="v61l"></div><div class="sub wrap" id="v61s" style="margin-top:8px"></div>';
+  u.insertBefore(box,u.firstChild);
+  const L=box.querySelector('#v61l');
+  ITENS.forEach((t,i)=>{const r=document.createElement('label');r.style.cssText='display:flex;gap:8px;align-items:center;padding:5px 0;font-size:13px';
+   const k=document.createElement('input');k.type='checkbox';k.checked=!!C[i];k.onchange=()=>{C[i]=k.checked;try{localStorage.setItem('lumen_chk',JSON.stringify(C))}catch(_){}};
+   r.appendChild(k);r.appendChild(document.createTextNode(t));L.appendChild(r)})}
+ function ui(){const s=$('#v61s');if(s){const d=H.filter(x=>Date.now()-x.t<36e5);
+   s.textContent=H.length?('Quedas de USB nas últimas 24 h: '+H.length+' · na última hora: '+d.length+(H.length?' · última: '+new Date(H[H.length-1].t).toLocaleTimeString()+' ('+H[H.length-1].s+' s depois de pronta)':'')):'Nenhuma queda de USB registrada. 👍'}
+  banner()}
+ /* 3) plano B: com 3+ quedas em 5 min, oferece o modo Pasta/Lightroom (não troca sozinho) */
+ const b=document.createElement('div');b.style.cssText='position:fixed;left:50%;transform:translateX(-50%);bottom:calc(232px + env(safe-area-inset-bottom,0px));z-index:119;width:min(94vw,440px);display:none;background:#10161d;border:1px solid #38bdf8;color:#fff;border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.45';
+ b.innerHTML='<b>O USB está instável</b><div style="margin:4px 0 8px">Caiu várias vezes em poucos minutos. Para não perder fotos no evento, use o plano B: o app da câmera salva numa pasta e o Lightroom importa sozinho.</div><button id="v61g" style="padding:8px 12px;border-radius:10px;border:0;background:#38bdf8;color:#000;font-weight:700">Abrir Conexão 2</button> <button id="v61x" style="padding:8px 12px;border-radius:10px;border:1px solid #555;background:none;color:#fff">Agora não</button>';
+ document.body.appendChild(b);let mute=0;
+ $('#v61g').onclick=()=>{try{setMode('usb');goTab('con')}catch(_){}b.style.display='none';mute=Date.now()+6e5;try{const c=$('#conUsb').lastElementChild;c&&c.scrollIntoView({behavior:'smooth'})}catch(_){}};
+ $('#v61x').onclick=()=>{b.style.display='none';mute=Date.now()+6e5};
+ function banner(){b.style.display=(H.filter(x=>Date.now()-x.t<300000).length>=3&&Date.now()>mute)?'block':'none'}
+ setInterval(banner,3000);ui();
+ try{log('Build v61: espera adaptativa, histórico de quedas, checklist e plano B','ok')}catch(_){}
+})();
+</script>
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
