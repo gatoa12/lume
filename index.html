@@ -839,6 +839,32 @@ nav{overflow-x:auto}nav button{flex:0 0 auto;min-width:62px}.stp{background:#1a1
 /* --- camada: v50 Estúdio (antes injetado por JS) --- */
 .vxStu{background:linear-gradient(135deg,color-mix(in srgb,var(--acc) 14%,var(--card)),var(--card));border:1px solid var(--line);border-radius:18px;padding:12px;margin:10px 0}.vxSum{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.vxSum span{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:4px 10px;font-size:12px}#vxTabs{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(74px,1fr));gap:6px;overflow:visible!important}#vxTabs button{position:relative;border-radius:14px;padding:11px 4px;font-size:12.5px}#vxTabs button.dn::after{content:"";position:absolute;top:6px;right:8px;width:7px;height:7px;border-radius:50%;background:#34c759}.vxPan{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:8px}#vxPv{max-height:27vh!important}#vxCmp{position:absolute;right:8px;top:8px;padding:6px 10px;font-size:12px;border-radius:99px;background:#000b;color:#fff;z-index:5;touch-action:none}
 
+/* --- camada: v65 fluxo principal (Câmera → Pasta → Receber) --- */
+#t-home>#bGoTop,#t-home>#bGoTop+.sub,#t-home>#qp{display:none !important}   /* substituídos pelo cartão "Fotografar e enviar", que faz o mesmo */
+.fx3{border:1px solid color-mix(in srgb,var(--acc) 45%,transparent);background:linear-gradient(135deg,color-mix(in srgb,var(--acc) 12%,var(--card)),var(--card) 60%)}
+.fx3h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+.fx3h b{font-size:17px}
+.fx3s{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.fx3s li{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px;border-radius:14px;background:color-mix(in srgb,var(--bg) 55%,transparent);border:1px solid var(--line)}
+.fx3s li>i{font-style:normal;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:900;background:#2a2a30;color:var(--ink)}
+.fx3s li[data-s=ok]>i{background:var(--ok);color:#04150a}
+.fx3s li[data-s=warn]>i{background:var(--warn);color:#141000}
+.fx3s li[data-s=bad]>i{background:var(--bad);color:#fff}
+.fx3s li[data-s=ok]{border-color:color-mix(in srgb,var(--ok) 45%,transparent)}
+.fx3s li[data-s=bad]{border-color:color-mix(in srgb,var(--bad) 55%,transparent)}
+.fx3s li div{min-width:0}
+.fx3s li div b{display:block;font-size:14px}
+.fx3s li div span{display:block;font-size:12.5px;line-height:1.35;color:var(--mut);margin-top:2px;overflow-wrap:anywhere}
+.fx3s li button{margin:0;min-height:42px;padding:8px 12px;font-size:13px;white-space:nowrap}
+.fx3s li button[hidden]{display:none}
+.fx3n{font-size:13px;color:var(--ink);margin-top:8px;line-height:1.4}
+.fx3n a{color:var(--acc2)}
+.fx3a{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.fx3a button{flex:1 1 150px;margin:0;font-size:13px}
+.fx3m>summary{cursor:pointer;padding:4px 0}
+.fx3m>summary small{color:var(--mut);font-weight:500}
+@media (max-width:420px){.fx3s li{grid-template-columns:30px minmax(0,1fr)}.fx3s li button{grid-column:2}}
+body.campo .fx3{border:3px solid #000;background:#fff}
 /* --- camada: v64 USB (aviso de porta ocupada, reconectar, plano B) --- */
 .uerr{border:1px solid var(--warn);background:color-mix(in srgb,var(--warn) 10%,var(--card));border-radius:16px;padding:14px;margin:0 0 10px}
 .uerr[hidden]{display:none !important}
@@ -1052,7 +1078,7 @@ body.campo .uerr.bad{background:#ffd6d0}
   <p class="sub wrap">Cada destino recebe a foto; se um falhar, o envio é repetido até 3 vezes.</p></div>
  <h2>Captura</h2>
  <div class="c"><div class="chips" id="cap"></div><p class="sub wrap">A pasta do evento guarda somente <b>JPG</b> (fotos) e <b>MP4</b> (vídeos). RAW, XMP e outros arquivos não são copiados: o cartão da câmera continua sendo o backup completo.</p>
-  <label class="r"><input type="checkbox" id="canon" aria-label="Entrar em modo remoto Canon ao plugar"> Entrar em modo remoto Canon já ao plugar (deixe DESLIGADO: o app liga o controle remoto só quando você usa disparo/ajustes e desliga sozinho)</label>
+  <label class="r"><input type="checkbox" id="canon" aria-label="Entrar em modo remoto Canon ao plugar"> Liberar a câmera para fotografar assim que conectar (modo remoto Canon). Deixe LIGADO: sem isso a Canon fica na tela do computador (bateria + notebook) e não tira fotos nem grava vídeo enquanto o cabo está ligado</label>
   <label class="r"><input type="checkbox" id="upv" aria-label="Enviar também o vídeo original"> Enviar também o vídeo original (senão fica só na pasta Videos)</label></div>
  <h2>Triagem automática</h2>
  <div class="c"><label class="r">Escuridão: abaixo disto é escura <b id="vd"></b><input type="range" id="sd" aria-label="Limite de escuridão" min="10" max="120"></label>
@@ -1304,10 +1330,10 @@ window.addEventListener('load',function(){setTimeout(function(){try{
 <script>
 const $=s=>document.querySelector(s),sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const BUILT=[['Natural',{b:1,c:1,s:1,se:0,h:0,g:0}],['Vivo (sol forte)',{b:1,c:1.08,s:1.35,se:0,h:0,g:0}],['Cinema',{b:1,c:1.15,s:.85,se:.18,h:-8,g:0}],['Preto e branco',{b:1,c:1.15,s:1,se:0,h:0,g:1}]];
-const DEF={eps:'',tk:'',ev:'',pair:'',cur:{...BUILT[0][1]},curN:'Natural',custom:[],dark:45,sharp:60,size:2048,q:92,wm:true,raw:false,upv:false,canon:false,cv:2};
+const DEF={eps:'',tk:'',ev:'',pair:'',cur:{...BUILT[0][1]},curN:'Natural',custom:[],dark:45,sharp:60,size:2048,q:92,wm:true,raw:false,upv:false,canon:true,cv:3};
 const C=Object.assign({},DEF,(()=>{try{return JSON.parse(localStorage.getItem('lumen2'))||{}}catch(e){return{}}})());
 if(C.ev==='Maratona da Orla 2026')C.ev='';
-if(C.cv!==2){C.canon=false;C.cv=2}
+if((C.cv||0)<3){C.canon=true;C.cv=3}   /* v65: a câmera fica liberada para fotografar enquanto conectada */
 const store=()=>{try{localStorage.setItem('lumen2',JSON.stringify(C))}catch(e){}};
 const S={dev:null,ei:0,eo:0,tid:0,sess:false,dir:null,perm:false,svc:false,svcMsg:'não testado',dst:[],run:false,pause:false,why:'',seen:new Set(),done:new Set(),sig:new Set(),q:[],tries:{},busy:false,pollBusy:false,
  c:{o:0,b:0,a:0,d:0},u:{f:0,v:0,e:0,done:0,total:0},samples:[],items:[],f:'all',sel:null,pubB:0,pubN:0,id:0};
@@ -1397,6 +1423,18 @@ function ptpResync(why){
    log('USB: comunicação ressincronizada sem desconectar ('+why+(deep?', limpeza completa':'')+(n?', '+n+' bytes antigos descartados':'')+', '+(Date.now()-t0)+' ms)','ok')
   }finally{S.resyncing=false;RSP=null}})();
  return RSP}
+/* v65: lê a lista de operações da câmera (DeviceInfo) */
+function ptpOps(d){try{if(!d||d.length<12)return null;const v=new DataView(d.buffer,d.byteOffset,d.byteLength);let o=8;o+=1+d[o]*2;o+=2;
+ const n=v.getUint32(o,true);o+=4;const s=new Set();for(let i=0;i<n&&o+2<=d.length;i++,o+=2)s.add(v.getUint16(o,true));return s}catch(_){return null}}
+/* v65: baixa a foto/vídeo. Arquivos grandes (vídeos) vêm em partes de 16 MB (GetPartialObject), sem um bloco gigante na memória */
+async function ptpGetObject(h,size){
+ if(!(size>48e6&&S.ops&&S.ops.has(0x101B))){const r=await ptp(0x1009,[h],90000);if(r.rc!==0x2001||!r.data)throw new Error('download falhou 0x'+r.rc.toString(16));return r.data}
+ const CH=16777216,parts=[];let off=0;S.bigDl={t:size,n:0};
+ try{while(off<size){const r=await ptp(0x101B,[h,off,Math.min(CH,size-off)],60000);
+   if(r.rc!==0x2001||!r.data||!r.data.length)throw new Error('download em partes falhou 0x'+r.rc.toString(16)+' em '+Math.round(off/1e6)+' MB');
+   parts.push(r.data);off+=r.data.length;S.bigDl.n=off}}
+ finally{S.bigDl=null}
+ return new Blob(parts)}
 /* uma transação USB por vez para TODOS os chamadores (ptp, enterRemote, exitRemote, camRelease, anti-sono) + respiro mínimo */
 let PXQ=Promise.resolve();
 function trDump(){const n=Date.now(),L=(S.tr||[]).slice(-10);if(!L.length)return;
@@ -1422,7 +1460,9 @@ const ptp=(c,p=[],ms=8000,out=null)=>{const r=Q.then(async()=>{if(S.closing)thro
 async function enterRemote(){if(S.canon||!S.dev||S.dev.vendorId!==0x04a9)return;let rc=0;
  for(const[mm,ee]of[[1,1],[0x15,2]]){const a=await ptpRaw(0x9114,[mm],6000);rc=a.rc;if(a.rc===0x2001){await ptpRaw(0x9115,[ee],6000);S.canon=true;S.remAt=Date.now();log('Canon: controle remoto ligado (só enquanto você usa)','ok');return}}
  throw new Error('a câmera recusou o controle remoto (0x'+rc.toString(16)+')')}
-async function exitRemote(why){if(!S.canon||!S.dev)return;try{const r=await ptpRaw(0x9116,[],3000);canonEv(r.data,!S.run)}catch(_){}
+async function exitRemote(why){if(!S.canon||!S.dev)return;
+ /* v65: enquanto conectada, a câmera fica no modo remoto (senão trava na tela do computador). Só sai ao liberar para o Lightroom ou à mão. */
+ if(S.keepRemote&&!/Lightroom|manual|libera/i.test(why||''))return;S.keepRemote=false;try{const r=await ptpRaw(0x9116,[],3000);canonEv(r.data,!S.run)}catch(_){}
  S.canon=false;try{await ptpRaw(0x9115,[0],2000)}catch(_){}try{await ptpRaw(0x9114,[0],2000)}catch(_){}log('Canon: câmera voltou ao modo normal'+(why?' ('+why+')':''),'ok')}
 function leaveRemote(why){const r=Q.then(()=>exitRemote(why));Q=r.catch(()=>{});return r}
 /* v64: liberar a câmera nunca fica preso esperando um comando longo (ex.: download de vídeo).
@@ -1436,10 +1476,10 @@ async function camRelease(why){stopHeartbeat();const d=S.dev;if(!d)return;S.clos
   await Promise.race([polite(),sleep(3500)]);
   try{await d.releaseInterface(S.ifn);rel=true}catch(_){}}}catch(_){}
  try{await d.close();cls=true}catch(_){}
- S.canon=false;S.dev=null;S.closing=false;S.txBusy=false;S.ptpDirty=false;S.ptpStale.clear();Q=Promise.resolve();PXQ=Promise.resolve();if(LOCKREL)LOCKREL();
+ S.canon=false;S.keepRemote=false;S.dev=null;S.closing=false;S.txBusy=false;S.ptpDirty=false;S.ptpStale.clear();Q=Promise.resolve();PXQ=Promise.resolve();if(LOCKREL)LOCKREL();
  S.lastRel={t:Date.now(),rel,cls,why:why||''};
  log('Câmera liberada'+(why?' ('+why+')':'')+(cls?' · porta USB fechada':' · aviso: o navegador não confirmou o fechamento da porta'),cls?'':'bad')}finally{S.closing=false}}
-setInterval(()=>{if(S.canon&&!S.busy&&!S.dlT&&!S.shoot&&Date.now()-(S.remAt||0)>10000)leaveRemote('ocioso')},2000);
+setInterval(()=>{if(S.canon&&!S.keepRemote&&!S.busy&&!S.dlT&&!S.shoot&&Date.now()-(S.remAt||0)>10000)leaveRemote('ocioso')},2000);   /* v65: não sai do modo remoto durante a sessão */
 /* v61: PTP Heartbeat (keep-alive). A cada 3 s pede à câmera o nível de bateria (GetDevicePropDesc 0x1014, prop 0x5001,
    o mesmo comando leve que a aba Bateria já usa e que a R8 aceita). Qualquer resposta, até com código de erro, já é tráfego
    e impede a Canon de achar que o USB está ocioso. Não usa 0x911D (anti-sono antigo), que derrubava a câmera. */
@@ -1504,8 +1544,9 @@ async function openCamInner(dev,n=0,force=false){
   const NT=(/Mac/i.test(navigator.userAgent)&&!/iPhone|iPad/i.test(navigator.userAgent))?20:4;for(let k=0;k<NT;k++){try{await dev.claimInterface(IN);cl=null;break}catch(e){cl=e;retry=true;chk();log('Interface ocupada ('+(k+1)+'/'+NT+'): '+e.message);try{await dev.releaseInterface(IN)}catch(_){}
    try{if(k===1){await dev.close();await sleep(700);await dev.open();if(!dev.configuration)await dev.selectConfiguration(1)}
     else if(k===2){if(S.allowReset){try{await dev.reset()}catch(_){}}await sleep(1500);if(!dev.opened)await dev.open();if(!dev.configuration)await dev.selectConfiguration(1)}}catch(_){}
+   if(k===2){S.usbBusyNow=true;S.camMsg='Interface ocupada: '+explain({message:'claim busy'});tick()}
    await sleep(NT>4?450:900);chk()}}
-  if(cl)throw cl;retry=false;
+  S.usbBusyNow=false;if(cl)throw cl;retry=false;
   S.ifn=ifc.interfaceNumber;S.alt=alt.alternateSetting||0;if(alt.alternateSetting)await dev.selectAlternateInterface(ifc.interfaceNumber,alt.alternateSetting);
   S.ei=alt.endpoints.find(e=>e.type==='bulk'&&e.direction==='in').endpointNumber;
   S.eo=alt.endpoints.find(e=>e.type==='bulk'&&e.direction==='out').endpointNumber;
@@ -1515,14 +1556,24 @@ async function openCamInner(dev,n=0,force=false){
   S.step='abrindo a sessão PTP';
   S.tid=0;const r=await ptp(0x1002,[1],5000);
   if(r.rc!==0x2001&&r.rc!==0x201E)throw new Error('câmera recusou a sessão (0x'+r.rc.toString(16)+')');
-  S.canon=false;
-  /* conectar/importar NUNCA liga o modo remoto (0x9114); só o disparo via app liga, e sai logo depois */
+  S.canon=false;S.keepRemote=false;S.remoteErr='';
+  /* v65: lista de comandos que a câmera aceita (GetDeviceInfo), usada para baixar vídeos grandes em partes */
+  try{const di=await ptp(0x1001,[],5000);S.ops=ptpOps(di.data)}catch(_){S.ops=null}chk();
+  /* v65: Canon EOS com sessão PTP aberta e SEM modo remoto mostra a tela do computador (bateria + notebook) e NÃO tira foto.
+     Por isso, ao conectar, o LUMEN liga o modo remoto + eventos e deixa o destino das fotos no CARTÃO: a câmera volta à tela normal,
+     você fotografa e grava pela própria câmera, e cada arquivo novo é avisado pela câmera e baixado. Sai do modo remoto ao liberar. */
+  if(dev.vendorId===0x04a9&&C.canon!==false){S.step='liberando a câmera para fotografar';
+   try{await enterRemote();S.keepRemote=true;S.remAt=Date.now();
+    try{const b=new Uint8Array(12),dv=new DataView(b.buffer);dv.setUint32(0,12,true);dv.setUint32(4,0xD11C,true);dv.setUint32(8,1,true);
+     const rr=await ptpRaw(0x9110,[],6000,b);if(rr.rc!==0x2001)log('Aviso: a câmera não confirmou "gravar no cartão" (0x'+rr.rc.toString(16)+')','bad')}catch(_){}
+    log('Câmera liberada para fotografar e gravar: cada foto e vídeo novo vem sozinho para o LUMEN','ok')}
+   catch(e){S.remoteErr=String((e&&e.message)||e);log('A câmera não entrou no modo remoto ('+S.remoteErr+'). Ela pode ficar na tela do computador: confira o modo USB/comunicação da câmera.','bad')}chk()}
   S.step='pronta';S.fails=0;S.sess=true;S.src='usb';S.camMsg='';S.softT=[];S.usbErrAt=0;log('Câmera pronta: '+(dev.manufacturerName||'')+' '+(dev.productName||''),'ok');startHeartbeat();
  }catch(e){
   if(e&&e.cancel){clearTimeout(wd);return}const ex=explain(e);S.sess=false;S.camMsg='Falhou na etapa "'+(S.step||'?')+'": '+ex;log('Câmera ('+(S.step||'?')+'): '+(e.name||'')+' '+e.message+' → '+ex,'bad');
   try{if(S.dev===dev)await camRelease('falha ao conectar');else await dev.close()}catch(_){}S.dev=null;
   S.fails=(S.fails||0)+1;if(S.fails>=4){S.cool=Date.now()+30000;S.fails=0;S.camMsg='Várias falhas seguidas: pausei as tentativas por 30 s para não prender a câmera. Desligue e ligue a câmera, replugue o cabo e toque em Conectar.';log(S.camMsg,'bad');clearTimeout(wd);S.conn=false;tick();return}
-  if(/claim|busy|outra aba|access denied/i.test(e.message)||(e.name==='SecurityError'&&!ANDROID)||e.name==='InvalidStateError'){S.cool=Date.now()+45000;S.usbErrAt=Date.now();clearTimeout(wd);S.conn=false;if(LOCKREL)LOCKREL();tick();return}
+  if(/claim|busy|outra aba|access denied/i.test(e.message)||(e.name==='SecurityError'&&!ANDROID)||e.name==='InvalidStateError'){S.cool=Date.now()+12000;S.usbErrAt=Date.now();clearTimeout(wd);S.conn=false;if(LOCKREL)LOCKREL();tick();return}
   if(/tempo esgotado/i.test(e.message)){S.cool=Date.now()+20000;S.camMsg=e.lumenUsb?ex:'A câmera não responde ao USB (provavelmente na tela de bateria). Desligue e ligue a câmera pelo botão, espere ela abrir e conecte de novo.';clearTimeout(wd);S.conn=false;tick();return}
   if(n<8&&!/PTP/.test(e.message)&&e.name!=='SecurityError'){clearTimeout(wd);log('Nova tentativa em 2 s ('+(n+1)+'/8)…');setTimeout(()=>{if(S.gen!==tok)return;S.conn=false;openCam(dev,n+1)},2000);return}}
  clearTimeout(wd);S.conn=false;tick()}
@@ -1573,6 +1624,8 @@ async function pedirCamera(all){
  if(!('usb' in navigator)){log('Esta página/navegador não libera USB. Veja o aviso na aba Conectar.','bad');goTab('con');envUi();conUi();return}
  if(S.sess&&S.dev&&S.src==='usb')return;
  if(S.conn&&S.dev){log('Já conectando à câmera: aguarde, não troquei de dispositivo.');return}
+ if(!all){try{const l=await navigator.usb.getDevices(),PF=localStorage.getItem('lumen_pref'),d=(PF&&l.find(x=>(x.vendorId+':'+x.productId+':'+(x.serialNumber||''))===PF&&PTPIF(x)))||l.find(PTPIF);
+  if(d){log('Câmera já autorizada: conectando direto, sem abrir a lista do Chrome.');S.cool=0;S.fails=0;S.src='usb';S.sess=false;if(S.dev&&S.dev!==d){try{await camRelease('troca de câmera')}catch(_){}}openCam(d,0,true);return}}catch(_){}}
  try{
   S.t0=Date.now();const d=await navigator.usb.requestDevice({filters:all?[]:[{vendorId:0x04a9},{classCode:6},{classCode:0xff}]});
   try{localStorage.setItem('lumen_pref',d.vendorId+':'+d.productId+':'+(d.serialNumber||''))}catch(_){}log('Escolhido: '+(d.manufacturerName||'?')+' '+(d.productName||'?')+' (vendor 0x'+d.vendorId.toString(16)+')','ok');
@@ -1583,8 +1636,8 @@ $('#bCam').onclick=()=>pedirCamera(false);
 $('#bAll').onclick=()=>pedirCamera(true);
 $('#gGo').onclick=()=>pedirCamera(false);
 $('#gAll').onclick=()=>pedirCamera(true);
-$('#gX').onclick=()=>{gateOff=true;gateUi()};
-function gateUi(){const g=$('#gate');if(!g)return;const need=performance.now()>2500&&!S.sess&&!S.dev&&!S.conn&&!gateOff&&('usb' in navigator)&&S.cm==='usb';
+$('#gX').onclick=()=>{gateOff=true;S.gateAsk=false;gateUi()};
+function gateUi(){const g=$('#gate');if(!g)return;const need=performance.now()>2500&&!S.sess&&!S.dev&&!S.conn&&!gateOff&&('usb' in navigator)&&S.cm==='usb'&&!!S.gateAsk;   /* v65: só abre quando você toca em "Ajuda para conectar" */
  g.style.display=need?'flex':'none';if(need){$('#gMsg').textContent=S.camMsg||'';const ev=envProblem();$('#gEnv').innerHTML=ev;$('#gGo').style.display=$('#gAll').style.display=(ev&&!('usb' in navigator))?'none':'';
   $('#gDiag').textContent=(ANDROID?'Android':'PC')+' · Chrome '+((navigator.userAgent.match(/Chrome\/(\d+)/)||[])[1]||'?')+' · autorizados: '+(S.usbList.length?S.usbList.join(', '):'nenhum')+' · etapa: '+(S.step||'aguardando toque')}}
 $('#gCp').onclick=async()=>{const t=['LUMEN diag',navigator.userAgent,'seguro: '+isSecureContext+' · '+location.protocol+' · WebUSB: '+('usb' in navigator)+' · fonte: '+S.src,'etapa: '+(S.step||'-'),'autorizados: '+S.usbList.join(', '),...[...$('#log').children].slice(-40).map(x=>x.textContent)].join('\n');
@@ -1778,7 +1831,7 @@ async function work(h){
  if(S.sig.has(sig)){log(inf.name+': repetido, ignorado');S.done.add(h);return}
  if(!vid&&!jpg&&!C.raw){S.done.add(h);return}
  
- await bp();const tDl0=performance.now();let dat;if(isF)dat=h;else if(isW)dat=await ccGet(h);else{const r=await ptp(0x1009,[h],90000);if(r.rc!==0x2001||!r.data)throw new Error('download falhou 0x'+r.rc.toString(16));dat=r.data}
+ await bp();const tDl0=performance.now();let dat;if(isF)dat=h;else if(isW)dat=await ccGet(h);else{dat=await ptpGetObject(h,inf.size)}
  LG.set(sig,{st:'baixado'});const tDl=performance.now()-tDl0;S.recvN=(S.recvN||0)+1;let ct=isF&&h.lastModified?h.lastModified:Date.now();
  const blob=new Blob([dat],{type:vid?'video/mp4':jpg?'image/jpeg':'application/octet-stream'});if(!isF&&window.guardPut)await guardPut(inf.name,blob);if(jpg){const ed=await exifDate(blob);if(ed)ct=ed}const name=stamp(ct)+'_'+normName(inf.name);
  let queued=false,recd=null;const run=async()=>{
@@ -2735,7 +2788,7 @@ function shpAmt(){const v=shpLv();return v==='p'?Math.max(0,Math.min(100,+C.shpP
  document.getElementById('mfX').onclick=()=>{d.classList.remove('on')};
  let nx=0;
  setInterval(()=>{const t=(document.getElementById('camTxt')||{}).textContent||'';
-  if(/ptpcamerad/.test(t)&&Date.now()>nx&&!d.classList.contains('on')){nx=Date.now()+90000;d.classList.add('on');log('USB bloqueado pelo macOS: oferecida a rota segura (EOS Utility + Pasta).','bad')}},1500);
+  if(window.__macAuto&&/ptpcamerad/.test(t)&&Date.now()>nx&&!d.classList.contains('on')){   /* v65: não abre mais sozinho; botão "Rota segura" no cartão do Mac */nx=Date.now()+90000;d.classList.add('on');log('USB bloqueado pelo macOS: oferecida a rota segura (EOS Utility + Pasta).','bad')}},1500);
 })();
 </script>
 <script>
@@ -5006,7 +5059,8 @@ applyLook();refresh();
 
  /* ---------- 2. Classifica o problema atual do USB ---------- */
  function kind(){
-  if(!HAS_USB||S.cm!=='usb'||S.src!=='usb'||S.sess||S.hold||S.conn)return null;
+  if(!HAS_USB||S.cm!=='usb'||S.src!=='usb'||S.sess||S.hold)return null;
+  if(S.conn&&!S.usbBusyNow)return null;
   const m=String(S.camMsg||'');if(!m)return null;
   if(/ocupad|segurando|ptpcamerad|Outro app|driver|claim|busy|outra aba|estado inválido|Interface ocupada/i.test(m))return 'busy';
   if(/negou|recusado|permiss|Permitir/i.test(m))return 'perm';
@@ -5095,6 +5149,107 @@ applyLook();refresh();
 
  log('Build v64: USB com ressincronização (sem soltar a porta), liberação para o Lightroom sem travar, aviso de porta ocupada com "Tentar reconectar"','ok');
 }catch(e){try{log('v64: '+e.message,'bad')}catch(_){}}})();
+
+</script>
+<script id="v65fluxo">
+/* ===== v65 · Fluxo principal em 3 passos: plugou → câmera liberada para fotografar → pasta → começa a receber.
+   Também: guia do Mac (impedir que o Mac abra uma pasta e segure a câmera) e janelas que só abrem quando você pede. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),HAS_USB=('usb' in navigator),MAC=/Mac/i.test(navigator.userAgent)&&!IOS;
+ const MAC_CMD='launchctl disable gui/$(id -u)/com.apple.ptpcamerad 2>/dev/null; while true; do killall ptpcamerad PTPCamera 2>/dev/null; sleep 0.1; done';
+ const UNDO_CMD='launchctl enable gui/$(id -u)/com.apple.ptpcamerad';
+ const home=$1('#t-home');if(!home)return;
+ const card=document.createElement('div');card.className='c fx3';card.id='fluxo';
+ card.innerHTML='<div class="fx3h"><b>Fotografar e enviar</b><span id="fxSt" class="pillS">—</span></div>'
+ +'<ol class="fx3s">'
+ +'<li id="fs1"><i>1</i><div><b>Câmera</b><span id="fs1t">—</span></div><button type="button" class="f" id="fs1b">Conectar câmera</button></li>'
+ +'<li id="fs2"><i>2</i><div><b>Pasta para salvar</b><span id="fs2t">—</span></div><button type="button" class="f" id="fs2b">Escolher pasta</button></li>'
+ +'<li id="fs3"><i>3</i><div><b>Receber fotos e vídeos</b><span id="fs3t">—</span></div><button type="button" class="f p" id="fs3b">▶ Começar</button></li>'
+ +'</ol>'
+ +'<div class="fx3n" id="fxSite"></div>'
+ +'<div class="fx3n" id="fxCnt"></div>'
+ +'<div class="fx3a"><button type="button" class="f" id="fxHelp">Ajuda para conectar</button>'+(MAC?'<button type="button" class="f" id="fxMacB">Configurar o Mac (1 vez)</button>':'')+'</div>';
+ home.insertBefore(card,home.firstChild);
+ /* guia do Mac */
+ let mac=null;
+ if(MAC){mac=document.createElement('details');mac.className='c fx3m';mac.id='fxMac';
+  mac.innerHTML='<summary><b>Configurar o Mac (1 vez)</b> <small>o Mac abre uma pasta e segura a câmera</small></summary>'
+  +'<p class="sub wrap" data-ex="1">Ao plugar a Canon, o próprio macOS abre a câmera (programa <b>ptpcamerad</b> e o <b>Importador automático</b>, que copia as fotos para "Fotos importadas automaticamente" e abre essa pasta). Enquanto o Mac estiver com ela, a câmera mostra a tela da bateria com o notebook e o Chrome não consegue usá-la. Faça isto uma vez:</p>'
+  +'<ol class="steps" data-ex="1">'
+  +'<li><b>Pare a pasta que abre sozinha.</b><small>Abra o app <b>Captura de Imagem</b> (Image Capture), clique na Canon na barra lateral e, embaixo, em "Ao conectar esta câmera, abrir", escolha <b>Nenhum aplicativo</b>. No app <b>Fotos</b>, desmarque "Abrir Fotos" para esta câmera.</small></li>'
+  +'<li><b>Solte o USB do sistema.</b><small>Toque em "Copiar comando", abra o <b>Terminal</b>, cole, aperte Enter e <b>deixe a janela aberta</b> enquanto usa o LUMEN. Para fechar: Ctrl+C.</small></li>'
+  +'<li><b>Desligue e ligue a câmera e replugue o cabo.</b><small>O LUMEN conecta sozinho, a câmera sai da tela do computador e já pode fotografar.</small></li>'
+  +'</ol><div class="fx3a"><button type="button" class="f p" id="fxCopy">Copiar comando do Terminal</button><button type="button" class="f" id="fxUndo">Copiar comando para desfazer</button><button type="button" class="f" id="fxSafe">Rota sem cabo (EOS Utility + Pasta)</button></div>';
+  card.after(mac);
+  const cp=async(t,b,ok)=>{try{await navigator.clipboard.writeText(t);b.textContent=ok}catch(_){prompt('Copie e cole no Terminal:',t)}};
+  $1('#fxCopy').onclick=e=>cp(MAC_CMD,e.target,'✔ Copiado: cole no Terminal e deixe aberto');
+  $1('#fxUndo').onclick=e=>cp(UNDO_CMD,e.target,'✔ Copiado (desfaz a configuração)');
+  $1('#fxSafe').onclick=()=>{const m=$1('#macF');if(m)m.classList.add('on')};
+  $1('#fxMacB').onclick=()=>{mac.open=true;mac.scrollIntoView({behavior:'smooth',block:'start'})}}
+ $1('#fxHelp').onclick=()=>{S.gateAsk=true;gateOff=false;try{gateUi()}catch(_){}};
+
+ const camReady=()=>!!(S.sess&&SRCOK());
+ const usbLive=()=>camReady()&&S.src==='usb';
+ const dirOk=()=>!!(S.dir&&S.perm);
+ function canStart(){try{return checks().every(c=>c.ok)}catch(_){return false}}
+ function why(){try{const c=checks().find(c=>!c.ok);return c?c.t+': '+c.d:''}catch(_){return ''}}
+ async function start(){
+  if(S.run&&!S.pause)return;
+  if(S.run&&S.pause){if(canStart()){S.pause=false;S.auto=false;S.why='';pump();tick()}return}
+  if(!canStart()){msg3=why();render();return}
+  const g=$1('#bGo');if(g&&!g.disabled)g.click()}
+ let msg3='';
+ /* passo 1 */
+ $1('#fs1b').onclick=async()=>{
+  if(S.hold){try{resumeCamera()}catch(_){}return}
+  if(usbLive()&&S.dev&&S.dev.vendorId===0x04a9&&!S.canon){try{const r=Q.then(()=>enterRemote());Q=r.catch(()=>{});await withT(r,12000);S.keepRemote=true;log('Câmera liberada para fotografar','ok')}catch(e){log('A câmera recusou o modo remoto: '+e.message,'bad')}render();return}
+  if(!HAS_USB){try{goTab('con')}catch(_){}return}
+  if(window.usbRetry)usbRetry();else pedirCamera(false)};
+ /* passo 2 */
+ $1('#fs2b').onclick=async()=>{
+  try{
+   if(S.dir&&!S.perm&&S.dir.requestPermission){if((await S.dir.requestPermission({mode:'readwrite'}))==='granted'){S.perm=true;tick()}}
+   else{const f=$1('#bDir').onclick;if(f)await f()}
+  }catch(e){log('Pasta: '+e.message,'bad')}
+  await sleep(300);if(dirOk()&&camReady()&&!S.run)start();render()};
+ /* passo 3 */
+ $1('#fs3b').onclick=()=>{if(S.run&&!S.pause){S.pause=true;tick();render();return}start()};
+
+ function set(li,state,txt,btn,show,dis){const L=$1('#'+li);L.dataset.s=state;$1('#'+li+'t').textContent=txt;const b=$1('#'+li+'b');b.textContent=btn;b.hidden=!show;b.disabled=!!dis}
+ function render(){try{
+  const now=Date.now();
+  /* 1 · câmera */
+  if(!HAS_USB&&S.src!=='usb'){set('fs1',camReady()?'ok':'wait',camReady()?'✔ '+CN():'Este navegador não usa cabo USB: escolha a pasta da câmera/cartão na aba Conectar','Abrir Conectar',!camReady())}
+  else if(S.hold)set('fs1','wait','Liberada para o Lightroom. O LUMEN não usa o cabo até você voltar.','Voltar a usar a câmera',true);
+  else if(usbLive()){const nm=((S.dev&&S.dev.productName)||'Canon').replace(/^Canon\s+/,'');
+   if(S.canon)set('fs1','ok','✔ '+nm+' conectada e liberada: pode fotografar e gravar pela câmera','',false);
+   else if(S.dev&&S.dev.vendorId===0x04a9)set('fs1','warn','⚠ Conectada, mas a câmera pode estar travada na tela do computador'+(S.remoteErr?' ('+S.remoteErr+')':''),'Liberar para fotografar',true);
+   else set('fs1','ok','✔ '+nm+' conectada','',false)}
+  else if(camReady())set('fs1','ok','✔ '+CN(),'',false);
+  else if(S.conn||S.pend)set('fs1',S.usbBusyNow?'bad':'wait',S.usbBusyNow?(MAC?'O Mac está segurando a câmera: veja "Configurar o Mac" abaixo':'Outro programa está com a câmera'):'Conectando… ('+(S.step||'abrindo')+')','Tentar de novo',!!S.usbBusyNow);
+  else if(S.camMsg&&S.camMsg!=='Tentando reconectar…')set('fs1','bad',S.camMsg.slice(0,180),'Tentar reconectar',true);
+  else set('fs1','wait',(S.usbList&&S.usbList.length?'Câmera autorizada: plugue o cabo e ligue a câmera, ela conecta sozinha':'Plugue o cabo, ligue a câmera e toque em Conectar (só na primeira vez)'),'Conectar câmera',true);
+  /* 2 · pasta */
+  if(dirOk())set('fs2','ok','✔ '+(S.dir.virtual?'Pasta interna do app (exporte em "Pasta interna → Arquivos")':S.dir.name)+(camReady()?'':' · conecte a câmera'),'Trocar pasta',true);
+  else if(S.dir&&!S.perm)set('fs2','warn','A pasta "'+S.dir.name+'" precisa da sua permissão de novo','Liberar pasta "'+S.dir.name+'"',true);
+  else set('fs2','wait','Escolha onde salvar (ex.: Imagens › LUMEN)','Escolher pasta',true);
+  /* 3 · receber */
+  if(S.run&&!S.pause)set('fs3','ok','✔ Recebendo. Fotografe e grave na câmera: cada arquivo novo aparece na Galeria'+(eps().length?' e vai para o site':''),'Pausar',true);
+  else if(S.run&&S.pause)set('fs3','warn','Pausado'+(S.why?': '+S.why:''),'Retomar',true,!canStart());
+  else set('fs3','wait',canStart()?'Tudo pronto: toque em Começar':!camReady()?'Primeiro conecte a câmera (passo 1)':!dirOk()?'Agora escolha a pasta (passo 2): depois começa sozinho':(msg3||why()),'▶ Começar',true,!canStart());
+  const allOk=S.run&&!S.pause,st=$1('#fxSt');st.className='pillS '+(allOk?'ok':(camReady()&&dirOk()?'warn':''));st.textContent=allOk?'ao vivo':(camReady()&&dirOk()?'pronto':'configurar');
+  /* envio ao site e contagem */
+  const e=eps().length,F=S.items.filter(i=>i.kind==='foto').length,V=S.items.length-F,pend=S.uq.length+S.ua+S.upF.length;
+  $1('#fxSite').innerHTML=e?(S.svc?'🌐 Envio ao site <b>ligado</b>'+(pend?' · '+pend+' na fila':' · em dia'):'🌐 Site <b>sem resposta</b>: as fotos esperam na fila e sobem quando ele responder'):'🌐 Envio ao site <b>desligado</b>: configure o endereço em <a href="#" id="fxCfg">Config › Destinos</a>. Sem isso as fotos ficam na pasta e na Galeria.';
+  const a=$1('#fxCfg');if(a)a.onclick=ev=>{ev.preventDefault();goTab('cfg')};
+  $1('#fxCnt').textContent=(F||V)?('📷 '+F+' foto(s) · 🎬 '+V+' vídeo(s) recebidos'+(S.bigDl?' · baixando vídeo '+Math.round(100*S.bigDl.n/S.bigDl.t)+'%':'')):'';
+  if(mac&&S.usbBusyNow&&!mac.dataset.auto){mac.dataset.auto=1;mac.open=true}
+ }catch(_){}}
+ window.fluxoRender=render;render();setInterval(render,700);
+ /* quando a câmera e a pasta ficam prontas, começa sozinho (uma vez por conexão) */
+ let lastGen=-1;setInterval(()=>{try{if(C.autoGo===false||S.run||!camReady()||!dirOk()||lastGen===S.gen)return;if(!canStart())return;lastGen=S.gen;start();log('Começou sozinho: câmera e pasta prontas','ok')}catch(_){}},1500);
+ log('Build v65: câmera liberada para fotografar (modo remoto Canon), vídeos grandes em partes, fluxo em 3 passos','ok');
+}catch(e){try{log('v65: '+e.message,'bad')}catch(_){}}})();
 
 </script>
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
