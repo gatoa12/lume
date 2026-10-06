@@ -865,6 +865,55 @@ nav{overflow-x:auto}nav button{flex:0 0 auto;min-width:62px}.stp{background:#1a1
 .fx3m>summary small{color:var(--mut);font-weight:500}
 @media (max-width:420px){.fx3s li{grid-template-columns:30px minmax(0,1fr)}.fx3s li button{grid-column:2}}
 body.campo .fx3{border:3px solid #000;background:#fff}
+/* --- camada: v66 Lightroom automático, formato do vídeo e guia de conexões --- */
+.lrx{border:1px solid color-mix(in srgb,var(--acc) 45%,transparent)}
+.lrx-flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px;margin:8px 0}
+.lrx-flow span{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:4px 10px}
+.lrx-st{font-size:13px;margin-top:8px;color:var(--ink);line-height:1.45}
+.vxw{overflow:hidden}
+#vxCrop{position:absolute;display:none;pointer-events:none;border:2px solid var(--acc);border-radius:4px;box-shadow:0 0 0 9999px rgba(0,0,0,.55);z-index:3}
+.cx4g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:8px}
+.cx4i{border:1px solid var(--line);border-radius:14px;padding:10px;background:color-mix(in srgb,var(--bg) 55%,transparent)}
+.cx4i b{display:block;font-size:14px;margin-bottom:3px}
+.cx4i span{font-size:12.5px;line-height:1.4;color:var(--mut)}
+.cx4i.rec{border-color:var(--ok);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ok) 40%,transparent)}
+.cx4i.rec b::after{content:" · recomendado";color:var(--ok);font-size:11px}
+.cx4i.off{opacity:.65}
+/* --- camada: v67 estúdio de cor e linha do tempo --- */
+#vxGlc{position:absolute;pointer-events:none;z-index:1;display:none;border-radius:12px}
+#vxOv{z-index:2}
+#vxPP{position:absolute;left:10px;bottom:10px;z-index:4;min-height:40px;min-width:46px;padding:6px 10px;border-radius:99px;background:rgba(0,0,0,.6);color:#fff;font-size:16px;border:1px solid rgba(255,255,255,.25)}
+#vxPP[hidden]{display:none}
+.cl-top{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.cl-top>*{flex:1 1 140px;margin:0;font-size:13px;min-height:42px;display:grid;place-items:center;text-align:center;cursor:pointer}
+.cl-r{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:2px 8px;font-size:12.5px;color:var(--mut);margin-top:8px}
+.cl-r b{color:var(--ink);font-variant-numeric:tabular-nums;font-size:12px}
+.cl-r input[type=range]{grid-column:1/-1;width:100%;margin:2px 0 0}
+.cl-amt{padding:8px 10px;border-radius:12px;background:color-mix(in srgb,var(--acc) 10%,transparent)}
+.cl-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
+.cl-c{display:flex;flex-direction:column;gap:4px;padding:4px;border-radius:12px;min-width:0;font-size:11px;font-weight:700;background:var(--card);border:1px solid var(--line)}
+.cl-c canvas{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:8px;background:#222;display:block}
+.cl-c span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cl-c.on{outline:2px solid var(--acc);outline-offset:1px}
+.cl-bands{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.cl-bands button{width:34px;height:34px;min-height:34px;border-radius:50%;padding:0;background:var(--bc);border:3px solid transparent}
+.cl-bands button.on{border-color:var(--ink)}
+.cl-cg{display:grid;grid-template-columns:70px 1fr 1fr 22px;gap:8px;align-items:center;margin-top:8px;font-size:12.5px}
+.cl-cg i{width:20px;height:20px;border-radius:50%;display:block}
+.cl-hue{background:linear-gradient(90deg,red,#ff0,lime,cyan,blue,#f0f,red)!important;border-radius:9px}
+.cl-list{display:grid;gap:6px;margin-top:8px}
+.cl-row{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:8px 10px;border-radius:12px;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 50%,transparent)}
+.cl-row b{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cl-row small{font-size:11px;color:var(--mut)}
+.cl-row div{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.cl-row div button{min-height:34px;padding:4px 10px;font-size:12px}
+#clPPrev{display:none;width:100%;border-radius:12px;margin-top:10px}
+.vxTlW{overflow-x:auto;overflow-y:hidden;margin-top:2px;scrollbar-width:thin}
+#vxStrip{position:absolute;inset:0;width:100%;height:100%;z-index:0;border-radius:10px;opacity:.95}
+#vxSegs{z-index:1;opacity:.6}
+.vxSg{text-shadow:0 1px 3px #000}
+.vxTb2{display:flex;gap:6px;overflow-x:auto;margin-top:6px;scrollbar-width:none}
+.vxTb2 button{flex:0 0 auto;min-height:36px;padding:4px 10px;font-size:13px}
 /* --- camada: v64 USB (aviso de porta ocupada, reconectar, plano B) --- */
 .uerr{border:1px solid var(--warn);background:color-mix(in srgb,var(--warn) 10%,var(--card));border-radius:16px;padding:14px;margin:0 0 10px}
 .uerr[hidden]{display:none !important}
@@ -1809,7 +1858,7 @@ async function render(blob,p,max,q,wm,x=1,m){
  if(!bm)bm=await createImageBitmap(blob,max&&max<=640?{resizeWidth:max,resizeQuality:'medium'}:undefined);
  w=bm.width;h=bm.height;
  if(max&&Math.max(w,h)>max){const k=max/Math.max(w,h);w=Math.round(w*k);h=Math.round(h*k)}
- const cv=document.createElement('canvas');cv.width=w;cv.height=h;const g=cv.getContext('2d');g.imageSmoothingQuality='high';if(HCF){g.filter=filt(p,x);g.drawImage(bm,0,0,w,h);g.filter='none'}else{g.drawImage(bm,0,0,w,h);pxLook(cv,p,x)}
+ const cv=document.createElement('canvas');cv.width=w;cv.height=h;const g=cv.getContext('2d');g.imageSmoothingQuality='high';if(HCF){g.filter=filt(p,x);g.drawImage(bm,0,0,w,h);g.filter='none'}else{g.drawImage(bm,0,0,w,h);pxLook(cv,p,x)}if(window.lumenGradePhoto)lumenGradePhoto(cv);
  {const sl=shpLv();if(sl==='a'){if(max>640&&m&&m.w&&C.shp!==false&&Math.max(m.w,m.h)/Math.max(w,h)>=1.4)sharpen(cv,.2)}else if(sl==='p'){const a=shpAmt();if(a>0&&(!max||max>640))sharpen(cv,a)}else if(sl>0&&max>640)sharpen(cv,sl===2?.35:.2)}
  if(wm){g.font='bold '+Math.round(w/22)+'px sans-serif';g.fillStyle='rgba(255,255,255,.55)';g.textAlign='right';g.fillText('LUMEN',w-w/40,h-h/40)}
  bm.close();return new Promise(r=>cv.toBlob(r,'image/jpeg',q/100))}
@@ -1862,7 +1911,7 @@ async function pump(){if(S.busy)return;S.busy=true;try{
 setInterval(async()=>{if(S.src!=='usb')return;{const m=EM();if(m>1&&(S.ecoN=(S.ecoN||0)+1)%m)return}if(!S.sess||S.pollBusy||(S.run&&S.pause))return;S.pollBusy=true;
  try{
   if(S.canon){const r=await ptp(0x9116);canonEv(r.data,!S.run)}
-  if(S.run){let hs=[];try{hs=await handlesIf()}catch(e){if(!S.canon)throw e;if(!S.hfail++)log('Lista do cartão indisponível; usando os avisos de disparo da câmera')}
+  if(S.run){let hs=[];try{hs=(S.canon&&((S.pc2=(S.pc2||0)+1)%15))?[]:await handlesIf()}catch(e){if(!S.canon)throw e;if(!S.hfail++)log('Lista do cartão indisponível; usando os avisos de disparo da câmera')}
    for(const h of hs)if(!S.seen.has(h)){S.seen.add(h);S.q.push(h);S.u.total++}pump()}S.pf=0}
  catch(e){S.pf=(S.pf||0)+1;if(S.pf<2&&!/disconnect|no device|not found/i.test(String(e.message))){try{await unstall()}catch(_){}log('Cabo oscilou ('+e.message+'). Tentando de novo sem desconectar…','bad')}else{S.pf=0;if(S.run){S.pause=true;S.auto=true;S.why='câmera parou de responder'}log('Falha: '+e.message+' — reconectando sozinho','bad');recover(e.message)}}finally{S.pollBusy=false;S.pollEnd=Date.now();try{tick()}catch(_){}}},1000);
 async function conferir(){
@@ -2088,7 +2137,9 @@ function conUi(){const vm=VM();$('#conUsb').style.display=vm==='usb'?'':'none';$
 
 /* Wi-Fi: Canon CCAPI */
 const ccU=p=>/^https?:/i.test(p)?p:cc.base+p,ccL=j=>j.path||j.url||[];
-async function ccJ(p,ms=8000){const r=await fetch(ccU(p),{signal:sig(ms),cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
+/* v66: o Chrome novo bloqueia site https → câmera http da rede local, a menos que o pedido declare "rede local" (ele pergunta uma vez) */
+async function ccFetch(u,o={}){for(const sp of ['local','private',null]){try{return await fetch(u,sp?{...o,targetAddressSpace:sp}:o)}catch(e){if(!(e instanceof TypeError)||!sp)throw e}}}
+async function ccJ(p,ms=8000){const r=await ccFetch(ccU(p),{signal:sig(ms),cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
 async function ccScan(full){
  if(!cc.sd){const st=await ccJ('/ccapi/'+cc.ver+'/contents');cc.sd=ccL(st)[0];if(!cc.sd)throw new Error('cartão não encontrado')}
  const dirs=ccL(await ccJ(cc.sd));if(!dirs.length)return[];const out=[];
@@ -2096,21 +2147,21 @@ async function ccScan(full){
   for(let p=full?1:n;p<=n;p++)out.push(...ccL(await ccJ(d+(n>1?'?page='+p:''),15000)))}
  return out}
 async function ccInfo(p){const name=decodeURIComponent(p.split('?')[0].split('/').pop());let size=0;try{size=+(await ccJ(p+'?kind=info')).filesize||0}catch(e){}return{name,size}}
-async function ccGet(p){const r=await fetch(ccU(p),{signal:sig(900000),cache:'no-store'});if(!r.ok)throw new Error('download HTTP '+r.status);return await r.arrayBuffer()}
+async function ccGet(p){const r=await ccFetch(ccU(p),{signal:sig(900000),cache:'no-store'});if(!r.ok)throw new Error('download HTTP '+r.status);return await r.arrayBuffer()}
 async function wifiConnect(){
  const raw=($('#wIp').value||'').trim(),m=$('#wMsg');C.wip=raw;store();
  if(!raw){m.textContent='Digite o IP da câmera (aparece na tela dela).';return}
  m.textContent='Procurando a câmera…';
  const hasS=/^https?:\/\//i.test(raw),host=raw.replace(/^https?:\/\//i,'').replace(/\/.*$/,''),hasP=/:\d+$/.test(host);
- const cands=hasS?[raw.replace(/\/+$/,'')]:hasP?['http://'+host,'https://'+host]:(location.protocol==='https:'?['https://'+host,'http://'+host+':8080']:['http://'+host+':8080','https://'+host]);
+ const cands=hasS?[raw.replace(/\/+$/,'')]:hasP?['http://'+host,'https://'+host]:(location.protocol==='https:'?['http://'+host+':8080','https://'+host,'https://'+host+':443']:['http://'+host+':8080','https://'+host]);
  let err='';
  for(const b of cands){try{
-   const r=await fetch(b+'/ccapi',{signal:sig(6000),cache:'no-store'});if(!r.ok){err='HTTP '+r.status;continue}
+   const r=await ccFetch(b+'/ccapi',{signal:sig(6000),cache:'no-store'});if(!r.ok){err='HTTP '+r.status;continue}
    const j=await r.json();cc.base=b;cc.sd='';cc.ver=(j.ver110||[]).some(x=>/^contents/.test(x.path))?'ver110':'ver100';
    try{const d=await ccJ('/ccapi/ver100/deviceinformation');cc.name=((d.manufacturer||'')+' '+(d.productname||'')).trim()}catch(e){cc.name=''}
    S.src='wifi';S.sess=true;S.camMsg='';S.wf=0;m.textContent='';log('Wi-Fi: câmera conectada em '+b+(cc.name?' ('+cc.name+')':''),'ok');tick();conUi();return}
   catch(e){err=e.name==='AbortError'?'sem resposta':'bloqueado ou inacessível'}}
- m.textContent='Não consegui ('+err+'). Confira: IP certo, celular e câmera na mesma rede, CCAPI ligado na câmera e, se esta página é HTTPS, o certificado aceito (abra https://'+host+' uma vez).';log('Wi-Fi: falhou ('+err+')','bad')}
+ m.innerHTML='<b>Não consegui ('+esc(err)+').</b> Causas, da mais comum para a menos comum:<ol style="margin:6px 0 0 18px"><li>O <b>CCAPI não está ativado</b> na câmera. Ele só existe depois da ativação gratuita pelo Canon Developer Programme; sem isso, use a rota <b>Wi‑Fi pelo computador</b> acima.</li><li>Câmera e aparelho em redes diferentes (use o ponto de acesso da câmera ou o mesmo roteador).</li><li>O Chrome bloqueou a rede local: toque no cadeado ao lado do endereço › <b>Dispositivos na rede local</b> › Permitir.</li><li>IP errado: confira em Menu › Rede › Informações da câmera.</li></ol>';log('Wi-Fi: falhou ('+err+')','bad')}
 $('#wGo').onclick=wifiConnect;
 $('#wOff').onclick=()=>{stopHeartbeat();S.sess=false;S.src='usb';cc.base='';cc.sd='';log('Wi-Fi desconectado');tick();conUi()};
 S.wf=0;
@@ -2184,7 +2235,7 @@ async function keepExif(orig,pub){try{
 /* publica sem perda quando não há nada a mudar; senão re-codifica mantendo o EXIF */
 async function mkPub(blob,x,m){
  if(RAWM())return blob;
- if(isNeutral(C.cur)&&!C.wm&&x===1&&shpAmt()===0&&(C.size===0||(m&&m.w&&Math.max(m.w,m.h)<=C.size)))return blob;
+ if(isNeutral(C.cur)&&!(window.lumenPhotoGradeOn&&lumenPhotoGradeOn())&&!C.wm&&x===1&&shpAmt()===0&&(C.size===0||(m&&m.w&&Math.max(m.w,m.h)<=C.size)))return blob;
  const p=await render(blob,C.cur,C.size,C.q,C.wm,x,m);return C.exif===false?p:await keepExif(blob,p)}
 
 /* fila segura de envio (IndexedDB): sobrevive a fechar a página */
@@ -2233,7 +2284,7 @@ async function shMany(){const L=S.items.filter(i=>S.gs.has(i.id)&&i.blob).slice(
 /* config de envio */
 chips('#sendm',[['look','Com look'],['orig','Original (sem perda)'],['both','Ambos']],()=>C.sendm||'look',v=>C.sendm=v);
 $('#exifk').checked=C.exif!==false;$('#exifk').onchange=e=>{C.exif=e.target.checked;store()};
-conUi();if(IOS)setTimeout(()=>goTab('con'),300);
+conUi();   /* v66: no iPhone o app abre no Início, onde fica o botão "Trazer fotos e vídeos" */
 </script><script>
 /* ---------- v9: formato da foto (L / M / S1 / S2), dimensões e qualidade ---------- */
 const SZ=[['L',6000,4000],['M',3984,2656],['S1',2976,1984],['S2',2400,1600]];
@@ -4665,7 +4716,9 @@ det.innerHTML=`<summary><h2>Editor de vídeo <small>ritmo por segundo · looks �
  <div class="sub wrap" id="vxOut" style="color:var(--acc2)"></div>
  <label class="r"><input type="checkbox" id="vxRamp" checked> Transição suave entre velocidades</label>
  <label class="r"><input type="checkbox" id="vxSm" checked> Suavizar câmera lenta (mistura quadros)</label>
- <label class="sub" style="display:block;margin-top:6px">Qualidade<select id="vxQ" class="vxn"><option value="14000000">Alta (arquivo maior)</option><option value="9000000" selected>Boa</option><option value="5000000">Leve (rápido de enviar)</option></select></label>
+ <label class="sub" style="display:block;margin-top:6px">Qualidade<select id="vxQ" class="vxn"><option value="25000000">Máxima (25 Mbps, para edição/arquivo)</option><option value="14000000">Alta (arquivo maior)</option><option value="9000000" selected>Boa</option><option value="5000000">Leve (rápido de enviar)</option></select></label>
+ <div class="vxG3"><label>Formato<select id="vxAsp" class="vxn" aria-label="Formato do vídeo final"><option value="0">Original</option><option value="0.5625">9:16 Reels/Stories</option><option value="0.8">4:5 Feed</option><option value="1">1:1 Quadrado</option><option value="1.7778">16:9 YouTube</option></select></label><label>Resolução<select id="vxRes" class="vxn" aria-label="Resolução do vídeo final"><option value="3840">Máxima (até 4K)</option><option value="1920" selected>Full HD 1080p</option><option value="1280">HD 720p</option></select></label><label>Quadros/s<select id="vxFpsO" class="vxn" aria-label="Quadros por segundo do vídeo final"><option value="30" selected>30</option><option value="60">60 (mais fluido)</option><option value="24">24 (cinema)</option></select></label></div>
+ <div class="sub wrap" id="vxExpI" style="margin-top:6px"></div>
  <button class="f" id="vxDl" style="display:none">Baixar o último vídeo editado</button>
  <div class="vxAll"><div class="vxLn"><b>Aplicar a todos os vídeos</b></div>
  <div class="sub wrap">Usa o ritmo, o look e a música que estão agora e grava um vídeo novo para cada um. Os originais não mudam.</div>
@@ -4812,26 +4865,28 @@ E('vxGo').onclick=async()=>{const i=sel;if(!i||!i.url||run||S.rv)return;const li
  let wl=null;try{wl=await navigator.wakeLock.request('screen')}catch(_){}
  let ac=null;
  try{const v=document.createElement('video');v.src=i.url;v.playsInline=true;v.muted=!keep;v.preload='auto';await new Promise((a,b)=>{v.onloadedmetadata=a;v.onerror=()=>b(new Error('não abriu o vídeo'))});
-  const k=Math.min(1,1920/Math.max(v.videoWidth,v.videoHeight)),W=Math.round(v.videoWidth*k)&~1,H=Math.round(v.videoHeight*k)&~1,cv=document.createElement('canvas');cv.width=W;cv.height=H;const g=cv.getContext('2d',{alpha:false,desynchronized:true}),lk=filt(P.f);
-  const mts=['video/mp4;codecs=avc1.640028,mp4a.40.2','video/mp4;codecs=avc1,mp4a.40.2','video/mp4;codecs=avc1.640028','video/mp4;codecs=avc1','video/mp4'],mt=mts.find(t=>MediaRecorder.isTypeSupported(t));if(!mt)throw new Error('este navegador só grava WebM; use o Chrome atualizado ou o Safari');
-  const stm=cv.captureStream(sm?60:30);let dest=null;
+  /* v66: formato (corte central), resolução e quadros escolhidos na aba Saída */
+  const AS=+E('vxAsp').value||0,vw=v.videoWidth,vh=v.videoHeight;let SX=0,SY=0,SW=vw,SH=vh;if(AS){if(vw/vh>AS){SW=Math.round(vh*AS);SX=Math.round((vw-SW)/2)}else{SH=Math.round(vw/AS);SY=Math.round((vh-SH)/2)}}
+  const MX=+E('vxRes').value||1920,FPS=+E('vxFpsO').value||30,k=Math.min(1,MX/Math.max(SW,SH)),W=Math.max(2,Math.round(SW*k)&~1),H=Math.max(2,Math.round(SH*k)&~1),cv=document.createElement('canvas');cv.width=W;cv.height=H;const g=cv.getContext('2d',{alpha:false,desynchronized:true}),lk=filt(P.f);g.imageSmoothingEnabled=true;g.imageSmoothingQuality='high';
+  const BIG=W*H>2088960,mts=[...(BIG?['video/mp4;codecs=avc1.640033,mp4a.40.2','video/mp4;codecs=avc1.640033']:[]),'video/mp4;codecs=avc1.640028,mp4a.40.2','video/mp4;codecs=avc1,mp4a.40.2','video/mp4;codecs=avc1.640028','video/mp4;codecs=avc1','video/mp4','video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm'],mt=mts.find(t=>MediaRecorder.isTypeSupported(t));if(!mt)throw new Error('este navegador não grava vídeo; use o Chrome atualizado');const EXT=/webm/.test(mt)?'webm':'mp4';if(EXT==='webm')log('Este navegador não grava MP4: o vídeo sai em WebM (abre no Chrome e sobe no YouTube/Instagram pelo computador).','bad');
+  const stm=cv.captureStream(sm?Math.max(60,FPS):FPS);let dest=null;
   if(keep||useM){ac=new (window.AudioContext||window.webkitAudioContext)();await ac.resume();dest=ac.createMediaStreamDestination();
    if(keep){const so=ac.createMediaElementSource(v),go=ac.createGain();go.gain.value=ovol();so.connect(go);go.connect(dest)}
    dest.stream.getAudioTracks().forEach(t=>stm.addTrack(t))}
-  const ch=[],rec=new MediaRecorder(stm,{mimeType:mt,videoBitsPerSecond:+E('vxQ').value,audioBitsPerSecond:192000});rec.ondataavailable=x=>x.data.size&&ch.push(x.data);const done=new Promise(a=>rec.onstop=a);
+  const ch=[],rec=new MediaRecorder(stm,{mimeType:mt,videoBitsPerSecond:+E('vxQ').value,audioBitsPerSecond:256000});rec.ondataavailable=x=>x.data.size&&ch.push(x.data);const done=new Promise(a=>rec.onstop=a);
   /* mistura de quadros (câmera lenta suave) */
   const mk=()=>{const c=document.createElement('canvas');c.width=W;c.height=H;return c};let Pc=mk(),Cc=mk(),have=0,tB=0,dt=33,fin=false;const rv=!!v.requestVideoFrameCallback&&sm;
-  const onF=now=>{const t=Pc;Pc=Cc;Cc=t;Cc.getContext('2d').drawImage(v,0,0,W,H);if(have)dt=Math.max(8,Math.min(250,now-tB));tB=now;have++;if(!fin)v.requestVideoFrameCallback(onF)};if(rv)v.requestVideoFrameCallback(onF);
+  const onF=now=>{const t=Pc;Pc=Cc;Cc=t;Cc.getContext('2d').drawImage(v,SX,SY,SW,SH,0,0,W,H);if(have)dt=Math.max(8,Math.min(250,now-tB));tB=now;have++;if(!fin)v.requestVideoFrameCallback(onF)};if(rv)v.requestVideoFrameCallback(onF);
   const gs=document.createElement('canvas');gs.width=Math.max(16,W>>3);gs.height=Math.max(16,H>>3);const gg=gs.getContext('2d'),vig=P.vig?mkVig(W,H,P.vig):null,noise=P.grain?mkNoise(g):null;
   const paint=r=>{g.globalCompositeOperation='source-over';g.globalAlpha=1;g.filter=lk;const el=Math.max(0,(performance.now()-t0)/1000),zs=1+FXo.z*Math.min(1,el/Math.max(.5,T));if(zs>1.0001){g.save();g.translate(W/2,H/2);g.scale(zs,zs);g.translate(-W/2,-H/2)}
-   if(rv&&r<.9&&have>1){const al=Math.min(1,(performance.now()-tB)/dt);g.drawImage(Pc,0,0);g.globalAlpha=al;g.drawImage(Cc,0,0);g.globalAlpha=1}else g.drawImage(v,0,0,W,H);if(zs>1.0001)g.restore();g.filter='none';
-   if(P.glow){gg.filter=lk;gg.drawImage(v,0,0,gs.width,gs.height);gg.filter='none';g.globalCompositeOperation='screen';g.globalAlpha=P.glow;g.drawImage(gs,0,0,W,H);g.globalAlpha=1;g.globalCompositeOperation='source-over'}
+   if(rv&&r<.9&&have>1){const al=Math.min(1,(performance.now()-tB)/dt);g.drawImage(Pc,0,0);g.globalAlpha=al;g.drawImage(Cc,0,0);g.globalAlpha=1}else g.drawImage(v,SX,SY,SW,SH,0,0,W,H);if(zs>1.0001)g.restore();g.filter='none';if(window.vxGradeExport)vxGradeExport(cv,g,W,H);
+   if(P.glow){gg.filter=lk;gg.drawImage(v,SX,SY,SW,SH,0,0,gs.width,gs.height);gg.filter='none';g.globalCompositeOperation='screen';g.globalAlpha=P.glow;g.drawImage(gs,0,0,W,H);g.globalAlpha=1;g.globalCompositeOperation='source-over'}
    if(vig)g.drawImage(vig,0,0);
    if(noise){g.save();g.globalAlpha=P.grain;g.globalCompositeOperation='overlay';g.translate(-(Math.random()*256|0),-(Math.random()*256|0));g.fillStyle=noise;g.fillRect(0,0,W+256,H+256);g.restore()}
    if(FXo.bars){const bh=Math.max(0,(H-W/2.39)/2);g.fillStyle='#000';g.fillRect(0,0,W,bh);g.fillRect(0,H-bh,W,bh)}
    if(FXo.txt){const fs=Math.round(H*.055);g.save();g.font='800 '+fs+'px system-ui,Arial,sans-serif';g.textAlign='center';g.textBaseline='middle';g.shadowColor='rgba(0,0,0,.85)';g.shadowBlur=fs*.3;g.fillStyle='#fff';const yy=FXo.tp==='t'?H*.1:FXo.tp==='c'?H/2:H*.9-(FXo.bars?Math.max(0,(H-W/2.39)/2):0)*.5;g.fillText(FXo.txt,W/2,yy,W*.9);g.restore()}
    let fa=0;if(FXo.fi>0&&el<FXo.fi)fa=1-el/FXo.fi;if(FXo.fo>0&&el>T-FXo.fo)fa=Math.max(fa,(el-(T-FXo.fo))/FXo.fo);if(fa>0){g.globalAlpha=Math.min(1,fa);g.fillStyle='#000';g.fillRect(0,0,W,H);g.globalAlpha=1}};
-  let t0=0;const prog=()=>{const p=Math.max(0,Math.min(1,(performance.now()-t0)/1000/T));E('vxBar').style.width=Math.round(p*100)+'%';B.textContent='⏺ '+Math.round(p*100)+'%'};
+  let t0=0;const prog=()=>{const p=Math.max(0,Math.min(1,(performance.now()-t0)/1000/T));E('vxBar').style.width=Math.round(p*100)+'%';B.textContent='⏺ '+Math.round(p*100)+'%';const el=(performance.now()-t0)/1000;E('vxMsg').textContent='Gravando '+W+'×'+H+' · '+FPS+' fps · faltam ~'+Math.max(0,Math.ceil(T-el))+' s (deixe a tela aberta)'};
   /* a música e o vídeo começam juntos */
   const first=SEG.find(g=>!g.cut);v.currentTime=first.s;await new Promise(a=>{v.onseeked=a;setTimeout(a,2500)});v.playbackRate=Math.max(.0625,first.rate);
   rec.start(1000);t0=performance.now();
@@ -4841,7 +4896,7 @@ E('vxGo').onclick=async()=>{const i=sel;if(!i||!i.url||run||S.rv)return;const li
   const okRun=await runPlan(v,(r)=>{paint(r);prog()},()=>cancel);
   fin=true;v.pause();await zz(300);rec.stop();await done;try{ac&&ac.close()}catch(_){}
   if(!okRun&&cancel){E('vxMsg').textContent='Cancelado. Nada foi salvo.';throw Object.assign(new Error('cancelado'),{quiet:true})}
-  const blob=new Blob(ch,{type:'video/mp4'}),lkN=VP[+E('vxLk').value][0],tag='ritmo'+(useM?'_musica':'')+(P.f&&lkN!=='Natural'?'_'+slug(lkN):''),nm=i.name.replace(/\.[^.]+$/,'')+'_'+tag+'.mp4',ct=i.ct||i.t;
+  const blob=new Blob(ch,{type:mt.split(';')[0]}),lkN=VP[+E('vxLk').value][0],tag='ritmo'+(useM?'_musica':'')+(P.f&&lkN!=='Natural'?'_'+slug(lkN):''),nm=i.name.replace(/\.[^.]+$/,'')+'_'+tag+(AS?'_'+({0.5625:'9x16',0.8:'4x5',1:'1x1',1.7778:'16x9'}[AS]||'corte'):'')+'.'+EXT,ct=i.ct||i.t;
   lastBlob=blob;lastName=nm;E('vxDl').style.display='';
   if(S.dir){await put('VideosVel',nm,blob,ct);E('vxMsg').textContent='Salvo: '+pth('VideosVel',ct)+'/'+nm}else{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=nm;a.click();E('vxMsg').textContent='Pronto: o arquivo foi baixado (escolha a pasta no Início para salvar direto nela).'}
   add({name:nm,kind:'video',ct,sig:'ed|'+nm+'|'+blob.size,t:Date.now(),cls:'b',blob,url:URL.createObjectURL(blob),size:blob.size});log(nm+' → vídeo editado por trechos','ok')}
@@ -4959,6 +5014,8 @@ E('vxBAll').onclick=async()=>{if(run||batch||!dur)return;const L=vids().filter(i
   try{await E('vxGo').onclick()}catch(_){}
   if(cancel){bstop=true;break}ok++}
  batch=0;bSum();E('vxMsg').textContent=bstop?'Lote interrompido ('+ok+' de '+L.length+' prontos).':'Pronto: '+ok+' vídeo'+(ok===1?'':'s')+' editado'+(ok===1?'':'s')+' (aba Galeria / Videos/Editados).'};
+/* v67: acesso do editor de cor e da linha do tempo aos trechos */
+window.VXAPI={get SEG(){return SEG},set SEG(v){SEG=v},get selI(){return selI},set selI(v){selI=v},get dur(){return dur},get sel(){return sel},get run(){return run},PV,refresh,applyLook};
 applyLook();refresh();
 }catch(e){try{log('Editor por trechos: '+e.message,'bad')}catch(_){}}})();
 
@@ -5203,7 +5260,9 @@ applyLook();refresh();
  $1('#fs1b').onclick=async()=>{
   if(S.hold){try{resumeCamera()}catch(_){}return}
   if(usbLive()&&S.dev&&S.dev.vendorId===0x04a9&&!S.canon){try{const r=Q.then(()=>enterRemote());Q=r.catch(()=>{});await withT(r,12000);S.keepRemote=true;log('Câmera liberada para fotografar','ok')}catch(e){log('A câmera recusou o modo remoto: '+e.message,'bad')}render();return}
-  if(!HAS_USB){try{goTab('con')}catch(_){}return}
+  if(S.cm==='files'){const f=$1('#fIn');if(f)f.click();return}
+  if(S.cm==='folder'){const f=$1('#fdGo');if(f)f.click();return}
+  if(S.cm==='wifi'||!HAS_USB){try{goTab('con')}catch(_){}return}
   if(window.usbRetry)usbRetry();else pedirCamera(false)};
  /* passo 2 */
  $1('#fs2b').onclick=async()=>{
@@ -5219,7 +5278,10 @@ applyLook();refresh();
  function render(){try{
   const now=Date.now();
   /* 1 · câmera */
-  if(!HAS_USB&&S.src!=='usb'){set('fs1',camReady()?'ok':'wait',camReady()?'✔ '+CN():'Este navegador não usa cabo USB: escolha a pasta da câmera/cartão na aba Conectar','Abrir Conectar',!camReady())}
+  const NF=S.items.length;
+  if(S.cm==='files'){set('fs1',NF?'ok':'wait',NF?'✔ '+NF+' arquivo(s) trazidos. Quando chegarem fotos novas no '+(IOS?'iPhone':'aparelho')+', toque de novo (repetidos são ignorados)':'Traga as fotos e vídeos que a câmera mandou para o '+(IOS?'iPhone (Camera Connect, cabo USB-C ou leitor de cartão)':'aparelho'),'📥 Trazer fotos e vídeos',true)}
+  else if(S.cm==='folder'){set('fs1',FD.h?'ok':'wait',FD.h?'✔ Vigiando a pasta "'+FD.h.name+'": cada foto nova que cair nela entra sozinha':'Escolha a pasta onde a câmera (ou o app da Canon) salva as fotos','📁 '+(FD.h?'Trocar pasta da câmera':'Escolher pasta da câmera'),true)}
+  else if(S.cm==='wifi'){const ok=S.src==='wifi'&&S.sess;set('fs1',ok?'ok':'wait',ok?'✔ Wi-Fi: '+(cc.name||cc.base):'Digite o IP da câmera na aba Conectar › Wi-Fi','Abrir Conectar',!ok)}
   else if(S.hold)set('fs1','wait','Liberada para o Lightroom. O LUMEN não usa o cabo até você voltar.','Voltar a usar a câmera',true);
   else if(usbLive()){const nm=((S.dev&&S.dev.productName)||'Canon').replace(/^Canon\s+/,'');
    if(S.canon)set('fs1','ok','✔ '+nm+' conectada e liberada: pode fotografar e gravar pela câmera','',false);
@@ -5250,6 +5312,464 @@ applyLook();refresh();
  let lastGen=-1;setInterval(()=>{try{if(C.autoGo===false||S.run||!camReady()||!dirOk()||lastGen===S.gen)return;if(!canStart())return;lastGen=S.gen;start();log('Começou sozinho: câmera e pasta prontas','ok')}catch(_){}},1500);
  log('Build v65: câmera liberada para fotografar (modo remoto Canon), vídeos grandes em partes, fluxo em 3 passos','ok');
 }catch(e){try{log('v65: '+e.message,'bad')}catch(_){}}})();
+
+</script>
+<script id="v66">
+/* ===== v66 · Lightroom automático em 1 toque, iPhone/pasta no fluxo principal, prévia do formato do vídeo,
+   guia de conexões (cabo, Wi-Fi, iPhone, Bluetooth). Só acrescenta; nada é removido. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),MAC=/Mac/i.test(navigator.userAgent)&&!IOS;
+
+ /* ---------- 1. Lightroom automático: câmera → LR_Entrada → Lightroom (preset) → Editadas → site ---------- */
+ const LRX={ed:0,edAt:0,busy:false};
+ async function countEd(){if(LRX.busy||!S.dir||!S.perm||S.dir.virtual)return;LRX.busy=true;
+  try{let n=0;const walk=async(d,dep)=>{for await(const [nm,h] of d.entries()){if(h.kind==='directory'){if(dep<2)await walk(h,dep+1)}else if(/\.(jpe?g|mp4|mov)$/i.test(nm))n++}};
+   await walk(await S.dir.getDirectoryHandle('Editadas'),0);LRX.ed=n}catch(_){LRX.ed=-1}finally{LRX.busy=false}}
+ setInterval(()=>{if(C.lrOn&&!document.hidden)countEd()},4000);
+ async function lrAuto(btn){
+  const say=t=>{const m=$1('#lrAutoM');if(m)m.textContent=t;log(t,/^✔/.test(t)?'ok':'')};
+  if(!S.dir||!S.perm){say('Primeiro escolha a pasta de destino (passo 2 do cartão "Fotografar e enviar").');return}
+  if(S.dir.virtual){say('Neste aparelho a pasta é interna e o Lightroom não enxerga. Use o computador onde o Lightroom está instalado.');return}
+  try{await S.dir.getDirectoryHandle('LR_Entrada',{create:true});const ed=await S.dir.getDirectoryHandle('Editadas',{create:true});
+   await ed.getDirectoryHandle('Fotos',{create:true});await ed.getDirectoryHandle('Videos',{create:true})}catch(e){say('Não consegui criar as pastas: '+e.message);return}
+  C.lrOn=true;C.edWatch=true;C.edHold=true;C.mode='raw';C.lrRoute='fluxo';C.lrEdit=C.lrEdit||'auto';store();
+  try{LRS.exists=true}catch(_){}
+  ['#lrOn','#frW','#frH'].forEach(id=>{const e=$1(id);if(e)e.checked=true});
+  try{modeUi();verUi();lrUi();lrPoll()}catch(_){}
+  countEd();say('✔ Lightroom automático ligado: cada foto vai para '+S.dir.name+'/LR_Entrada; o que o Lightroom exportar em '+S.dir.name+'/Editadas/Fotos sobe sozinho para o site. Agora faça os 3 passos no Lightroom (abaixo).')}
+ window.lrAuto=lrAuto;
+ const lrCard=()=>{const d=document.createElement('div');d.className='c lrx';d.innerHTML=
+  '<div class="l">Lightroom automático <small>câmera → Lightroom edita → site</small></div>'
+  +'<div class="lrx-flow" aria-hidden="true"><span>📷 Câmera</span>→<span>📥 LR_Entrada</span>→<span>🅻 Lightroom + preset</span>→<span>📁 Editadas/Fotos</span>→<span>🌐 Site</span></div>'
+  +'<button type="button" class="f p lrxGo">Ligar o Lightroom automático (cria as pastas e ajusta tudo)</button><div class="sub wrap" id="lrAutoM" data-ex="1" style="white-space:normal;color:var(--ink)"></div>'
+  +'<div class="lrx-st" id="lrxSt"></div>'
+  +'<details class="ex" data-ex="1"><summary>Os 3 passos no Lightroom Classic (uma vez)</summary><ol class="steps" data-ex="1">'
+  +'<li><b>Importar sozinho com o seu preset.</b><small>Arquivo › Importação automática › Configurações de importação automática. Pasta monitorada: <b>LR_Entrada</b> (dentro da pasta do LUMEN). Destino: uma pasta <b>fora</b> da do LUMEN. Configurações de revelação: <b>seu preset</b>. OK. Depois Arquivo › Importação automática › <b>Ativar</b>.</small></li>'
+  +'<li><b>Criar a saída para a pasta Editadas.</b><small>No painel da esquerda, em <b>Serviços de publicação</b>, clique em Disco rígido › Configurar. Local: <b>Editadas/Fotos</b> (dentro da pasta do LUMEN). Arquivo: JPEG, qualidade 90, tamanho de até 12 MB. Salvar.</small></li>'
+  +'<li><b>Publicar.</b><small>Arraste as fotos importadas para esse serviço e clique em <b>Publicar</b>. Nas próximas vezes, só as fotos novas são exportadas. O LUMEN vê cada arquivo chegar em Editadas e envia ao site do evento.</small></li>'
+  +'</ol><div class="sub wrap" style="white-space:normal">A Adobe não deixa o Lightroom exportar sozinho: o único clique que sobra é o "Publicar". Para não ter clique nenhum, use o look/preset do próprio LUMEN (aba Fotos › Editar), que edita e envia na hora.</div></details>';
+  d.querySelector('.lrxGo').onclick=e=>lrAuto(e.target);return d};
+ try{const t=$1('#t-lr');if(t){const c=lrCard();t.insertBefore(c,t.firstChild)}}catch(_){}
+ function lrLine(){
+  if(!C.lrOn)return '';let a=0,b=0;try{a=LRS.n||0;b=LRS.taken||0}catch(_){}
+  const up=(S.items||[]).filter(i=>i.sent).length;
+  return '🅻 Lightroom: <b>'+a+'</b> na entrada · <b>'+b+'</b> importada(s) · <b>'+(LRX.ed<0?0:LRX.ed)+'</b> editada(s) em Editadas'+(C.edWatch?' · envio das editadas <b>ligado</b>':' · envio das editadas <b>desligado</b>')}
+ setInterval(()=>{try{const st=$1('#lrxSt');if(st)st.innerHTML=C.lrOn?lrLine():'Desligado.';
+  let f=$1('#fxLr');const site=$1('#fxSite');if(site&&!f){f=document.createElement('div');f.className='fx3n';f.id='fxLr';site.after(f)}
+  if(f){f.innerHTML=C.lrOn?lrLine():'🅻 Lightroom automático desligado · <a href="#" id="fxLrOn">ligar</a>';const a=$1('#fxLrOn');if(a)a.onclick=ev=>{ev.preventDefault();goTab('lr')}}}catch(_){}},1500);
+
+ /* ---------- 2. Prévia do formato do vídeo (9:16, 1:1…) e preferências de exportação lembradas ---------- */
+ const EX='lumen_vxexp';
+ try{const sv=JSON.parse(localStorage.getItem(EX)||'{}');['vxAsp','vxRes','vxFpsO','vxQ'].forEach(id=>{const e=$1('#'+id);if(e&&sv[id]!=null&&[...e.options].some(o=>o.value===sv[id]))e.value=sv[id]})}catch(_){}
+ const PV=$1('#vxPv'),wrap=PV&&PV.parentElement;let crop=null;
+ if(wrap){crop=document.createElement('div');crop.id='vxCrop';crop.setAttribute('aria-hidden','true');wrap.appendChild(crop)}
+ function drawCrop(){if(!crop||!PV)return;const AS=+($1('#vxAsp')||{}).value||0,vw=PV.videoWidth,vh=PV.videoHeight;
+  if(!AS||!vw){crop.style.display='none';return}
+  const R=PV.getBoundingClientRect(),P=wrap.getBoundingClientRect(),s=Math.min(R.width/vw,R.height/vh),dw=vw*s,dh=vh*s,ox=R.left-P.left+(R.width-dw)/2,oy=R.top-P.top+(R.height-dh)/2;
+  let cw=dw,ch=dh;if(vw/vh>AS)cw=dh*AS;else ch=dw/AS;
+  Object.assign(crop.style,{display:'block',left:(ox+(dw-cw)/2)+'px',top:(oy+(dh-ch)/2)+'px',width:cw+'px',height:ch+'px'})}
+ function expInfo(){const i=$1('#vxExpI');if(!i||!PV)return;const AS=+$1('#vxAsp').value||0,MX=+$1('#vxRes').value||1920,F=+$1('#vxFpsO').value||30,vw=PV.videoWidth,vh=PV.videoHeight;
+  if(!vw){i.textContent='Escolha um vídeo para ver o tamanho final.';return}
+  let SW=vw,SH=vh;if(AS){if(vw/vh>AS)SW=Math.round(vh*AS);else SH=Math.round(vw/AS)}const k=Math.min(1,MX/Math.max(SW,SH)),W=Math.round(SW*k)&~1,H=Math.round(SH*k)&~1;
+  const mp4=['video/mp4;codecs=avc1.640028','video/mp4'].some(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t));
+  i.textContent='Vídeo final: '+W+'×'+H+' · '+F+' quadros/s · '+(mp4?'MP4 (H.264)':'WebM (este navegador não grava MP4)')+(k<1&&MX<3840?'':(W*H>2088960?' · 4K: use "Máxima" na qualidade':''))}
+ ['vxAsp','vxRes','vxFpsO','vxQ'].forEach(id=>{const e=$1('#'+id);if(e)e.addEventListener('change',()=>{try{const o={};['vxAsp','vxRes','vxFpsO','vxQ'].forEach(k=>{const x=$1('#'+k);if(x)o[k]=x.value});localStorage.setItem(EX,JSON.stringify(o))}catch(_){}drawCrop();expInfo()})});
+ if(PV){['loadedmetadata','resize'].forEach(ev=>PV.addEventListener(ev,()=>{drawCrop();expInfo()}));addEventListener('resize',drawCrop);setInterval(()=>{if(!document.hidden&&$1('#t-ved').classList.contains('on')){drawCrop();expInfo()}},1200)}
+ /* atalhos de formato também no painel Look (um toque) */
+ try{const pl=document.querySelector('.vxPan[data-p=l]');if(pl){const d=document.createElement('div');d.innerHTML='<div class="vxLn" style="margin-top:12px"><b>Formato do vídeo</b><span class="sub">corte central, aparece na prévia</span></div><div class="chips vxScr" id="vxAspC"></div>';pl.insertBefore(d,pl.firstChild);
+  const ch=d.querySelector('#vxAspC');[['0','Original'],['0.5625','9:16 Reels'],['0.8','4:5 Feed'],['1','1:1'],['1.7778','16:9']].forEach(([v,t])=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.onclick=()=>{const s=$1('#vxAsp');s.value=v;s.dispatchEvent(new Event('change'));sync()};ch.appendChild(b)});
+  const sync=()=>[...ch.children].forEach((b,i)=>b.classList.toggle('on',['0','0.5625','0.8','1','1.7778'][i]===$1('#vxAsp').value));sync();$1('#vxAsp').addEventListener('change',sync)}}catch(_){}
+
+ /* ---------- 2b. iPhone: como a foto sai da câmera e chega no LUMEN ---------- */
+ if(IOS){const fx=$1('#fluxo');if(fx){const d=document.createElement('details');d.className='c fx3m';d.id='fxIos';d.open=!localStorage.getItem('lumen_ios_ok');
+  d.innerHTML='<summary><b>iPhone: como as fotos chegam</b> <small>o iPhone não libera cabo USB para sites</small></summary>'
+  +'<ol class="steps" data-ex="1"><li><b>Mais fácil, sem fio: Canon Camera Connect.</b><small>Pareie a câmera no app Camera Connect e ligue <b>Transferência automática de imagens</b> (no app e na câmera). Cada foto que você tira vai sozinha para o app Fotos do iPhone.</small></li>'
+  +'<li><b>Com cabo (iPhone 15 ou mais novo).</b><small>Plugue a câmera no iPhone com cabo USB-C, abra o app <b>Fotos</b> e toque em <b>Importar</b>. Ou use um leitor de cartão: as fotos aparecem no app Arquivos.</small></li>'
+  +'<li><b>No LUMEN, toque em "📥 Trazer fotos e vídeos".</b><small>Escolha as fotos (ou "Selecionar" › todas). O LUMEN salva, edita se você pediu e manda ao site. Pode tocar quantas vezes quiser: o que já veio é ignorado.</small></li>'
+  +'<li><b>Instale na Tela de Início.</b><small>Compartilhar › Adicionar à Tela de Início. Assim o iOS não apaga a pasta interna do app.</small></li></ol>'
+  +'<button type="button" class="f" id="fxIosOk">Entendi</button>';
+  fx.after(d);d.querySelector('#fxIosOk').onclick=()=>{d.open=false;try{localStorage.setItem('lumen_ios_ok','1')}catch(_){}}}}
+
+ /* ---------- 3. Guia de conexões: qual usar em cada aparelho ---------- */
+ const con=$1('#t-con');
+ if(con){const g=document.createElement('div');g.className='c cx4';g.id='conGuide';
+  const dev=IOS?'iPhone/iPad':ANDROID?'Android':MAC?'Mac':'computador';
+  g.innerHTML='<div class="l">Qual conexão usar? <small>neste '+dev+'</small></div><div class="cx4g">'
+  +'<div class="cx4i'+(IOS?' off':' rec')+'"><b>🔌 Cabo USB</b><span>'+(IOS?'Não funciona no iPhone/iPad: a Apple não libera USB para sites.':'A melhor: fotos e vídeos chegam em ~1 s. Mac, Windows e Android com Chrome.')+'</span></div>'
+  +'<div class="cx4i'+(IOS?' rec':'')+'"><b>📱 iPhone</b><span>Canon <b>Camera Connect</b> com transferência automática (ou cabo USB-C pelo app Fotos) → toque em "Trazer fotos e vídeos". Repetidos são ignorados.</span></div>'
+  +'<div class="cx4i"><b>📶 Wi-Fi</b><span>'+(IOS?'Pelo Camera Connect (acima).':'Pelo computador: a câmera manda as fotos por Wi-Fi para uma pasta (EOS Utility / Image Transfer Utility) e o LUMEN vigia essa pasta. O Wi-Fi direto (CCAPI) só funciona com a ativação da Canon.')+'</span></div>'
+  +'<div class="cx4i off"><b>ᛒ Bluetooth</b><span>Só pareia e acorda a câmera. Nenhuma câmera Canon manda fotos pelo Bluetooth: ele prepara o Wi-Fi.</span></div></div>';
+  con.insertBefore(g,con.querySelector('#conCtx')||con.firstChild)}
+ const cw=$1('#conWifi');
+ if(cw){const c=document.createElement('div');c.className='c';c.innerHTML='<div class="l">Wi-Fi pelo computador · recomendado</div>'
+  +'<div class="sub wrap" style="white-space:normal">Funciona sem ativação especial. A câmera envia cada foto por Wi-Fi para uma pasta do computador e o LUMEN pega de lá em cerca de 1 s (e manda ao Lightroom e ao site).</div>'
+  +'<ol class="steps" data-ex="1"><li><b>Instale o app da Canon no computador.</b><small><b>EOS Utility</b> ou <b>Image Transfer Utility 2</b> (grátis no site da Canon). Confira no manual se o seu modelo tem a função.</small></li>'
+  +'<li><b>Conecte a câmera ao Wi-Fi do computador.</b><small>Na câmera: Menu › Rede › Wi-Fi › conectar ao <b>EOS Utility</b> (ou "Transferência automática para o computador"). Use o mesmo roteador do computador.</small></li>'
+  +'<li><b>Escolha a pasta de destino no app da Canon.</b><small>Ex.: Imagens/EOS-WiFi.</small></li>'
+  +'<li><b>No LUMEN, vigie essa pasta.</b><small>Toque no botão abaixo e escolha a mesma pasta. Fotos antigas são ignoradas; só as novas entram.</small></li></ol>'
+  +'<button type="button" class="f p" id="wPcGo">Usar a pasta do app da Canon</button>';
+  cw.insertBefore(c,cw.firstChild);
+  c.querySelector('#wPcGo').onclick=()=>{try{setMode('folder');conUi()}catch(_){}const b=$1('#fdGo');if(b)b.click()}}
+
+ log('Build v66: Lightroom automático em 1 toque, vídeo com formato/4K/60 fps, guia de conexões, Wi-Fi com acesso à rede local','ok');
+}catch(e){try{log('v66: '+e.message,'bad')}catch(_){}}})();
+
+</script>
+<script id="v67cor">
+/* ===== v67 · Estúdio de cor: presets profissionais, seus presets (.xmp / .lrtemplate / .cube / .json),
+   ajuste de luz e cor, mixer HSL, color grading, auto-cor, copiar a cor de uma foto e sugestões que combinam com o vídeo.
+   Vale para o vídeo (prévia + exportação) e, se você quiser, para as fotos editadas. Linha do tempo com quadros e zoom.
+   Tudo roda no aparelho (WebGL 2). Nada é removido. ===== */
+(function(){try{
+const $1=s=>document.querySelector(s),clamp=(v,a,b)=>v<a?a:v>b?b:v,sl=t=>String(t||'').normalize('NFD').replace(/[̀-ͯ]/g,'');
+
+/* =================== 1. Modelo de ajuste ("grade") =================== */
+const BANDS=['Vermelho','Laranja','Amarelo','Verde','Ciano','Azul','Roxo','Magenta'],BCOL=['#e53935','#fb8c00','#fdd835','#43a047','#00acc1','#1e88e5','#8e24aa','#d81b60'];
+const neu=()=>({exp:0,con:0,hi:0,sh:0,wh:0,bl:0,temp:0,tint:0,vib:0,sat:0,clar:0,vig:0,grain:0,fade:0,
+ hh:[0,0,0,0,0,0,0,0],hs:[0,0,0,0,0,0,0,0],hl:[0,0,0,0,0,0,0,0],cg:{sh:[220,0],md:[30,0],hi:[40,0]},curve:null,lut:null,lutAmt:1,amt:1});
+const isNeu=g=>!g||(g.amt<=0)||(!g.exp&&!g.con&&!g.hi&&!g.sh&&!g.wh&&!g.bl&&!g.temp&&!g.tint&&!g.vib&&!g.sat&&!g.clar&&!g.vig&&!g.grain&&!g.fade&&!g.hh.some(Boolean)&&!g.hs.some(Boolean)&&!g.hl.some(Boolean)&&!g.cg.sh[1]&&!g.cg.md[1]&&!g.cg.hi[1]&&!g.curve&&!g.lut);
+const fill=g=>{const n=neu();g=Object.assign(n,g||{});g.cg=Object.assign(neu().cg,g.cg||{});['hh','hs','hl'].forEach(k=>{if(!Array.isArray(g[k])||g[k].length!==8)g[k]=[0,0,0,0,0,0,0,0]});return g};
+
+/* presets de cor prontos (valores no padrão do Lightroom: -100..100, exposição em stops) */
+const BUILT=[
+ ['Natural vivo',{exp:.1,con:15,hi:-25,sh:20,vib:25,sat:5,clar:10}],
+ ['Teal & Laranja (cinema)',{con:20,hi:-30,sh:15,vib:10,temp:5,hh:[0,-8,-10,40,0,-15,0,0],hs:[0,25,0,-20,20,20,0,0],cg:{sh:[195,35],md:[30,8],hi:[35,30]},fade:5}],
+ ['Filme quente (Portra)',{exp:.1,con:-10,hi:-20,sh:15,temp:12,vib:-5,sat:-10,hl:[0,10,5,0,0,-5,0,0],cg:{sh:[30,10],md:[35,8],hi:[45,15]},fade:12,grain:18}],
+ ['Filme frio (Fuji)',{con:10,hi:-15,sh:10,temp:-8,tint:-6,sat:-5,hh:[0,0,0,-15,0,-8,0,0],hs:[0,0,-10,15,10,0,0,0],cg:{sh:[170,15],md:[90,5],hi:[50,10]},fade:8,grain:12}],
+ ['Moody escuro',{exp:-.25,con:25,hi:-40,sh:-10,bl:-15,vib:-10,sat:-15,hs:[0,-10,-20,-30,-10,-10,0,0],cg:{sh:[210,25],hi:[35,12]},vig:-25,fade:6}],
+ ['Claro e leve (airy)',{exp:.45,con:-20,hi:-30,sh:35,wh:10,bl:10,temp:4,vib:10,sat:-8,hl:[0,15,5,0,0,10,0,0],fade:10}],
+ ['Pôr do sol dourado',{exp:.1,con:12,hi:-20,sh:10,temp:25,tint:6,vib:20,hh:[0,5,-8,0,0,0,0,0],hs:[10,25,15,-10,0,-10,0,0],cg:{md:[38,15],hi:[42,25]},vig:-15}],
+ ['Noturno neon',{exp:.15,con:25,hi:-35,sh:25,temp:-10,tint:10,vib:35,hs:[15,0,0,0,25,30,30,25],cg:{sh:[250,25],hi:[320,15]},vig:-20}],
+ ['Esporte vibrante',{con:30,hi:-30,sh:20,wh:10,bl:-10,vib:30,sat:8,clar:25,hs:[10,10,0,10,10,15,0,0]}],
+ ['Preto e branco forte',{con:35,hi:-15,sh:10,bl:-15,sat:-100,clar:20,grain:15,vig:-15}],
+ ['Vintage anos 70',{exp:.05,con:-15,temp:18,tint:8,sat:-20,hh:[0,8,0,-20,0,-10,0,0],cg:{sh:[30,18],hi:[50,20]},fade:22,grain:30,vig:-20}],
+ ['Bleach bypass',{con:40,hi:-20,sh:-5,sat:-45,clar:30,grain:10}],
+ ['Verde floresta',{con:12,sh:15,temp:-4,tint:-8,hh:[0,0,-15,10,0,0,0,0],hs:[0,0,-10,25,0,0,0,0],hl:[0,0,0,-10,0,0,0,0],cg:{sh:[150,15],hi:[55,10]}}],
+ ['Praia azul-turquesa',{exp:.2,con:10,hi:-35,sh:20,temp:3,vib:25,hh:[0,0,0,0,-10,-12,0,0],hs:[0,10,0,0,30,25,0,0],hl:[0,0,0,0,10,0,0,0]}]
+].map(([n,g])=>({id:'b:'+n,name:n,kind:'pronto',g:fill(g)}));
+
+/* =================== 2. Motor WebGL 2 =================== */
+const VS=`#version 300 es
+in vec2 p;out vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}`;
+const FS=`#version 300 es
+precision highp float;precision highp sampler3D;
+in vec2 v;out vec4 o;
+uniform sampler2D uSrc,uCurve;uniform sampler3D uLut;
+uniform float uExp,uCon,uHi,uSh,uWh,uBl,uVib,uSat,uVig,uGrain,uTime,uAmt,uLutAmt,uHasLut,uHasCurve,uLutN,uHasHsl,uFade,uClar;
+uniform vec3 uWB,uCgS,uCgM,uCgH;uniform float uHH[8],uHS[8],uHL[8];
+float lu(vec3 c){return dot(c,vec3(.2126,.7152,.0722));}
+vec3 rgb2hsl(vec3 c){float mx=max(c.r,max(c.g,c.b)),mn=min(c.r,min(c.g,c.b)),l=(mx+mn)*.5,h=0.,s=0.;
+ if(mx>mn){float d=mx-mn;s=l>.5?d/(2.-mx-mn):d/(mx+mn);
+  if(mx==c.r)h=(c.g-c.b)/d+(c.g<c.b?6.:0.);else if(mx==c.g)h=(c.b-c.r)/d+2.;else h=(c.r-c.g)/d+4.;h/=6.;}return vec3(h,s,l);}
+float h2r(float p,float q,float t){t=fract(t);if(t<1./6.)return p+(q-p)*6.*t;if(t<.5)return q;if(t<2./3.)return p+(q-p)*(2./3.-t)*6.;return p;}
+vec3 hsl2rgb(vec3 c){if(c.y<=0.)return vec3(c.z);float q=c.z<.5?c.z*(1.+c.y):c.z+c.y-c.z*c.y,p=2.*c.z-q;return vec3(h2r(p,q,c.x+1./3.),h2r(p,q,c.x),h2r(p,q,c.x-1./3.));}
+void main(){
+ vec3 src=texture(uSrc,v).rgb,c=src;
+ vec3 li=pow(max(c,0.),vec3(2.2))*exp2(uExp)*uWB;c=pow(max(li,0.),vec3(1./2.2));
+ float bp=-uBl*.08,wp=1.-uWh*.12;c=(c-bp)/max(wp-bp,.05);
+ float L=lu(clamp(c,0.,1.)),ms=1.-smoothstep(0.,.55,L),mh=smoothstep(.45,1.,L);
+ float L2=L+uSh*.32*ms*(uSh>0.?(1.-L):L)+uHi*.32*mh*(uHi>0.?(1.-L):L);
+ c*=clamp(L2/max(L,.002),0.,4.);
+ c=clamp(c,0.,1.);
+ if(uClar!=0.){float m=lu(c);c=clamp(c+(c-vec3(m))*uClar*.25+(m-.5)*uClar*.15*(1.-abs(m-.5)*2.),0.,1.);}
+ if(uCon>=0.)c=mix(c,c*c*(3.-2.*c),uCon);else c=mix(c,.5+(c-.5)*.5,-uCon);
+ L=lu(c);float s=max(c.r,max(c.g,c.b))-min(c.r,min(c.g,c.b));
+ c=mix(vec3(L),c,1.+uSat);c=mix(vec3(lu(c)),c,1.+uVib*(1.-clamp(s*1.6,0.,1.)));
+ c=clamp(c,0.,1.);
+ if(uHasHsl>0.){vec3 h=rgb2hsl(c);float hd=h.x*360.,dh=0.,ds=0.,dl=0.;float cen[8]=float[8](0.,30.,60.,120.,180.,240.,275.,315.);
+  for(int i=0;i<8;i++){float d=abs(mod(hd-cen[i]+540.,360.)-180.);float w=clamp(1.-d/45.,0.,1.);dh+=w*uHH[i];ds+=w*uHS[i];dl+=w*uHL[i];}
+  h.x=fract(h.x+dh*.3/360.);h.z=clamp(h.z+dl*.002*h.y,0.,1.);h.y=clamp(h.y*(1.+ds*.01),0.,1.);c=hsl2rgb(h);}
+ L=lu(c);float wS=1.-smoothstep(0.,.5,L),wH=smoothstep(.5,1.,L),wM=clamp(1.-wS-wH,0.,1.);
+ c+=uCgS*wS+uCgM*wM+uCgH*wH;c=clamp(c,0.,1.);
+ if(uFade>0.)c=mix(c,vec3(.08)+c*.86,uFade);
+ if(uHasCurve>0.){vec3 k=c*255./256.+.5/256.;c=vec3(texture(uCurve,vec2(k.r,.5)).r,texture(uCurve,vec2(k.g,.5)).g,texture(uCurve,vec2(k.b,.5)).b);}
+ if(uHasLut>0.){vec3 lc=texture(uLut,clamp(c,0.,1.)*(uLutN-1.)/uLutN+.5/uLutN).rgb;c=mix(c,lc,uLutAmt);}
+ vec2 d=v-.5;float r=dot(d,d)*2.;c*=mix(1.,1.+uVig,smoothstep(.12,.6,r));
+ if(uGrain>0.){float n=fract(sin(dot(v*vec2(1234.5,987.6)+uTime,vec2(12.9898,78.233)))*43758.5453)-.5;c+=n*uGrain*.14;}
+ o=vec4(mix(src,clamp(c,0.,1.),uAmt),1.);}`;
+const GL={ok:null,c:null,gl:null,p:null,u:{},tSrc:null,tCurve:null,tLut:null,lutKey:'',curveKey:'',err:''};
+function glInit(){if(GL.ok!==null)return GL.ok;try{
+ const c=document.createElement('canvas'),gl=c.getContext('webgl2',{premultipliedAlpha:false,preserveDrawingBuffer:true,antialias:false});
+ if(!gl)throw new Error('este aparelho não tem WebGL 2');
+ const sh=(t,s)=>{const x=gl.createShader(t);gl.shaderSource(x,s);gl.compileShader(x);if(!gl.getShaderParameter(x,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(x));return x};
+ const p=gl.createProgram();gl.attachShader(p,sh(gl.VERTEX_SHADER,VS));gl.attachShader(p,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(p));
+ gl.useProgram(p);const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+ const a=gl.getAttribLocation(p,'p');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
+ const tx=(target)=>{const t=gl.createTexture();gl.bindTexture(target,t);[gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER].forEach(k=>gl.texParameteri(target,k,gl.LINEAR));
+  [gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T].concat(target===gl.TEXTURE_3D?[gl.TEXTURE_WRAP_R]:[]).forEach(k=>gl.texParameteri(target,k,gl.CLAMP_TO_EDGE));return t};
+ GL.tSrc=tx(gl.TEXTURE_2D);GL.tCurve=tx(gl.TEXTURE_2D);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,1,1,0,gl.RGBA,gl.UNSIGNED_BYTE,new Uint8Array([0,0,0,255]));GL.tLut=tx(gl.TEXTURE_3D);gl.pixelStorei(gl.UNPACK_ALIGNMENT,1);gl.texImage3D(gl.TEXTURE_3D,0,gl.RGB8,1,1,1,0,gl.RGB,gl.UNSIGNED_BYTE,new Uint8Array(3));
+ 'uSrc uCurve uLut uExp uCon uHi uSh uWh uBl uVib uSat uVig uGrain uTime uAmt uLutAmt uHasLut uHasCurve uLutN uHasHsl uFade uClar uWB uCgS uCgM uCgH uHH uHS uHL'.split(' ').forEach(n=>GL.u[n]=gl.getUniformLocation(p,n));
+ gl.uniform1i(GL.u.uSrc,0);gl.uniform1i(GL.u.uCurve,1);gl.uniform1i(GL.u.uLut,2);
+ GL.c=c;GL.gl=gl;GL.p=p;GL.ok=true;c.addEventListener('webglcontextlost',ev=>{ev.preventDefault();GL.ok=null;GL.gl=null;GL.lutKey='';GL.curveKey=''},{once:true})}catch(e){GL.ok=false;GL.err=e.message;try{log('Cor profissional indisponível: '+e.message,'bad')}catch(_){}}return GL.ok}
+const hue2rgb=(h)=>{const f=n=>{const k=(n+h/30)%12;return .5-.5*Math.max(-1,Math.min(k-3,9-k,1))};return [f(0),f(8),f(4)]};
+const tint=(hs)=>{const [h,s]=hs;if(!s)return [0,0,0];const c=hue2rgb(h);return c.map(x=>(x-.5)*s/100*.3)};
+/* curva (monótona) → tabela de 256 */
+function curveTable(pts){if(!pts||pts.length<2)return null;const P=pts.map(p=>[clamp(p[0],0,255),clamp(p[1],0,255)]).sort((a,b)=>a[0]-b[0]);const n=P.length,x=P.map(p=>p[0]),y=P.map(p=>p[1]),dl=[],m=[];
+ for(let i=0;i<n-1;i++)dl.push((y[i+1]-y[i])/Math.max(1e-6,x[i+1]-x[i]));m[0]=dl[0];m[n-1]=dl[n-2];for(let i=1;i<n-1;i++)m[i]=dl[i-1]*dl[i]<=0?0:(dl[i-1]+dl[i])/2;
+ for(let i=0;i<n-1;i++){if(!dl[i]){m[i]=m[i+1]=0;continue}const a=m[i]/dl[i],b=m[i+1]/dl[i],s=a*a+b*b;if(s>9){const t=3/Math.sqrt(s);m[i]=t*a*dl[i];m[i+1]=t*b*dl[i]}}
+ const T=new Float32Array(256);for(let v=0;v<256;v++){if(v<=x[0]){T[v]=y[0];continue}if(v>=x[n-1]){T[v]=y[n-1];continue}let i=0;while(v>x[i+1])i++;const h=x[i+1]-x[i],t=(v-x[i])/h,t2=t*t,t3=t2*t;
+  T[v]=(2*t3-3*t2+1)*y[i]+(t3-2*t2+t)*h*m[i]+(-2*t3+3*t2)*y[i+1]+(t3-t2)*h*m[i+1]}return T}
+function curveTex(cv){const M=curveTable(cv.m),R=curveTable(cv.r),G=curveTable(cv.g),B=curveTable(cv.b),d=new Uint8Array(256*4);
+ for(let i=0;i<256;i++){const m=M?clamp(Math.round(M[i]),0,255):i;d[i*4]=R?clamp(Math.round(R[m]),0,255):m;d[i*4+1]=G?clamp(Math.round(G[m]),0,255):m;d[i*4+2]=B?clamp(Math.round(B[m]),0,255):m;d[i*4+3]=255}return d}
+const LUTS=new Map();   /* id → {n,data:Uint8Array} */
+/* aplica o ajuste numa imagem/vídeo/canvas e devolve o canvas WebGL com o resultado */
+function grade(g,src,w,h,opt={}){if(!glInit())return null;const gl=GL.gl,u=GL.u;w=Math.max(1,w|0);h=Math.max(1,h|0);
+ if(GL.c.width!==w||GL.c.height!==h){GL.c.width=w;GL.c.height=h}gl.viewport(0,0,w,h);
+ gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,GL.tSrc);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);
+ try{gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,src)}finally{gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,false)}
+ const ck=g.curve?JSON.stringify(g.curve):'';gl.uniform1f(u.uHasCurve,ck?1:0);
+ if(ck&&ck!==GL.curveKey){gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,GL.tCurve);gl.pixelStorei(gl.UNPACK_ALIGNMENT,1);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,256,1,0,gl.RGBA,gl.UNSIGNED_BYTE,curveTex(g.curve));GL.curveKey=ck}
+ const L=g.lut&&LUTS.get(g.lut);gl.uniform1f(u.uHasLut,L?1:0);
+ if(L){if(GL.lutKey!==g.lut){gl.activeTexture(gl.TEXTURE2);gl.bindTexture(gl.TEXTURE_3D,GL.tLut);gl.pixelStorei(gl.UNPACK_ALIGNMENT,1);gl.texImage3D(gl.TEXTURE_3D,0,gl.RGB8,L.n,L.n,L.n,0,gl.RGB,gl.UNSIGNED_BYTE,L.data);GL.lutKey=g.lut}gl.uniform1f(u.uLutN,L.n);gl.uniform1f(u.uLutAmt,g.lutAmt==null?1:g.lutAmt)}
+ gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,GL.tCurve);gl.activeTexture(gl.TEXTURE2);gl.bindTexture(gl.TEXTURE_3D,GL.tLut);
+ const t=clamp(g.temp/100,-1,1),m=clamp(g.tint/100,-1,1);
+ gl.uniform1f(u.uExp,g.exp);gl.uniform1f(u.uCon,clamp(g.con/100,-1,1)*.85);gl.uniform1f(u.uHi,g.hi/100);gl.uniform1f(u.uSh,g.sh/100);gl.uniform1f(u.uWh,g.wh/100);gl.uniform1f(u.uBl,g.bl/100);
+ gl.uniform1f(u.uVib,g.vib/100);gl.uniform1f(u.uSat,g.sat/100);gl.uniform1f(u.uClar,g.clar/100);gl.uniform1f(u.uFade,clamp(g.fade/100,0,1));
+ gl.uniform1f(u.uVig,opt.noPos?0:clamp(g.vig/100,-1,1)*.75);gl.uniform1f(u.uGrain,opt.noPos?0:clamp(g.grain/100,0,1));gl.uniform1f(u.uTime,(performance.now()%1e5)/1000);gl.uniform1f(u.uAmt,opt.noPos?1:clamp(g.amt==null?1:g.amt,0,1));
+ gl.uniform3f(u.uWB,1+.25*t,1-.18*m,1-.25*t);gl.uniform3fv(u.uCgS,tint(g.cg.sh));gl.uniform3fv(u.uCgM,tint(g.cg.md).map(x=>x*.7));gl.uniform3fv(u.uCgH,tint(g.cg.hi));
+ gl.uniform1f(u.uHasHsl,(g.hh.some(Boolean)||g.hs.some(Boolean)||g.hl.some(Boolean))?1:0);gl.uniform1fv(u.uHH,g.hh);gl.uniform1fv(u.uHS,g.hs);gl.uniform1fv(u.uHL,g.hl);
+ gl.drawArrays(gl.TRIANGLE_STRIP,0,4);return GL.c}
+
+/* =================== 3. Ler presets (.xmp / .lrtemplate / .cube / .json) =================== */
+function parseXmp(t){const num=k=>{const m=t.match(new RegExp('crs:'+k+'="([^"]*)"'))||t.match(new RegExp('<crs:'+k+'>([^<]*)<'))||t.match(new RegExp('\\b'+k+'\\s*=\\s*"?(-?[0-9.]+)'));return m?parseFloat(m[1])||0:0},has=k=>new RegExp('(crs:|\\b)'+k+'\\b').test(t);
+ if(!/crs:|Exposure2012|Contrast2012|Saturation|ToneCurve/i.test(t))throw new Error('não parece um preset do Lightroom/Camera Raw');
+ const g=neu(),nm=(t.match(/<crs:Name>[\s\S]*?<rdf:li[^>]*>([^<]+)</)||t.match(/title\s*=\s*"([^"]+)"/)||[])[1];
+ g.exp=num('Exposure2012')||num('Exposure');g.con=num('Contrast2012')||num('Contrast');g.hi=num('Highlights2012');g.sh=num('Shadows2012');g.wh=num('Whites2012');g.bl=num('Blacks2012');
+ g.vib=num('Vibrance');g.sat=num('Saturation');g.clar=num('Clarity2012')+num('Texture')*.5;const dz=num('Dehaze');if(dz){g.con+=dz*.4;g.bl-=dz*.3;g.vib+=dz*.2}
+ if(has('IncrementalTemperature'))g.temp=num('IncrementalTemperature');else if(has('Temperature')){const K=num('Temperature');if(K>1000)g.temp=clamp((K-5500)/30,-100,100)}
+ if(has('IncrementalTint'))g.tint=num('IncrementalTint');else if(has('Tint'))g.tint=clamp(num('Tint'),-100,100);
+ ['Red','Orange','Yellow','Green','Aqua','Blue','Purple','Magenta'].forEach((c,i)=>{g.hh[i]=num('HueAdjustment'+c);g.hs[i]=num('SaturationAdjustment'+c);g.hl[i]=num('LuminanceAdjustment'+c)});
+ if(/ConvertToGrayscale(="|\s*=\s*)True/i.test(t))g.sat=-100;
+ if(has('ColorGradeShadowSat')||has('ColorGradeHighlightSat')||has('ColorGradeMidtoneSat')){g.cg.sh=[num('ColorGradeShadowHue'),num('ColorGradeShadowSat')];g.cg.md=[num('ColorGradeMidtoneHue'),num('ColorGradeMidtoneSat')];g.cg.hi=[num('ColorGradeHighlightHue'),num('ColorGradeHighlightSat')]}
+ else if(has('SplitToningShadowSaturation')){g.cg.sh=[num('SplitToningShadowHue'),num('SplitToningShadowSaturation')];g.cg.hi=[num('SplitToningHighlightHue'),num('SplitToningHighlightSaturation')]}
+ g.vig=num('PostCropVignetteAmount');g.grain=num('GrainAmount');
+ const seq=k=>{const m=t.match(new RegExp('<crs:'+k+'>\\s*<rdf:Seq>([\\s\\S]*?)</rdf:Seq>'));if(!m)return null;const P=[...m[1].matchAll(/<rdf:li>\s*(\d+)\s*,\s*(\d+)\s*<\/rdf:li>/g)].map(x=>[+x[1],+x[2]]);
+  return (P.length>=2&&!(P.length===2&&P[0][0]===0&&P[0][1]===0&&P[1][0]===255&&P[1][1]===255))?P:null};
+ const cv={m:seq('ToneCurvePV2012'),r:seq('ToneCurvePV2012Red'),g:seq('ToneCurvePV2012Green'),b:seq('ToneCurvePV2012Blue')};if(cv.m||cv.r||cv.g||cv.b)g.curve=cv;
+ return {name:(nm||'').trim(),g}}
+function parseCube(t){let n=0,mn=[0,0,0],mx=[1,1,1],n1=0;const v=[];
+ for(const ln of t.split(/\r?\n/)){const s=ln.trim();if(!s||s[0]==='#')continue;let m;
+  if((m=s.match(/^LUT_3D_SIZE\s+(\d+)/i))){n=+m[1];continue}if((m=s.match(/^LUT_1D_SIZE\s+(\d+)/i))){n1=+m[1];continue}
+  if((m=s.match(/^DOMAIN_MIN\s+(\S+)\s+(\S+)\s+(\S+)/i))){mn=[+m[1],+m[2],+m[3]];continue}if((m=s.match(/^DOMAIN_MAX\s+(\S+)\s+(\S+)\s+(\S+)/i))){mx=[+m[1],+m[2],+m[3]];continue}
+  if(/^[A-Z_]/i.test(s))continue;const p=s.split(/\s+/).map(Number);if(p.length>=3&&p.every(x=>isFinite(x)))v.push(p[0],p[1],p[2])}
+ if(n1&&!n){const cv={r:[],g:[],b:[]};for(let i=0;i<n1;i++){const x=Math.round(i/(n1-1)*255);['r','g','b'].forEach((k,j)=>cv[k].push([x,Math.round(clamp((v[i*3+j]-mn[j])/(mx[j]-mn[j]),0,1)*255)]))}
+  const s=Math.max(1,Math.floor(n1/16));['r','g','b'].forEach(k=>cv[k]=cv[k].filter((_,i)=>i%s===0||i===n1-1));const g=neu();g.curve=cv;return {g,lut:null}}
+ if(!n||v.length<n*n*n*3)throw new Error('arquivo .cube incompleto (esperava '+n+'³ cores)');
+ const d=new Uint8Array(n*n*n*3);for(let i=0;i<n*n*n*3;i++){const j=i%3;d[i]=Math.round(clamp((v[i]-mn[j])/(mx[j]-mn[j]),0,1)*255)}
+ return {g:neu(),lut:{n,data:d}}}
+
+/* =================== 4. Guardar presets no aparelho (IndexedDB) =================== */
+const DB=__LUMEN_SAFE.idbLazy(()=>new Promise((res,rej)=>{const r=indexedDB.open('lumen-presets',1);r.onupgradeneeded=()=>r.result.createObjectStore('p',{keyPath:'id'});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}),'lumen-presets');
+const tx=async(mode,fn)=>{const db=await DB;return new Promise((res,rej)=>{const t=db.transaction('p',mode);let o;try{o=fn(t.objectStore('p'))}catch(e){rej(e);return}t.oncomplete=()=>res(o&&o.result);t.onerror=()=>rej(t.error)})};
+let MINE=[];
+async function loadMine(){try{MINE=((await tx('readonly',s=>s.getAll()))||[]).sort((a,b)=>a.t-b.t);MINE.forEach(p=>{if(p.lut)LUTS.set(p.id,p.lut);p.g=fill(p.g);if(p.lut)p.g.lut=p.id})}catch(_){MINE=[]}drawAll()}
+async function saveMine(p){const rec={id:p.id,name:p.name,kind:p.kind,g:Object.assign({},p.g,{lut:p.lut?p.id:null}),lut:p.lut||null,t:p.t||Date.now()};await tx('readwrite',s=>s.put(rec));if(rec.lut)LUTS.set(rec.id,rec.lut);
+ const i=MINE.findIndex(x=>x.id===rec.id);rec.g=fill(rec.g);if(i>=0)MINE[i]=rec;else MINE.push(rec);drawAll()}
+async function delMine(id){try{await tx('readwrite',s=>s.delete(id))}catch(_){}MINE=MINE.filter(x=>x.id!==id);LUTS.delete(id);drawAll()}
+const all=()=>BUILT.concat(MINE);
+async function importFiles(files){let ok=0,bad=[];
+ for(const f of files){try{const t=await f.text(),base=f.name.replace(/\.[^.]+$/,'');let p;
+   if(/\.cube$/i.test(f.name)){const r=parseCube(t);p={id:'m:'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),name:base,kind:'LUT .cube',g:r.g,lut:r.lut}}
+   else if(/\.json$/i.test(f.name)){const j=JSON.parse(t);if(!j.lumenGrade)throw new Error('não é um preset do LUMEN');p={id:'m:'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),name:j.name||base,kind:'LUMEN',g:fill(j.g),lut:j.lut?{n:j.lut.n,data:Uint8Array.from(atob(j.lut.d),c=>c.charCodeAt(0))}:null}}
+   else{const r=parseXmp(t);p={id:'m:'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),name:r.name||base,kind:/lrtemplate/i.test(f.name)?'Lightroom (.lrtemplate)':'Lightroom (.xmp)',g:fill(r.g),lut:null}}
+   await saveMine(p);ok++}catch(e){bad.push(f.name+': '+e.message)}}
+ msg((ok?'✔ '+ok+' preset(s) adicionado(s) em "Meus presets". ':'')+(bad.length?'Não li: '+bad.join('; '):''));if(ok)try{log(ok+' preset(s) de cor importados','ok')}catch(_){}}
+
+/* =================== 5. Estado: cor do vídeo e cor das fotos =================== */
+const ld=(k)=>{try{const j=JSON.parse(localStorage.getItem(k)||'null');return j?{g:fill(j.g),pid:j.pid||'',name:j.name||''}:null}catch(_){return null}};
+const VG=ld('lumen_vgrade')||{g:neu(),pid:'',name:''},PG=ld('lumen_pgrade')||{g:neu(),pid:'',name:'',on:false};PG.on=!!(JSON.parse(localStorage.getItem('lumen_pgrade')||'{}').on);
+const sv=()=>{try{localStorage.setItem('lumen_vgrade',JSON.stringify({g:VG.g,pid:VG.pid,name:VG.name}));localStorage.setItem('lumen_pgrade',JSON.stringify({g:PG.g,pid:PG.pid,name:PG.name,on:PG.on}))}catch(_){}};
+const vOn=()=>!isNeu(VG.g)&&!(VG.g.lut&&!LUTS.has(VG.g.lut))&&GL.ok!==false;
+window.vxGradeOn=vOn;
+let expErr=0;window.vxGradeExport=(cv,g,W,H)=>{if(!vOn()||expErr>3)return;try{const r=grade(VG.g,cv,W,H);if(r)g.drawImage(r,0,0,W,H)}catch(e){if(++expErr>3)try{log('Cor no vídeo desligada na exportação: '+e.message,'bad')}catch(_){}}};
+window.lumenPhotoGradeOn=()=>PG.on&&!isNeu(PG.g)&&typeof RAWM==='function'&&!RAWM();
+window.lumenGradePhoto=cv=>{try{if(!lumenPhotoGradeOn())return;const r=grade(PG.g,cv,cv.width,cv.height);if(r){const x=cv.getContext('2d');x.drawImage(r,0,0)}}catch(e){try{log('Cor nas fotos: '+e.message,'bad')}catch(_){}}};
+function usePreset(p,target){const g=fill(JSON.parse(JSON.stringify(p.g)));if(p.lut||LUTS.has(p.id)){g.lut=p.id}
+ if(target==='foto'){g.amt=PG.g.amt||1;PG.g=g;PG.pid=p.id;PG.name=p.name;PG.on=true;sv();msg('✔ "'+p.name+'" vai ser aplicado nas próximas fotos editadas (aba Fotos › modo Editar).');photoPrev()}
+ else{g.amt=VG.g.amt||1;VG.g=g;VG.pid=p.id;VG.name=p.name;sv();syncSliders();prevNow();msg('✔ Cor do vídeo: '+p.name)}drawAll()}
+
+/* =================== 6. Prévia ao vivo sobre o vídeo =================== */
+const A=()=>window.VXAPI,PV=$1('#vxPv'),wrap=PV&&PV.parentElement;let ov=null,tc=null,tg=null;
+if(wrap){ov=document.createElement('canvas');ov.id='vxGlc';ov.setAttribute('aria-hidden','true');wrap.insertBefore(ov,wrap.children[1]||null);tc=document.createElement('canvas');tg=tc.getContext('2d')}
+let showOrig=false;
+let pp=null;if(wrap){pp=document.createElement('button');pp.type='button';pp.id='vxPP';pp.setAttribute('aria-label','Tocar ou pausar o vídeo');pp.textContent='▶';pp.hidden=true;wrap.appendChild(pp);pp.onclick=()=>{if(PV.paused)PV.play().catch(()=>{});else PV.pause()};
+ PV.addEventListener('play',()=>pp.textContent='❚❚');PV.addEventListener('pause',()=>pp.textContent='▶')}
+function prevNow(){if(!ov||!PV)return;const a=A(),busy=a&&a.run;
+ if(pp){const want=vOn()&&!showOrig&&!busy;pp.hidden=!want;if(want)PV.controls=false;else if(!busy&&!PV.controls&&ov.style.display==='block')PV.controls=true}
+ if(!vOn()||showOrig||!PV.videoWidth||PV.readyState<2){ov.style.display='none';return}
+ const R=PV.getBoundingClientRect(),P=wrap.getBoundingClientRect(),vw=PV.videoWidth,vh=PV.videoHeight,s=Math.min(R.width/vw,R.height/vh),dw=vw*s,dh=vh*s;
+ if(dw<4||dh<4){ov.style.display='none';return}
+ const W=Math.max(2,Math.round(Math.min(dw*(devicePixelRatio||1),960))),H=Math.max(2,Math.round(W*dh/dw));
+ if(tc.width!==W||tc.height!==H){tc.width=W;tc.height=H}tg.filter=PV.style.filter||'none';tg.drawImage(PV,0,0,W,H);tg.filter='none';
+ const r=grade(VG.g,tc,W,H);if(!r){ov.style.display='none';return}if(ov.width!==W||ov.height!==H){ov.width=W;ov.height=H}ov.getContext('2d').drawImage(r,0,0);
+ Object.assign(ov.style,{display:'block',left:(R.left-P.left+(R.width-dw)/2)+'px',top:(R.top-P.top+(R.height-dh)/2)+'px',width:dw+'px',height:dh+'px'})}
+let loop=0;function tick(){loop=0;prevNow();if(PV&&!PV.paused&&!PV.ended&&vOn())loop=requestAnimationFrame(tick)}
+if(PV){['play','seeked','loadeddata','timeupdate'].forEach(e=>PV.addEventListener(e,()=>{if(!loop)loop=requestAnimationFrame(tick)}));addEventListener('resize',()=>prevNow())}
+setInterval(()=>{if(!document.hidden&&$1('#t-ved')&&$1('#t-ved').classList.contains('on')&&PV&&PV.paused)prevNow()},1000);
+
+/* =================== 7. Análise do vídeo: auto-cor, sugestões e copiar cor de uma foto =================== */
+async function frames(n=6,size=160){const it=A()&&A().sel;if(!it||!it.url)throw new Error('escolha um vídeo primeiro');const v=document.createElement('video');v.muted=true;v.playsInline=true;v.src=it.url;
+ await new Promise((a,b)=>{v.onloadedmetadata=a;v.onerror=()=>b(new Error('não abri o vídeo'));setTimeout(a,6000)});const D=v.duration||1,out=[];
+ const c=document.createElement('canvas'),k=size/Math.max(v.videoWidth||size,v.videoHeight||size);c.width=Math.max(8,Math.round((v.videoWidth||size)*k));c.height=Math.max(8,Math.round((v.videoHeight||size)*k));const x=c.getContext('2d',{willReadFrequently:true});
+ for(let i=0;i<n;i++){v.currentTime=D*(i+.5)/n;await new Promise(a=>{v.onseeked=a;setTimeout(a,2500)});x.drawImage(v,0,0,c.width,c.height);out.push(x.getImageData(0,0,c.width,c.height).data)}
+ v.removeAttribute('src');v.load();return out}
+function stats(F){const H=new Uint32Array(256);let n=0,r=0,g=0,b=0,s=0;for(const d of F)for(let i=0;i<d.length;i+=4){const R=d[i]/255,G=d[i+1]/255,B=d[i+2]/255,L=.2126*R+.7152*G+.0722*B;H[Math.min(255,L*255|0)]++;r+=R;g+=G;b+=B;s+=Math.max(R,G,B)-Math.min(R,G,B);n++}
+ const pc=q=>{let a=0;for(let i=0;i<256;i++){a+=H[i];if(a>=q*n)return i/255}return 1};return{p1:pc(.01),p50:pc(.5),p99:pc(.99),r:r/n,g:g/n,b:b/n,s:s/n}}
+let SCN=null;
+function autoGrade(S0){const g=neu(),lin=x=>Math.pow(Math.max(x,.01),2.2);
+ g.exp=+clamp(Math.log2(lin(.45)/lin(S0.p50))*.55,-1.5,1.5).toFixed(2);
+ if(S0.p1>.05)g.bl=-Math.round(clamp((S0.p1-.02)*350,0,60));if(S0.p99<.92)g.wh=Math.round(clamp((.97-S0.p99)*250,0,60));
+ g.temp=Math.round(clamp((S0.b-S0.r)/Math.max(.05,S0.r+S0.b)*220,-40,40));g.tint=Math.round(clamp((S0.g-(S0.r+S0.b)/2)/Math.max(.05,S0.g)*150,-30,30));
+ g.con=12;g.hi=S0.p99>.97?-30:-10;g.sh=S0.p50<.35?25:10;g.vib=S0.s<.18?30:S0.s<.3?15:0;return g}
+function suggest(S0){const warm=S0.r>S0.b*1.08,cool=S0.b>S0.r*1.05,dark=S0.p50<.32,bright=S0.p50>.6,dull=S0.s<.2,L=[];
+ if(dark)L.push('Noturno neon','Moody escuro');if(bright)L.push('Claro e leve (airy)','Praia azul-turquesa');if(warm)L.push('Pôr do sol dourado','Filme quente (Portra)');if(cool)L.push('Filme frio (Fuji)','Teal & Laranja (cinema)');
+ if(dull)L.push('Esporte vibrante','Natural vivo');L.push('Teal & Laranja (cinema)','Natural vivo','Vintage anos 70');return [...new Set(L)].slice(0,5)}
+async function doAuto(){msg('Analisando o vídeo…');try{const F=await frames(6);SCN=stats(F);const g=autoGrade(SCN);g.amt=1;VG.g=g;VG.pid='auto';VG.name='Auto-cor';sv();syncSliders();prevNow();drawSug();msg('✔ Auto-cor aplicada: luz e balanço de branco corrigidos. Veja abaixo as combinações sugeridas para este vídeo.')}catch(e){msg('Auto-cor: '+e.message)}}
+/* copiar a cor de uma foto (transferência de cor no espaço Lab → LUT 33³) */
+const toLin=c=>c<=.04045?c/12.92:Math.pow((c+.055)/1.055,2.4),toS=c=>c<=.0031308?c*12.92:1.055*Math.pow(c,1/2.4)-.055;
+function lab(r,g,b){r=toLin(r);g=toLin(g);b=toLin(b);let X=(r*.4124+g*.3576+b*.1805)/.95047,Y=r*.2126+g*.7152+b*.0722,Z=(r*.0193+g*.1192+b*.9505)/1.08883;const f=t=>t>.008856?Math.cbrt(t):7.787*t+16/116;X=f(X);Y=f(Y);Z=f(Z);return [116*Y-16,500*(X-Y),200*(Y-Z)]}
+function rgb(L,a,b){let Y=(L+16)/116,X=a/500+Y,Z=Y-b/200;const f=t=>{const t3=t*t*t;return t3>.008856?t3:(t-16/116)/7.787};X=f(X)*.95047;Y=f(Y);Z=f(Z)*1.08883;
+ return [3.2406*X-1.5372*Y-.4986*Z,-.9689*X+1.8758*Y+.0415*Z,.0557*X-.204*Y+1.057*Z].map(c=>clamp(toS(clamp(c,0,1)),0,1))}
+function labStats(F){const m=[0,0,0],q=[0,0,0];let n=0;for(const d of F)for(let i=0;i<d.length;i+=16){const l=lab(d[i]/255,d[i+1]/255,d[i+2]/255);for(let j=0;j<3;j++){m[j]+=l[j];q[j]+=l[j]*l[j]}n++}return m.map((v,j)=>[v/n,Math.sqrt(Math.max(1e-6,q[j]/n-(v/n)**2))])}
+async function copyFrom(file){msg('Lendo a foto de referência…');try{const bm=await createImageBitmap(file),c=document.createElement('canvas'),k=200/Math.max(bm.width,bm.height);c.width=Math.round(bm.width*k);c.height=Math.round(bm.height*k);
+ const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(bm,0,0,c.width,c.height);bm.close();const ref=labStats([x.getImageData(0,0,c.width,c.height).data]),src=labStats(await frames(6));
+ const N=33,d=new Uint8Array(N*N*N*3);let i=0;for(let bb=0;bb<N;bb++)for(let gg=0;gg<N;gg++)for(let rr=0;rr<N;rr++){const l=lab(rr/(N-1),gg/(N-1),bb/(N-1)),o=l.map((v,j)=>(v-src[j][0])*clamp(ref[j][1]/src[j][1],.4,2.5)+ref[j][0]),c2=rgb(o[0],o[1],o[2]);d[i++]=c2[0]*255;d[i++]=c2[1]*255;d[i++]=c2[2]*255}
+ const p={id:'m:ref'+Date.now().toString(36),name:'Cor de '+file.name.replace(/\.[^.]+$/,''),kind:'Copiada de foto',g:neu(),lut:{n:N,data:d}};p.g.lutAmt=.85;await saveMine(p);usePreset(p,'video');msg('✔ Cor copiada da foto e salva em "Meus presets" ('+p.name+'). Ajuste a força em "Intensidade".')}catch(e){msg('Copiar cor: '+e.message)}}
+
+/* =================== 8. Exportar presets (.xmp para o Lightroom, .cube para Premiere/DaVinci/CapCut, .json do LUMEN) =================== */
+const dl=(name,data,type)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000)};
+function toXmp(p){const g=p.g,f=v=>(v>=0?'+':'')+(+v).toFixed(2),i=v=>(v>=0?'+':'')+Math.round(v),C=['Red','Orange','Yellow','Green','Aqua','Blue','Purple','Magenta'];
+ const at=['crs:PresetType="Normal"','crs:Version="15.0"','crs:ProcessVersion="11.0"','crs:Exposure2012="'+f(g.exp)+'"','crs:Contrast2012="'+i(g.con)+'"','crs:Highlights2012="'+i(g.hi)+'"','crs:Shadows2012="'+i(g.sh)+'"','crs:Whites2012="'+i(g.wh)+'"','crs:Blacks2012="'+i(g.bl)+'"','crs:Clarity2012="'+i(g.clar)+'"','crs:Vibrance="'+i(g.vib)+'"','crs:Saturation="'+i(g.sat)+'"','crs:IncrementalTemperature="'+i(g.temp)+'"','crs:IncrementalTint="'+i(g.tint)+'"','crs:PostCropVignetteAmount="'+i(g.vig)+'"','crs:GrainAmount="'+Math.round(g.grain)+'"',
+  'crs:ColorGradeShadowHue="'+Math.round(g.cg.sh[0])+'"','crs:ColorGradeShadowSat="'+Math.round(g.cg.sh[1])+'"','crs:ColorGradeMidtoneHue="'+Math.round(g.cg.md[0])+'"','crs:ColorGradeMidtoneSat="'+Math.round(g.cg.md[1])+'"','crs:ColorGradeHighlightHue="'+Math.round(g.cg.hi[0])+'"','crs:ColorGradeHighlightSat="'+Math.round(g.cg.hi[1])+'"','crs:ConvertToGrayscale="'+(g.sat<=-100?'True':'False')+'"']
+  .concat(C.flatMap((c,k)=>['crs:HueAdjustment'+c+'="'+i(g.hh[k])+'"','crs:SaturationAdjustment'+c+'="'+i(g.hs[k])+'"','crs:LuminanceAdjustment'+c+'="'+i(g.hl[k])+'"']));
+ const seq=(k,P)=>P?'<crs:'+k+'><rdf:Seq>'+P.map(q=>'<rdf:li>'+Math.round(q[0])+', '+Math.round(q[1])+'</rdf:li>').join('')+'</rdf:Seq></crs:'+k+'>':'';
+ const cv=g.curve||{};return '<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description rdf:about="" xmlns:crs="http://ns.adobe.com/camera-raw-settings/1.0/" crs:UUID="'+crypto.randomUUID().replace(/-/g,'').toUpperCase()+'" '+at.join(' ')+'><crs:Name><rdf:Alt><rdf:li xml:lang="x-default">'+esc(p.name)+'</rdf:li></rdf:Alt></crs:Name>'+seq('ToneCurvePV2012',cv.m)+seq('ToneCurvePV2012Red',cv.r)+seq('ToneCurvePV2012Green',cv.g)+seq('ToneCurvePV2012Blue',cv.b)+'</rdf:Description></rdf:RDF></x:xmpmeta>'}
+function toCube(p){if(!glInit())throw new Error(GL.err);const N=33,c=document.createElement('canvas');c.width=N*N;c.height=N;const x=c.getContext('2d'),im=x.createImageData(N*N,N);
+ for(let b=0;b<N;b++)for(let g=0;g<N;g++)for(let r=0;r<N;r++){const k=((N-1-g)*N*N+b*N+r)*4;im.data[k]=Math.round(r/(N-1)*255);im.data[k+1]=Math.round(g/(N-1)*255);im.data[k+2]=Math.round(b/(N-1)*255);im.data[k+3]=255}
+ x.putImageData(im,0,0);const gg=fill(JSON.parse(JSON.stringify(p.g)));if(p.lut||LUTS.has(p.id))gg.lut=p.id;grade(gg,c,N*N,N,{noPos:true});const gl=GL.gl,px=new Uint8Array(N*N*N*4);gl.readPixels(0,0,N*N,N,gl.RGBA,gl.UNSIGNED_BYTE,px);
+ const L=['TITLE "'+p.name.replace(/"/g,'')+'"','# LUMEN Campo','LUT_3D_SIZE '+N];
+ for(let b=0;b<N;b++)for(let g=0;g<N;g++)for(let r=0;r<N;r++){const k=(g*N*N+b*N+r)*4;L.push((px[k]/255).toFixed(6)+' '+(px[k+1]/255).toFixed(6)+' '+(px[k+2]/255).toFixed(6))}return L.join('\n')+'\n'}
+function toJson(p){const l=p.lut||LUTS.get(p.id);let d='';if(l){let s='';for(let i=0;i<l.data.length;i+=8192)s+=String.fromCharCode.apply(null,l.data.subarray(i,i+8192));d=btoa(s)}
+ return JSON.stringify({lumenGrade:1,name:p.name,g:Object.assign({},p.g,{lut:null}),lut:l?{n:l.n,d}:null})}
+
+/* =================== 9. Interface =================== */
+let msgEls=[];const msg=t=>msgEls.forEach(e=>e.textContent=t||'');
+const SL=[['exp','Exposição',-3,3,.05,' EV'],['con','Contraste',-100,100,1],['hi','Realces',-100,100,1],['sh','Sombras',-100,100,1],['wh','Brancos',-100,100,1],['bl','Pretos',-100,100,1],
+ ['temp','Temperatura',-100,100,1],['tint','Matiz (verde ↔ magenta)',-100,100,1],['vib','Vibração',-100,100,1],['sat','Saturação',-100,100,1],['clar','Clareza',-100,100,1],['fade','Desbotado (filme)',0,100,1],['vig','Vinheta',-100,100,1],['grain','Granulação',0,100,1]];
+let band=0,thumbsAt=0;
+function rangeRow(k,label,min,max,step,unit){return '<label class="cl-r"><span>'+label+'</span><b data-v="'+k+'"></b><input type="range" data-k="'+k+'" min="'+min+'" max="'+max+'" step="'+step+'" aria-label="'+label+'"></label>'}
+const pan=document.createElement('div');pan.className='vxPan';pan.dataset.p='c';pan.hidden=true;
+pan.innerHTML='<div class="cl-top"><button type="button" class="f p" id="clAuto">🪄 Auto-cor</button><label class="f cl-up" role="button">🎯 Copiar cor de uma foto<input type="file" id="clRef" accept="image/*" hidden></label><button type="button" class="f" id="clOrig" aria-label="Segure para ver o original">👁 Original</button><button type="button" class="f" id="clReset">↺ Zerar</button></div>'
+ +'<div class="sub wrap" id="clMsg" data-ex="1" style="color:var(--ink);min-height:1.2em"></div>'
+ +'<label class="cl-r cl-amt"><span>Intensidade da cor</span><b id="clAmtV"></b><input type="range" id="clAmt" min="0" max="100" step="1" aria-label="Intensidade da cor"></label>'
+ +'<div class="vxLn" style="margin-top:10px"><b>Combinam com este vídeo</b><span class="sub">toque em 🪄 para analisar</span></div><div class="cl-g" id="clSug"></div>'
+ +'<div class="vxLn" style="margin-top:12px"><b>Presets de cor</b><span class="sub">prontos + os seus</span></div><div class="cl-g" id="clGrid"></div>'
+ +'<details class="vxDt" open><summary>☀ Luz</summary>'+SL.slice(0,6).map(r=>rangeRow(...r)).join('')+'</details>'
+ +'<details class="vxDt" open><summary>🎨 Cor</summary>'+SL.slice(6,11).map(r=>rangeRow(...r)).join('')+'</details>'
+ +'<details class="vxDt"><summary>🌈 Mixer de cores (HSL)</summary><div class="cl-bands" id="clBands"></div><label class="cl-r"><span>Matiz</span><b data-b="h"></b><input type="range" data-bk="hh" min="-100" max="100" aria-label="Matiz da cor escolhida"></label><label class="cl-r"><span>Saturação</span><b data-b="s"></b><input type="range" data-bk="hs" min="-100" max="100" aria-label="Saturação da cor escolhida"></label><label class="cl-r"><span>Luminância</span><b data-b="l"></b><input type="range" data-bk="hl" min="-100" max="100" aria-label="Luminância da cor escolhida"></label></details>'
+ +'<details class="vxDt"><summary>🎡 Color grading (sombras, médios, realces)</summary>'+[['sh','Sombras'],['md','Médios'],['hi','Realces']].map(([k,n])=>'<div class="cl-cg"><b>'+n+'</b><input type="range" data-cg="'+k+'" data-i="0" min="0" max="360" class="cl-hue" aria-label="Cor das '+n+'"><input type="range" data-cg="'+k+'" data-i="1" min="0" max="100" aria-label="Força da cor das '+n+'"><i data-cgv="'+k+'"></i></div>').join('')+'</details>'
+ +'<details class="vxDt"><summary>🎞 Filme e acabamento</summary>'+SL.slice(11).map(r=>rangeRow(...r)).join('')+'</details>'
+ +'<div class="cl-mine"><div class="vxLn" style="margin-top:12px"><b>📂 Meus presets</b><span class="sub">.xmp e .lrtemplate (Lightroom), .cube (LUT), .json (LUMEN)</span></div>'
+ +'<div class="cl-top"><label class="f p cl-up" role="button">⬆ Subir meus presets<input type="file" class="clUp" multiple accept=".xmp,.lrtemplate,.cube,.json,application/json,text/xml" hidden></label><button type="button" class="f" id="clSave">💾 Salvar este ajuste como preset</button></div>'
+ +'<div class="cl-list" id="clMine"></div></div>';
+const tabs=$1('#vxTabs');
+if(tabs){const b=document.createElement('button');b.dataset.p='c';b.textContent='🌈 Cor';const lk=tabs.querySelector('[data-p=l]');lk?lk.after(b):tabs.appendChild(b);
+ const lkp=document.querySelector('.vxPan[data-p=l]');(lkp||tabs).after(pan);
+ tabs.addEventListener('click',e=>{const x=e.target.closest('button');if(x&&x.dataset.p==='c'){setTimeout(()=>{drawAll();if(!SCN&&A()&&A().sel)drawSug()},50)}})}
+msgEls.push(pan.querySelector('#clMsg'));
+/* mesmo gerenciador na aba Fotos (para usar os presets nas fotos) */
+const ph=document.createElement('details');ph.className='fold';ph.id='clPhoto';
+ph.innerHTML='<summary><h2>Meus presets de cor <small>Lightroom .xmp, LUT .cube · fotos e vídeos</small></h2></summary><div class="c">'
+ +'<div class="sub wrap" style="white-space:normal;color:var(--ink)">Suba aqui os seus presets. Eles ficam guardados neste aparelho e servem para as <b>fotos</b> (escolha "Usar nas fotos") e para o <b>vídeo</b> (aba Vídeo › 🌈 Cor). A foto original nunca é alterada: a cor entra só na versão editada, no modo <b>Editar fotos</b>.</div>'
+ +'<div class="cl-top"><label class="f p cl-up" role="button">⬆ Subir meus presets<input type="file" class="clUp" multiple accept=".xmp,.lrtemplate,.cube,.json,application/json,text/xml" hidden></label></div>'
+ +'<div class="sub wrap" id="clPMsg" data-ex="1" style="color:var(--ink)"></div>'
+ +'<label class="r"><input type="checkbox" id="clPOn"><span>Aplicar o preset de cor nas fotos editadas: <b id="clPName">nenhum</b></span></label>'
+ +'<label class="cl-r"><span>Intensidade nas fotos</span><b id="clPAmtV"></b><input type="range" id="clPAmt" min="0" max="100" aria-label="Intensidade do preset nas fotos"></label>'
+ +'<canvas id="clPPrev" aria-label="Prévia da última foto com o preset"></canvas>'
+ +'<div class="cl-g" id="clPGrid"></div><div class="cl-list" id="clPMine"></div></div>';
+try{const te=$1('#t-edit');if(te){const f=te.querySelector(':scope>details.fold');te.insertBefore(ph,f?f.nextSibling:te.firstChild)}}catch(_){}
+msgEls.push(ph.querySelector('#clPMsg'));
+document.querySelectorAll('.clUp').forEach(i=>i.onchange=e=>{const f=[...e.target.files];e.target.value='';if(f.length)importFiles(f)});
+
+function syncSliders(){const g=VG.g;pan.querySelectorAll('[data-k]').forEach(r=>{const k=r.dataset.k;r.value=g[k];const b=pan.querySelector('[data-v="'+k+'"]');if(b)b.textContent=(+g[k]).toFixed(k==='exp'?2:0)});
+ const a=$1('#clAmt');a.value=Math.round((g.amt==null?1:g.amt)*100);$1('#clAmtV').textContent=a.value+'%';
+ pan.querySelectorAll('[data-bk]').forEach(r=>{r.value=g[r.dataset.bk][band];const b=pan.querySelector('[data-b="'+r.dataset.bk[1]+'"]');if(b)b.textContent=r.value});
+ pan.querySelectorAll('[data-cg]').forEach(r=>{r.value=g.cg[r.dataset.cg][+r.dataset.i]});
+ pan.querySelectorAll('[data-cgv]').forEach(i=>{const v=g.cg[i.dataset.cgv];i.style.background='hsl('+v[0]+','+Math.max(15,v[1])+'%,50%)'});
+ pan.querySelectorAll('#clBands button').forEach((b,i)=>b.classList.toggle('on',i===band))}
+let rq=0;const later=()=>{if(rq)return;rq=requestAnimationFrame(()=>{rq=0;sv();prevNow();clearTimeout(thumbsAt);thumbsAt=setTimeout(()=>{drawSug()},400)})};
+const custom=()=>{if(VG.pid&&!/^custom/.test(VG.pid)){VG.name=(VG.name||'Ajuste')+' (ajustado)';VG.pid='custom'}};
+pan.addEventListener('input',e=>{const t=e.target,g=VG.g;
+ if(t.dataset.k){g[t.dataset.k]=+t.value;custom();const b=pan.querySelector('[data-v="'+t.dataset.k+'"]');if(b)b.textContent=(+t.value).toFixed(t.dataset.k==='exp'?2:0)}
+ else if(t.dataset.bk){g[t.dataset.bk][band]=+t.value;custom();const b=pan.querySelector('[data-b="'+t.dataset.bk[1]+'"]');if(b)b.textContent=t.value}
+ else if(t.dataset.cg){g.cg[t.dataset.cg][+t.dataset.i]=+t.value;custom();syncSliders()}
+ else if(t.id==='clAmt'){g.amt=t.value/100;$1('#clAmtV').textContent=t.value+'%'}
+ else return;later()});
+pan.addEventListener('dblclick',e=>{const t=e.target;if(t.dataset&&t.dataset.k){VG.g[t.dataset.k]=0;syncSliders();later()}});
+const bandsEl=pan.querySelector('#clBands');BANDS.forEach((n,i)=>{const b=document.createElement('button');b.type='button';b.style.setProperty('--bc',BCOL[i]);b.setAttribute('aria-label',n);b.title=n;b.onclick=()=>{band=i;syncSliders()};bandsEl.appendChild(b)});
+$1('#clAuto').onclick=doAuto;$1('#clRef').onchange=e=>{const f=e.target.files[0];e.target.value='';if(f)copyFrom(f)};
+$1('#clReset').onclick=()=>{VG.g=neu();VG.pid='';VG.name='';sv();syncSliders();prevNow();drawAll();msg('Cor zerada: o vídeo volta ao look da aba 🎨 Look.')};
+const ob=$1('#clOrig'),on=()=>{showOrig=true;prevNow()},off=()=>{showOrig=false;prevNow()};['pointerdown'].forEach(e=>ob.addEventListener(e,on));['pointerup','pointerleave','pointercancel'].forEach(e=>ob.addEventListener(e,off));
+$1('#clSave').onclick=async()=>{if(isNeu(VG.g))return msg('Faça algum ajuste antes de salvar.');const n=prompt('Nome do preset:',VG.name&&!/^Auto/.test(VG.name)?VG.name:'Meu preset');if(!n)return;
+ const g=JSON.parse(JSON.stringify(VG.g)),lut=g.lut?LUTS.get(g.lut):null;await saveMine({id:'m:'+Date.now().toString(36),name:n,kind:'LUMEN',g:fill(g),lut});msg('✔ Salvo em "Meus presets": '+n)};
+/* miniaturas com o quadro atual do vídeo */
+const TB=document.createElement('canvas');
+function frameSrc(){if(PV&&PV.videoWidth&&PV.readyState>=2){const k=150/Math.max(PV.videoWidth,PV.videoHeight);TB.width=Math.round(PV.videoWidth*k);TB.height=Math.round(PV.videoHeight*k);const x=TB.getContext('2d');x.filter=PV.style.filter||'none';x.drawImage(PV,0,0,TB.width,TB.height);return TB}return null}
+function photoSrc(){const it=(S.items||[]).find(i=>i.kind==='foto'&&(i.thumb));return it?it:null}
+function thumb(p,src,el){try{if(!src){el.style.background='linear-gradient(135deg,#333,#555)';return}const g=fill(JSON.parse(JSON.stringify(p.g)));if(p.lut||LUTS.has(p.id))g.lut=p.id;g.amt=1;const r=grade(g,src,src.width,src.height,{});const c=el.querySelector('canvas');c.width=src.width;c.height=src.height;if(r)c.getContext('2d').drawImage(r,0,0)}catch(_){}}
+function card(p,target){const b=document.createElement('button');b.type='button';b.className='cl-c';b.innerHTML='<canvas></canvas><span></span>';b.querySelector('span').textContent=p.name;b.title=p.name+(p.kind?' · '+p.kind:'');
+ const act=target==='foto'?PG:VG;b.classList.toggle('on',act.pid===p.id);b.onclick=()=>usePreset(p,target);return b}
+function drawGrid(el,list,target,src){if(!el)return;el.innerHTML='';list.forEach(p=>{const b=card(p,target);el.appendChild(b);thumb(p,src,b)})}
+function drawSug(){const el=$1('#clSug');if(!el)return;const src=frameSrc();if(!SCN){el.innerHTML='<div class="sub">Toque em 🪄 Auto-cor: o LUMEN analisa as cenas e sugere as cores que combinam.</div>';return}
+ const names=suggest(SCN),L=[{id:'auto',name:'Auto-cor',kind:'análise',g:fill(autoGrade(SCN))}].concat(names.map(n=>BUILT.find(b=>b.name===n)).filter(Boolean));
+ /* combinações: auto-cor + preset (correção e estilo juntos) */
+ const mix=names.slice(0,2).map(n=>{const b=BUILT.find(x=>x.name===n);if(!b)return null;const a=autoGrade(SCN),g=fill(JSON.parse(JSON.stringify(b.g)));['exp','temp','tint','wh','bl'].forEach(k=>g[k]=+(g[k]+a[k]).toFixed(2));return {id:'mix:'+n,name:'Auto + '+n,kind:'combinação',g}}).filter(Boolean);
+ drawGrid(el,L.concat(mix),'video',src)}
+function mineList(el,target){if(!el)return;el.innerHTML=MINE.length?'':'<div class="sub">Nenhum preset seu ainda. Toque em ⬆ Subir meus presets.</div>';
+ MINE.slice().reverse().forEach(p=>{const r=document.createElement('div');r.className='cl-row';r.innerHTML='<b></b><small></small><div><button type="button" data-a="v">Vídeo</button><button type="button" data-a="f">Fotos</button><button type="button" data-a="x">.xmp</button><button type="button" data-a="c">.cube</button><button type="button" data-a="j">.json</button><button type="button" data-a="d" aria-label="Excluir preset">✕</button></div>';
+  r.querySelector('b').textContent=p.name;r.querySelector('small').textContent=p.kind+(p.lut?' · LUT '+(p.lut.n||(LUTS.get(p.id)||{}).n)+'³':'');
+  r.onclick=async e=>{const a=e.target.dataset&&e.target.dataset.a;if(!a)return;const nm=p.name.replace(/[^\w\- ]+/g,'_');
+   try{if(a==='v'){usePreset(p,'video');try{goTab('ved');$1('#vxTabs [data-p=c]').click()}catch(_){}}else if(a==='f')usePreset(p,'foto');
+    else if(a==='x'){if(p.lut||LUTS.has(p.id))msg('Este preset usa uma LUT: o Lightroom não lê LUT em preset .xmp. Use o .cube (Premiere, DaVinci, CapCut, Photoshop).');else dl(nm+'.xmp',toXmp(p),'text/xml')}
+    else if(a==='c')dl(nm+'.cube',toCube(p),'text/plain');else if(a==='j')dl(nm+'.lumen.json',toJson(p),'application/json');
+    else if(a==='d'&&confirm('Excluir o preset "'+p.name+'"?'))delMine(p.id)}catch(err){msg(err.message)}};el.appendChild(r)})}
+function photoPrev(){const c=$1('#clPPrev');if(!c)return;$1('#clPOn').checked=PG.on;$1('#clPName').textContent=PG.name||'nenhum';$1('#clPAmt').value=Math.round((PG.g.amt==null?1:PG.g.amt)*100);$1('#clPAmtV').textContent=$1('#clPAmt').value+'%';
+ const it=photoSrc();if(!it||!PG.on||isNeu(PG.g)){c.style.display='none';return}const im=new Image();im.onload=()=>{const k=Math.min(1,520/Math.max(im.width,im.height));c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);const x=c.getContext('2d');x.drawImage(im,0,0,c.width,c.height);const r=grade(PG.g,c,c.width,c.height);if(r)x.drawImage(r,0,0);c.style.display='block'};im.src=it.thumb}
+ph.addEventListener('input',e=>{if(e.target.id==='clPAmt'){PG.g.amt=e.target.value/100;$1('#clPAmtV').textContent=e.target.value+'%';sv();photoPrev()}});
+ph.addEventListener('change',e=>{if(e.target.id==='clPOn'){PG.on=e.target.checked;sv();photoPrev();if(PG.on&&typeof RAWM==='function'&&RAWM())msg('Para a cor entrar nas fotos, mude para "Editar fotos" (no alto desta aba).')}});
+function drawAll(){try{syncSliders();const src=frameSrc();drawGrid($1('#clGrid'),all(),'video',src);mineList($1('#clMine'),'video');
+drawGrid($1('#clPGrid'),all(),'foto',src);mineList($1('#clPMine'),'foto');photoPrev()}catch(_){}}
+/* refaz as miniaturas quando o vídeo muda */
+let lastSel='';setInterval(()=>{const s=A()&&A().sel;const k=s?s.url:'';if(k!==lastSel&&PV&&PV.readyState>=2){lastSel=k;SCN=null;if(!pan.hidden)drawAll();drawSug()}},1500);
+
+/* =================== 10. Linha do tempo: quadros, zoom, passo a passo e cortes rápidos =================== */
+const T=$1('#vxTl'),RUL=$1('#vxRul');
+if(T&&RUL){const w=document.createElement('div');w.className='vxTlW';RUL.parentNode.insertBefore(w,RUL);w.appendChild(RUL);w.appendChild(T);
+ const fs=document.createElement('canvas');fs.id='vxStrip';fs.setAttribute('aria-hidden','true');T.insertBefore(fs,T.firstChild);
+ let Z=1;const zoom=z=>{Z=clamp(z,1,12);[T,RUL].forEach(e=>e.style.width=(Z*100)+'%');strip();setTimeout(()=>{const h=$1('#vxHead');if(h)w.scrollLeft=h.offsetLeft-w.clientWidth/2},30)};
+ let stripKey='',busy=false;async function strip(){const s=A()&&A().sel,D=A()&&A().dur;if(!s||!s.url||!D||busy)return;const n=Math.round(clamp(10*Z,10,60)),key=s.url+'|'+n;if(key===stripKey)return;busy=true;stripKey=key;
+  try{const v=document.createElement('video');v.muted=true;v.src=s.url;await new Promise(a=>{v.onloadedmetadata=a;setTimeout(a,5000)});const th=52,tw=Math.max(20,Math.round(th*(v.videoWidth||16)/(v.videoHeight||9)));fs.width=n*tw;fs.height=th;const x=fs.getContext('2d');
+   for(let i=0;i<n;i++){if(stripKey!==key)break;v.currentTime=D*(i+.5)/n;await new Promise(a=>{v.onseeked=a;setTimeout(a,2000)});x.drawImage(v,i*tw,0,tw,th)}v.removeAttribute('src');v.load()}catch(_){}busy=false}
+ setInterval(()=>{if(!document.hidden&&$1('#t-ved').classList.contains('on'))strip()},1500);
+ const bar=document.createElement('div');bar.className='vxTb2';
+ const B=[['⏮','-1 s',()=>step(-1)],['◀','-1 quadro',()=>step(-1/30)],['▶','+1 quadro',()=>step(1/30)],['⏭','+1 s',()=>step(1)],['[✂','Cortar tudo antes daqui',()=>cutSide(-1)],['✂]','Cortar tudo depois daqui',()=>cutSide(1)],['⧉','Manter só o trecho selecionado',keepSel],['🔍−','Diminuir zoom',()=>zoom(Z/2)],['🔍+','Aumentar zoom',()=>zoom(Z*2)]];
+ B.forEach(([t,l,f])=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.title=l;b.setAttribute('aria-label',l);b.onclick=f;bar.appendChild(b)});
+ const top=$1('#vxTop');(top||w).after(bar);
+ function step(d){const P=A().PV;P.pause();P.currentTime=clamp(P.currentTime+d,0,(A().dur||0)-.01)}
+ function cutSide(dir){const a=A();if(!a.dur||a.run)return;const t=a.PV.currentTime;let G=a.SEG.slice();
+  const i=G.findIndex(g=>t>g.s+.05&&t<g.e-.05);if(i>=0){const g=G[i];G.splice(i,1,{...g,e:t},{...g,s:t})}
+  G.forEach(g=>{if(dir<0?g.e<=t+.001:g.s>=t-.001)g.cut=true});a.SEG=G;a.selI=Math.max(0,G.findIndex(g=>!g.cut));a.refresh();
+  msg(dir<0?'Cortado tudo antes de '+t.toFixed(1)+' s':'Cortado tudo depois de '+t.toFixed(1)+' s')}
+ function keepSel(){const a=A();if(!a.dur||a.run)return;const G=a.SEG.map((g,i)=>({...g,cut:i!==a.selI}));a.SEG=G;a.refresh();msg('Só o trecho selecionado fica no vídeo final')}
+ addEventListener('keydown',e=>{if(!$1('#t-ved').classList.contains('on')||/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||e.ctrlKey||e.metaKey)return;
+  if(e.key==='ArrowLeft'){e.preventDefault();step(e.shiftKey?-1:-1/30)}else if(e.key==='ArrowRight'){e.preventDefault();step(e.shiftKey?1:1/30)}
+  else if(e.key==='i'||e.key==='I')cutSide(-1);else if(e.key==='o'||e.key==='O')cutSide(1);else if(e.key==='+'||e.key==='=')zoom(Z*2);else if(e.key==='-')zoom(Z/2)})}
+
+/* =================== início =================== */
+if(VG.pid&&VG.g.lut==null&&MINE.length===0){}
+syncSliders();loadMine().then(()=>{prevNow()});
+log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-cor, copiar cor), linha do tempo com quadros e zoom','ok');
+}catch(e){try{log('v67: '+e.message,'bad')}catch(_){}}})();
 
 </script>
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
