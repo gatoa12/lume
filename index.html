@@ -417,7 +417,7 @@ nav button i svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-wid
  <h2>Edição <small id="lk">Natural</small></h2>
  <p class="sub wrap">O look vale para as próximas fotos. O original nunca é alterado: fica em <b>Fotos/Originais</b> e a versão editada numa pasta com o nome da versão (ex.: <b>Fotos/2400px_Cinema</b>). As fotos já salvas só mudam se você tocar em "Reaplicar".</p>
  <div class="chips" id="looks"></div>
- <div class="c" style="margin-top:12px"><div class="l">Nitidez final <small id="shpN"></small></div><div class="chips" id="shpC" style="margin-top:6px"></div><div class="sub wrap">Aplicada por último, antes de salvar. Vale só para fotos editadas; a original nunca muda.</div></div>
+ <div class="c" style="margin-top:12px"><div class="l">Nitidez final <small id="shpN"></small></div><div class="chips" id="shpC" style="margin-top:6px"></div><label class="sub" style="display:block;margin-top:10px">Intensidade da nitidez <b id="shpPv">–</b><input type="range" id="shpP" min="0" max="100" step="5" value="40" aria-label="Intensidade da nitidez"></label><div class="sub wrap">Aplicada por último, antes de salvar. Vale só para fotos editadas (pasta da versão); o original em <b>Fotos/Originais</b> nunca muda. 0% = desligada. Com tamanho "Original da câmera" a nitidez leva alguns segundos a mais por foto.</div></div>
  <div class="c" style="margin-top:12px">
   <div class="l">Antes e depois</div><div class="ba" style="margin-top:8px"><img id="baA" alt="Antes"><img id="baB" alt="Depois"><small style="left:8px">Antes</small><small style="right:8px">Depois</small></div>
   <input type="range" id="baR" min="0" max="100" value="50" style="margin-top:8px">
@@ -636,6 +636,7 @@ LS.unstick=function(why,hard){
   set(function(){s.pollBusy=false});set(function(){s.gen=(s.gen||0)+1});
   set(function(){OPW=Promise.resolve()});set(function(){RECP=null});
   if(hard){
+    set(function(){if(typeof stopHeartbeat==='function')stopHeartbeat()});
     set(function(){s.sess=false});set(function(){s.canon=false});set(function(){s.dev=null});set(function(){s.step=''});
     set(function(){Q=Promise.resolve()});
     set(function(){if(LOCKREL)LOCKREL()});
@@ -734,14 +735,23 @@ const fmt=b=>(b/1e6).toFixed(1)+' MB';
 /* ---------- PTP sobre WebUSB ---------- */
 const ANDROID=/Android/i.test(navigator.userAgent),IOS=/iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);let gateOff=false;
 const withT=(p,ms)=>{let t;return Promise.race([p,new Promise((_,j)=>t=setTimeout(()=>j(new Error('câmera não respondeu (tempo esgotado)')),ms))]).finally(()=>clearTimeout(t))};
+/* v61: guarda de USB. Se o cabo saiu (device null/fechado) ou o Chrome abortou a transferência, lança um erro
+   que o LUMEN já reconhece como "cabo caiu" (LOST) em vez de estourar "Cannot read properties of null (reading 'transferOut')" */
+const USBGONE=()=>Object.assign(new Error('USB: no device (câmera desconectada)'),{lumenGone:true});
+const usbOk=d=>!!(d&&d.opened);
+async function usbX(d,fn,ms){
+ if(!usbOk(d))throw USBGONE();
+ try{return await withT(fn(),ms)}
+ catch(e){if(e&&(e.name==='AbortError'||(e instanceof TypeError&&/null/.test(String(e.message)))))throw USBGONE();throw e}}
 async function ptpRawTx(code,params=[],ms=8000,out=null){
+ if(!usbOk(S.dev))throw USBGONE();
  const d=S.dev,tid=++S.tid,b=new DataView(new ArrayBuffer(12+4*params.length));
  b.setUint32(0,b.byteLength,true);b.setUint16(4,1,true);b.setUint16(6,code,true);b.setUint32(8,tid,true);
  params.forEach((p,i)=>b.setUint32(12+4*i,p>>>0,true));
- await withT(d.transferOut(S.eo,b.buffer),ms);
- if(out){const o=new DataView(new ArrayBuffer(12+out.length));o.setUint32(0,o.byteLength,true);o.setUint16(4,2,true);o.setUint16(6,code,true);o.setUint32(8,tid,true);new Uint8Array(o.buffer).set(out,12);await withT(d.transferOut(S.eo,o.buffer),ms)}
+ await usbX(d,()=>d.transferOut(S.eo,b.buffer),ms);
+ if(out){const o=new DataView(new ArrayBuffer(12+out.length));o.setUint32(0,o.byteLength,true);o.setUint16(4,2,true);o.setUint16(6,code,true);o.setUint32(8,tid,true);new Uint8Array(o.buffer).set(out,12);await usbX(d,()=>d.transferOut(S.eo,o.buffer),ms)}
  let q=[],qn=0,data=null;const CH=ANDROID?262144:1048576;
- const fill=async n=>{while(qn<n){const r=await withT(d.transferIn(S.ei,CH),ms);if(r.status!=='ok')throw new Error('USB '+r.status);
+ const fill=async n=>{while(qn<n){const r=await usbX(d,()=>d.transferIn(S.ei,CH),ms);if(r.status!=='ok')throw new Error('USB '+r.status);
   const x=new Uint8Array(r.data.buffer,r.data.byteOffset,r.data.byteLength);if(x.length){q.push(x);qn+=x.length;if(S.dlT)S.dlB=qn}}};
  const take=n=>{const out=new Uint8Array(n);let o=0;while(o<n){const x=q[0],k=Math.min(x.length,n-o);out.set(x.subarray(0,k),o);o+=k;if(k===x.length)q.shift();else q[0]=x.subarray(k)}qn-=n;return out};
  for(;;){await fill(12);const h=take(12),v=new DataView(h.buffer),len=v.getUint32(0,true),type=v.getUint16(4,true),rc=v.getUint16(6,true);
@@ -773,11 +783,41 @@ async function enterRemote(){if(S.canon||!S.dev||S.dev.vendorId!==0x04a9)return;
 async function exitRemote(why){if(!S.canon||!S.dev)return;try{const r=await ptpRaw(0x9116,[],3000);canonEv(r.data,!S.run)}catch(_){}
  S.canon=false;try{await ptpRaw(0x9115,[0],2000)}catch(_){}try{await ptpRaw(0x9114,[0],2000)}catch(_){}log('Canon: câmera voltou ao modo normal'+(why?' ('+why+')':''),'ok')}
 function leaveRemote(why){const r=Q.then(()=>exitRemote(why));Q=r.catch(()=>{});return r}
-async function camRelease(why){const d=S.dev;if(!d)return;S.closing=true;S.sess=false;try{
+async function camRelease(why){stopHeartbeat();const d=S.dev;if(!d)return;S.closing=true;S.sess=false;try{
  try{if(d.opened&&S.eo){const t=1500;if(S.canon){S.canon=false;try{await ptpRaw(0x9115,[0],t)}catch(_){}try{await ptpRaw(0x9114,[0],t)}catch(_){}}if(/Lightroom/i.test(why||'')){try{await ptpRaw(0x1003,[],t)}catch(_){}}try{await d.releaseInterface(S.ifn)}catch(_){}}}catch(_){}
  try{await d.close()}catch(_){}
  S.canon=false;S.dev=null;S.closing=false;Q=Promise.resolve();if(LOCKREL)LOCKREL();log('Câmera liberada'+(why?' ('+why+')':''))}finally{S.closing=false}}
 setInterval(()=>{if(S.canon&&!S.busy&&!S.dlT&&!S.shoot&&Date.now()-(S.remAt||0)>10000)leaveRemote('ocioso')},2000);
+/* v61: PTP Heartbeat (keep-alive). A cada 3 s pede à câmera o nível de bateria (GetDevicePropDesc 0x1014, prop 0x5001,
+   o mesmo comando leve que a aba Bateria já usa e que a R8 aceita). Qualquer resposta, até com código de erro, já é tráfego
+   e impede a Canon de achar que o USB está ocioso. Não usa 0x911D (anti-sono antigo), que derrubava a câmera. */
+const HB_MS=3000,HB_MAX_FAILS=2,HB_WARN_MS=1500;let HB=null;
+/* v62: estado visível do Keep-Alive (lido pelo indicador da aba Início/Conectar):
+   S.hbOn = intervalo ativo · S.hbFails = falhas seguidas · S.hbReco/S.hbRecAt = aviso "Reconectando…" · S.hbOkAt = última resposta */
+function hbPaint(){try{if(typeof window.hbRender==='function')window.hbRender()}catch(_){}}
+function stopHeartbeat(){if(HB){clearInterval(HB);HB=null}S.hbBusy=false;S.hbOn=false;S.hbFails=0;hbPaint()}
+function startHeartbeat(){
+ stopHeartbeat();                                   /* nunca acumula dois intervalos (reconexão rápida) */
+ const dev=S.dev,gen=S.gen;
+ S.hbOn=true;S.hbFails=0;S.hbReco=false;S.hbOkAt=Date.now();hbPaint();
+ HB=setInterval(async()=>{
+  if(!usbOk(S.dev)||S.dev!==dev||S.gen!==gen||!S.sess||S.src!=='usb'||S.closing||S.hold){stopHeartbeat();return}
+  if(S.hbBusy||S.dlT||S.shoot||S.busy||S.pollBusy||S.conn)return;      /* já há conversa em andamento: ela própria mantém a câmera acordada */
+  if(Date.now()-(S.txAt||0)<HB_MS-500)return;                         /* houve tráfego há pouco */
+  S.hbBusy=true;
+  try{await ptp(0x1014,[0x5001],4000);S.hbFails=0;S.hbOkAt=Date.now();S.hbReco=false;hbPaint()}
+  catch(e){
+   const m=String((e&&e.message)||e);
+   if(/liberada|sem câmera|substituída/i.test(m)){stopHeartbeat();return}   /* encerramento normal, não é falha */
+   S.hbFails=(S.hbFails||0)+1;
+   if(S.hbFails<HB_MAX_FAILS){                                       /* 1ª falha: ainda tolera (cabo oscilou, câmera ocupada) */
+    log('Heartbeat: sem resposta ('+m.slice(0,60)+'). Tentando mais uma vez…','bad');hbPaint();return}
+   stopHeartbeat();S.hbReco=true;S.hbRecAt=Date.now();hbPaint();    /* 2 ciclos seguidos: avisa e só depois reconecta */
+   log('Heartbeat: a câmera não respondeu ('+m.slice(0,60)+'). Reconectando…','bad');
+   setTimeout(()=>{
+    try{if(S.sess&&S.dev===dev&&!S.rec&&!S.hold)recover('heartbeat: '+m.slice(0,40));else{S.hbReco=false;hbPaint()}}catch(_){S.hbReco=false;hbPaint()}
+   },HB_WARN_MS)}
+  finally{S.hbBusy=false}},HB_MS)}
 try{log('Build: PTP estável v3 (USB como na v39, anti-sono desligado)','ok')}catch(_){}
 try{if('serviceWorker' in navigator)navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.update())).catch(()=>{})}catch(_){}
 document.addEventListener('click',e=>{if(e.target&&e.target.id==='shpGo'){const b=document.querySelector('#modeC button:nth-child(2)');if(b)b.click()}});
@@ -822,7 +862,7 @@ async function openCamInner(dev,n=0,force=false){
   if(r.rc!==0x2001&&r.rc!==0x201E)throw new Error('câmera recusou a sessão (0x'+r.rc.toString(16)+')');
   S.canon=false;
   /* conectar/importar NUNCA liga o modo remoto (0x9114); só o disparo via app liga, e sai logo depois */
-  S.step='pronta';S.fails=0;S.sess=true;S.src='usb';S.camMsg='';log('Câmera pronta: '+(dev.manufacturerName||'')+' '+(dev.productName||''),'ok');
+  S.step='pronta';S.fails=0;S.sess=true;S.src='usb';S.camMsg='';log('Câmera pronta: '+(dev.manufacturerName||'')+' '+(dev.productName||''),'ok');startHeartbeat();
  }catch(e){
   if(e&&e.cancel){clearTimeout(wd);return}const ex=explain(e);S.sess=false;S.camMsg='Falhou na etapa "'+(S.step||'?')+'": '+ex;log('Câmera ('+(S.step||'?')+'): '+(e.name||'')+' '+e.message+' → '+ex,'bad');
   try{if(S.dev===dev)await camRelease('falha ao conectar');else await dev.close()}catch(_){}S.dev=null;
@@ -885,7 +925,7 @@ setInterval(gateUi,500);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){gateOff=false;setTimeout(autoFind,500)}});
 if('usb' in navigator){
  navigator.usb.addEventListener('connect',e=>{log('USB: dispositivo plugado ('+(e.device.productName||'?')+'), conectando sozinho…');S.settle=Date.now()+2500;S.cool=0;S.fails=0;scheduleFind(2600)});
- navigator.usb.addEventListener('disconnect',e=>{if(S.src==='usb'&&(e.device===S.dev||!S.dev)){S.settle=Date.now()+2500;try{trDump()}catch(_){}S.sess=false;S.dev=null;S.canon=false;S.gen++;S.conn=false;S.closing=false;Q=Promise.resolve();if(LOCKREL)LOCKREL();S.camMsg='';log('Câmera desconectada. Se a tela dela mostrou a bateria carregando, ela desligou sozinha: ligue de novo e o LUMEN volta sozinho.','bad');tick()}});
+ navigator.usb.addEventListener('disconnect',e=>{if(e.device===S.dev||!S.dev)stopHeartbeat();if(S.src==='usb'&&(e.device===S.dev||!S.dev)){S.settle=Date.now()+2500;try{trDump()}catch(_){}S.sess=false;S.dev=null;S.canon=false;S.gen++;S.conn=false;S.closing=false;Q=Promise.resolve();if(LOCKREL)LOCKREL();S.camMsg='';log('Câmera desconectada. Se a tela dela mostrou a bateria carregando, ela desligou sozinha: ligue de novo e o LUMEN volta sozinho.','bad');tick()}});
  setInterval(autoFind,2500);autoFind();
 }
 
@@ -1051,7 +1091,7 @@ async function render(blob,p,max,q,wm,x=1,m){
  w=bm.width;h=bm.height;
  if(max&&Math.max(w,h)>max){const k=max/Math.max(w,h);w=Math.round(w*k);h=Math.round(h*k)}
  const cv=document.createElement('canvas');cv.width=w;cv.height=h;const g=cv.getContext('2d');g.imageSmoothingQuality='high';if(HCF){g.filter=filt(p,x);g.drawImage(bm,0,0,w,h);g.filter='none'}else{g.drawImage(bm,0,0,w,h);pxLook(cv,p,x)}
- {const sl=shpLv();if(sl==='a'){if(max>640&&m&&m.w&&C.shp!==false&&Math.max(m.w,m.h)/Math.max(w,h)>=1.4)sharpen(cv,.2)}else if(sl>0&&max>640)sharpen(cv,sl===2?.35:.2)}
+ {const sl=shpLv();if(sl==='a'){if(max>640&&m&&m.w&&C.shp!==false&&Math.max(m.w,m.h)/Math.max(w,h)>=1.4)sharpen(cv,.2)}else if(sl==='p'){const a=shpAmt();if(a>0&&(!max||max>640))sharpen(cv,a)}else if(sl>0&&max>640)sharpen(cv,sl===2?.35:.2)}
  if(wm){g.font='bold '+Math.round(w/22)+'px sans-serif';g.fillStyle='rgba(255,255,255,.55)';g.textAlign='right';g.fillText('LUMEN',w-w/40,h-h/40)}
  bm.close();return new Promise(r=>cv.toBlob(r,'image/jpeg',q/100))}
 const thumb=async(b,x)=>URL.createObjectURL(await render(b,RAWM()?{b:1,c:1,s:1,se:0,h:0,g:0}:C.cur,320,70,false,RAWM()?1:x));
@@ -1353,7 +1393,7 @@ async function wifiConnect(){
   catch(e){err=e.name==='AbortError'?'sem resposta':'bloqueado ou inacessível'}}
  m.textContent='Não consegui ('+err+'). Confira: IP certo, celular e câmera na mesma rede, CCAPI ligado na câmera e, se esta página é HTTPS, o certificado aceito (abra https://'+host+' uma vez).';log('Wi-Fi: falhou ('+err+')','bad')}
 $('#wGo').onclick=wifiConnect;
-$('#wOff').onclick=()=>{S.sess=false;S.src='usb';cc.base='';cc.sd='';log('Wi-Fi desconectado');tick();conUi()};
+$('#wOff').onclick=()=>{stopHeartbeat();S.sess=false;S.src='usb';cc.base='';cc.sd='';log('Wi-Fi desconectado');tick();conUi()};
 S.wf=0;
 setInterval(async()=>{if(S.src!=='wifi'||!cc.base||S.pollBusy)return;
  if(!S.sess){try{await ccJ('/ccapi',4000);S.sess=true;S.wf=0;S.camMsg='';log('Wi-Fi: câmera voltou','ok')}catch(e){}tick();return}
@@ -1425,7 +1465,7 @@ async function keepExif(orig,pub){try{
 /* publica sem perda quando não há nada a mudar; senão re-codifica mantendo o EXIF */
 async function mkPub(blob,x,m){
  if(RAWM())return blob;
- if(isNeutral(C.cur)&&!C.wm&&x===1&&(C.size===0||(m&&m.w&&Math.max(m.w,m.h)<=C.size)))return blob;
+ if(isNeutral(C.cur)&&!C.wm&&x===1&&shpAmt()===0&&(C.size===0||(m&&m.w&&Math.max(m.w,m.h)<=C.size)))return blob;
  const p=await render(blob,C.cur,C.size,C.q,C.wm,x,m);return C.exif===false?p:await keepExif(blob,p)}
 
 /* fila segura de envio (IndexedDB): sobrevive a fechar a página */
@@ -1772,7 +1812,7 @@ const cfg=$('t-cfg');if(cfg&&!$('v48c')){const c=document.createElement('div');c
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();ev=e;draw();ban()});
 addEventListener('appinstalled',()=>{ev=null;T('LUMEN instalado!','ok');draw();const b=$('v48b');b&&b.classList.remove('on')});
 matchMedia('(display-mode: standalone)').addEventListener&&matchMedia('(display-mode: standalone)').addEventListener('change',draw);
-if('serviceWorker' in navigator&&isSecureContext)navigator.serviceWorker.register('sw.js').then(r=>{sw=true;draw();r.addEventListener('updatefound',()=>{const n=r.installing;n&&n.addEventListener('statechange',()=>{if(n.state==='installed'&&navigator.serviceWorker.controller)T('Nova versão pronta: feche e abra o app.','ok')})})}).catch(()=>{sw=false;draw()});else if(!isSecureContext){sw=false}
+if('serviceWorker' in navigator&&isSecureContext){try{const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had)T('Nova versão ativa: recarregue a página.','ok')})}catch(_){}navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(r=>{sw=true;draw();try{r.update()}catch(_){}r.addEventListener('updatefound',()=>{const n=r.installing;n&&n.addEventListener('statechange',()=>{if(n.state==='installed'&&navigator.serviceWorker.controller)T('Nova versão pronta: recarregue a página.','ok')})})}).catch(()=>{sw=false;draw()})}else if(!isSecureContext){sw=false}
 /* convite discreto (uma vez; “Agora não” esconde) */
 const bn=document.createElement('div');bn.id='v48b';bn.innerHTML='<span>📲 Instale o LUMEN como app</span><button class="f p" id="v48y">Instalar</button><button class="f" id="v48n">Agora não</button>';document.body.appendChild(bn);
 function ban(){try{if(standalone()||!isSecureContext||localStorage.getItem('lumen.inst')==='1')return;if(ev||canGuide())bn.classList.add('on')}catch(e){}}
@@ -1980,18 +2020,28 @@ html:root body{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
 @media (max-width:819px){html:root body nav{left:8px;right:8px;transform:none;width:auto}}
 </style>
 <script>
-/* ===== v48: Nitidez final opcional (Desligada Â· Auto Â· Leve Â· Forte) ===== */
+/* ===== v48/v62: Nitidez final opcional (Desligada · Auto · Leve · Forte · Personalizada 0–100%) =====
+   Só atua no canvas da versão publicada/editada (render → mkPub). O arquivo cru da câmera (Fotos/Originais) nunca passa por aqui. */
 function shpLv(){const v=C.shpL;return v===undefined?(C.shp===false?0:'a'):v}
+function shpAmt(){const v=shpLv();return v==='p'?Math.max(0,Math.min(100,+C.shpP||0))/100*.5:v===2?.35:v===1?.2:0}   /* 100% = .5 · Forte = 70% · Leve = 40% */
 (function(){
- const OPT=[[0,'Desligada'],['a','Auto'],[1,'Leve'],[2,'Forte']],NM={0:'desligada','a':'automÃ¡tica ao reduzir',1:'leve',2:'forte'};
- const get=()=>shpLv(),set=v=>{C.shpL=v;C.shp=(v!==0);store();log('Nitidez final: '+NM[v],'ok');ui()};
+ const OPT=[[0,'Desligada'],['a','Auto'],[1,'Leve'],[2,'Forte']],NM={0:'desligada','a':'automática ao reduzir',1:'leve',2:'forte'};
+ const nm=v=>v==='p'?('personalizada '+Math.round(+C.shpP||0)+'%'):(NM[v]||'');
+ const get=()=>shpLv(),set=v=>{C.shpL=v;C.shp=(v!==0);store();log('Nitidez final: '+nm(v),'ok');ui()};
  function ui(){
   chips('#shpC',OPT,get,set);chips('#shpH',OPT,get,set);
-  const n=document.getElementById('shpN');if(n)n.textContent=NM[shpLv()];
+  const n=document.getElementById('shpN');if(n)n.textContent=nm(shpLv());
   const c=document.getElementById('shp');if(c)c.checked=shpLv()!==0;
+  const sl=document.getElementById('shpP'),pv=document.getElementById('shpPv');
+  if(sl){const lv=shpLv(),pct=lv==='p'?Math.round(+C.shpP||0):lv===0?0:lv===1?40:lv===2?70:40;
+   sl.value=pct;if(pv)pv.textContent=lv==='a'?'Auto':pct+'%'}
  }
  const c=document.getElementById('shp');
  if(c)c.onchange=e=>{C.shpL=e.target.checked?'a':0;C.shp=e.target.checked;store();ui()};
+ const sl=document.getElementById('shpP');
+ if(sl){
+  sl.oninput=e=>{const pv=document.getElementById('shpPv');if(pv)pv.textContent=e.target.value+'%'};
+  sl.onchange=e=>{const v=Math.max(0,Math.min(100,+e.target.value||0));C.shpP=v;C.shpL=v>0?'p':0;C.shp=v>0;store();log('Nitidez final: '+nm(shpLv()),'ok');ui()}}
  ui();
 })();
 </script>
@@ -4472,3 +4522,43 @@ applyLook();refresh();
 })();
 </script>
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
+<style id="v62css">
+/* v62: indicador discreto do Keep-Alive (sinal de vida) */
+.hbSt{display:block;margin-top:6px;font-size:12px;font-weight:700;line-height:1.25;opacity:.9}
+.hbSt::before{content:"●";margin-right:5px;font-size:10px;vertical-align:1px}
+.hbSt[data-s=ok]::before{color:#00a651}.hbSt[data-s=warn]::before{color:#e0a800}.hbSt[data-s=bad]::before{color:#e60000}
+.hbSt[data-s=off]::before{color:#8a8a93}
+#cpCam .hbSt::before{color:currentColor}
+@keyframes hbPulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hbSt[data-s=ok]::before{animation:hbPulse 3s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.hbSt[data-s=ok]::before{animation:none}}
+</style>
+<script id="v62hb">
+/* v62: Keep-Alive visível. Lê S.hbOn / S.hbFails / S.hbReco / S.hbOkAt / S.txAt (escritos pelo Heartbeat) — nunca escreve no estado da câmera. */
+(function(){try{
+ function view(){
+  const now=Date.now();
+  if(typeof S==='undefined')return{s:'off',short:'Keep-Alive indisponível',long:''};
+  if(S.hbReco&&now-(S.hbRecAt||0)<25000)return{s:'warn',short:'Reconectando…',long:'A câmera não respondeu duas vezes seguidas. Reconectando… confira o cabo e se a câmera está ligada.'};
+  if(S.src&&S.src!=='usb')return{s:'off',short:'Keep-Alive: só no modo USB',long:'O sinal de vida é enviado apenas na conexão por cabo USB.'};
+  if(S.hbOn&&S.sess){
+   if((S.hbFails||0)>0)return{s:'warn',short:'Keep-Alive: sinal instável',long:'Sem resposta no último teste. Tentando mais uma vez antes de reconectar…'};
+   const last=Math.max(S.hbOkAt||0,S.txAt||0),ago=last?Math.max(0,Math.round((now-last)/1000)):null;
+   return{s:'ok',short:'Keep-Alive ativo',long:'Sinal de vida ativo (teste a cada 3 s)'+(ago!==null?' · último sinal há '+ago+' s':'')+'.'}}
+  return{s:'off',short:'Keep-Alive em espera',long:'Aguardando a câmera conectar para ligar o sinal de vida.'}}
+ function mount(){
+  const box=document.getElementById('cpCam');
+  if(box&&!document.getElementById('hbHome')){const sp=document.createElement('span');sp.id='hbHome';sp.className='hbSt';sp.setAttribute('role','status');sp.setAttribute('aria-live','polite');box.appendChild(sp)}
+  const cu=document.getElementById('conUsb');
+  if(cu&&cu.parentNode&&!document.getElementById('hbCon')){const d=document.createElement('div');d.className='c';d.id='hbCon';
+   d.innerHTML='<div class="l">Sinal de vida (Keep-Alive)</div><div class="sub wrap hbSt" id="hbConT" role="status" aria-live="polite" style="white-space:normal"></div>';
+   cu.parentNode.insertBefore(d,cu)}}
+ function render(){try{
+  mount();const v=view(),h=document.getElementById('hbHome'),t=document.getElementById('hbConT');
+  if(h){h.dataset.s=v.s;h.textContent=v.short}
+  if(t){t.dataset.s=v.s;t.textContent=v.long||v.short}
+ }catch(_){}}
+ window.hbRender=render;render();setInterval(render,1000);
+ try{log('Build v62: Keep-Alive visível, aviso "Reconectando…" e nitidez 0–100% (só nas cópias editadas)','ok')}catch(_){}
+}catch(e){}})();
+</script>
