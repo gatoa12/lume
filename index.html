@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v71</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v72</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -1808,7 +1808,7 @@ function explain(e){if(e&&e.lumenUsb&&window.__LUMEN_SAFE)return __LUMEN_SAFE.us
  if(n==='NotAllowedError')return 'O acesso ao USB foi recusado. Toque em "Tentar reconectar" e, na janela do Chrome, escolha a câmera e toque em Conectar/Permitir.';
  if(n==='NotFoundError'||/No device selected/i.test(m))return 'Nada foi escolhido. Se a lista do Chrome veio vazia, ele não está vendo a câmera: use um cabo de DADOS, ligue a câmera, deixe o USB em "Importação de fotos / Controle remoto" e toque em "Mostrar todos os USB".';
  if(n==='SecurityError'||/denied|not allowed|permission/i.test(m))return 'O Android negou o acesso ao USB. Replugue o cabo, toque em Conectar e, se aparecer "Permitir que o Chrome acesse o dispositivo USB?", toque em Permitir (marque "Usar por padrão" se existir). Confira também Chrome > Configurações do site > Dispositivos USB.';
- if(/claim|busy/i.test(m))return /Android/i.test(navigator.userAgent)?'Outro app está com a câmera (Camera Connect, Fotos, Galeria). Feche-os nos apps recentes, em Configurações > Apps > Abrir por padrão limpe os padrões, desligue e ligue a câmera, replugue o cabo e toque em Conectar. Se continuar, use o modo Pasta ou Wi-Fi na aba Conectar.':/Mac/i.test(navigator.userAgent)?'O macOS está segurando a câmera (processo ptpcamerad). Toque em "Copiar comando do Terminal (Mac)", cole no Terminal, aperte Enter e DEIXE RODANDO. Depois feche Fotos, Captura de Imagem e EOS Utility, desligue e ligue a câmera e toque em Conectar. Se continuar, use o modo Pasta ou Wi-Fi na aba Conectar.':'O Windows está segurando a câmera com o driver dele e o Chrome não consegue assumi-la. Feche EOS Utility e Fotos; se persistir, use um celular Android com cabo, ou troque o driver da câmera para WinUSB (programa Zadig). Ou use o modo Pasta ou Wi-Fi na aba Conectar.';
+ if(/claim|busy/i.test(m))return /Android/i.test(navigator.userAgent)?'Outro app está com a câmera (Camera Connect, Fotos, Galeria). Feche-os nos apps recentes, em Configurações > Apps > Abrir por padrão limpe os padrões, desligue e ligue a câmera, replugue o cabo e toque em Conectar. Se continuar, use o modo Pasta ou Wi-Fi na aba Conectar.':/Mac/i.test(navigator.userAgent)?'O macOS está segurando a câmera (processo ptpcamerad). Instale o Protetor USB do Mac (cartão no Início: copie, cole no Terminal e Enter, só 1 vez). Depois replugue o cabo: o LUMEN conecta sozinho. Se continuar, use o modo Pasta ou Wi-Fi na aba Conectar.':'O Windows está segurando a câmera com o driver dele e o Chrome não consegue assumi-la. Feche EOS Utility e Fotos; se persistir, use um celular Android com cabo, ou troque o driver da câmera para WinUSB (programa Zadig). Ou use o modo Pasta ou Wi-Fi na aba Conectar.';
  if(/transfer error|babble|stall|disconnect|no device|NetworkError/i.test(m))return 'A conexão USB oscilou. Replugue o cabo direto no celular (sem hub) e toque em Conectar.';
  if(/tempo esgotado/i.test(m))return 'A câmera parou de responder. Desligue e ligue a câmera, replugue o cabo e toque em Conectar.';
  return m}
@@ -5194,7 +5194,7 @@ applyLook();refresh();
  /* guia de falha: o que fazer, em ordem */
  const g=document.createElement('div');
  g.id='v60g';g.style.cssText='position:fixed;left:50%;transform:translateX(-50%);bottom:calc(150px + env(safe-area-inset-bottom,0px));z-index:120;width:min(94vw,440px);display:none;background:#1b1210;border:1px solid #f59e0b;color:#fff;border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.45';
- g.innerHTML='<b>A conexão com a câmera falhou</b><ol style="margin:6px 0 8px 18px;padding:0"><li>Deixe o LUMEN aberto: ele tenta de novo sozinho.</li><li>Se a tela da câmera mostra bateria/carregando, desative "Alimentação via USB" e escolha o modo <b>PC Remoto</b> (ou Importação de fotos).</li><li>No Mac: aba Conectar › "Copiar comando do Terminal", cole no Terminal e deixe aberto (impede o ptpcamerad de pegar a câmera). Depois desligue e ligue a câmera e replugue o cabo.</li><li>Ainda falha? Use a <b>Conexão 2 (Lightroom)</b> na aba Conectar.</li></ol><button id="v60r" style="padding:8px 12px;border-radius:10px;border:0;background:#f59e0b;color:#000;font-weight:700">Reconectar agora</button> <button id="v60x" aria-label="Fechar aviso" style="padding:8px 12px;border-radius:10px;border:1px solid #555;background:none;color:#fff">Fechar</button>';
+ g.innerHTML='<b>A conexão com a câmera falhou</b><ol style="margin:6px 0 8px 18px;padding:0"><li>Deixe o LUMEN aberto: ele tenta de novo sozinho.</li><li>Se a tela da câmera mostra bateria/carregando, desative "Alimentação via USB" e escolha o modo <b>PC Remoto</b> (ou Importação de fotos).</li><li>No Mac: instale o Protetor USB (cartão no Início, 1 vez só, não precisa deixar o Terminal aberto). Depois desligue e ligue a câmera e replugue o cabo.</li><li>Ainda falha? Use a <b>Conexão 2 (Lightroom)</b> na aba Conectar.</li></ol><button id="v60r" style="padding:8px 12px;border-radius:10px;border:0;background:#f59e0b;color:#000;font-weight:700">Reconectar agora</button> <button id="v60x" aria-label="Fechar aviso" style="padding:8px 12px;border-radius:10px;border:1px solid #555;background:none;color:#fff">Fechar</button>';
  document.body.appendChild(g);let shut=0;
  $('#v60r').onclick=()=>{try{S.cool=0;S.fails=0;g.style.display='none';shut=Date.now()+60000;S.settle=0;autoFind().then(()=>setTimeout(()=>{if(!S.sess&&!S.dev&&!S.conn&&!(S.usbList&&S.usbList.length)){const b=$('#bCam');b&&b.click()}},2500))}catch(_){}};
  $('#v60x').onclick=()=>{g.style.display='none';shut=Date.now()+120000};
@@ -6584,6 +6584,80 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
  drawD();
  log('Build v71: todas as abas na barra de baixo, topo sem corte, girar vídeos (um ou todos)','ok');
 }catch(e){try{log('v71: '+e.message,'bad')}catch(_){}}})();
+</script>
+
+<script id="v72">
+/* ===== v72 · Protetor USB do Mac (instala 1 vez, fica ligado sempre, sem Terminal aberto):
+   - impede o macOS (ptpcamerad, Captura de Imagem, Pré-Visualização, Fotos, Importador automático) de pegar a câmera ao plugar;
+   - o site reconecta sozinho e rápido ao plugar/ligar a câmera e já a tira da tela "bateria + computador";
+   - todos os botões antigos de "Copiar comando do Terminal" passam a copiar o instalador permanente. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),UA=navigator.userAgent,MAC=/Mac/i.test(UA)&&!(/iPhone|iPad/.test(UA)||navigator.maxTouchPoints>1);
+ const LBL='com.lumen.usbguard';
+ const LOOP="launchctl disable gui/$(id -u)/com.apple.ptpcamerad 2>/dev/null; while :; do /usr/bin/killall -9 ptpcamerad PTPCamera AutoImporter 2>/dev/null; sleep 0.3; done";
+ const PLIST='<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0"><dict><key>Label</key><string>'+LBL+'</string><key>ProgramArguments</key><array><string>/bin/sh</string><string>-c</string><string>'+LOOP+'</string></array><key>RunAtLoad</key><true/><key>KeepAlive</key><true/><key>ProcessType</key><string>Background</string><key>StandardErrorPath</key><string>/dev/null</string><key>StandardOutPath</key><string>/dev/null</string></dict></plist>';
+ const INSTALL='mkdir -p ~/Library/LaunchAgents && cat > ~/Library/LaunchAgents/'+LBL+".plist <<'LUMENEOF'\n"+PLIST+"\nLUMENEOF\n"
+  +'launchctl bootout gui/$(id -u)/'+LBL+' 2>/dev/null; launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/'+LBL+'.plist; '
+  +'launchctl disable gui/$(id -u)/com.apple.ptpcamerad 2>/dev/null; '
+  +'defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool YES; defaults write com.apple.ImageCapture disableHotPlug -bool YES; '
+  +"defaults -currentHost write com.apple.ImageCapture2 HotPlugActionPath ''; defaults write com.apple.ImageCapture2 HotPlugActionPath ''; "
+  +'killall -9 ptpcamerad PTPCamera AutoImporter 2>/dev/null; echo; echo "✔ Protetor USB do LUMEN instalado. Pode fechar o Terminal."';
+ const PAUSE='launchctl bootout gui/$(id -u)/'+LBL+' 2>/dev/null; launchctl enable gui/$(id -u)/com.apple.ptpcamerad; echo "⏸ Protetor pausado até reiniciar o Mac (ou rodar o comando de instalar de novo)."';
+ const UNINST='launchctl bootout gui/$(id -u)/'+LBL+' 2>/dev/null; rm -f ~/Library/LaunchAgents/'+LBL+'.plist; launchctl enable gui/$(id -u)/com.apple.ptpcamerad; '
+  +'defaults -currentHost delete com.apple.ImageCapture disableHotPlug 2>/dev/null; defaults delete com.apple.ImageCapture disableHotPlug 2>/dev/null; '
+  +'defaults -currentHost delete com.apple.ImageCapture2 HotPlugActionPath 2>/dev/null; defaults delete com.apple.ImageCapture2 HotPlugActionPath 2>/dev/null; echo "✔ Protetor removido: o Mac voltou ao normal."';
+ window.LUMEN_MAC_INSTALL=INSTALL;
+ const KEY='lumen_macguard';const G=(()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(_){return{}}})();const sv=()=>{try{localStorage.setItem(KEY,JSON.stringify(G))}catch(_){}};
+ async function copy(t,b,ok){try{await navigator.clipboard.writeText(t);if(b){const o=b.textContent;b.textContent=ok;setTimeout(()=>b.textContent=o,6000)}}catch(_){prompt('Copie e cole no Terminal:',t)}}
+ if(!MAC)return;
+
+ /* 1. todos os botões antigos de "Copiar comando do Terminal" copiam o instalador permanente */
+ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('button');if(!b||b.closest('#mgCard'))return;
+  if(/Copiar comando do Terminal/i.test(b.textContent)&&!/desfazer/i.test(b.textContent)){e.preventDefault();e.stopImmediatePropagation();G.copied=Date.now();sv();copy(INSTALL,b,'✔ Copiado: cole no Terminal, Enter e pronto (pode fechar)');render()}},true);
+
+ /* 2. mede se o protetor está funcionando: a câmera abriu de primeira, sem "interface ocupada" */
+ let plugAt=0,busySince=false;
+ const L0=window.log;if(typeof L0==='function')window.log=function(t){try{const m=String(t);
+   if(/Interface ocupada|ptpcamerad|segurando a câmera/i.test(m)){busySince=true;G.busy=Date.now();sv()}
+   if(/^Câmera pronta/.test(m)){if(!busySince){G.ok=Date.now();G.fast=(G.fast||0)+1}else G.fast=0;busySince=false;sv();render()}}catch(_){}return L0.apply(this,arguments)};
+ const working=()=>G.ok&&(!G.busy||G.ok>G.busy);
+
+ /* 3. ao plugar ou ligar a câmera: reconecta rápido (com o protetor ninguém disputa a porta) */
+ if('usb' in navigator){
+  navigator.usb.addEventListener('connect',e=>{plugAt=Date.now();busySince=false;if(e.device&&e.device.vendorId!==0x04a9)return;
+   if(working()||G.copied){setTimeout(()=>{try{S.settle=Date.now()+1100;S.cool=0;S.fails=0;scheduleFind(1200)}catch(_){}} ,0)}});
+  /* câmera que já está no cabo e foi ligada (sem evento de "plug" no Mac): tenta de novo a cada 1,5 s enquanto não houver sessão */
+  setInterval(()=>{try{if(S.hold||S.sess||S.conn||S.pend||S.rec||S.src!=='usb'||Date.now()<(S.cool||0))return;if(document.hidden&&!S.run)return;autoFind()}catch(_){}},1500)}
+
+ /* 4. cartão no Início e na aba Conectar */
+ const card=document.createElement('div');card.className='c v69c';card.id='mgCard';
+ card.innerHTML='<div class="v69h"><b>🛡 Protetor USB do Mac</b><span class="pillS" id="mgSt">—</span></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Ao plugar a câmera, o macOS abre a <b>Pré-Visualização / Captura de Imagem / Fotos</b> e toma a câmera antes do site. Por isso ela fica na tela da <b>bateria com o computador</b> e às vezes não conecta de primeira. O protetor resolve isso <b>de vez</b>: instala 1 vez, liga sozinho quando o Mac inicia e não precisa deixar o Terminal aberto.</div>'
+  +'<ol class="steps" data-ex="1"><li><b>Copie o instalador.</b><small>Toque no botão amarelo abaixo.</small></li>'
+  +'<li><b>Abra o Terminal.</b><small>⌘ + Espaço, digite <b>Terminal</b> e aperte Enter.</small></li>'
+  +'<li><b>Cole e aperte Enter.</b><small>⌘ + V e Enter. Aparece "✔ Protetor USB do LUMEN instalado". Pode fechar o Terminal.</small></li>'
+  +'<li><b>Tire o cabo e coloque de novo</b> (câmera ligada).<small>Nada abre no Mac e o LUMEN conecta sozinho em 1 a 2 s, já liberando a câmera para fotografar. Este cartão fica verde.</small></li></ol>'
+  +'<div class="fx3a"><button type="button" class="f p" id="mgIn">📋 Copiar instalador (1 vez)</button><button type="button" class="f" id="mgPa">Copiar comando para pausar</button><button type="button" class="f" id="mgUn">Copiar comando para remover</button></div>'
+  +'<details class="ex"><summary>Bom saber</summary><div class="sub wrap" data-ex="1" style="white-space:normal">'
+  +'<p>• Enquanto o protetor estiver ligado, o app <b>Fotos</b> e a <b>Captura de Imagem</b> do Mac não enxergam câmeras nem iPhone pelo cabo. Para importar algo por eles, use "pausar" (volta sozinho ao reiniciar o Mac) ou "remover".</p>'
+  +'<p>• Deixe o LUMEN aberto no Chrome (de preferência instalado como app). Com o site fechado, a câmera fica na tela de bateria até você abrir o LUMEN: aí ele conecta sozinho.</p>'
+  +'<p>• Câmera desligada e plugada mostra a bateria carregando: isso é normal (ela carrega pelo USB). Ligue a câmera e o LUMEN a libera para fotografar.</p>'
+  +'<p>• Se a câmera tiver a opção de alimentação/carregamento pelo USB no menu, desativá-la evita que ela fique "presa" carregando quando o cabo oscila.</p>'
+  +'<p>• Deixe o desligamento automático da câmera em Desativar durante o evento.</p></div></details>';
+ function place(){const h=$1('#fluxo');if(h&&card.parentNode!==h.parentNode){h.after(card)}else if(!h&&!card.parentNode){const c=$1('#t-con');c&&c.prepend(card)}
+  const old=$1('#fxMac');if(old)old.hidden=true}
+ place();setTimeout(place,2500);setTimeout(place,8000);
+ $1('#mgIn').onclick=e=>{G.copied=Date.now();sv();copy(INSTALL,e.target,'✔ Copiado: cole no Terminal e aperte Enter');render()};
+ $1('#mgPa').onclick=e=>copy(PAUSE,e.target,'✔ Copiado (pausar)');
+ $1('#mgUn').onclick=e=>{G.copied=0;G.ok=0;sv();copy(UNINST,e.target,'✔ Copiado (remover)');render()};
+ function render(){try{const st=$1('#mgSt');if(!st)return;
+  if(working()){st.textContent='funcionando ✔';st.className='pillS ok';card.querySelector('ol').hidden=true}
+  else if(S.usbBusyNow||(G.busy&&Date.now()-G.busy<120000)){st.textContent=G.copied?'ainda bloqueado: cole no Terminal':'Mac segurando a câmera';st.className='pillS bad';card.querySelector('ol').hidden=false}
+  else if(G.copied){st.textContent='copiado: replugue o cabo para testar';st.className='pillS warn'}
+  else{st.textContent='não instalado';st.className='pillS warn'}}catch(_){}}
+ setInterval(render,1500);render();
+ log('Build v72: Protetor USB do Mac (permanente), reconexão rápida ao plugar/ligar a câmera','ok');
+}catch(e){try{log('v72: '+e.message,'bad')}catch(_){}}})();
 </script>
 
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
