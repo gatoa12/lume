@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v88</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v92</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -1246,6 +1246,21 @@ body.kiosk>.w,body.kiosk>section.tab.w{margin:0 auto!important}
 .pvGo{position:fixed;inset:0;z-index:2147483001;background:rgba(0,0,0,.88);color:#fff;border:0;font-size:24px;font-weight:800;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;width:100%;border-radius:0}.pvGo small{font-size:14px;font-weight:500;opacity:.8}
 #t-pv [hidden]{display:none!important}
 #t-pv [hidden]{display:none!important}
+nav button{position:relative}nav button .avDot,nav button .avBadge{position:absolute;top:4px;right:6px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#e02424;color:#fff;font-size:11px;font-weight:800;line-height:18px;text-align:center;font-style:normal;box-shadow:0 0 0 2px var(--bg,#111)}
+#avBell{border:1px solid var(--line);font-family:inherit;cursor:pointer;white-space:nowrap}#avBell[data-st=bad]{background:#e02424;border-color:#e02424;color:#fff;font-weight:800}
+#avPill{position:fixed;right:14px;bottom:86px;z-index:9000;background:#e02424;color:#fff;border:0;border-radius:999px;padding:10px 16px;font-weight:800;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.45);cursor:pointer;width:auto;min-height:0}#avPill[hidden]{display:none}
+#t-avisos .avN.done{opacity:.6}#t-avisos .avN.live{border-left:4px solid #e02424}#t-avisos .avH1{display:flex;gap:10px;align-items:flex-start}#t-avisos .avI{font-size:24px}#t-avisos .avH1 small{display:block;color:var(--mut);font-size:12px;margin-top:2px}
+#t-avisos .avWhy{font-size:13px;line-height:1.5;margin:8px 0;padding:8px 10px;border-radius:10px;background:rgba(127,127,127,.08)}#t-avisos .avWhy i{display:block;color:#ff8a8a;font-style:normal;margin-top:2px}
+#t-avisos .avFiles{font-size:12px;color:var(--mut);margin:4px 0}#t-avisos .avTry{font-size:13px;font-weight:700;margin:6px 0}#t-avisos .avF{margin-top:10px}#t-avisos .avF button.on{background:var(--acc,#ffc21a);color:#111}
+#t-avisos .avHL .f{width:auto;padding:5px 10px;min-height:0;font-size:12px;margin-left:6px}#t-avisos .avHB div{padding:3px 0;border-bottom:1px solid rgba(127,127,127,.12)}
+.bkC label.f{display:flex;align-items:center;justify-content:center}
+html:root body .vzEmpty{display:none!important}
+.lvC .lvDrop{display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;width:100%;padding:22px 14px;border-radius:14px;border:2px dashed rgba(255,194,26,.6);background:rgba(255,194,26,.07);color:var(--ink);cursor:pointer;min-height:0;margin:8px 0}.lvC .lvDrop b{font-size:16px}.lvC .lvDrop small{color:var(--mut)}.lvC.drag .lvDrop{background:rgba(255,194,26,.2)}
+.lvC .lvR{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 0;border-top:1px solid rgba(127,127,127,.15)}.lvC .lvR span{flex:1;min-width:160px;overflow-wrap:anywhere}.lvC .lvR small{color:var(--mut)}.lvC .lvR .f,.lvC .lvRe .f{width:auto;padding:6px 12px;min-height:0}.lvC .lvRe{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.lvSc{width:auto!important;margin:0 0 10px}
+/* v92: erros não aparecem mais como quadro vermelho na tela: ficam só em Avisos (o sino pisca) */
+#tst.bad,#v47t .bad{display:none!important}
+#avBell.pulse{animation:avPulse 1.2s ease-out 3}@keyframes avPulse{0%{box-shadow:0 0 0 0 rgba(224,36,36,.8)}100%{box-shadow:0 0 0 12px rgba(224,36,36,0)}}
 </style>
 
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -7873,7 +7888,7 @@ mqtt/dist/mqtt.esm.js:
  function typeOf(p){const P='/'+p;if(/\/Editadas\//i.test(P))return'ed';if(/\/RAW\//i.test(P))return'raw';if(/\/Quarentena\//i.test(P))return'qua';if(/\/Videos\//i.test(P))return/\/Com_look\//i.test(P)?'vlook':'vid';if(/\/Originais\//i.test(P))return'orig';
   const n=p.split('/').pop();return isVid(n)?'vid':isRaw(n)?'raw':'pub'}
  let onDisk=new Set();
- function scanItems(){for(const it of S.items||[]){if((it.kind!=='foto'&&it.kind!=='video')||it.peer||it.remote)continue;if(it.disk&&S.dir&&S.perm&&!S.dir.virtual){quickScan();continue}const k='i'+it.id;if(LOC.has(k))continue;
+ function scanItems(){for(const it of S.items||[]){if((it.kind!=='foto'&&it.kind!=='video')||it.peer||it.remote||it.local)continue;if(it.disk&&S.dir&&S.perm&&!S.dir.virtual){quickScan();continue}const k='i'+it.id;if(LOC.has(k))continue;
   const ty=it.raw?'pv':it.kind==='video'?'vid':it.cls==='d'?'qua':'orig';
   LOC.set(k,{m:{k,n:it.name,p:'',kind:it.kind,ty,sz:it.size||0,t:it.t||Date.now()},
    get:async()=>{if(!it.blob&&window.ensureBlob)await ensureBlob(it);if(it.blob)return it.blob;if(it.url)return await (await fetch(it.url)).blob();throw new Error('arquivo não está mais neste aparelho')},
@@ -8299,7 +8314,7 @@ mqtt/dist/mqtt.esm.js:
   for(const id of R.conns.keys())if(!R.quality.has(id))quality(id);mirrorPlan()}paint()},10000);
  setInterval(()=>{if(sec.classList.contains('on'))draw()},3000);
  window.LUMEN_ROOM_DBG={drop:()=>{for(const RO of R.rooms)for(const pc of Object.values(RO.room.getPeers()))try{pc.close()}catch(_){}}};
- window.LUMEN_ROOM_PV=previewOf;window.LUMEN_ROOM_GET=(dev,k)=>{const c=R.cats.get(dev);const it=c&&c.get(k);if(!it)return Promise.reject(new Error('foto não encontrada'));return fetchFile(dev,it).then(r=>r.blob)};window.LUMEN_ROOM_RECENT=n=>{const L=[];for(const[dev,cat] of R.cats){if(dev===R.myId||!allowed(dev))continue;const d=R.devs.get(dev)||{};for(const it of cat.values())if(it.kind==='foto'&&it.ty!=='raw')L.push({dev,it,devName:d.name||'Aparelho',ic:d.ic||'📱'})}return L.sort((a,b)=>a.it.t-b.it.t).slice(-(n||30))};window.LUMEN_ROOM_DEVS=()=>[...R.devs.values()].filter(d=>d.id!==R.myId&&allowed(d.id));
+ window.LUMEN_ROOM_PV=previewOf;window.LUMEN_ROOM_FAILS=()=>[...MQ.fail.values()].map(f=>({n:f.it.n,e:f.e,tries:f.n,dev:(R.devs.get(f.dev)||{}).name||''}));window.LUMEN_ROOM_RETRY=()=>{try{q('.apRetry').click()}catch(_){}};window.LUMEN_ROOM_GET=(dev,k)=>{const c=R.cats.get(dev);const it=c&&c.get(k);if(!it)return Promise.reject(new Error('foto não encontrada'));return fetchFile(dev,it).then(r=>r.blob)};window.LUMEN_ROOM_RECENT=n=>{const L=[];for(const[dev,cat] of R.cats){if(dev===R.myId||!allowed(dev))continue;const d=R.devs.get(dev)||{};for(const it of cat.values())if(it.kind==='foto'&&it.ty!=='raw')L.push({dev,it,devName:d.name||'Aparelho',ic:d.ic||'📱'})}return L.sort((a,b)=>a.it.t-b.it.t).slice(-(n||30))};window.LUMEN_ROOM_DEVS=()=>[...R.devs.values()].filter(d=>d.id!==R.myId&&allowed(d.id));
  window.LUMEN_ROOM={state:()=>({code:RM.code,on:R.st==='on',devs:R.devs.size,peers:R.conns.size,links:R.links.size,nets:relayInfo(),mirror:{q:MQ.q.length,n:MQ.n,fail:MQ.fail.size},loss:lossRows()}),join,leave};
  if(RM.code&&RM.auto!==false)setTimeout(()=>join(RM.code),300);
  if(fromUrl)setTimeout(()=>{try{goTab('dev')}catch(_){}},1200);
@@ -8460,6 +8475,234 @@ mqtt/dist/mqtt.esm.js:
  window.LUMEN_PV={state:()=>({n:H.length,cur,paused,name:H[cur]&&H[cur].name,rot:H[cur]&&H[cur].rot,zoom:V.s,full:stage.classList.contains('full')}),pause:setPaused};
  paint();log('Build v88: Pré-visual em tela cheia de verdade, girar, lupa com pinça, histograma, estouro, grade e modo telão','ok');
 }catch(e){try{log('v87: '+e.message,'bad')}catch(_){}}})();
+</script>
+
+<script id="v89">
+/* ===== v89 · Central de AVISOS: todo erro do LUMEN (câmera, fotos, vídeos, envio ao site, pasta, Lightroom, Plano B,
+   Aparelhos/cópia) vira um aviso claro, agrupado, com "o que aconteceu", "o que fazer" e o botão Tentar de novo.
+   Selo vermelho no menu em cada aba com problema · Saúde agora (confere tudo e corrige) · tentar de novo sozinho.
+   Nada é apagado: os avisos só leem o que já existe. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+ const K='lumen_avisos';let ST={auto:true,dis:{},hist:[]};try{ST=Object.assign(ST,JSON.parse(localStorage.getItem(K)||'{}'))}catch(_){}
+ const sv=()=>{try{ST.hist=ST.hist.slice(-300);localStorage.setItem(K,JSON.stringify(ST))}catch(_){}};
+ const CAT={cam:['📷','Câmera e cabo','con'],foto:['🖼','Fotos (importar e salvar)','gal'],video:['🎬','Vídeos','vid'],site:['🌐','Envio ao site','cfg'],pasta:['📁','Pasta e espaço','home'],lr:['🅻','Lightroom e Plano B','lr'],sala:['📡','Aparelhos e cópia','dev'],outro:['⚠','Outros','home']};
+ const HELP={
+  cam:['A câmera parou de responder ou o cabo oscilou.','O LUMEN reconecta sozinho. Se repetir: confira o cabo (direto, sem hub), a bateria e se nenhum outro programa (Lightroom Captura conectada, EOS Utility) está usando a câmera.'],
+  foto:['Uma ou mais fotos não foram processadas/salvas.','Toque em Tentar de novo: elas voltam para a fila. Se repetir, veja o motivo abaixo (pasta sem permissão ou arquivo corrompido).'],
+  video:['Um vídeo não foi salvo ou não abriu.','Toque em Tentar de novo. Vídeos grandes precisam de espaço livre na pasta.'],
+  site:['Fotos não chegaram ao site.','Elas ficam guardadas e sobem sozinhas quando a internet ou o site voltarem. Toque em Tentar de novo para enviar agora.'],
+  pasta:['O LUMEN não conseguiu gravar na pasta.','Toque em Corrigir para liberar a pasta de novo. Enquanto isso, as fotos ficam no cofre do navegador e voltam sozinhas.'],
+  lr:['O Lightroom (ou o Plano B) avisou um problema.','Abra a aba Lightroom › Assistente: ele diz o que fazer e corrige o que dá.'],
+  sala:['Uma foto ou vídeo não foi copiado para este aparelho.','Toque em Tentar de novo. Se o outro aparelho saiu da sala, a cópia continua quando ele voltar.'],
+  outro:['Algo não saiu como esperado.','Toque em Tentar de novo ou dispense se já resolveu.']};
+ const N=new Map();   /* chave → aviso */
+ const norm=s=>String(s||'').replace(/\d{6,}[_\-]?\w*/g,'#').replace(/\b[\w\-]+\.(jpe?g|cr3|cr2|mp4|mov|png|heic)\b/gi,'(arquivo)').replace(/\d+/g,'#').slice(0,120);
+ const fileOf=s=>{const m=String(s||'').match(/[\w\-]+\.(jpe?g|cr3|cr2|mp4|mov|png|heic)/i);return m?m[0]:''};
+ function classify(t){
+  if(/quarentena \(|resgatad|→ publicada|Build v|já existia|repetido, ignorado/i.test(t))return null;
+  if(/envio|enviar|site|upload|HTTP|servidor|Foco Radical/i.test(t))return'site';
+  if(/permiss|cofre|gravar|grava[çc][aã]o|espa[çc]o|quota|disco|pasta indispon/i.test(t))return'pasta';
+  if(/Lightroom|LR_Entrada|plug-in|Plano B|preset|Editadas/i.test(t))return'lr';
+  if(/Aparelhos|sala|c[oó]pia autom/i.test(t))return'sala';
+  if(/v[ií]deo|\.mp4|\.mov|MVI_/i.test(t))return'video';
+  if(/USB|cabo|c[aâ]mera|PTP|interface|reconect|sinal/i.test(t))return'cam';
+  if(/foto|\.jpe?g|\.cr3|imagem|ileg[ií]vel|IMG_|arquivo/i.test(t))return'foto';
+  return'outro'}
+ function upsert(key,o){let n=N.get(key);const now=Date.now();if(!n){n={key,first:now,count:0,files:new Set(),...o};N.set(key,n);if(!ST.dis[key]){ST.hist.push({key,cat:o.cat,title:o.title,t:now});sv()}}
+  Object.assign(n,o,{last:now});if(o.file)n.files.add(o.file);n.count=o.count!=null?o.count:n.count+1;n.live=true;return n}
+ /* 1) toda mensagem de erro do LUMEN vira aviso */
+ try{const _log=log;log=function(t,c){const r=_log.apply(this,arguments);try{if(c==='bad'){const cat=classify(t);if(cat){const key='log:'+cat+':'+norm(t);const pp=/permissions policy|disallowed by permission/i.test(t);upsert(key,{cat,src:'log',why:pp?String(t).slice(0,140):undefined,title:pp?'O USB está bloqueado nesta janela: abra o LUMEN direto no Chrome (não dentro de outra página ou de uma visualização)':String(t).replace(/^⚠\s*/,'').slice(0,160),file:fileOf(t),retry:cat==='cam'?'cam':cat==='site'?'up':cat==='foto'||cat==='video'?'proc':cat==='pasta'?'pasta':cat==='sala'?'sala':null});later()}}}catch(_){}return r};window.log=log}catch(_){}
+ /* 2) erros que o LUMEN guarda por arquivo (registro do evento), envio, cópia, Lightroom, Plano B */
+ function scan(){const seen=new Set();
+  try{const by=new Map();for(const[sig,v] of (typeof lgNow==='function'?lgNow():[])){if(v.st!=='falha')continue;const up=/^envio/.test(v.e||'');const cat=up?'site':/\.(mp4|mov)$/i.test(v.n||'')?'video':'foto';const k='reg:'+cat+':'+norm(v.e);
+    let g=by.get(k);if(!g){g={cat,e:v.e,sigs:[],files:[]};by.set(k,g)}g.sigs.push(sig);g.files.push(v.n||sig)}
+   for(const[k,g] of by){const n=upsert(k,{cat:g.cat,src:'reg',title:(g.cat==='site'?'Não foram ao site: ':g.cat==='video'?'Vídeos com erro: ':'Fotos com erro: ')+g.files.length+' arquivo(s)',why:String(g.e||'').replace(/^envio:\s*/,''),retry:g.cat==='site'?'up':'proc',count:g.files.length,sigs:g.sigs});n.files=new Set(g.files);seen.add(k)}}catch(_){}
+  try{if(window.LUMEN_ROOM_FAILS){const F=LUMEN_ROOM_FAILS().filter(f=>f.tries>=3);if(F.length){const n=upsert('room:copy',{cat:'sala',src:'room',title:'Cópia automática: '+F.length+' arquivo(s) não vieram',why:F[0].e,retry:'sala',count:F.length});n.files=new Set(F.map(f=>f.n));seen.add('room:copy')}}}catch(_){}
+  try{const s=window.LUMEN_PG&&LUMEN_PG.st;if(s&&s.err&&s.mode==='import'){upsert('lr:plug',{cat:'lr',src:'lr',title:'O Lightroom avisou: '+String(s.err).slice(0,120),retry:'lr',count:1});seen.add('lr:plug')}}catch(_){}
+  try{const p=window.LUMEN_PB&&LUMEN_PB.state();if(p&&p.err){upsert('pb:err',{cat:'lr',src:'pb',title:'Plano B: '+String(p.err).slice(0,120),retry:'lr',count:1});seen.add('pb:err')}}catch(_){}
+  try{if(S.dir&&!S.perm&&!S.dir.virtual){upsert('pasta:perm',{cat:'pasta',src:'st',title:'A pasta "'+S.dir.name+'" precisa de permissão de novo',retry:'pasta',count:1});seen.add('pasta:perm')}
+   if(S.cofre){upsert('pasta:cofre',{cat:'pasta',src:'st',title:S.cofre+' arquivo(s) guardados no cofre do navegador esperando a pasta',retry:'pasta',count:S.cofre});seen.add('pasta:cofre')}}catch(_){}
+  /* o que sumiu da origem foi resolvido */
+  for(const n of N.values())if(n.src!=='log'&&n.live&&!seen.has(n.key)){n.live=false;n.resolved=Date.now()}
+  paint()}
+ /* ---------- tentar de novo ---------- */
+ async function retry(n,btn){const set=t=>{if(btn)btn.textContent=t};set('↻ Tentando…');let msg='';
+  try{switch(n.retry){
+   case'proc':{let k=0;if(n.sigs&&n.sigs.length){for(const sig of n.sigs){const j=(S.pF||[]).findIndex(x=>x.sig===sig);if(j>=0){const job=S.pF.splice(j,1)[0];job.tries=0;S.pq.push(job);LG.set(sig,{st:'fila',e:'',mem:0});k++}
+       else{const v=LG.m[sig];if(v&&v.h&&!v.mem){S.tries[v.h]=0;S.sig.delete(sig);S.done.delete(v.h);S.q.push(v.h);LG.set(sig,{st:'fila',e:''});k++}}}try{pw();if(S.run)pump()}catch(_){}}
+     else{try{retryFailed()}catch(_){}k=-1}msg=k<0?'✔ Tudo que falhou voltou para a fila.':k?'✔ '+k+' arquivo(s) de volta na fila'+(S.run?'.':' — toque em Iniciar para processar.'):'Estes arquivos não estão mais na memória: conecte a câmera de novo e use "Conferir cartão".';break}
+   case'up':{const L=(S.upF||[]).splice(0);L.forEach(j=>{S.uq.push(j);if(j.sig)LG.set(j.sig,{st:'ok',e:''})});try{upw()}catch(_){}msg=L.length?'✔ '+L.length+' envio(s) de volta na fila.':navigator.onLine?'Nada pendente para reenviar.':'Sem internet: reenvia sozinho quando voltar.';break}
+   case'cam':{try{if(typeof recover==='function')recover('aviso: tentar de novo');else{const b=$1('#bRst');if(b)b.click()}}catch(_){}msg='Reconectando a câmera…';break}
+   case'pasta':{if(S.dir&&!S.perm){const r=await S.dir.requestPermission({mode:'readwrite'});S.perm=r==='granted'}else if(!S.dir){const b=$1('#fs2b')||$1('#bDir');if(b)b.click()}if(S.cofre&&typeof oxRecover==='function')await oxRecover();msg=S.perm?'✔ Pasta liberada.':'Escolha/libere a pasta na janela do navegador.';break}
+   case'sala':{if(window.LUMEN_ROOM_RETRY)LUMEN_ROOM_RETRY();msg='✔ Tentando copiar de novo.';break}
+   case'lr':{try{goTab('lr');setTimeout(()=>{const b=$1('#t-lr .laFix');if(b){b.click();b.scrollIntoView({behavior:'smooth',block:'center'})}},300)}catch(_){}msg='Abrindo o Assistente do Lightroom…';break}
+   default:msg='Sem ação automática para este aviso.'}}catch(e){msg='Não deu: '+e.message}
+  n.lastTry=Date.now();n.tryMsg=msg;n.tries=(n.tries||0)+1;set('↻ Tentar de novo');if(n.src==='log'&&/^✔/.test(msg)){n.resolved=Date.now();n.live=false}setTimeout(scan,1500);paint()}
+ async function retryAll(btn){let k=0;for(const n of N.values())if(n.live&&!ST.dis[n.key]&&n.retry&&n.retry!=='lr'){await retry(n);k++}if(btn){btn.textContent='✔ '+k+' tentativa(s)';setTimeout(()=>btn.textContent='↻ Tentar tudo de novo',2500)}}
+ setInterval(()=>{if(ST.auto&&navigator.onLine)for(const n of N.values())if(n.live&&!ST.dis[n.key]&&(n.retry==='up'||n.retry==='proc'||n.retry==='sala')&&Date.now()-(n.lastTry||n.first)>120000)retry(n)},30000);
+ /* ---------- saúde agora ---------- */
+ async function health(){const L=[],add=(s,t,d,fix)=>L.push({s,t,d,fix});
+  add(S.dir&&S.perm?'ok':'bad',S.dir?'Pasta "'+S.dir.name+'"':'Pasta do evento',S.dir?(S.perm?'Gravando normalmente.':'Precisa de permissão de novo.'):'Nenhuma pasta escolhida: as fotos ficam só no navegador.',S.dir&&S.perm?null:'pasta');
+  if(S.cofre)add('warn','Cofre do navegador',S.cofre+' arquivo(s) esperando para ir para a pasta.','pasta');
+  try{const e=await navigator.storage.estimate();const p=e.quota?e.usage/e.quota:0;add(p>.85?'bad':p>.6?'warn':'ok','Espaço do navegador',Math.round(p*100)+'% usado ('+(e.usage/1e9).toFixed(1)+' de '+(e.quota/1e9).toFixed(0)+' GB).',null)}catch(_){}
+  add(navigator.onLine?'ok':'warn','Internet',navigator.onLine?'Conectado.':'Sem internet: o envio ao site e os Aparelhos esperam e continuam sozinhos.',null);
+  try{const e=typeof eps==='function'?eps().length:0;const f=(S.upF||[]).length,qn=(S.uq||[]).length+(S.ua||0);add(!e?'info':!S.svc?'bad':f?'warn':'ok','Envio ao site',!e?'Desligado (Config › Destinos).':!S.svc?'O site não respondeu.':(S.upOk||0)+' enviada(s)'+(qn?' · '+qn+' na fila':'')+(f?' · '+f+' para reenviar':''),f?'up':null)}catch(_){}
+  try{if(S.src==='usb'){const ok=S.sess&&S.dev;add(ok?'ok':'warn','Câmera',ok?((window.camName&&camName())||'Conectada')+(S.bp!=null?' · bateria '+S.bp+'%':''):'Desconectada (o LUMEN conecta sozinho quando você plugar).',ok?null:'cam')}}catch(_){}
+  try{const pf=(S.pF||[]).length,pq=(S.pq||[]).length+(S.pa||0);add(pf?'bad':'ok','Processamento das fotos',pf?pf+' arquivo(s) com erro.':pq?pq+' processando agora.':'Em dia.',pf?'proc':null)}catch(_){}
+  try{if(C.lrOn&&window.lumenLrStatus){const s=lumenLrStatus();add(s.k==='ok'||s.k==='pb'?'ok':s.k==='bad'?'bad':'warn','Lightroom',s.t+' · '+s.d,s.k==='bad'?'lr':null)}}catch(_){}
+  try{const r=window.LUMEN_ROOM&&LUMEN_ROOM.state();if(r&&r.code)add(r.on&&r.peers?'ok':r.on?'warn':'bad','Aparelhos (sala '+r.code+')',r.on?(r.peers?(r.peers+1)+' aparelhos conectados.':'Só este aparelho na sala.'):'Fora da sala.',null)}catch(_){}
+  if(S.bp!=null&&S.bp<=20)add('bad','Bateria da câmera',S.bp+'%: troque em breve.',null);
+  try{const it=S.items||[];if(!it.some(i=>i.kind==='foto'||i.kind==='video'))add('info','Galeria','Nada recebido ainda: faça uma foto ou vídeo com a câmera conectada, ou escolha a pasta no Início.',null);if(!it.some(i=>i.kind==='video'))add('info','Editor de vídeo','Nenhum vídeo ainda: grave na câmera ou use “Editar vídeo local” para escolher um vídeo do computador ou celular.',null)}catch(_){}
+  return L}
+ /* ---------- tela ---------- */
+ const sec=document.createElement('section');sec.className='tab w';sec.id='t-avisos';
+ sec.innerHTML='<div class="v70ph"><span class="v70pi" aria-hidden="true">🔔</span><div><h2>Avisos</h2><p>Erros de fotos, vídeos, envio e conexões, com o que fazer e Tentar de novo</p></div></div>'
+  +'<div class="c v70c avTop"><div class="v70h"><b>Situação</b><span class="pillS avSt">—</span></div><div class="avSum sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)"></div>'
+  +'<div class="fx3a"><button type="button" class="f p avAll">↻ Tentar tudo de novo</button><button type="button" class="f avClr">Limpar resolvidos</button></div>'
+  +'<label class="r"><input type="checkbox" class="avAuto"><span>Tentar de novo sozinho (envio, fotos e cópias, a cada 2 min)</span></label>'
+  +'<div class="chips avF"></div></div>'
+  +'<div class="avList"></div>'
+  +'<div class="c v70c"><div class="v70h"><b>🩺 Saúde agora</b><button type="button" class="f avH" style="width:auto;padding:6px 12px;min-height:0">Conferir</button></div><ul class="fr-st avHL"></ul></div>'
+  +'<details class="c v70c ex avHist" data-ex="1"><summary><b>Histórico de avisos</b></summary><div class="avHB sub wrap" style="white-space:normal"></div></details>';
+ const home=$1('#t-home');if(home)home.after(sec);
+ const nb=document.createElement('button');nb.type='button';nb.dataset.t='avisos';nb.innerHTML='<i>🔔</i><span class="v70l">Avisos</span><span class="v70s">Avisos</span><b class="avBadge" hidden></b>';nb.title='Avisos e erros';nb.setAttribute('aria-label','Avisos e erros');nb.onclick=()=>{goTab('avisos')};
+ function navPlace(){const n=$1('nav'),g=n&&n.querySelector('button[data-t="home"]');if(g&&nb.previousElementSibling!==g)g.after(nb)}navPlace();setInterval(navPlace,1500);
+ const bell=document.createElement('button');bell.type='button';bell.id='avBell';bell.className='bt';bell.onclick=()=>goTab('avisos');
+ const pill=document.createElement('button');pill.type='button';pill.id='avPill';pill.hidden=true;pill.onclick=()=>{F=pill.dataset.cat||'all';goTab('avisos')};document.body.appendChild(pill);
+ const q=s=>sec.querySelector(s);let F='all';
+ q('.avAuto').checked=ST.auto!==false;q('.avAuto').onchange=e=>{ST.auto=e.target.checked;sv()};
+ q('.avAll').onclick=e=>retryAll(e.target);
+ q('.avClr').onclick=()=>{for(const[k,n] of [...N])if(!n.live||ST.dis[k])N.delete(k);paint()};
+ q('.avH').onclick=()=>paintHealth();
+ const ago=t=>{const s=Math.round((Date.now()-t)/1000);return s<60?'agora':s<3600?Math.round(s/60)+' min':Math.round(s/3600)+' h'};
+ const active=()=>[...N.values()].filter(n=>n.live&&!ST.dis[n.key]);
+ let pT=0;function later(){clearTimeout(pT);pT=setTimeout(paint,300)}
+ function paint(){const A=active(),byTab={};for(const n of A){const t=(CAT[n.cat]||CAT.outro)[2];byTab[t]=(byTab[t]||0)+n.count}
+  const tot=A.length;if(tot>(window.__avLast||0)){bell.classList.remove('pulse');void bell.offsetWidth;bell.classList.add('pulse')}window.__avLast=tot;const b=nb.querySelector('.avBadge');b.hidden=!tot;b.textContent=tot>99?'99+':tot;
+  {const ui=$1('#usbInd');const ref=$1('#roomChip')||$1('#camChip')||ui;if(ref&&bell.previousElementSibling!==ref)ref.after(bell);bell.textContent=tot?'🔔 '+tot:'🔔';bell.dataset.st=tot?'bad':'ok';bell.title=tot?tot+' aviso(s): toque para ver e corrigir':'Sem avisos'}
+  /* selo em cada aba do menu */
+  $$('nav button[data-t]').forEach(x=>{const t=x.dataset.t;if(t==='avisos')return;let d=x.querySelector('.avDot');const c=byTab[t]||0;if(c&&!d){d=document.createElement('b');d.className='avDot';x.appendChild(d)}if(d){d.hidden=!c;d.textContent=c>9?'9+':c}});
+  /* aviso flutuante na aba atual */
+  const curTab=(($1('.tab.on')||{}).id||'').replace('t-','');const ct=Object.entries(CAT).filter(([k,v])=>v[2]===curTab).map(([k])=>k),here=A.filter(n=>ct.includes(n.cat));
+  pill.hidden=!here.length||curTab==='avisos';if(here.length){pill.textContent='⚠ '+here.length+' aviso(s) nesta aba · ver e corrigir';pill.dataset.cat=here[0].cat}
+  if(!sec.classList.contains('on'))return;
+  const st=q('.avSt');st.textContent=tot?tot+' aviso(s)':'tudo certo';st.className='pillS avSt '+(tot?'bad':'ok');
+  q('.avSum').textContent=tot?'Abaixo, cada problema com o que aconteceu, o que fazer e o botão Tentar de novo. Os resolvidos somem sozinhos.':'Nenhum erro agora. Se algo falhar (foto, vídeo, envio, câmera, Lightroom ou cópia entre aparelhos), aparece aqui na hora.';
+  const cats=['all',...Object.keys(CAT)].filter(c=>c==='all'||A.some(n=>n.cat===c));if(!cats.includes(F))F='all';
+  q('.avF').innerHTML=cats.map(c=>'<button type="button" class="'+(F===c?'on':'')+'" data-c="'+c+'">'+(c==='all'?'Todos ('+tot+')':CAT[c][0]+' '+CAT[c][1]+' ('+A.filter(n=>n.cat===c).length+')')+'</button>').join('');
+  q('.avF').querySelectorAll('button').forEach(x=>x.onclick=()=>{F=x.dataset.c;paint()});
+  const L=[...N.values()].filter(n=>!ST.dis[n.key]&&(F==='all'||n.cat===F)).sort((a,b)=>(b.live-a.live)||(b.last-a.last)).slice(0,80);
+  const sig=L.map(n=>n.key+n.count+n.live+(n.tryMsg||'')+Math.floor((Date.now()-n.last)/60000)).join('|');const box=q('.avList');if(box.dataset.sig===sig)return;box.dataset.sig=sig;
+  box.innerHTML=L.length?L.map(n=>{const c=CAT[n.cat]||CAT.outro,hp=HELP[n.cat]||HELP.outro,fl=[...n.files];
+   return'<div class="c v70c avN '+(n.live?'live':'done')+'" data-k="'+esc(n.key)+'"><div class="avH1"><span class="avI">'+c[0]+'</span><div><b>'+esc(n.title)+'</b><small>'+esc(c[1])+' · '+(n.live?'última vez há '+ago(n.last):'✔ resolvido')+(n.count>1&&n.src==='log'?' · '+n.count+'×':'')+'</small></div></div>'
+    +'<div class="avWhy"><b>O que aconteceu:</b> '+esc(hp[0])+(n.why?' <i>Motivo: '+esc(n.why)+'</i>':'')+'<br><b>O que fazer:</b> '+esc(hp[1])+'</div>'
+    +(fl.length?'<details class="avFiles"><summary>'+fl.length+' arquivo(s)</summary><div>'+fl.slice(0,60).map(esc).join(' · ')+(fl.length>60?' …':'')+'</div></details>':'')
+    +(n.tryMsg?'<div class="avTry">'+esc(n.tryMsg)+' <small>('+ago(n.lastTry)+')</small></div>':'')
+    +'<div class="fx3a">'+(n.live&&n.retry?'<button type="button" class="f p" data-r="1">'+(n.retry==='pasta'?'🔓 Corrigir':n.retry==='lr'?'🧭 Abrir o assistente':n.retry==='cam'?'🔌 Reconectar':'↻ Tentar de novo')+'</button>':'')+'<button type="button" class="f" data-go="'+c[2]+'">Ir para '+esc(c[1])+'</button><button type="button" class="f" data-x="1">Dispensar</button></div></div>'}).join(''):'';
+  box.querySelectorAll('.avN').forEach(el=>{const n=N.get(el.dataset.k);if(!n)return;const r=el.querySelector('[data-r]');if(r)r.onclick=()=>retry(n,r);
+   el.querySelector('[data-go]').onclick=e=>{try{goTab(e.target.dataset.go)}catch(_){}};el.querySelector('[data-x]').onclick=()=>{ST.dis[n.key]=Date.now();sv();box.dataset.sig='';paint()}});
+  q('.avHB').innerHTML=ST.hist.slice(-60).reverse().map(x=>'<div>'+new Date(x.t).toLocaleString()+' · '+((CAT[x.cat]||CAT.outro)[0])+' '+esc(x.title)+'</div>').join('')||'Nenhum aviso ainda.'}
+ async function paintHealth(){const L=await health(),ic={ok:'✓',warn:'!',bad:'✕',info:'i'},cl={ok:'ok',warn:'ew',bad:'no',info:'ew'};
+  q('.avHL').innerHTML=L.map((x,i)=>'<li class="'+cl[x.s]+'"><i>'+ic[x.s]+'</i><span><b>'+esc(x.t)+'</b><br><small>'+esc(x.d)+'</small>'+(x.fix?' <button type="button" class="f avFix" data-i="'+i+'">Corrigir</button>':'')+'</span></li>').join('');
+  q('.avHL').querySelectorAll('.avFix').forEach(b=>b.onclick=async()=>{await retry({retry:L[+b.dataset.i].fix,src:'health',key:'h'},b);paintHealth()})}
+ const _go=window.goTab;window.goTab=function(t){const r=_go.apply(this,arguments);try{if(t==='avisos'){scan();paintHealth()}paint()}catch(_){}return r};try{goTab=window.goTab}catch(_){}
+ setInterval(scan,5000);setTimeout(scan,2500);setInterval(()=>{if(sec.classList.contains('on'))paintHealth()},15000);
+ window.LUMEN_AVISOS={list:()=>active().map(n=>({key:n.key,cat:n.cat,title:n.title,count:n.count})),retry:k=>{const n=N.get(k);return n?retry(n):null},scan};
+ log('Build v89: central de Avisos (erros com o que fazer e Tentar de novo), selo de problemas em cada aba, Saúde agora','ok');
+}catch(e){try{log('v89: '+e.message,'bad')}catch(_){}}})();
+</script>
+
+<script id="v90">
+/* ===== v90 · Backup das configurações: tudo que o LUMEN guarda no navegador (ajustes, presets, salas, principal,
+   Lightroom, Plano B, registro do evento) vai para um arquivo e também, sozinho, para a pasta do evento
+   (LUMEN_backup/), um por dia. Restaurar junta com o que existe — nada é apagado. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s);
+ const KEYS=k=>/^lumen/i.test(k);
+ async function idbAll(name,store){return new Promise(res=>{try{const r=indexedDB.open(name);r.onsuccess=()=>{try{const db=r.result;if(!db.objectStoreNames.contains(store)){res([]);return}const t=db.transaction(store,'readonly'),g=t.objectStore(store).getAll();g.onsuccess=()=>res(g.result||[]);g.onerror=()=>res([])}catch(_){res([])}};r.onerror=()=>res([])}catch(_){res([])}})}
+ async function idbPut(name,store,rows){return new Promise(res=>{try{const r=indexedDB.open(name);r.onsuccess=()=>{try{const db=r.result;if(!db.objectStoreNames.contains(store)){res(0);return}const t=db.transaction(store,'readwrite'),s=t.objectStore(store);let n=0;for(const x of rows){try{s.put(x);n++}catch(_){}}t.oncomplete=()=>res(n);t.onerror=()=>res(n)}catch(_){res(0)}};r.onerror=()=>res(0)}catch(_){res(0)}})}
+ async function snapshot(){const ls={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(KEYS(k))ls[k]=localStorage.getItem(k)}
+  let presets=[];try{presets=(await idbAll('lumen-presets','p')).map(p=>{const c=Object.assign({},p);if(c.lut&&c.lut.data)c.lut={n:c.lut.n,data:Array.from(c.lut.data)};return c})}catch(_){}
+  return{app:'LUMEN Campo',v:1,t:new Date().toISOString(),device:navigator.userAgent,ls,presets}}
+ async function restore(obj){if(!obj||obj.app!=='LUMEN Campo'||!obj.ls)throw new Error('este arquivo não é um backup do LUMEN');let n=0,skip=0;
+  for(const[k,v] of Object.entries(obj.ls)){if(!KEYS(k))continue;const cur=localStorage.getItem(k);if(cur===v){skip++;continue}
+   if(cur&&/^(lumen2|lumen_room|lumen_lg|lumen_mirror_ledger)$/.test(k)){try{const a=JSON.parse(cur),b=JSON.parse(v);if(a&&b&&typeof a==='object'&&typeof b==='object'&&!Array.isArray(a)){localStorage.setItem(k,JSON.stringify(Object.assign({},b,a)));n++;continue}}catch(_){}}
+   if(!cur){localStorage.setItem(k,v);n++}else skip++}
+  let p=0;if(obj.presets&&obj.presets.length)p=await idbPut('lumen-presets','p',obj.presets.map(x=>{if(x.lut&&Array.isArray(x.lut.data))x.lut={n:x.lut.n,data:new Uint8Array(x.lut.data)};return x}));
+  return{n,skip,p}}
+ async function toFolder(force){if(!S.dir||!S.perm||S.dir.virtual)return false;const day=new Date().toISOString().slice(0,10),K='lumen_bk_day';if(!force&&localStorage.getItem(K)===day)return false;
+  try{const b=new Blob([JSON.stringify(await snapshot())],{type:'application/json'});await writeTo(S.dir,'LUMEN_backup','config_'+day+'.json',b);localStorage.setItem(K,day);localStorage.setItem('lumen_bk_last',String(Date.now()));return true}catch(_){return false}}
+ setInterval(()=>toFolder(false),60000);setTimeout(()=>toFolder(false),15000);
+ const card=document.createElement('div');card.className='c v70c bkC';
+ card.innerHTML='<div class="v70h"><b>💾 Backup das configurações</b><span class="pillS bkSt">—</span></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Guarda num arquivo tudo que o LUMEN lembra: ajustes, presets de cor, salas e o aparelho principal, Lightroom, Plano B e o registro do evento. Sozinho, uma vez por dia, também vai para a pasta do evento em <b>LUMEN_backup</b>. Trocou de computador ou limpou o navegador? Toque em Restaurar e escolha o arquivo: o LUMEN junta com o que existe, sem apagar nada.</div>'
+  +'<div class="fx3a"><button type="button" class="f p bkDl">⬇ Baixar backup agora</button><label class="f" role="button" style="cursor:pointer">⬆ Restaurar de um arquivo<input type="file" class="bkIn" accept=".json,application/json" hidden></label><button type="button" class="f bkNow">📁 Salvar na pasta do evento</button></div><div class="sub wrap bkMsg" data-ex="1"></div>';
+ const say=t=>{card.querySelector('.bkMsg').textContent=t;log(t,/^✔/.test(t)?'ok':'')};
+ card.querySelector('.bkDl').onclick=async()=>{const s=await snapshot();const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(s)],{type:'application/json'}));a.download='LUMEN_backup_'+new Date().toISOString().slice(0,10)+'.json';a.click();say('✔ Backup baixado ('+Object.keys(s.ls).length+' itens, '+s.presets.length+' preset(s)).')};
+ card.querySelector('.bkIn').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{const r=await restore(JSON.parse(await f.text()));say('✔ Restaurado: '+r.n+' item(ns) recuperado(s), '+r.skip+' já estavam iguais ou mais novos aqui, '+r.p+' preset(s). Recarregue a página para aplicar.')}catch(er){say('Não deu: '+er.message)}};
+ card.querySelector('.bkNow').onclick=async()=>{say(await toFolder(true)?'✔ Backup salvo em '+S.dir.name+'/LUMEN_backup.':'Escolha a pasta do evento primeiro (Início).')};
+ function place(){const t=$1('#t-cfg');if(!t)return;if(card.parentNode!==t)t.appendChild(card);const l=+localStorage.getItem('lumen_bk_last')||0,st=card.querySelector('.bkSt');st.textContent=l?'último: '+new Date(l).toLocaleDateString():'ainda não';st.className='pillS bkSt '+(l&&Date.now()-l<2*864e5?'ok':'warn')}
+ place();setInterval(place,5000);
+ window.LUMEN_BACKUP={snapshot,restore,toFolder};
+ log('Build v90: backup das configurações (arquivo + pasta do evento, todo dia) e restauração sem apagar nada','ok');
+}catch(e){try{log('v90: '+e.message,'bad')}catch(_){}}})();
+</script>
+
+<script id="v91">
+/* ===== v91 · Editar vídeo local: escolha um vídeo que já está no PC, Mac ou celular e edite no Editor de vídeo.
+   Os quadros grandes de "nada por aqui" saem das abas (agora essas dicas ficam só em Avisos › Saúde agora).
+   O vídeo escolhido não é enviado ao site nem para a sala; só se você marcar, uma cópia vai para a pasta do evento. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+ const K='lumen_localvid';let LV={copy:false};try{LV=Object.assign(LV,JSON.parse(localStorage.getItem(K)||'{}'))}catch(_){}
+ const sv=()=>{try{localStorage.setItem(K,JSON.stringify(LV))}catch(_){}};
+ const isVid=f=>/^video\//.test(f.type||'')||/\.(mp4|mov|m4v|mxf|webm|avi|mkv)$/i.test(f.name||'');
+ const fmtB=b=>b>1e9?(b/1e9).toFixed(2)+' GB':b>1e6?(b/1e6).toFixed(1)+' MB':Math.max(1,Math.round(b/1e3))+' KB';
+ /* lembrar os vídeos escolhidos no computador (só o "atalho", não o arquivo) para reabrir depois de recarregar */
+ const DB=new Promise((a,b)=>{try{const r=indexedDB.open('lumen-localvid',1);r.onupgradeneeded=()=>r.result.createObjectStore('h',{keyPath:'k'});r.onsuccess=()=>a(r.result);r.onerror=()=>b(r.error)}catch(e){b(e)}});
+ const tx=async(m,f)=>{const db=await DB;return new Promise((a,b)=>{const t=db.transaction('h',m);let o;try{o=f(t.objectStore('h'))}catch(e){b(e);return}t.oncomplete=()=>a(o&&o.result);t.onerror=()=>b(t.error)})};
+ const MINE=new Map();   /* nome → item da lista */
+ async function addFile(file,handle){if(!isVid(file)){say('“'+file.name+'” não é um vídeo.');return null}
+  const old=[...(S.items||[])].find(i=>i.local&&i.name===file.name&&i.size===file.size);if(old){select(old);return old}
+  const it={name:file.name,kind:'video',cls:'b',blob:file,url:URL.createObjectURL(file),size:file.size,t:Date.now(),ct:file.lastModified||Date.now(),local:true,disk:false};
+  add(it);MINE.set(it.name,{it,handle});if(handle)try{await tx('readwrite',s=>s.put({k:file.name+'|'+file.size,h:handle,n:file.name,sz:file.size,t:Date.now()}))}catch(_){}
+  if(LV.copy&&S.dir&&S.perm&&!S.dir.virtual)try{const df=await put('Videos',file.name.replace(/(\.[^.]+)$/,'_local$1'),file,file.lastModified||Date.now());if(df)log('🎬 Cópia de '+file.name+' guardada na pasta do evento','ok')}catch(e){log('Editar vídeo local: não consegui copiar '+file.name+' ('+e.message+')','bad')}
+  log('🎬 Vídeo local pronto para editar: '+file.name+' ('+fmtB(file.size)+')','ok');paint();return it}
+ function select(it){let n=0;const go=()=>{const s=$1('#vxSel');if(s&&[...s.options].some(o=>o.value===String(it.id))){s.value=String(it.id);s.dispatchEvent(new Event('change'));say('✔ “'+it.name+'” aberto no editor.');setTimeout(()=>{const v=$1('#t-ved .vxw')||$1('#vxTl');if(v)v.scrollIntoView({behavior:'smooth',block:'start'})},300);return}
+   if(++n<40)setTimeout(go,250);else say('O vídeo foi adicionado: escolha “'+it.name+'” na lista do editor.')};go()}
+ async function pick(){try{if(window.showOpenFilePicker&&!/iPhone|iPad|Android/.test(navigator.userAgent)){const hs=await showOpenFilePicker({multiple:true,types:[{description:'Vídeos',accept:{'video/*':['.mp4','.mov','.m4v','.mxf','.webm','.avi','.mkv']}}],id:'lumen-video-local'});let last=null;for(const h of hs){const f=await h.getFile();last=await addFile(f,h)||last}if(last)select(last);return}}catch(e){if(e&&e.name==='AbortError')return}
+  inp.click()}
+ const inp=document.createElement('input');inp.type='file';inp.accept='video/*,.mp4,.mov,.m4v,.mxf,.webm';inp.multiple=true;inp.hidden=true;
+ inp.onchange=async()=>{const L=[...inp.files];inp.value='';let last=null;for(const f of L)last=await addFile(f)||last;if(last)select(last)};
+ const card=document.createElement('div');card.className='c v70c lvC';
+ card.innerHTML='<div class="v70h"><b>🎬 Editar vídeo local</b><span class="pillS lvSt">—</span></div>'
+  +'<button type="button" class="lvDrop"><b>⬆ Escolher um vídeo do computador ou do celular</b><small>MP4, MOV… Pode escolher vários. Ou arraste o vídeo para cá.</small></button>'
+  +'<label class="r"><input type="checkbox" class="lvCp"><span>Guardar também uma cópia na pasta do evento (Videos)</span></label>'
+  +'<div class="lvList"></div><div class="sub wrap lvMsg" data-ex="1" style="white-space:normal"></div>';
+ card.appendChild(inp);
+ const say=t=>{card.querySelector('.lvMsg').textContent=t||''};
+ card.querySelector('.lvDrop').onclick=pick;
+ card.querySelector('.lvCp').checked=!!LV.copy;card.querySelector('.lvCp').onchange=e=>{LV.copy=e.target.checked;sv()};
+ card.addEventListener('dragover',e=>{e.preventDefault();card.classList.add('drag')});card.addEventListener('dragleave',()=>card.classList.remove('drag'));
+ card.addEventListener('drop',async e=>{e.preventDefault();card.classList.remove('drag');const L=[...(e.dataTransfer.files||[])].filter(isVid);let last=null;for(const f of L)last=await addFile(f)||last;if(last)select(last);else say('Arraste um arquivo de vídeo.')});
+ async function paint(){const list=card.querySelector('.lvList');const local=(S.items||[]).filter(i=>i.local&&i.kind==='video');let saved=[];try{saved=(await tx('readonly',s=>s.getAll()))||[]}catch(_){}
+  const reopen=saved.filter(r=>!local.some(i=>i.name===r.n&&i.size===r.sz)).slice(-8);
+  const st=card.querySelector('.lvSt');st.textContent=local.length?local.length+' na lista':'nenhum';st.className='pillS lvSt '+(local.length?'ok':'');
+  list.innerHTML=local.map(i=>'<div class="lvR"><span>🎬 '+esc(i.name)+' <small>'+fmtB(i.size||0)+'</small></span><button type="button" class="f p" data-ed="'+i.id+'">Editar</button><button type="button" class="f" data-rm="'+i.id+'">Tirar da lista</button></div>').join('')
+   +(reopen.length?'<div class="lvRe"><small>Escolhidos antes (toque para abrir de novo):</small>'+reopen.map(r=>'<button type="button" class="f" data-k="'+esc(r.k)+'">↩ '+esc(r.n)+'</button>').join('')+'</div>':'');
+  list.querySelectorAll('[data-ed]').forEach(b=>b.onclick=()=>{const it=S.items.find(i=>i.id===+b.dataset.ed);if(it)select(it)});
+  list.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{const i=S.items.findIndex(x=>x.id===+b.dataset.rm);if(i>=0){const it=S.items[i];S.items.splice(i,1);try{URL.revokeObjectURL(it.url)}catch(_){}try{gal()}catch(_){}}paint()});
+  list.querySelectorAll('[data-k]').forEach(b=>b.onclick=async()=>{const r=saved.find(x=>x.k===b.dataset.k);if(!r)return;try{if((await r.h.queryPermission({mode:'read'}))!=='granted'&&(await r.h.requestPermission({mode:'read'}))!=='granted')return;const f=await r.h.getFile();const it=await addFile(f,r.h);if(it)select(it)}catch(e){say('Não achei o arquivo (foi movido ou apagado?): '+r.n);try{await tx('readwrite',s=>s.delete(r.k))}catch(_){}paint()}})}
+ function place(){const t=$1('#t-ved');if(!t)return;const ref=t.querySelector(':scope>.v70ph');if(ref){if(card.previousElementSibling!==ref)ref.after(card)}else if(t.firstElementChild!==card)t.prepend(card)}
+ place();setInterval(place,1500);setTimeout(paint,1500);
+ const _go=window.goTab;window.goTab=function(t){const r=_go.apply(this,arguments);try{if(t==='ved'){place();paint()}}catch(_){}return r};try{goTab=window.goTab}catch(_){}
+ /* atalho também em Vídeos recebidos */
+ const sc=document.createElement('button');sc.type='button';sc.className='f lvSc';sc.textContent='🎬 Editar vídeo local';sc.onclick=()=>{goTab('ved');setTimeout(pick,250)};
+ setInterval(()=>{const t=$1('#t-vid');if(t){const ref=t.querySelector(':scope>.v70ph');if(ref&&sc.previousElementSibling!==ref)ref.after(sc)}},1500);
+ window.LUMEN_LOCALVID={add:addFile,pick};
+ log('Build v91: Editar vídeo local (escolher vídeo do PC/celular) e dicas de "nada por aqui" só em Avisos','ok');
+}catch(e){try{log('v91: '+e.message,'bad')}catch(_){}}})();
 </script>
 
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
