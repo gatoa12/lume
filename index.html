@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v72</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v77</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -1077,7 +1077,81 @@ body.campo .uerr.bad{background:#ffd6d0}
 #topChips,#topBtns{min-width:0;max-width:100%}
 .v70ph{padding-left:4px!important;padding-right:4px!important}
 #rotCard .chips button{min-width:0}
+.v70sh button,.v70sh .f{width:auto!important;flex:none!important;min-width:44px;margin:0!important;padding:8px 14px!important}
+.v70sh b{flex:1}
 #rotPv{display:block;max-width:100%;max-height:220px;margin:10px auto 0;border-radius:10px;background:#000}
+/* --- camada: v75 páginas reorganizadas --- */
+#v61c input{min-height:0!important}.fr-st .ew i{background:rgba(255,176,32,.18);color:var(--warn)}.ebL li span small{color:var(--mut)}#v61l label{min-height:0;padding:3px 0!important}
+.v75hero{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 12px}
+.v75node{position:relative;padding:12px;border-radius:16px;border:1px solid var(--line);background:color-mix(in srgb,var(--card) 85%,transparent);min-width:0}
+.v75node small{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);font-weight:700}
+.v75node b{display:block;font-size:15px;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v75node span{display:block;font-size:12px;color:var(--mut);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v75node[data-s=ok]{border-color:color-mix(in srgb,var(--ok) 55%,transparent);box-shadow:inset 3px 0 0 var(--ok)}
+.v75node[data-s=warn]{border-color:color-mix(in srgb,var(--warn) 55%,transparent);box-shadow:inset 3px 0 0 var(--warn)}
+.v75node[data-s=bad]{border-color:color-mix(in srgb,var(--bad) 60%,transparent);box-shadow:inset 3px 0 0 var(--bad)}
+.v75go{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}.v75go .f{flex:1 1 200px;margin:0}
+.v75tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:0 0 12px}
+.v75tile{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:12px;border-radius:16px;border:1px solid var(--line);background:var(--card);text-align:left;min-height:96px;margin:0}
+.v75tile i{font-style:normal;font-size:22px}.v75tile b{font-size:14px}.v75tile small{font-size:11.5px;color:var(--mut);font-weight:500;line-height:1.3}
+.v75tile.on{color:var(--ink)!important;border-color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,var(--card));box-shadow:0 0 0 1px var(--acc)}
+.v75tile em{font-style:normal;font-size:10px;font-weight:800;color:var(--ok);text-transform:uppercase}
+@media (max-width:820px){.v75hero{grid-template-columns:1fr 1fr}.v75tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:420px){.v75tiles{grid-template-columns:1fr 1fr}}
+.v75pipe{display:flex;align-items:stretch;gap:6px;overflow-x:auto;padding:4px 0 8px;scrollbar-width:thin}
+.v75pipe>div{flex:1 0 108px;padding:10px;border-radius:14px;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 55%,transparent);text-align:center}
+.v75pipe>div i{display:block;font-style:normal;font-size:20px}.v75pipe>div b{display:block;font-size:20px;font-variant-numeric:tabular-nums}.v75pipe>div small{font-size:11px;color:var(--mut)}
+.v75pipe>div[data-s=ok]{border-color:color-mix(in srgb,var(--ok) 55%,transparent)}.v75pipe>div[data-s=warn]{border-color:color-mix(in srgb,var(--warn) 55%,transparent)}.v75pipe>div[data-s=bad]{border-color:var(--bad)}
+.v75pipe>u{align-self:center;text-decoration:none;color:var(--mut)}
+.v75fold{margin-top:12px}
+#t-con>details.fold.v75old,#t-con>.fb,#t-gal>.fb,#t-vid>.fb{display:none!important}
+.v75bar{position:sticky;top:calc(96px + env(safe-area-inset-top,0px));z-index:12;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:16px;padding:8px 10px;margin:0 0 10px;display:flex;flex-direction:column;gap:6px}
+.v75bar .chips,.v75bar #gbar,.v75bar #vlB{margin:0!important;flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none}
+.v75bar .v75r{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.v75bar .v75r>*{margin:0!important}
+.v75bar .f,.v75bar button{width:auto!important;flex:0 0 auto;min-height:40px;padding:8px 12px}
+.v75bar .v75r .chips{flex:0 1 auto}
+.v75bar input[type=text],.v75bar input[type=search]{flex:1 1 180px;min-height:40px}
+.v75sz{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--mut)}.v75sz input{width:110px}
+.v75stats{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}.v75stats span{padding:5px 11px;border-radius:99px;border:1px solid var(--line);font-size:12.5px;background:var(--card)}.v75stats b{font-variant-numeric:tabular-nums}
+#t-gal #grid,#t-vid #vlG{grid-template-columns:repeat(var(--gcols,3),minmax(0,1fr))!important;gap:8px!important}
+#t-gal details.fold>summary,#t-vid details.fold>summary{display:none}
+body.galSel #gbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:40;width:min(94vw,760px);background:var(--card);border:1px solid var(--acc);border-radius:16px;padding:8px;box-shadow:0 14px 40px rgba(0,0,0,.55)}
+.v75tl{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px;max-height:60vh;overflow:auto}
+.v75tl li{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:8px;align-items:center;padding:8px 10px;border-radius:12px;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 55%,transparent);font-size:13px}
+.v75tl li i{font-style:normal;text-align:center}.v75tl li b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}.v75tl li small{color:var(--mut);font-size:11.5px;display:block}
+.v75tl li[data-s=falha]{border-color:color-mix(in srgb,var(--bad) 55%,transparent)}
+#rgC .c{border-radius:16px}#rgC .c .v{font-size:22px}
+/* editor de vídeo */
+#vxBox>summary{display:none!important}
+.vxStrip{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;scrollbar-width:thin}
+.vxStrip{min-height:0;align-items:flex-start}.vxStrip button{flex:0 0 112px;width:112px;height:70px!important;min-height:0!important;max-height:70px;padding:0!important;border-radius:12px;overflow:hidden;position:relative;border:2px solid transparent;background:#111;margin:0}
+.vxStrip button.on{border-color:var(--acc)}.vxStrip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.vxStrip button span{position:absolute;left:0;right:0;bottom:0;font-size:10px;padding:2px 5px;background:rgba(0,0,0,.65);color:#fff;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vxPan #vwCard,.vxPan #rotCard{border:0!important;background:none!important;box-shadow:none!important;padding:0!important;margin:0!important}
+@media (min-width:1100px){
+ #vxBox .vxEd.v75two{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(360px,1fr);gap:16px;align-items:start}
+ #vxBox .vxColL{position:sticky;top:calc(110px + env(safe-area-inset-top,0px))}
+ #vxBox .vxColL .vxTop{position:static!important}
+ #vxBox .vxColL #vxPv{max-height:46vh!important}
+}
+.vxColL,.vxColR{min-width:0}
+/* presets */
+.v75cat{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-top:8px}.v75cat button{flex:none}
+.cl-c{position:relative}.cl-c .v75fav{position:absolute;right:6px;top:6px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.6);color:#fff;font-size:14px;line-height:1;cursor:pointer}
+.cl-c .v75fav.on{color:#ffcc1a}
+/* sua foto */
+.v75steps{display:flex;gap:6px;margin:0 0 12px;overflow-x:auto;scrollbar-width:none}
+.v75steps div{flex:1 0 92px;padding:8px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-size:12px;text-align:center;color:var(--mut)}
+.v75steps div b{display:block;font-size:16px;color:var(--ink)}
+.v75steps div.ok{border-color:var(--ok);color:var(--ok)}.v75steps div.cur{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc);color:var(--ink)}
+@media (min-width:1100px){#t-pick.v75pick{display:none}#t-pick.v75pick.on{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(380px,1.1fr);gap:0 16px;align-items:start;grid-auto-flow:row dense}#t-pick.v75pick>*{grid-column:1}#t-pick.v75pick>#pkRes{grid-column:2;grid-row:4 / span 30;position:sticky;top:110px}#t-pick.v75pick>.v70ph,#t-pick.v75pick>.v75steps,#t-pick.v75pick>.v75kio{grid-column:1 / -1}}
+.v75kio{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}.v75kio .f{flex:1 1 200px;margin:0}
+body.kiosk nav,body.kiosk .top,body.kiosk #lnk,body.kiosk #fab,body.kiosk #v47t,body.kiosk #vxToast,body.kiosk #v48b,body.kiosk #usbSupport,body.kiosk #pkDuo,body.kiosk .v70ph,body.kiosk #v60g{display:none!important}
+body.kiosk{padding-top:0!important;padding-bottom:20px!important}
+body.kiosk #t-pick{font-size:17px;max-width:900px!important;margin:0 auto!important}
+body.kiosk #t-pick .f{min-height:60px;font-size:18px}
+body.kiosk .v75kio #kioOn{display:none}body:not(.kiosk) .v75kio #kioOff{display:none}
+body.kiosk>.w,body.kiosk>section.tab.w{margin:0 auto!important}
 </style>
 
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -3946,7 +4020,7 @@ setInterval(async()=>{await guardCount();if(window.guardN&&!S.pa&&!S.pq.length)g
 const nav=q('nav'),nb=document.createElement('button');nb.dataset.t='pick';nb.innerHTML='<i>☺</i>Sua foto';nb.onclick=()=>goTab('pick');nav.appendChild(nb);
 const P=document.createElement('section');P.className='tab w';P.id='t-pick';P.innerHTML='<h2>Escolha sua foto <small>pelo rosto</small></h2><div class="c"><div class="sub wrap" style="color:var(--ink);white-space:normal"><b>Privacidade:</b> tudo acontece neste aparelho. Seu rosto não é enviado nem guardado e some ao fechar a página.</div><label class="r"><input type="checkbox" id="pkOk" aria-label="Autorizo usar meu rosto só para achar minhas fotos"><span style="color:var(--ink)">Concordo em usar meu rosto só para achar minhas fotos aqui.</span></label></div><div class="c"><div class="l"><span class="stn">1</span>Seu rosto</div><div style="display:flex;gap:12px;align-items:center;margin-top:8px"><img id="pkAv" alt="" style="display:none"><label style="flex:1;display:block;text-align:center;border-radius:12px;padding:16px;font-weight:700;background:var(--acc);color:#141000;cursor:pointer">📷 Tirar selfie<input type="file" id="pkIn" aria-label="Tirar selfie" accept="image/*" capture="user" style="display:none"></label></div><div class="sub wrap" id="pkSelf" style="margin-top:6px;white-space:normal">Para mais precisão, tire até 3 selfies: de frente, de lado e de boné.</div></div><div class="c"><div class="l"><span class="stn">2</span>Qual é o seu nome?</div><input id="pkName" aria-label="Nome e sobrenome" placeholder="Nome e sobrenome" style="width:100%;margin-top:8px"><div class="sub wrap" style="white-space:normal">As fotos que você escolher serão renomeadas com o seu nome (ex.: Maria_Silva_01.jpg) e copiadas para uma pasta com o seu nome.</div></div><div class="c"><div class="l"><span class="stn">3</span>Quando você foi fotografado(a)?</div><div class="chips" id="pkT" style="margin-top:8px"></div><div class="sub" style="margin-top:10px">Ou informe o horário de hoje</div><div style="display:flex;gap:8px;align-items:center;margin-top:6px"><input type="time" id="pkFrom" aria-label="Horário inicial" style="flex:1"><span class="sub">às</span><input type="time" id="pkTo" aria-label="Horário final" style="flex:1"></div><div class="l" style="margin-top:12px">Precisão</div><div class="chips" id="pkS" style="margin-top:6px"></div><label class="r"><input type="checkbox" id="pkLive" aria-label="Continuar procurando nas fotos novas"><span style="color:var(--ink)">Continuar procurando nas fotos novas</span></label><div class="pbar" style="margin-top:10px"><i id="pkBar"></i></div><button class="f p" id="pkGo">Procurar minhas fotos</button><div class="sub wrap" id="pkM" style="white-space:normal;color:var(--ink)"></div></div><div class="c" id="pkRes"><div class="pkh"><span class="stn">4</span><div class="pkt"><b>Suas fotos</b><small id="pkCnt"></small></div><button class="ib" type="button" data-h="pkH1" aria-label="Ajuda sobre suas fotos" title="Ajuda">i</button></div><div class="hint" id="pkH1" hidden>Suas fotos aparecem aqui depois da busca. Enquanto isso, já dá para criar a pasta com o seu nome abaixo.</div><div class="pkbar"><button id="pkTop" title="Marcar as mais prováveis">✨ Mais prováveis</button><button id="pkAll" title="Selecionar todas">Todas</button><button id="pkClr" title="Limpar seleção">Limpar</button><button id="pkDlAll" class="pkdl" title="Baixar todas">⬇ Baixar todas</button></div><div class="pkbody"><div class="pkem" id="pkEmpty"><i>🖼</i><span>Suas fotos aparecem aqui depois da busca.</span></div><div class="pg" id="pkG"></div></div><details class="pka"><summary><span class="pki">🖨</span><span class="pks"><b>Foto impressa</b><em id="pkPs">Só digital</em></span></summary><div class="pkin"><div class="pkl">Tamanho</div><div class="chips" id="pkPz"></div><div class="pkl">Cópias de cada foto</div><div class="chips" id="pkCp"></div><div class="pktot" id="pkTot"></div><details class="pkev"><summary>Editar valores (R$ por foto)</summary><div id="pkVal" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px"></div></details></div></details><details class="pka" open><summary><span class="pki">📁</span><span class="pks"><b>Pasta com o seu nome</b><em id="pkFs">Escolha o destino</em></span></summary><div class="pkin"><div class="pkl">Salvar em</div><div class="pkdest"><b id="pkDest"></b></div><button class="f pkgh" id="pkChg">Trocar pasta de destino</button><button class="f p" id="pkMk">📁 Criar a pasta com o meu nome</button><div class="pkmsg" id="pkMkM"></div><label class="pkrow"><span>Enviar também ao site como escolhidas</span><input type="checkbox" id="pkSite" aria-label="Enviar também ao site como escolhidas"></label></div></details><div id="pkAct" style="display:flex;flex-wrap:wrap;gap:8px"><button class="f p" id="pkSave" style="flex:1 1 100%">📁 Salvar na pasta com o meu nome</button><button class="f" id="pkDl" style="flex:1">⬇ Baixar original</button><button class="f" id="pkSh" style="flex:1">Compartilhar</button><details class="pkn" style="flex:1 1 100%"><summary>Sobre o arquivo original</summary><div class="hint">Original da câmera, intacto, sem recompressão e com todos os metadados. No iPhone/iPad prefira Compartilhar › Salvar imagem.</div></details></div></div><details class="c" id="pkDuo"><summary><b>📱📱 Dois celulares</b> <small>BETA</small></summary><div class="sub wrap" style="white-space:normal;color:var(--ink);margin-top:8px">Um celular cuida das fotos (câmera, pasta, envio) e o outro reconhece os rostos e monta o pedido. Eles se conectam direto, sem servidor. Use o mesmo Wi-Fi ou internet. Recurso em teste.</div><div class="chips" style="margin-top:8px"><button id="duoA">A · Celular das fotos</button><button id="duoB">B · Celular do reconhecimento</button></div><div class="sub wrap" id="duoHint" style="white-space:normal;margin-top:8px"></div><button class="f p" id="duoMk" style="display:none">1. Criar código de conexão</button><textarea id="duoOut" aria-label="Código gerado para o outro aparelho" readonly rows="3" style="display:none;width:100%;margin-top:8px"></textarea><div id="duoSh" style="display:none;gap:8px"><button class="f" id="duoCopy" style="flex:1">Copiar</button><button class="f" id="duoShare" style="flex:1">Compartilhar</button></div><textarea id="duoIn" aria-label="Colar o código recebido do outro aparelho" rows="3" style="display:none;width:100%;margin-top:8px"></textarea><button class="f p" id="duoGo" style="display:none"></button><div class="sub wrap" id="duoSt" style="white-space:normal;color:var(--ink);margin-top:8px"></div></details>';
 q('nav').before(P);P.addEventListener('click',e=>{const b=e.target.closest('.ib');if(!b)return;const h=document.getElementById(b.dataset.h);if(h){h.hidden=!h.hidden;b.classList.toggle('on',!h.hidden)}});
-const FC=new Map();let me=null,mins=15,found=[],pick=new Set();const M='https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.13/model/',pm=t=>q('#pkM').textContent=t;
+const FC=new Map();let me=null,mins=15,found=[],pick=new Set();window.pkReset=()=>{me=null;found=[];pick.clear();try{q('#pkG').innerHTML=''}catch(_){}};const M='https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.13/model/',pm=t=>q('#pkM').textContent=t;
 [[5,'5 min'],[15,'15 min'],[30,'30 min'],[60,'1 hora'],[0,'Todas']].forEach(([m,t])=>{const b=document.createElement('button');b.textContent=t;b.className=m===mins?'on':'';b.onclick=()=>{mins=m;q('#pkFrom').value='';q('#pkTo').value='';[...q('#pkT').children].forEach(x=>x.className=x===b?'on':'')};q('#pkT').appendChild(b)});
 window.pkLib=lib;async function lib(){if(window.faceapi&&faceapi.nets.tinyFaceDetector.isLoaded)return;if(!window.faceapi)await new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.13/dist/face-api.js';s.onload=ok;s.onerror=()=>no(new Error('não consegui baixar o reconhecimento facial (precisa de internet na primeira vez)'));document.head.appendChild(s)});
  pm('Preparando o reconhecimento (só na primeira vez)…');await Promise.all([faceapi.nets.tinyFaceDetector.loadFromUri(M),faceapi.nets.faceLandmark68TinyNet.loadFromUri(M),faceapi.nets.faceRecognitionNet.loadFromUri(M)])}
@@ -5228,7 +5302,7 @@ applyLook();refresh();
   const rec=H.filter(x=>Date.now()-x.t<300000).length,ms=Math.min(15000,2600+rec*2500);
   try{S.settle=Date.now()+ms-100;scheduleFind(ms);log('Esperando '+(ms/1000).toFixed(1)+' s antes de abrir a câmera (estabilizar o USB)')}catch(_){}});
  /* 2) checklist da câmera, lembrado entre aberturas */
- const ITENS=['Bateria da câmera cheia','Alimentação via USB: Desativada','Modo USB: PC Remoto ou Importação de fotos','Desligar automático: maior tempo / desativado','Cabo bom, ligado direto (sem hub)','Terminal do Mac rodando o comando ptpcamerad'];
+ const ITENS=['Bateria da câmera cheia','Alimentação via USB: Desativada','Modo USB: PC Remoto ou Importação de fotos','Desligar automático: maior tempo / desativado','Cabo bom, ligado direto (sem hub)','Mac: Protetor USB instalado (cartão no Início)'];
  let C={};try{C=JSON.parse(localStorage.getItem('lumen_chk')||'{}')}catch(_){}
  const u=$('#conUsb');let box=null;
  if(u){box=document.createElement('div');box.className='c';box.id='v61c';
@@ -6658,6 +6732,533 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
  setInterval(render,1500);render();
  log('Build v72: Protetor USB do Mac (permanente), reconexão rápida ao plugar/ligar a câmera','ok');
 }catch(e){try{log('v72: '+e.message,'bad')}catch(_){}}})();
+</script>
+
+<script id="v73">
+/* ===== v73 · Corrida numerada: lê o número de peito (ou de qualquer parte do corpo) de cada foto, no próprio aparelho,
+   e guarda uma cópia em Evento/dia/Corrida_numerada/<número>[_Nome]. Aba "Números" logo depois da Galeria:
+   conferir, corrigir, escolher, salvar na pasta, baixar ZIP e exportar lista. A foto original nunca muda. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),mk=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+ const LSg=(k,d)=>{try{return Object.assign({},d,JSON.parse(localStorage.getItem(k)||'{}'))}catch(_){return d}},LSs=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}};
+ const CFG=LSg('lumen_bib',{on:true,minL:1,maxL:5,conf:60,lo:1,hi:10000,noNum:false,quar:false,faces:true});if(!CFG.v74){if(CFG.lo==='')CFG.lo=1;if(CFG.hi==='')CFG.hi=10000;CFG.v74=1;try{localStorage.setItem('lumen_bib',JSON.stringify(CFG))}catch(_){}}
+ const ROSTER=new Map(Object.entries(LSg('lumen_bib_roster',{})));
+ const save=()=>LSs('lumen_bib',CFG);
+ /* ---------- índice (IndexedDB) ---------- */
+ const DBP=new Promise((a,b)=>{try{const r=indexedDB.open('lumen-bib',1);r.onupgradeneeded=()=>r.result.createObjectStore('p',{keyPath:'k'});r.onsuccess=()=>a(r.result);r.onerror=()=>b(r.error)}catch(e){b(e)}});
+ const tx=async(m,f)=>{const db=await DBP;return new Promise((a,b)=>{const t=db.transaction('p',m);let o;try{o=f(t.objectStore('p'))}catch(e){b(e);return}t.oncomplete=()=>a(o&&o.result);t.onerror=()=>b(t.error)})};
+ const IDX=new Map();const kOf=(ev,n)=>(ev||'')+'|'+n;
+ const put=r=>{IDX.set(r.k,r);tx('readwrite',s=>s.put(r)).catch(()=>{})};
+ (async()=>{try{((await tx('readonly',s=>s.getAll()))||[]).forEach(r=>IDX.set(r.k,r))}catch(_){}draw()})();
+ const evRecs=()=>[...IDX.values()].filter(r=>r.ev===C.ev);
+ /* ---------- leitor de números (Tesseract, carregado na 1ª vez) ---------- */
+ let W=null,WL=null;
+ function libOCR(){if(window.Tesseract)return Promise.resolve();return new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';s.onload=ok;s.onerror=()=>no(new Error('não consegui baixar o leitor de números (precisa de internet na primeira vez)'));document.head.appendChild(s)})}
+ function worker(){if(W)return Promise.resolve(W);if(WL)return WL;WL=(async()=>{await libOCR();msg('Preparando o leitor de números (só na primeira vez, ~10 MB)…');
+  const w=await Tesseract.createWorker('eng',1,{});W=w;return w})();WL.catch(()=>{WL=null});return WL}
+ const cnv=(w,h)=>{const c=document.createElement('canvas');c.width=Math.max(1,w|0);c.height=Math.max(1,h|0);return c};
+ function prep(src,x,y,w,h,target){/* recorta, amplia e aumenta o contraste */
+  x=Math.max(0,x);y=Math.max(0,y);w=Math.min(src.width-x,w);h=Math.min(src.height-y,h);if(w<20||h<20)return null;
+  const k=Math.min(3,Math.max(1,target/Math.max(w,h))),c=cnv(w*k,h*k),g=c.getContext('2d',{willReadFrequently:true});g.imageSmoothingQuality='high';g.drawImage(src,x,y,w,h,0,0,c.width,c.height);
+  const im=g.getImageData(0,0,c.width,c.height),d=im.data,H=new Uint32Array(256);
+  for(let i=0;i<d.length;i+=4){const v=(d[i]*.3+d[i+1]*.59+d[i+2]*.11)|0;d[i]=v;H[v]++}
+  const n=d.length/4;let lo=0,hi=255,a=0;for(let i=0;i<256;i++){a+=H[i];if(a>n*.02){lo=i;break}}a=0;for(let i=255;i>=0;i--){a+=H[i];if(a>n*.02){hi=i;break}}
+  const sc=255/Math.max(30,hi-lo);for(let i=0;i<d.length;i+=4){const v=Math.max(0,Math.min(255,(d[i]-lo)*sc));d[i]=d[i+1]=d[i+2]=v}g.putImageData(im,0,0);return{c,x,y,k}}
+ const valid=t=>{if(!/^\d+$/.test(t))return false;if(t.length<CFG.minL||t.length>CFG.maxL)return false;const v=+t;if(CFG.lo!==''&&v<+CFG.lo)return false;if(CFG.hi!==''&&v>+CFG.hi)return false;if(ROSTER.size&&!ROSTER.has(String(v)))return false;return true};
+ /* procura retângulos claros com traços escuros dentro (o "papel" do número), em qualquer parte da foto */
+ function bibCandidates(base){const k=Math.min(1,480/Math.max(base.width,base.height)),w=Math.max(8,Math.round(base.width*k)),h=Math.max(8,Math.round(base.height*k)),c=cnv(w,h),g=c.getContext('2d',{willReadFrequently:true});
+  g.drawImage(base,0,0,w,h);const d=g.getImageData(0,0,w,h).data,N=w*h,M=new Uint8Array(N),D=new Uint8Array(N);
+  for(let i=0;i<N;i++){const r=d[i*4],gg=d[i*4+1],b=d[i*4+2],L=r*.3+gg*.59+b*.11,sat=Math.max(r,gg,b)-Math.min(r,gg,b);M[i]=(L>155&&sat<95)||(L>175&&sat<160)?1:0;D[i]=L<115?1:0}
+  /* fecha pequenos buracos (os próprios números) para o papel virar uma peça só */
+  const M2=new Uint8Array(N);for(let y=1;y<h-1;y++)for(let x=1;x<w-1;x++){const i=y*w+x;let n=0;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++)n+=M[i+dy*w+dx];M2[i]=(M[i]||n>=4)?1:0}
+  const lab=new Int32Array(N),out=[],st=[];let id=0;
+  for(let s0=0;s0<N;s0++){if(!M2[s0]||lab[s0])continue;id++;let x0=w,y0=h,x1=0,y1=0,a=0;st.push(s0);lab[s0]=id;
+   while(st.length){const i=st.pop(),x=i%w,y=(i/w)|0;a++;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y;
+    for(const j of [i-1,i+1,i-w,i+w])if(j>=0&&j<N&&M2[j]&&!lab[j]&&Math.abs((j%w)-x)<=1){lab[j]=id;st.push(j)}}
+   const bw=x1-x0+1,bh=y1-y0+1,area=bw*bh;if(bw<8||bh<6||area<N*.0012||area>N*.22)continue;const asp=bw/bh;if(asp<.55||asp>4.5)continue;const fill=a/area;if(fill<.4)continue;
+   let dk=0;for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++)dk+=D[y*w+x];const df=dk/area;if(df<.03||df>.5)continue;
+   out.push({x:(x0-bw*.06)/k,y:(y0-bh*.08)/k,w:bw*1.12/k,h:bh*1.16/k,s:area*fill*(df>.08&&df<.35?1.5:1)})}
+  return out.sort((a,b)=>b.s-a.s).slice(0,8)}
+ async function detect(blob,opt={}){
+  let bm;try{bm=await createImageBitmap(blob,{imageOrientation:'from-image'})}catch(_){bm=await createImageBitmap(blob)}
+  const s=Math.min(1,2200/Math.max(bm.width,bm.height)),base=cnv(bm.width*s,bm.height*s);base.getContext('2d').drawImage(bm,0,0,base.width,base.height);bm.close&&bm.close();
+  const regs=bibCandidates(base).map(r=>Object.assign(r,{kind:'papel',psm:'7',min:.25,t:700}));
+  if(CFG.faces&&window.pkLib&&regs.length<3){try{await pkLib();const F=await faceapi.detectAllFaces(base,new faceapi.TinyFaceDetectorOptions({inputSize:512,scoreThreshold:.35}));
+    F.map(f=>f.box).sort((a,b)=>b.width-a.width).slice(0,5).forEach(b=>regs.push({x:b.x-b.width*1.6,y:b.y+b.height*.9,w:b.width*4.2,h:b.height*5,kind:'peito',psm:'6',min:.05,t:1100}))}catch(_){}}
+  regs.push({x:0,y:0,w:base.width,h:base.height,kind:'foto',psm:'6',min:.018,t:2000});
+  const w=await worker(),found=new Map(),boxes=[];let psm='';
+  for(const r of regs){if(r.kind==='foto'&&found.size&&!opt.all)break;const p=prep(base,r.x,r.y,r.w,r.h,r.t);if(!p)continue;
+   if(psm!==r.psm){await w.setParameters({tessedit_char_whitelist:'0123456789',tessedit_pageseg_mode:r.psm});psm=r.psm}
+   const {data}=await w.recognize(p.c);
+   for(const wd of (data.words||[])){const t=String(wd.text||'').replace(/\D/g,''),bh=(wd.bbox.y1-wd.bbox.y0)/p.c.height;
+    if(!valid(t)||wd.confidence<CFG.conf-15||bh<r.min)continue;const n=String(+t),c=Math.round(wd.confidence)+(r.kind==='papel'?3:0);
+    if(!found.has(n)||found.get(n)<c)found.set(n,Math.min(99,c));
+    boxes.push({n,c:Math.min(99,c),x:p.x+wd.bbox.x0/p.k,y:p.y+wd.bbox.y0/p.k,w:(wd.bbox.x1-wd.bbox.x0)/p.k,h:(wd.bbox.y1-wd.bbox.y0)/p.k})}}
+  return{nums:[...found].map(([n,c])=>({n,c,m:'auto'})).sort((a,b)=>b.c-a.c),base,boxes,regs}}
+ /* ---------- pastas ---------- */
+ const folder=n=>n?n+(ROSTER.get(n)?'_'+slug(ROSTER.get(n)):''):'_Sem_numero';
+ const pathOf=(r,n)=>[san(C.fev===undefined?C.ev:C.fev),C.fday===false?'':dayOf(r.ct||r.t),'Corrida_numerada',folder(n)].filter(Boolean).join('/');
+ const item=n=>(S.items||[]).find(i=>i.name===n&&i.kind==='foto');
+ async function blobOf(name){const it=item(name);if(!it)return null;if(!it.blob&&window.ensureBlob)await ensureBlob(it);return it.blob||null}
+ /* destino: pasta do evento (padrão) ou outra pasta escolhida por você */
+ const DEST={h:null,perm:false};
+ const DDB=new Promise((a,b)=>{try{const r=indexedDB.open('lumen-bib-dest',1);r.onupgradeneeded=()=>r.result.createObjectStore('h');r.onsuccess=()=>a(r.result);r.onerror=()=>b(r.error)}catch(e){b(e)}});
+ const dtx=async(m,f)=>{const db=await DDB;return new Promise((a,b)=>{const t=db.transaction('h',m);let o;try{o=f(t.objectStore('h'))}catch(e){b(e);return}t.oncomplete=()=>a(o&&o.result);t.onerror=()=>b(t.error)})};
+ (async()=>{try{const h=await dtx('readonly',s=>s.get('dest'));if(h){DEST.h=h;try{DEST.perm=(await h.queryPermission({mode:'readwrite'}))==='granted'}catch(_){}}}catch(_){}})();
+ const root=()=>DEST.h?(DEST.perm?DEST.h:null):(S.dir&&S.perm&&!S.dir.virtual?S.dir:null);
+ const rootName=()=>DEST.h?DEST.h.name:(S.dir?S.dir.name:'');
+ const relPath=(r,n)=>DEST.h?(/^Corrida_numerada$/i.test(DEST.h.name)?folder(n):'Corrida_numerada/'+folder(n)):pathOf(r,n);
+ let HOLD=false;
+ async function writeNums(r,list){if(HOLD)return 0;const R=root();if(!R)return 0;const b=await blobOf(r.name);if(!b)return 0;let k=0;
+  for(const n of list){try{await writeTo(R,relPath(r,n),r.name,b);(r.saved=r.saved||[]).includes(n)||r.saved.push(n);k++}catch(_){}}put(r);return k}
+ async function unwrite(r,n){const R=root();if(!R)return;try{let d=R;for(const g of relPath(r,n).split('/'))d=await d.getDirectoryHandle(g);await d.removeEntry(r.name)}catch(_){}r.saved=(r.saved||[]).filter(x=>x!==n);put(r)}
+ const accepted=r=>r.nums.filter(x=>x.m==='manual'||x.c>=CFG.conf).map(x=>x.n);
+ const review=r=>r.nums.some(x=>x.m!=='manual'&&x.c<CFG.conf);
+ /* ---------- fila ---------- */
+ const Q=[];let RUN=false,STOP=false,done=0,tot=0;
+ function enqueue(it,blob){if(!it||it.kind!=='foto'||(/^ed\|/.test(it.sig||'')))return;if(!CFG.quar&&it.cls==='d')return;const k=kOf(C.ev,it.name);if(IDX.has(k)||Q.some(q=>q.name===it.name))return;Q.push({name:it.name,ct:it.ct||it.t,blob:blob||it.blob||null});tot++;loop()}
+ async function loop(){if(RUN)return;RUN=true;STOP=false;
+  try{while(Q.length&&!STOP){const q=Q.shift();msg('Lendo números… '+(done+1)+' de '+tot+(Q.length?' ('+Q.length+' na fila)':''));
+    try{const b=q.blob||await blobOf(q.name);if(!b){done++;continue}const res=await detect(b),r={k:kOf(C.ev,q.name),ev:C.ev,name:q.name,ct:q.ct,t:Date.now(),nums:res.nums,saved:[]};put(r);
+     const acc=accepted(r);await writeNums(r,acc.length?acc:(CFG.noNum?['']:[]))}catch(e){msg('Leitor: '+e.message);if(/baixar o leitor/.test(e.message)){STOP=true;break}}
+    done++;draw(1)}}
+  finally{RUN=false;const wasHold=HOLD;if(!Q.length){tot=done=0;msg(STOP?'Parado.':'')}HOLD=false;draw();if(wasHold&&!STOP)setTimeout(askDest,300)}}
+ const _add=window.add;window.add=function(it){_add.apply(this,arguments);try{if(CFG.on)enqueue(it,it.blob)}catch(_){}};
+ /* ---------- interface: aba "Números" logo depois da Galeria ---------- */
+ const sec=mk('section','tab w');sec.id='t-bib';const gal=$1('#t-gal');(gal||$1('#t-vid')).after(sec);
+ sec.innerHTML='<div class="v70ph"><span class="v70pi" aria-hidden="true">🏃</span><div><h2>Corrida numerada</h2><p>Fotos separadas pelo número de peito</p></div></div>'
+ +'<div class="c v70c"><div class="v70h"><b>Separar por número</b><span class="pillS" id="bbSt">—</span></div>'
+ +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">O LUMEN lê o número de peito (ou de qualquer parte do corpo) e guarda uma <b>cópia</b> da foto em <b>Corrida_numerada/«número»</b>, dentro da pasta do evento. A original fica onde está. Tudo é feito neste aparelho.</div>'
+ +'<label class="r"><input type="checkbox" id="bbOn"><span>Separar automaticamente cada foto nova</span></label>'
+ +'<div class="v70row"><button type="button" class="f p" id="bbAll">Ler as fotos já recebidas</button><button type="button" class="f" id="bbStop">Parar</button><label class="f v70file">🧪 Testar com uma foto<input type="file" id="bbTest" accept="image/*" aria-label="Testar com uma foto"></label></div>'
+ +'<div class="sub wrap" id="bbMsg" data-ex="1" style="color:var(--ink)"></div><canvas id="bbCv" style="display:none;width:100%;border-radius:12px;margin-top:8px"></canvas></div>'
+ +'<div class="c v70c"><div class="v70h"><b>Números encontrados</b><span class="sub" id="bbN"></span></div>'
+ +'<div class="v70row"><input type="search" id="bbQ" placeholder="Buscar número (ex.: 1234)" inputmode="numeric" aria-label="Buscar número"><button type="button" class="f p" id="bbSaveAll">💾 Salvar tudo…</button><button type="button" class="f" id="bbCsv">⬇ Lista (CSV)</button></div>'
+ +'<div class="chips" id="bbChips" style="margin-top:8px"></div><div id="bbView"></div></div>'
+ +'<details class="c v70c"><summary><b>Ajustes</b> <small>dígitos, precisão, faixa e lista de inscritos</small></summary>'
+ +'<div class="v70row"><label class="v70lab">Dígitos de</label><input type="number" id="bbMin" min="1" max="6" style="width:70px"><label class="v70lab">até</label><input type="number" id="bbMax" min="1" max="7" style="width:70px"></div>'
+ +'<label class="peOne"><span>Precisão mínima <output id="bbCo"></output></span><input type="range" id="bbConf" min="40" max="90" step="5" aria-label="Precisão mínima"></label>'
+ +'<div class="sub wrap" data-ex="1">Abaixo da precisão a foto vai para "Conferir" em vez de ir direto para a pasta.</div>'
+ +'<div class="v70row"><label class="v70lab">Números válidos de</label><input type="number" id="bbLo" placeholder="1" style="width:90px"><label class="v70lab">até</label><input type="number" id="bbHi" placeholder="10000" style="width:90px"></div>'
+ +'<label class="r"><input type="checkbox" id="bbFace"><span>Procurar o número no peito de cada pessoa (mais preciso; usa o detector de rosto)</span></label>'
+ +'<label class="r"><input type="checkbox" id="bbNo"><span>Guardar também as fotos sem número em Corrida_numerada/_Sem_numero</span></label>'
+ +'<label class="r"><input type="checkbox" id="bbQu"><span>Ler também as fotos da quarentena (tremidas/escuras)</span></label>'
+ +'<div class="v69up"><b>📋 Lista de inscritos (opcional)</b><div class="sub wrap" data-ex="1">Arquivo .csv ou .txt com uma linha por atleta: <b>número;nome</b>. Com a lista, só números inscritos contam (menos erros) e a pasta ganha o nome: <b>1234_Maria_Silva</b>.</div><div class="v70row"><label class="f v70file">Subir lista<input type="file" id="bbRo" accept=".csv,.txt,text/csv,text/plain" aria-label="Subir lista de inscritos"></label><button type="button" class="f" id="bbRoX">Tirar lista</button><span class="sub" id="bbRoN"></span></div></div></details>';
+ const msg=t=>{const e=$1('#bbMsg');if(e)e.textContent=t||''};
+ /* botão na barra, logo depois da Galeria */
+ const nb=mk('button','','<i>🏃</i><span class="v70l">Corrida numerada</span><span class="v70s">Números</span>');nb.type='button';nb.dataset.t='bib';nb.title='Corrida numerada';nb.setAttribute('aria-label','Corrida numerada');nb.onclick=()=>{goTab('bib');draw()};
+ function navPlace(){const n=$1('nav'),g=n&&n.querySelector('button[data-t="gal"]');if(g&&nb.previousElementSibling!==g)g.after(nb)}
+ navPlace();setInterval(navPlace,1500);
+ /* atalho dentro da Galeria */
+ const gl=mk('button','f','🏃 Corrida numerada');gl.type='button';gl.id='bbGal';gl.onclick=()=>{goTab('bib');draw()};const gt=$1('#gtabs');if(gt)gt.before(gl);
+ /* ajustes */
+ const bind=(id,k,num)=>{const e=$1('#'+id);if(e.type==='checkbox'){e.checked=!!CFG[k];e.onchange=()=>{CFG[k]=e.checked;save();draw()}}else{e.value=CFG[k];e.onchange=()=>{CFG[k]=num?(e.value===''?'':+e.value):e.value;save();draw()}}};
+ bind('bbOn','on');bind('bbMin','minL',1);bind('bbMax','maxL',1);bind('bbLo','lo',1);bind('bbHi','hi',1);bind('bbNo','noNum');bind('bbQu','quar');bind('bbFace','faces');
+ const cf=$1('#bbConf');cf.value=CFG.conf;$1('#bbCo').textContent=CFG.conf+'%';cf.oninput=()=>{CFG.conf=+cf.value;$1('#bbCo').textContent=cf.value+'%';save();draw()};
+ const roN=()=>{$1('#bbRoN').textContent=ROSTER.size?ROSTER.size+' atleta(s) na lista':'sem lista'};roN();
+ $1('#bbRo').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;const t=await f.text();ROSTER.clear();
+  t.split(/\r?\n/).forEach(l=>{const m=l.match(/^\s*"?(\d{1,7})"?\s*[;,\t]\s*"?([^";,\t]*)/)||l.match(/^\s*(\d{1,7})\s*$/);if(m)ROSTER.set(String(+m[1]),(m[2]||'').trim())});
+  LSs('lumen_bib_roster',Object.fromEntries(ROSTER));roN();msg(ROSTER.size?'✔ Lista com '+ROSTER.size+' atleta(s).':'Não achei linhas "número;nome" nesse arquivo.');draw()};
+ $1('#bbRoX').onclick=()=>{ROSTER.clear();LSs('lumen_bib_roster',{});roN();draw()};
+ $1('#bbAll').onclick=()=>{const L=(S.items||[]).filter(i=>i.kind==='foto').slice().reverse();HOLD=true;let n=0;L.forEach(i=>{const before=Q.length;enqueue(i);if(Q.length>before)n++});
+  if(n)msg(n+' foto(s) na fila de leitura. No fim, você escolhe a pasta onde salvar.');else{HOLD=false;msg('Todas as fotos já foram lidas.');if(evRecs().length)askDest()}};
+ /* ---------- janela "onde salvar?" ---------- */
+ const dlg=mk('div','v70sheet');dlg.id='bbDlg';dlg.setAttribute('role','dialog');dlg.setAttribute('aria-label','Onde salvar as fotos numeradas');document.body.appendChild(dlg);
+ dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.classList.remove('on')});
+ function askDest(){const {G,rv,none}=groups(),tot=[...G.values()].reduce((a,L)=>a+L.length,0);
+  dlg.innerHTML='<div class="v70sb"><div class="v70sh"><b>✔ Leitura concluída</b><button type="button" class="f" data-a="x" aria-label="Fechar">✕</button></div>'
+  +'<div class="cntBar"><span><b>'+G.size+'</b> número(s)</span><span><b>'+tot+'</b> foto(s) com número</span>'+(rv.length?'<span>⚠ <b>'+rv.length+'</b> para conferir</span>':'')+(none.length?'<span><b>'+none.length+'</b> sem número</span>':'')+'</div>'
+  +'<p class="sub wrap" style="white-space:normal;color:var(--ink)">Onde você quer salvar a pasta <b>Corrida_numerada</b> (uma subpasta por número)?</p>'
+  +'<label class="r"><input type="checkbox" data-k="nn"'+(CFG.noNum?' checked':'')+'><span>Incluir as fotos sem número em _Sem_numero</span></label>'
+  +(rv.length?'<div class="sub wrap" style="white-space:normal;color:var(--warn)">As '+rv.length+' foto(s) para conferir só entram depois que você confirmar o número (aba Números › ⚠ Conferir).</div>':'')
+  +'<div style="display:grid;gap:8px;margin-top:10px">'
+  +(S.dir&&!S.dir.virtual?'<button type="button" class="f p" data-a="ev">💾 Pasta do evento: <b>'+esc(S.dir.name)+'</b></button>':'')
+  +(DEST.h?'<button type="button" class="f'+(S.dir?'':' p')+'" data-a="last">📁 Última pasta escolhida: <b>'+esc(DEST.h.name)+'</b></button>':'')
+  +('showDirectoryPicker' in window?'<button type="button" class="f" data-a="pick">📁 Escolher outra pasta…</button>':'')
+  +'<button type="button" class="f" data-a="zip">⬇ Baixar tudo em ZIP</button>'
+  +'<button type="button" class="f" data-a="x">Só ver na aba (salvar depois)</button></div>'
+  +'<div class="sub wrap" id="bbDm" style="white-space:normal;color:var(--ink);margin-top:8px"></div></div>';
+  dlg.classList.add('on');
+  dlg.querySelector('[data-k=nn]').onchange=e=>{CFG.noNum=e.target.checked;save();const c=$1('#bbNo');if(c)c.checked=CFG.noNum};
+  dlg.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>destAct(b.dataset.a))}
+ async function destAct(a){const dm=t=>{const e=$1('#bbDm');if(e)e.textContent=t};
+  try{if(a==='x'){dlg.classList.remove('on');msg('Tudo lido. Para salvar depois, toque em "💾 Salvar tudo…".');return}
+   if(a==='ev'){if(!S.perm){try{if((await S.dir.requestPermission({mode:'readwrite'}))==='granted'){S.perm=true}}catch(_){}}if(!S.perm){dm('A pasta precisa da sua permissão.');return}DEST.h=null;DEST.perm=false;try{await dtx('readwrite',s=>s.delete('dest'))}catch(_){}}
+   if(a==='last'){try{DEST.perm=(await DEST.h.requestPermission({mode:'readwrite'}))==='granted'}catch(_){}if(!DEST.perm){dm('A pasta precisa da sua permissão.');return}}
+   if(a==='pick'){const h=await showDirectoryPicker({mode:'readwrite',id:'lumen-bib',startIn:'pictures'});DEST.h=h;DEST.perm=true;try{await dtx('readwrite',s=>s.put(h,'dest'))}catch(_){}}
+   if(a==='zip'){await zipAll(dm);return}
+   await saveAll(dm)}catch(e){if(e&&e.name==='AbortError')return;dm('Não consegui: '+e.message)}}
+ async function saveAll(dm){const R=root();if(!R){dm('Sem pasta liberada.');return}const L=evRecs();let k=0,i=0;
+  for(const r of L){i++;const acc=accepted(r),want=acc.length?acc:(CFG.noNum&&!r.nums.length?['']:[]);const miss=want.filter(n=>!(r.saved||[]).includes(n)||DEST.h);if(miss.length)k+=await writeNums(r,miss);if(i%5===0)dm('Salvando… '+i+' de '+L.length)}
+  const where=rootName()+'/'+(DEST.h?(/^Corrida_numerada$/i.test(DEST.h.name)?'':'Corrida_numerada'):pathOf(L[0]||{t:Date.now()},'').replace(/\/_Sem_numero$/,''));
+  dm('✔ '+k+' cópia(s) salvas em '+where);msg('✔ Corrida numerada salva em '+where);log('Corrida numerada: '+k+' foto(s) salvas em '+where,'ok');draw()}
+ async function zipAll(dm){const L=evRecs(),E=[];for(const r of L){const acc=accepted(r),want=acc.length?acc:(CFG.noNum&&!r.nums.length?['']:[]);if(!want.length)continue;const b=await blobOf(r.name);if(!b)continue;want.forEach(n=>E.push({name:'Corrida_numerada/'+folder(n)+'/'+r.name,blob:b,t:r.ct}))}
+  if(!E.length){dm('Nenhuma foto disponível na memória para o ZIP: libere a pasta do evento no Início.');return}
+  const P=300;for(let i=0;i<E.length;i+=P){dm('Montando ZIP '+(i/P+1)+' de '+Math.ceil(E.length/P)+'…');const z=await buildZip(E.slice(i,i+P)),x=document.createElement('a');x.href=URL.createObjectURL(z);x.download='Corrida_numerada_'+slug(C.ev||'evento')+(E.length>P?'_parte'+(i/P+1):'')+'.zip';x.click();await new Promise(r=>setTimeout(r,1500))}
+  dm('✔ ZIP pronto com '+E.length+' foto(s) (veja em Downloads).')}
+ window.lumenBibSaveAll=askDest;
+ $1('#bbStop').onclick=()=>{STOP=true;Q.length=0;msg('Parando…')};
+ $1('#bbTest').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;msg('Lendo a foto de teste…');
+  try{const r=await detect(f,{all:true}),c=$1('#bbCv'),g=c.getContext('2d');c.width=r.base.width;c.height=r.base.height;g.drawImage(r.base,0,0);g.lineWidth=Math.max(3,c.width/300);g.font='bold '+Math.round(c.width/30)+'px system-ui';
+   r.boxes.forEach(b=>{const ok=b.c>=CFG.conf;g.strokeStyle=ok?'#34c759':'#ffb020';g.strokeRect(b.x,b.y,b.w,b.h);g.fillStyle=g.strokeStyle;g.fillText(b.n+' ('+b.c+'%)',b.x,Math.max(20,b.y-6))});c.style.display='block';
+   msg(r.nums.length?'Encontrei: '+r.nums.map(x=>x.n+' ('+x.c+'%'+(x.c<CFG.conf?', conferir':'')+')').join(', '):'Não achei número nessa foto. Dicas: número inteiro à vista, sem dobra; ajuste "Dígitos" e "Precisão" em Ajustes.')}catch(err){msg('Teste: '+err.message)}};
+ /* lista de números e pasta escolhida */
+ let SEL=null;const pick=new Set();
+ function groups(){const G=new Map(),rv=[],none=[];evRecs().forEach(r=>{const a=accepted(r);a.forEach(n=>{if(!G.has(n))G.set(n,[]);G.get(n).push(r)});if(review(r))rv.push(r);if(!r.nums.length)none.push(r)});return{G,rv,none}}
+ function thumbOf(name){const it=item(name);return it&&(it.thumb||it.url)||''}
+ function draw(light){try{
+  const {G,rv,none}=groups(),st=$1('#bbSt');if(!st)return;
+  st.textContent=RUN?'lendo…':CFG.on?'ligado':'desligado';st.className='pillS'+(RUN?' warn':CFG.on?' ok':'');
+  $1('#bbN').textContent=G.size+' número(s) · '+evRecs().length+' foto(s) lidas';$1('#bbOn').checked=!!CFG.on;
+  gl.textContent='🏃 Corrida numerada'+(G.size?' · '+G.size+' números':'');
+  if(light&&!sec.classList.contains('on'))return;
+  const q=($1('#bbQ').value||'').replace(/\D/g,''),ch=$1('#bbChips');
+  const nums=[...G.keys()].filter(n=>!q||n.includes(q)).sort((a,b)=>+a-+b);
+  ch.innerHTML='';const chip=(k,t)=>{const b=mk('button',SEL===k?'on':'',t);b.type='button';b.onclick=()=>{SEL=SEL===k?null:k;pick.clear();draw()};ch.appendChild(b)};
+  if(rv.length)chip('@rv','⚠ Conferir ('+rv.length+')');if(none.length)chip('@none','Sem número ('+none.length+')');
+  nums.slice(0,300).forEach(n=>chip(n,'#'+n+(ROSTER.get(n)?' · '+esc(ROSTER.get(n).split(' ')[0]):'')+' <small>('+G.get(n).length+')</small>'));
+  if(!nums.length&&!rv.length&&!none.length)ch.innerHTML='<div class="sub">Nenhum número ainda. Ligue a separação e toque em "Ler as fotos já recebidas".</div>';
+  view(G,rv,none)}catch(_){}}
+ function view(G,rv,none){const V=$1('#bbView');if(!SEL){V.innerHTML='';return}
+  const L=SEL==='@rv'?rv:SEL==='@none'?none:(G.get(SEL)||[]);const isN=!SEL.startsWith('@');
+  V.innerHTML='<div class="v70h" style="margin-top:12px"><b>'+(SEL==='@rv'?'Conferir números':SEL==='@none'?'Fotos sem número':'#'+esc(SEL)+(ROSTER.get(SEL)?' · '+esc(ROSTER.get(SEL)):''))+'</b><span class="sub">'+L.length+' foto(s)'+(isN&&rootName()?' · '+esc(rootName()+'/'+relPath(L[0]||{t:Date.now()},SEL)):'')+'</span></div>'
+   +(isN?'<div class="v70row"><button type="button" class="f" data-a="all">Selecionar todas</button><button type="button" class="f p" data-a="save">💾 Salvar escolhidas na pasta</button><button type="button" class="f" data-a="zip">⬇ Baixar ZIP</button><button type="button" class="f" data-a="out">Tirar deste número</button><button type="button" class="f" data-a="mv">Trocar número</button></div>':'<div class="sub wrap">Digite o número certo embaixo de cada foto e aperte Enter (vários: separe com vírgula; vazio = sem número).</div>')
+   +'<div class="pg" id="bbG"></div>';
+  const g=V.querySelector('#bbG');
+  L.forEach(r=>{const w=mk('div','');w.style.cssText='display:flex;flex-direction:column;gap:4px';const b=mk('button',pick.has(r.k)?'on':'');b.type='button';b.innerHTML='<img alt="" loading="lazy" src="'+thumbOf(r.name)+'">'+(pick.has(r.k)?'<b>✔</b>':'');
+   b.title=r.name+' · '+r.nums.map(x=>x.n+' '+x.c+'%').join(', ');b.onclick=()=>{if(isN){pick.has(r.k)?pick.delete(r.k):pick.add(r.k);view(G,rv,none)}else{const it=item(r.name);it&&openV(it)}};w.appendChild(b);
+   if(!isN){const i=mk('input','');i.type='text';i.inputMode='numeric';i.value=r.nums.map(x=>x.n).join(', ');i.setAttribute('aria-label','Números da foto '+r.name);i.style.cssText='min-height:36px;padding:4px 8px';
+    i.onkeydown=async e=>{if(e.key!=='Enter')return;await setNums(r,i.value);draw()};w.appendChild(i)}g.appendChild(w)});
+  V.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>act(b.dataset.a,L))}
+ async function setNums(r,txt){const nn=[...new Set(String(txt).split(/[^\d]+/).filter(Boolean).map(x=>String(+x)))];
+  for(const n of (r.saved||[]).slice())if(!nn.includes(n))await unwrite(r,n);
+  r.nums=nn.map(n=>({n,c:100,m:'manual'}));put(r);const k=await writeNums(r,nn.length?nn:(CFG.noNum?['']:[]));msg('✔ '+r.name+': '+(nn.length?'#'+nn.join(', #'):'sem número')+(k?' (salva na pasta)':''))}
+ async function act(a,L){const ch=L.filter(r=>pick.has(r.k)),use=ch.length?ch:L;
+  if(a==='all'){L.forEach(r=>pick.add(r.k));draw();return}
+  if(a==='save'){if(!root()){askDest();return}let k=0;for(const r of use)k+=await writeNums(r,[SEL]);msg('✔ '+k+' foto(s) em '+rootName()+'/'+relPath(use[0],SEL));draw();return}
+  if(a==='zip'){msg('Montando o ZIP…');const E=[];for(const r of use){const b=await blobOf(r.name);if(b)E.push({name:folder(SEL)+'/'+r.name,blob:b,t:r.ct})}
+   if(!E.length){msg('As fotos não estão mais na memória: libere a pasta no Início.');return}const z=await buildZip(E),x=document.createElement('a');x.href=URL.createObjectURL(z);x.download='Corrida_'+folder(SEL)+'.zip';x.click();msg('✔ ZIP com '+E.length+' foto(s).');return}
+  if(a==='out'){if(!confirm('Tirar '+use.length+' foto(s) do número '+SEL+'? (apaga a cópia da pasta Corrida_numerada; a original fica)'))return;for(const r of use)await setNums(r,r.nums.map(x=>x.n).filter(n=>n!==SEL).join(','));pick.clear();draw();return}
+  if(a==='mv'){const t=prompt('Novo número para '+use.length+' foto(s):');if(t==null)return;for(const r of use)await setNums(r,r.nums.map(x=>x.n).filter(n=>n!==SEL).concat(t).join(','));pick.clear();SEL=String(+t.replace(/\D/g,''))||null;draw()}}
+ $1('#bbQ').oninput=()=>draw();$1('#bbSaveAll').onclick=askDest;
+ $1('#bbCsv').onclick=()=>{const rows=['numero;nome;foto;precisao;origem'];evRecs().forEach(r=>r.nums.forEach(x=>rows.push([x.n,ROSTER.get(x.n)||'',r.name,x.c,x.m==='manual'?'corrigido':'automatico'].join(';'))));dl('corrida_numerada_'+slug(C.ev||'evento')+'.csv','﻿'+rows.join('\n'),'text/csv')};
+ /* número na galeria e no visualizador */
+ setInterval(()=>{try{const M=new Map();evRecs().forEach(r=>{const a=accepted(r);if(a.length)M.set(r.name,a)});document.querySelectorAll('#grid .t[title]').forEach(b=>{let s=b.querySelector('.bibB');const a=M.get(b.title);
+   if(!a){if(s)s.remove();return}if(!s){s=mk('span','bibB');s.style.cssText='position:absolute;right:4px;top:4px;background:var(--acc);color:#141000;border-radius:99px;padding:1px 7px;font-size:11px;font-weight:800';b.appendChild(s)}s.textContent='#'+a.slice(0,2).join(' #')})}catch(_){}},1500);
+ const mb=mk('button','','🏃 Número');mb.type='button';mb.id='mBib';const md=$1('#mDl');if(md)md.before(mb);
+ mb.onclick=async()=>{const it=typeof cur!=='undefined'?cur:null;if(!it||it.kind!=='foto')return;const k=kOf(C.ev,it.name);let r=IDX.get(k)||{k,ev:C.ev,name:it.name,ct:it.ct||it.t,t:Date.now(),nums:[],saved:[]};
+  const t=prompt('Número(s) desta foto (vírgula entre vários; vazio = sem número):',r.nums.map(x=>x.n).join(', '));if(t==null)return;await setNums(r,t);draw()};
+ setInterval(()=>{const it=typeof cur!=='undefined'?cur:null;mb.style.display=it&&it.kind==='foto'?'':'none'},800);
+ const _go=window.goTab;window.goTab=function(t){const r=_go.apply(this,arguments);try{if(t==='bib')draw()}catch(_){}return r};try{goTab=window.goTab}catch(_){}
+ setInterval(()=>{if(sec.classList.contains('on')&&!document.hidden)draw(1)},4000);
+ draw();log('Build v73: Corrida numerada (separa as fotos pelo número de peito)','ok');
+}catch(e){try{log('v73: '+e.message,'bad')}catch(_){}}})();
+</script>
+
+<script id="v75">
+/* ===== v75 · Páginas reorganizadas (Conectar, Galeria, Vídeos, Registro, Editor de vídeo, Presets, Sua foto)
+   + Câmera e Lightroom juntos sem cair + Wi-Fi direto para o site + Bluetooth guiado.
+   Só move e acrescenta: nenhum dado salvo (localStorage, IndexedDB, pastas) é apagado ou renomeado. ===== */
+(function(){
+ const $1=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],mk=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+ const LSg=(k,d)=>{try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(_){return d}},LSs=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}};
+ const safe=(n,f)=>{try{f()}catch(e){try{log('v75 '+n+': '+e.message,'bad')}catch(_){}}};
+ const MAC=/Mac/i.test(navigator.userAgent)&&!IOS;let stripKey='';
+ const head=c=>{const h=c&&c.querySelector&&c.querySelector('.l,h2,summary,b');return h?h.textContent.trim():''};
+ const cnt=()=>{const F=(S.items||[]).filter(i=>i.kind==='foto'),V=(S.items||[]).filter(i=>i.kind==='video');return{F,V}};
+
+ /* ================= 1. Câmera + Lightroom juntos (sem cair, sem tela de bateria) ================= */
+ const LRP={ed:0,busy:false};
+ async function countEd(){if(LRP.busy||!S.dir||!S.perm||S.dir.virtual)return;LRP.busy=true;
+  try{let n=0;const w=async(d,dep)=>{for await(const [nm,h] of d.entries()){if(h.kind==='directory'){if(dep<3)await w(h,dep+1)}else if(/\.(jpe?g|mp4|mov)$/i.test(nm))n++}};await w(await S.dir.getDirectoryHandle('Editadas'),0);LRP.ed=n}catch(_){LRP.ed=0}finally{LRP.busy=false}}
+ setInterval(()=>{if(C.lrOn&&!document.hidden)countEd()},5000);
+ function pairOn(){return !!(C.lrOn&&C.edWatch)}
+ async function pairStart(btn){
+  if(!S.dir){const b=$1('#fs2b');if(b)b.click();lrpMsg('Primeiro escolha a pasta do evento (ela abre agora). Depois toque de novo aqui.');return}
+  if(window.lrAuto)await lrAuto(btn);
+  C.lrPair=true;store();lrpMsg('✔ Ligado. A câmera fica no LUMEN (fotografando normalmente) e o Lightroom recebe cada foto pela pasta LR_Entrada. Agora faça os 2 passos no Lightroom logo abaixo.');render()}
+ function lrpMsg(t){$$('.lrpM').forEach(e=>e.textContent=t)}
+ function mkPair(){const d=mk('div','c v70c lrPair');d.innerHTML='<div class="v70h"><b>🅻 Câmera + Lightroom juntos</b><span class="pillS lrpSt">—</span></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Só um programa por vez consegue usar o cabo. Se o Lightroom usar a câmera pela <b>Captura conectada</b>, ele toma o USB do LUMEN: a câmera vai para a tela da bateria e as fotos param de ir para o site. O jeito certo é: <b>a câmera fica no LUMEN</b>, que entrega cada foto ao Lightroom por uma pasta. Assim você fotografa sem parar, o Lightroom edita e o site recebe.</div>'
+  +'<div class="v75pipe" aria-label="Caminho das fotos"><div data-k="cam"><i>📷</i><b>–</b><small>câmera</small></div><u>→</u><div data-k="in"><i>📥</i><b>0</b><small>LR_Entrada</small></div><u>→</u><div data-k="lr"><i>🅻</i><b>0</b><small>importadas</small></div><u>→</u><div data-k="ed"><i>📁</i><b>0</b><small>Editadas</small></div><u>→</u><div data-k="up"><i>🌐</i><b>0</b><small>no site</small></div></div>'
+  +'<div class="fx3a"><button type="button" class="f p lrpGo">Ligar Câmera + Lightroom</button></div><div class="sub wrap lrpM" data-ex="1" style="white-space:normal;color:var(--ink)"></div>'
+  +'<label class="r"><input type="checkbox" class="lrpRaw"><span>Mandar ao site também a foto original na hora (sem esperar o Lightroom)</span></label>'
+  +'<details class="ex"><summary>Os 2 passos no Lightroom Classic (uma vez)</summary><ol class="steps" data-ex="1"><li><b>Importação automática.</b><small>Arquivo › Importação automática › Configurações: Pasta monitorada = <b>LR_Entrada</b> (dentro da pasta do evento), Destino = uma pasta fora do LUMEN, Configurações de revelação = <b>seu preset</b>. Depois Arquivo › Importação automática › <b>Ativar</b>.</small></li><li><b>Publicar para a pasta Editadas.</b><small>Serviços de publicação › Disco rígido › Configurar: local = <b>Editadas/Fotos</b>, JPEG 90. Arraste as fotos e clique em <b>Publicar</b>: o LUMEN vê cada uma chegar e envia ao site.</small></li><li><b>Não use Arquivo › Captura conectada.</b><small>É ela que tira a câmera do LUMEN e faz a câmera mostrar a bateria.</small></li></ol></details>';
+  d.querySelector('.lrpGo').onclick=e=>pairStart(e.target);
+  const raw=d.querySelector('.lrpRaw');raw.checked=C.edHold===false;raw.onchange=()=>{C.edHold=!raw.checked;store();const h=$1('#frH');if(h)h.checked=C.edHold};return d}
+ const P1=mkPair(),P2=mkPair();
+ /* "Liberar a câmera para o Lightroom" agora explica antes (é o que deixava a câmera na tela de bateria) */
+ safe('hold',()=>{const h0=window.holdCamera;if(typeof h0==='function')window.holdCamera=async function(){
+  if(!confirm('Liberar a câmera para a Captura conectada do Lightroom?\n\nEnquanto o Lightroom estiver com o cabo, a câmera mostra a tela da bateria no LUMEN e as fotos NÃO vão para o site.\n\nPara usar os dois ao mesmo tempo, cancele e use "Câmera + Lightroom juntos" (a câmera continua no LUMEN).'))return;return h0.apply(this,arguments)}});
+
+ /* ================= 2. Wi-Fi direto para o site ================= */
+ const WF=mk('div','c v70c');WF.id='wfSite';
+ WF.innerHTML='<div class="v70h"><b>📶 Wi-Fi direto para o site</b><span class="pillS" id="wfSt">—</span></div>'
+  +'<div class="v75pipe"><div data-k="c"><i>📷</i><b>Wi-Fi</b><small>câmera</small></div><u>→</u><div data-k="p"><i>💻</i><b>–</b><small>pasta do app Canon</small></div><u>→</u><div data-k="l"><i>⚡</i><b>0</b><small>LUMEN recebeu</small></div><u>→</u><div data-k="s"><i>🌐</i><b>0</b><small>no site</small></div></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">A câmera manda cada foto por Wi-Fi para uma pasta do computador (app <b>EOS Utility</b> ou <b>Image Transfer Utility 2</b> da Canon). O LUMEN vigia essa pasta e envia cada foto nova ao site sozinho, em segundos.</div>'
+  +'<div class="fx3a"><button type="button" class="f p" id="wfGo">📁 Escolher a pasta do Wi-Fi e começar</button><button type="button" class="f" id="wfCc">Usar Wi-Fi direto da câmera (CCAPI)</button></div>'
+  +'<div class="sub wrap" id="wfM" data-ex="1" style="white-space:normal;color:var(--ink)"></div>';
+ const wfM=t=>{$1('#wfM').textContent=t};
+ WF.querySelector('#wfGo').onclick=async()=>{safe('wf',()=>setMode('folder'));const b=$1('#fdGo');if(b){b.click();wfM('Escolha a pasta onde o app da Canon salva as fotos do Wi-Fi. Assim que escolher, o LUMEN começa sozinho.');C.wfAuto=Date.now();store()}};
+ WF.querySelector('#wfCc').onclick=()=>{safe('wf',()=>setMode('wifi'));showMethod('wifi');setTimeout(()=>{const i=$1('#wIp');i&&i.focus()},200)};
+ /* começa sozinho quando a origem por Wi-Fi/pasta fica pronta e há envio ao site configurado */
+ setInterval(()=>{try{if(S.run)return;if(!(S.src==='folder'||S.src==='wifi')||!S.sess)return;if(!eps().length&&!(S.dir&&S.perm))return;if(!checks().every(c=>c.ok))return;
+  const k=S.src+'|'+(S.src==='folder'&&FD.h?FD.h.name:cc.base);if(window.__v75auto===k)return;window.__v75auto=k;const g=$1('#bGo');if(g&&!g.disabled){g.click();log('Wi-Fi/pasta: recebimento iniciado sozinho — cada foto nova vai para o site','ok')}}catch(_){}},1500);
+
+ /* ================= 3. Bluetooth guiado ================= */
+ const BT=mk('div','c v70c');BT.id='btPanel';
+ BT.innerHTML='<div class="v70h"><b>ᛒ Bluetooth</b><span class="pillS" id="btSt">—</span></div>'
+  +'<div class="v75pipe"><div data-k="b"><i>ᛒ</i><b>–</b><small>parear</small></div><u>→</u><div data-k="w"><i>📶</i><b>Wi-Fi</b><small>transfere</small></div><u>→</u><div data-k="s"><i>🌐</i><b>site</b><small>envio</small></div></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">O Bluetooth da Canon <b>não transporta fotos</b> (é lento demais): ele serve para parear, acordar a câmera e preparar o Wi-Fi. Por isso o LUMEN usa o Bluetooth para achar a câmera e o <b>Wi-Fi</b> para levar as fotos ao site.</div>'
+  +'<div class="fx3a"><button type="button" class="f p" id="btFind">ᛒ Procurar a câmera por Bluetooth</button><button type="button" class="f" id="btNext">Continuar: Wi-Fi para o site →</button></div><div class="sub wrap" id="btM2" data-ex="1" style="white-space:normal;color:var(--ink)"></div>';
+ BT.querySelector('#btFind').onclick=()=>{const b=$1('#btGo');if(b)b.click();else BT.querySelector('#btM2').textContent='Bluetooth indisponível neste navegador.'};
+ BT.querySelector('#btNext').onclick=()=>showMethod('wifi');
+
+ /* ================= 4. Conectar: central de conexão ================= */
+ let METHOD=LSg('lumen_v75m',null);
+ const TILES=[['usb','🔌','Cabo USB','Mais rápido e estável',!IOS],['wifi','📶','Wi-Fi','Sem cabo, direto ao site',true],['files','📱','iPhone','Camera Connect ou cartão',true],['folder','📁','Pasta','Cartão, app Canon, Android',!IOS],['bt','ᛒ','Bluetooth','Parear e acordar',true]];
+ function showMethod(m){METHOD=m;LSs('lumen_v75m',m);
+  safe('mode',()=>{if(m==='usb'||m==='files'||m==='folder')setMode(m);else if(m==='wifi')setMode(S.src==='folder'&&FD.h?'folder':'wifi')});
+  const map={usb:'#conUsb',files:'#conFiles',folder:'#conFolder',wifi:'#conWifi'};
+  ['#conUsb','#conFiles','#conFolder','#conWifi'].forEach(s=>{const e=$1(s);if(e)e.style.display=(map[m]===s||(m==='wifi'&&s==='#conFolder'&&S.cm==='folder'))?'':'none'});
+  WF.style.display=m==='wifi'?'':'none';BT.style.display=m==='bt'?'':'none';
+  $$('.v75tile').forEach(t=>t.classList.toggle('on',t.dataset.m===m));render()}
+ window.lumenShowMethod=showMethod;
+ safe('con',()=>{const sec=$1('#t-con');if(!sec||$1('#conHub'))return;
+  const hub=mk('div','');hub.id='conHub';const ph=sec.querySelector('.v70ph');(ph||sec.firstChild).after(hub);
+  hub.innerHTML='<div class="v75hero" id="chHero"><div class="v75node" data-k="cam"><small>Câmera</small><b>–</b><span></span></div><div class="v75node" data-k="src"><small>Origem</small><b>–</b><span></span></div><div class="v75node" data-k="dir"><small>Pasta</small><b>–</b><span></span></div><div class="v75node" data-k="site"><small>Site</small><b>–</b><span></span></div></div>'
+   +'<div class="v75go"><button type="button" class="f p" id="chGo">…</button><button type="button" class="f" id="chHelp">Ajuda para conectar</button></div>'
+   +'<div class="v75tiles" role="tablist" aria-label="Como conectar"></div>';
+  const T=hub.querySelector('.v75tiles');TILES.forEach(([m,i,t,s,rec])=>{const b=mk('button','v75tile','<i>'+i+'</i><b>'+t+'</b><small>'+s+'</small>'+(m==='usb'&&!IOS||m==='files'&&IOS?'<em>recomendado</em>':''));b.type='button';b.dataset.m=m;b.setAttribute('role','tab');b.onclick=()=>showMethod(m);T.appendChild(b)});
+  const fold=sec.querySelector(':scope>details.fold');const body=mk('div','');body.id='conBody';hub.appendChild(body);
+  body.append(WF,BT);['#conUsb','#conWifi','#conFiles','#conFolder'].forEach(s=>{const e=$1(s);if(e)body.appendChild(e)});
+  body.appendChild(P1);
+  const diag=mk('details','c v70c v75fold','<summary><b>🔧 Diagnóstico e detalhes</b> <small>ambiente, verificação, sinal de vida, Canon</small></summary>');
+  ['#envBox','#conCtx','#hbCon','#lrMini','#cnCard','#conGuide'].forEach(s=>{const e=$1(s);if(e)diag.appendChild(e)});
+  if(fold)[...fold.children].forEach(c=>{if(c.tagName==='SUMMARY'||c.id==='conM')return;diag.appendChild(c)});
+  const bt0=[...sec.children].find(c=>/^Bluetooth/.test(head(c)));if(bt0){bt0.hidden=true;diag.appendChild(bt0)}
+  hub.appendChild(diag);if(fold)fold.classList.add('v75old');const cm=$1('#conM');if(cm)cm.hidden=true;
+  $1('#chHelp').onclick=()=>{S.gateAsk=true;gateOff=false;try{gateUi()}catch(_){}};
+  $1('#chGo').onclick=()=>{const s=step();if(s.f)s.f()};
+  showMethod(METHOD||(IOS?'files':S.cm==='folder'?'folder':S.cm==='wifi'?'wifi':'usb'))});
+ /* goTab('con') antigo re-mostra painéis: reaplica o método escolhido */
+ safe('go',()=>{const g0=window.goTab;window.goTab=function(t){const r=g0.apply(this,arguments);try{if(t==='con')showMethod(METHOD||'usb');if(t==='reg')tl();if(t==='ved')strip(true)}catch(_){}return r};try{goTab=window.goTab}catch(_){}});
+ function step(){const ok=S.sess&&SRCOK();
+  if(S.hold)return{t:'Voltar a usar a câmera no LUMEN',f:()=>resumeCamera()};
+  if(!ok){if(METHOD==='wifi')return{t:'📁 Escolher a pasta do Wi-Fi',f:()=>$1('#wfGo').click()};if(METHOD==='bt')return{t:'ᛒ Procurar por Bluetooth',f:()=>$1('#btFind').click()};if(METHOD==='files')return{t:'📥 Trazer fotos e vídeos',f:()=>{const f=$1('#fIn');f&&f.click()}};if(METHOD==='folder')return{t:'📁 Escolher pasta da câmera',f:()=>{const f=$1('#fdGo');f&&f.click()}};return{t:'🔌 Conectar câmera',f:()=>{const b=$1('#fs1b');b&&b.click()}}}
+  if(!(S.dir&&S.perm)&&!eps().length)return{t:'📁 Escolher pasta para salvar',f:()=>{const b=$1('#fs2b');b&&b.click()}};
+  if(!S.run)return{t:'▶ Começar a receber',f:()=>{const b=$1('#fs3b');b&&b.click()}};
+  return{t:'✔ Recebendo — ver Galeria',f:()=>goTab('gal')}}
+
+ /* ================= 5. Galeria ================= */
+ const GC=LSg('lumen_gcols',innerWidth>=1100?6:innerWidth>=700?5:3);
+ safe('gal',()=>{const sec=$1('#t-gal');if(!sec||$1('#galBar'))return;const fold=sec.querySelector(':scope>details.fold');if(fold)fold.open=true;
+  const stats=mk('div','v75stats');stats.id='galStats';const bar=mk('div','v75bar');bar.id='galBar';
+  const r1=mk('div','v75r');const gq=$1('#gq');const srow=gq&&gq.parentNode;if(srow){[...srow.children].forEach(c=>r1.appendChild(c));srow.remove()}
+  const sz=mk('label','v75sz','Tamanho <input type="range" min="2" max="9" step="1" aria-label="Tamanho das miniaturas">');r1.appendChild(sz);
+  bar.appendChild(r1);const r2=mk('div','v75r');['#gtabs','#flt'].forEach(s=>{const e=$1(s);if(e)r2.appendChild(e)});bar.appendChild(r2);const gb=$1('#gbar');if(gb)bar.appendChild(gb);
+  const bb=$1('#bbGal');if(bb)r1.prepend(bb);
+  const ph=sec.querySelector('.v70ph');(ph||sec.firstChild).after(stats);stats.after(bar);
+  const rng=sz.querySelector('input');rng.value=11-GC;const ap=()=>{const n=11-(+rng.value);document.documentElement.style.setProperty('--gcols',n);LSs('lumen_gcols',n)};rng.oninput=ap;ap()});
+ function galStats(){const e=$1('#galStats');if(!e)return;const {F,V}=cnt(),sent=F.filter(i=>i.sent).length,q=F.filter(i=>i.cls==='d').length,o=F.filter(i=>i.cls==='o').length;
+  e.innerHTML='<span>📷 <b>'+F.length+'</b> fotos</span><span>🎬 <b>'+V.length+'</b> vídeos</span><span>☁ <b>'+sent+'</b> no site</span><span>★ <b>'+o+'</b> destaques</span>'+(q?'<span>⚠ <b>'+q+'</b> quarentena</span>':'')+(S.run?'<span style="border-color:var(--ok);color:var(--ok)">● ao vivo</span>':'');
+  document.body.classList.toggle('galSel',!!S.gm&&$1('#t-gal').classList.contains('on'))}
+
+ /* ================= 6. Vídeos recebidos ================= */
+ safe('vid',()=>{const sec=$1('#t-vid');if(!sec||$1('#vidBar'))return;const fold=sec.querySelector(':scope>details.fold');if(fold)fold.open=true;
+  const stats=mk('div','v75stats');stats.id='vidStats';const bar=mk('div','v75bar');bar.id='vidBar';
+  const r1=mk('div','v75r');['#vlQ','#vlF','#vlS'].forEach(s=>{const e=$1(s);if(e)r1.appendChild(e)});const rg=$1('#rotGo');if(rg)r1.appendChild(rg);
+  const g2=$1('#vlF')&&$1('#vlF').parentNode;bar.appendChild(r1);['#vlT','#vlB'].forEach(s=>{const e=$1(s);if(e)bar.appendChild(e)});
+  const ph=sec.querySelector('.v70ph');(ph||sec.firstChild).after(stats);stats.after(bar);if(g2&&g2.classList&&g2.classList.contains('g2')&&!g2.children.length)g2.remove()});
+ function vidStats(){const e=$1('#vidStats');if(!e)return;const cap=$1('#vlCap'),n=$1('#vlN');e.innerHTML='<span>🎬 <b>'+(n?n.textContent:0)+'</b> vídeos na pasta</span>'+(cap&&cap.textContent.length<200?'<span>'+esc(cap.textContent.replace(/\s+/g,' ').slice(0,120))+'</span>':'')}
+
+ /* ================= 7. Registro: linha do tempo ================= */
+ const TLc=mk('div','c v70c');TLc.id='regTl';TLc.innerHTML='<div class="v70h"><b>🕒 Linha do tempo</b><span class="sub" id="tlN"></span></div><div class="v70row"><input type="search" id="tlQ" placeholder="Buscar arquivo" aria-label="Buscar arquivo no registro"><div class="chips" id="tlF"><button type="button" data-f="all" class="on">Todos</button><button type="button" data-f="falha">Falhas</button><button type="button" data-f="fila">Na fila</button><button type="button" data-f="ok">Concluídos</button></div></div><ul class="v75tl" id="tlL"></ul>';
+ let TLF='all';TLc.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{TLF=b.dataset.f;TLc.querySelectorAll('[data-f]').forEach(x=>x.classList.toggle('on',x===b));tl()});
+ safe('reg',()=>{const sec=$1('#t-reg');if(!sec)return;const ph=sec.querySelector('.v70ph');(ph||sec.firstChild).after(TLc);sec.querySelectorAll(':scope>details.fold').forEach((d,i)=>{if(i<2)d.open=true});$1('#tlQ').oninput=tl});
+ function tl(){try{const L=$1('#tlL');if(!L)return;const q=($1('#tlQ').value||'').toLowerCase();
+  const all=Object.entries(LG.m).map(([k,v])=>v).filter(v=>v.ev===C.ev).sort((a,b)=>(b.t||0)-(a.t||0));
+  const R=all.filter(v=>(TLF==='all'||(TLF==='fila'?['fila','baixado'].includes(v.st):v.st===TLF))&&(!q||String(v.n).toLowerCase().includes(q))).slice(0,80);
+  const ic={ok:'✅',falha:'❌',fila:'⏳',baixado:'⬇'};$1('#tlN').textContent=all.length+' arquivo(s) no evento';
+  L.innerHTML=R.length?R.map(v=>'<li data-s="'+esc(v.st)+'"><i>'+(ic[v.st]||'•')+'</i><div><b>'+esc(v.n||'')+'</b><small>'+esc({ok:'gravado e processado',falha:'falhou',fila:'na fila',baixado:'baixado da câmera'}[v.st]||v.st)+(v.e?' · '+esc(String(v.e).slice(0,90)):'')+'</small></div><small>'+new Date(v.t||0).toLocaleTimeString()+(v.sz?'<br>'+(v.sz/1e6).toFixed(1)+' MB':'')+'</small></li>').join(''):'<li><i>•</i><div><b>Nada aqui ainda</b><small>Os arquivos aparecem assim que chegam da câmera.</small></div><small></small></li>'}catch(_){}}
+
+ /* ================= 8. Editor de vídeo: estúdio organizado ================= */
+ safe('ved',()=>{const det=$1('#vxBox'),ed=det&&det.querySelector('.vxEd');if(!ed||ed.classList.contains('v75two'))return;det.open=true;
+  const L=mk('div','vxColL'),R=mk('div','vxColR');const st=mk('div','vxStrip');st.id='vxVids';st.setAttribute('aria-label','Escolher vídeo');
+  const top=$1('#vxTop'),tb2=ed.querySelector('.vxTb2'),info=$1('#vxInfo');
+  L.append(st);[top,tb2,info].forEach(e=>e&&L.appendChild(e));
+  [...ed.children].forEach(c=>{if(c!==L&&c!==R)R.appendChild(c)});ed.append(L,R);ed.classList.add('v75two');
+  /* Marca e Girar viram abas do próprio editor */
+  const tabs=$1('#vxTabs');const addPan=(p,lab,el)=>{if(!el)return;const pan=mk('div','vxPan');pan.dataset.p=p;pan.hidden=true;pan.appendChild(el);R.appendChild(pan);const b=mk('button','',lab);b.type='button';b.dataset.p=p;tabs.appendChild(b)};
+  addPan('w','🔤 Marca',$1('#vwCard'));addPan('g','🔄 Girar',$1('#rotCard'));
+  /* ferramentas antigas guardadas num lugar só */
+  const sec=$1('#t-ved'),old=mk('details','c v70c v75fold','<summary><b>🧰 Ferramentas clássicas</b> <small>editor antigo de velocidade e look de vídeo</small></summary>');
+  [...sec.children].filter(c=>c.tagName==='DETAILS'&&/Editar vídeo/.test(head(c))&&c!==det||(/^Look de vídeo/.test(head(c)))).forEach(c=>old.appendChild(c));if(old.children.length>1)sec.appendChild(old);
+  strip(true)});
+ function strip(force){const st=$1('#vxVids');if(!st)return;const L=(S.items||[]).filter(i=>i.kind==='video').slice(0,40),k=L.map(i=>i.id).join(',')+'|'+((window.VXAPI&&VXAPI.sel&&VXAPI.sel.id)||'');
+  if(!force&&k===stripKey)return;stripKey=k;st.innerHTML='';st.style.display=L.length?'':'none';
+  L.forEach(i=>{const b=mk('button',window.VXAPI&&VXAPI.sel&&VXAPI.sel.id===i.id?'on':'');b.type='button';b.title=i.name;b.setAttribute('aria-label','Editar '+i.name);
+   b.innerHTML=(i.url?'<video muted preload="metadata" src="'+i.url+'#t=0.5"></video>':'')+'<span>'+esc(i.name.replace(/^\d{8}_\d{6}_/,''))+'</span>';
+   b.onclick=()=>{const s=$1('#vxSel');if(s&&[...s.options].some(o=>o.value===String(i.id))){s.value=String(i.id);s.dispatchEvent(new Event('change'))}setTimeout(()=>strip(true),400)};st.appendChild(b)})}
+
+ /* ================= 9. Presets: categorias e favoritos ================= */
+ const CAT=[['all','Todos',null],['fav','★ Favoritos',null],['esp','🏃 Esporte',/corrida|esporte|pista|medalha|sol forte|vibrante|vivo|drone|contraste/i],['cos','🎭 Cosplay',/cosplay|anime|pastel|pele|sonho/i],['cin','🎬 Cinema',/cinema|teal|moody|drama|bleach|noturn|neon|noir|cyberpunk/i],['fil','🎞 Filme',/filme|vintage|portra|fuji|retr|vhs|s[ée]pia|kodak|matte|fosco/i],['pb','⚫ P&B',/p&b|preto/i],['qu','🔥 Quente',/quente|dourad|p[ôo]r do sol|golden|ver[ãa]o|tropical/i],['fr','❄ Frio',/frio|azul|n[óo]rdico|gelado/i]];
+ let CATS=LSg('lumen_precat','all'),FAV=new Set(LSg('lumen_prefav',[]));
+ safe('pre',()=>{const q=$1('#prQ');if(!q||$1('#preCat'))return;const row=mk('div','v75cat');row.id='preCat';q.closest('.v70row').after(row);
+  CAT.forEach(([k,n])=>{const b=mk('button',k===CATS?'on':'',n);b.type='button';b.onclick=()=>{CATS=k;LSs('lumen_precat',k);row.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));preFilter()};row.appendChild(b)});
+  const g=$1('#prGrid');if(g)new MutationObserver(()=>preFilter()).observe(g,{childList:true})});
+ let pfBusy=false;function preFilter(){if(pfBusy)return;pfBusy=true;try{const g=$1('#prGrid');if(!g)return;const c=CAT.find(x=>x[0]===CATS)||CAT[0];
+  [...g.children].forEach(b=>{const nm=(b.querySelector('span')||{}).textContent||'';let s=b.querySelector('.v75fav');if(!s){s=mk('i','v75fav','☆');s.setAttribute('role','button');s.setAttribute('aria-label','Favoritar '+nm);s.onclick=e=>{e.stopPropagation();FAV.has(nm)?FAV.delete(nm):FAV.add(nm);LSs('lumen_prefav',[...FAV]);preFilter()};b.appendChild(s)}
+   const f=FAV.has(nm);s.textContent=f?'★':'☆';s.classList.toggle('on',f);
+   const okC=c[0]==='all'||(c[0]==='fav'?f:c[2].test(nm));if(!okC)b.hidden=true})}finally{pfBusy=false}}
+ setInterval(()=>{if($1('#t-pre')&&$1('#t-pre').classList.contains('on'))preFilter()},1500);
+ safe('pre2',()=>{const pre=$1('#t-pre');if(!pre||$1('#preLr'))return;const c=mk('div','c v70c');c.id='preLr';
+  c.innerHTML='<div class="v70h"><b>🅻 Presets do Lightroom ↔ LUMEN</b></div><ol class="steps" data-ex="1"><li><b>Do Lightroom para o LUMEN.</b><small>No Lightroom Classic: módulo Revelação › painel Predefinições › clique com o botão direito no preset › <b>Exportar…</b> (gera um .xmp). Depois toque em "Subir meus presets" aqui.</small></li><li><b>Do LUMEN para o Lightroom.</b><small>Em "Meus presets", toque em <b>.xmp</b> no preset. No Lightroom: Predefinições › botão + › <b>Importar predefinições</b>.</small></li><li><b>Mesmo look nos dois.</b><small>Use o mesmo preset na Importação automática do Lightroom e na "Edição padrão" do LUMEN: as fotos do site e as do Lightroom ficam iguais.</small></li></ol>';
+  const ed=$1('#edPad');(ed||pre.lastChild).after(c)});
+
+ /* ================= 10. Sua foto: passos, duas colunas e modo atendimento ================= */
+ safe('pick',()=>{const sec=$1('#t-pick');if(!sec||$1('#pkSteps'))return;sec.classList.add('v75pick');
+  const stp=mk('div','v75steps');stp.id='pkSteps';stp.innerHTML=['Autorizo','Selfie','Nome','Procurar','Escolher'].map((t,i)=>'<div data-i="'+i+'"><b>'+(i+1)+'</b>'+t+'</div>').join('');
+  const kio=mk('div','v75kio','<button type="button" class="f" id="kioNew">👤 Próxima pessoa (limpar)</button><button type="button" class="f p" id="kioOn">🖥 Modo atendimento (tela cheia para clientes)</button><button type="button" class="f" id="kioOff">Sair do modo atendimento (segure 2 s)</button>');
+  const ph=sec.querySelector('.v70ph');(ph||sec.firstChild).after(stp);stp.after(kio);
+  $1('#kioNew').onclick=()=>pkClear(true);
+  $1('#kioOn').onclick=()=>{document.body.classList.add('kiosk');goTab('pick');try{document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}catch(_){}last=Date.now()};
+  const off=$1('#kioOff');let tm=0;const dn=()=>{tm=setTimeout(()=>{document.body.classList.remove('kiosk');try{document.fullscreenElement&&document.exitFullscreen()}catch(_){}},2000)},up=()=>clearTimeout(tm);
+  off.addEventListener('pointerdown',dn);['pointerup','pointerleave','pointercancel'].forEach(e=>off.addEventListener(e,up))});
+ function pkClear(manual){try{if(window.pkReset)pkReset();const n=$1('#pkName');if(n)n.value='';const a=$1('#pkAv');if(a){a.style.display='none';a.removeAttribute('src')}const g=$1('#pkG');if(g)g.innerHTML='';const s=$1('#pkSelf');if(s)s.textContent='Para mais precisão, tire até 3 selfies: de frente, de lado e de boné.';const m=$1('#pkM');if(m)m.textContent=manual?'Pronto para a próxima pessoa.':'';const o=$1('#pkOk');if(o)o.checked=false;const c=$1('#pkCnt');if(c)c.textContent='';const e=$1('#pkEmpty');if(e)e.style.display=''}catch(_){}}
+ let last=Date.now();['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>{last=Date.now()},true));
+ setInterval(()=>{if(document.body.classList.contains('kiosk')&&Date.now()-last>120000){last=Date.now();pkClear(false)}},5000);
+ function pkSteps(){const s=$1('#pkSteps');if(!s)return;const av=$1('#pkAv'),st=[!!($1('#pkOk')||{}).checked,!!(av&&av.style.display!=='none'&&av.src),!!(($1('#pkName')||{}).value||'').trim(),/foto\(s\) com você/.test(($1('#pkCnt')||{}).textContent||''),/[1-9]\d* escolhida/.test(($1('#pkCnt')||{}).textContent||'')];
+  let cur=st.findIndex(x=>!x);s.querySelectorAll('div').forEach((d,i)=>{d.classList.toggle('ok',st[i]);d.classList.toggle('cur',i===cur)})}
+
+ /* ================= status em tempo real ================= */
+ function setN(root,k,s,b,sp){const n=root.querySelector('[data-k="'+k+'"]');if(!n)return;if(s!=null)n.dataset.s=s;const bb=n.querySelector('b');if(bb&&b!=null)bb.textContent=b;const ss=n.querySelector('span');if(ss&&sp!=null)ss.textContent=sp}
+ function render(){try{
+  const ok=S.sess&&SRCOK(),hero=$1('#chHero');
+  if(hero){setN(hero,'cam',S.hold?'warn':ok?'ok':(S.conn||S.pend)?'warn':S.camMsg?'bad':'',S.hold?'Com o Lightroom':ok?'Conectada':(S.conn||S.pend)?'Conectando…':'Desconectada',ok?CN():(S.camMsg||'').slice(0,60));
+   setN(hero,'src',S.sess?'ok':'',{usb:'Cabo USB',wifi:'Wi-Fi',files:'iPhone / arquivos',folder:'Pasta'}[S.src]||'–',S.src==='folder'&&FD.h?FD.h.name:'');
+   setN(hero,'dir',S.dir&&S.perm?'ok':S.dir?'warn':'',S.dir?S.dir.name:'Nenhuma',S.dir&&!S.perm?'precisa de permissão':'');
+   const e=eps().length,pend=S.uq.length+S.ua+S.upF.length;setN(hero,'site',!e?'':S.svc?(S.upF.length?'warn':'ok'):'bad',!e?'Desligado':S.svc?'Online':'Sem resposta',e?(S.upOk||0)+' enviados'+(pend?' · '+pend+' na fila':''):'configure em Config');
+   const g=$1('#chGo');if(g)g.textContent=step().t}
+  /* Câmera + Lightroom */
+  $$('.lrPair').forEach(p=>{let a=0,b=0;try{a=LRS.n||0;b=LRS.taken||0}catch(_){}const on=pairOn();
+   setN(p,'cam',ok?'ok':'bad',ok?'✔':'✕');setN(p,'in',C.lrOn?(a>20?'warn':'ok'):'',String(a));setN(p,'lr',b?'ok':'',String(b));setN(p,'ed',LRP.ed?'ok':'',String(LRP.ed));setN(p,'up',(S.upOk||0)?'ok':'',String(S.upOk||0));
+   const st=p.querySelector('.lrpSt');st.textContent=S.hold?'câmera com o Lightroom':on?(ok?'funcionando':'ligado · conecte a câmera'):'desligado';st.className='pillS lrpSt'+(S.hold?' bad':on&&ok?' ok':on?' warn':'');
+   const go=p.querySelector('.lrpGo');go.textContent=S.hold?'Trazer a câmera de volta ao LUMEN':on?'✔ Ligado (refazer configuração)':'Ligar Câmera + Lightroom';if(S.hold)go.onclick=()=>resumeCamera();else go.onclick=e=>pairStart(e.target)});
+  /* Wi-Fi */
+  if(WF.isConnected){const f=S.src==='folder'&&FD.h,w=S.src==='wifi'&&S.sess;setN(WF,'c',f||w?'ok':'',w?'CCAPI':'Wi-Fi');setN(WF,'p',f?'ok':'',f?FD.h.name:'–');setN(WF,'l',S.recvN?'ok':'',String(S.recvN||0));setN(WF,'s',S.upOk?'ok':'',String(S.upOk||0));
+   const st=$1('#wfSt');st.textContent=(f||w)?(S.run?'enviando':'pronto'):'desligado';st.className='pillS'+((f||w)&&S.run?' ok':(f||w)?' warn':'');
+   if((f||w)&&!eps().length&&!$1('#wfM').textContent)wfM('Falta o endereço do site (Config › Destinos): sem ele as fotos ficam só na pasta.')}
+  if(BT.isConnected){const d=S.bt,c=d&&d.gatt&&d.gatt.connected;setN(BT,'b',c?'ok':'',c?(d.name||'pareado'):'–');setN(BT,'w',S.src==='wifi'&&S.sess||S.src==='folder'&&FD.h?'ok':'');const st=$1('#btSt');st.textContent=c?'pareado':'desligado';st.className='pillS'+(c?' ok':'')}
+  galStats();vidStats();pkSteps();
+  {const h=$1('#hbCon'),d=$1('#conHub details.v75fold');if(h&&d&&h.parentNode!==d)d.appendChild(h)}
+  [['#vwCard','w'],['#rotCard','g']].forEach(([id,k])=>{const e=$1(id),pan=$1('#vxBox .vxPan[data-p="'+k+'"]');if(e&&pan&&e.parentNode!==pan)pan.appendChild(e)});
+  if(P2.parentNode&&P2.previousElementSibling&&!P2.previousElementSibling.classList.contains('v70ph')){const ph=$1('#t-lr .v70ph');if(ph)ph.after(P2)}
+  if($1('#t-ved')&&$1('#t-ved').classList.contains('on'))strip(false);
+  if($1('#t-reg')&&$1('#t-reg').classList.contains('on')&&!document.hidden)tl();
+ }catch(_){}}
+ /* lugares dos cartões Câmera + Lightroom */
+ safe('lrplace',()=>{const lr=$1('#t-lr');if(lr){const ph=lr.querySelector('.v70ph');(ph||lr.firstChild).after(P2)}});
+ function lrGroup(){safe('lrgroup',()=>{const lr=$1('#t-lr');if(!lr)return;let g=$1('#lrMore');if(!g){g=mk('details','c v70c v75fold','<summary><b>🧰 Guia completo e opções avançadas do Lightroom</b> <small>assistente, etapas, presets, monitor do lote, rotas</small></summary>');g.id='lrMore';lr.appendChild(g)}
+  [...lr.children].forEach(c=>{if(c===g||c===P2||c.classList.contains('v70ph')||c.id==='lrMon')return;g.appendChild(c)});const mon=$1('#lrMon');if(mon&&mon.parentNode!==lr)P2.after(mon);else if(mon)P2.after(mon)})}
+ setTimeout(lrGroup,2500);setTimeout(lrGroup,10000);
+ setInterval(render,1000);render();
+ try{log('Build v75: páginas reorganizadas, Câmera + Lightroom juntos, Wi-Fi direto para o site, Bluetooth guiado, Sua foto com modo atendimento','ok')}catch(_){}
+})();
+</script>
+
+<script id="v76">
+/* ===== v76 · Lightroom 100% automático: plug-in "LUMEN Auto Export" (baixado daqui) exporta sozinho cada foto
+   já editada para Editadas/Fotos; o LUMEN manda ao site. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+ const FILES={"Core.lua": "local LrApplication  = import 'LrApplication'\nlocal LrExportSession = import 'LrExportSession'\nlocal LrTasks        = import 'LrTasks'\nlocal LrPrefs        = import 'LrPrefs'\nlocal LrDialogs      = import 'LrDialogs'\nlocal LrFileUtils    = import 'LrFileUtils'\nlocal LrDate         = import 'LrDate'\nlocal LrPathUtils    = import 'LrPathUtils'\n\nlocal prefs = LrPrefs.prefsForPlugin()\nlocal M = {}\n\nlocal function pick(title)\n  local r = LrDialogs.runOpenPanel {\n    title = title, prompt = 'Usar esta pasta',\n    canChooseFiles = false, canChooseDirectories = true,\n    canCreateDirectories = true, allowsMultipleSelection = false,\n  }\n  if r and r[1] then return r[1] end\n  return nil\nend\n\n-- escolhe as duas pastas (uma vez)\nfunction M.configure(force)\n  if force or not prefs.srcFolder then\n    LrDialogs.message('LUMEN Auto Export · passo 1 de 2',\n      'Escolha a pasta de DESTINO da Importação automática (a pasta onde o Lightroom guarda as fotos que ele importa da LR_Entrada).\\n\\nSessões em subpastas também contam.', 'info')\n    local s = pick('Pasta de destino da Importação automática')\n    if not s then return false end\n    prefs.srcFolder = s\n  end\n  if force or not prefs.dstFolder then\n    LrDialogs.message('LUMEN Auto Export · passo 2 de 2',\n      'Agora escolha a pasta Editadas › Fotos que o LUMEN criou dentro da pasta do evento. É para lá que as fotos editadas vão e de lá o LUMEN manda ao site.', 'info')\n    local d = pick('Pasta Editadas/Fotos do LUMEN')\n    if not d then return false end\n    prefs.dstFolder = d\n  end\n  return true\nend\n\nlocal function photosIn(folderPath)\n  local cat = LrApplication.activeCatalog()\n  local f = cat:getFolderByPath(folderPath)\n  if not f then return {} end\n  return f:getPhotos(true) or {}\nend\n\nlocal function markAllDone()\n  local done = {}\n  for _, p in ipairs(photosIn(prefs.srcFolder)) do done[tostring(p.localIdentifier)] = true end\n  prefs.done = done\nend\n\n-- sinal de vida: o LUMEN lê este arquivo para saber se o Lightroom e o plug-in estão trabalhando\nlocal pendingNow = 0\nlocal function jesc(v) return (tostring(v or ''):gsub('\\\\','/'):gsub('\"',\"'\"):gsub('[%c]',' ')) end\nlocal function writeStatus()\n  if not prefs.dstFolder then return end\n  local path = LrPathUtils.child(prefs.dstFolder, '.lumen_plugin.json')\n  local f = io.open(path, 'w')\n  if f then\n    f:write('{\"app\":\"lumen-autoexport\",\"v\":\"1.1\",\"enabled\":' .. tostring(prefs.enabled and true or false) ..\n      ',\"count\":' .. tostring(prefs.count or 0) .. ',\"pending\":' .. tostring(pendingNow) ..\n      ',\"last\":\"' .. jesc(prefs.last) .. '\",\"err\":\"' .. jesc(prefs.lastError) .. '\",\"src\":\"' .. jesc(prefs.srcFolder) .. '\"}')\n    f:close()\n  end\nend\nM.writeStatus = writeStatus\n\n-- uma passada: exporta o que é novo e já está estável há pelo menos um ciclo\nlocal seen = {}\nlocal function scanOnce()\n  if not prefs.srcFolder or not prefs.dstFolder then return end\n  local done = prefs.done or {}\n  local batch, ids = {}, {}\n  local pend = 0\n  for _, p in ipairs(photosIn(prefs.srcFolder)) do\n    local id = tostring(p.localIdentifier)\n    if not done[id] then\n      pend = pend + 1\n      if seen[id] then\n        batch[#batch + 1] = p; ids[#ids + 1] = id\n        if #batch >= 20 then break end\n      else\n        seen[id] = true   -- espera o próximo ciclo: dá tempo do preset ser aplicado\n      end\n    end\n  end\n  pendingNow = pend\n  if #batch == 0 then return end\n  LrFileUtils.createAllDirectories(prefs.dstFolder)\n  local session = LrExportSession {\n    photosToExport = batch,\n    exportSettings = {\n      LR_export_destinationType = 'specificFolder',\n      LR_export_destinationPathPrefix = prefs.dstFolder,\n      LR_export_useSubfolder = false,\n      LR_collisionHandling = 'overwrite',\n      LR_reimportExportedPhoto = false,\n      LR_renamingTokensOn = false,\n      LR_format = 'JPEG',\n      LR_jpeg_quality = (prefs.quality or 90) / 100,\n      LR_export_colorSpace = 'sRGB',\n      LR_size_doConstrain = (prefs.maxSize or 0) > 0,\n      LR_size_maxWidth = prefs.maxSize or 0,\n      LR_size_maxHeight = prefs.maxSize or 0,\n      LR_size_resizeType = 'longEdge',\n      LR_size_units = 'pixels',\n      LR_outputSharpeningOn = false,\n      LR_minimizeEmbeddedMetadata = false,\n      LR_removeLocationMetadata = false,\n    },\n  }\n  session:doExportOnCurrentTask()\n  local n = 0\n  for i, rendition in session:renditions() do\n    local ok = rendition:waitForRender()\n    if ok then\n      local p = rendition.photo\n      done[tostring(p.localIdentifier)] = true\n      n = n + 1\n    end\n  end\n  prefs.done = done\n  prefs.count = (prefs.count or 0) + n\n  prefs.last = LrDate.timeToUserFormat(LrDate.currentTime(), '%H:%M:%S')\nend\n\nfunction M.start(onlyNew)\n  prefs.enabled = true\n  local myId = tostring(LrDate.currentTime()) .. tostring(math.random(100000))\n  prefs.loopId = myId\n  if onlyNew then markAllDone() end\n  LrTasks.startAsyncTask(function()\n    LrTasks.sleep(3)\n    while prefs.enabled and prefs.loopId == myId do\n      local ok, err = LrTasks.pcall(scanOnce)\n      if not ok then prefs.lastError = tostring(err) else prefs.lastError = nil end\n      LrTasks.pcall(writeStatus)\n      LrTasks.sleep(prefs.interval or 4)\n    end\n  end, 'LUMEN Auto Export')\nend\n\nfunction M.stop()\n  prefs.enabled = false\n  prefs.loopId = nil\n  pcall(writeStatus)\nend\n\nfunction M.status()\n  return prefs\nend\n\nreturn M\n", "Info.lua": "-- LUMEN Auto Export · plug-in do Lightroom Classic\n-- Exporta sozinho, como JPEG, cada foto nova (já com o preset da Importação automática) para a pasta Editadas do LUMEN.\nreturn {\n  LrSdkVersion = 6.0,\n  LrSdkMinimumVersion = 6.0,\n  LrToolkitIdentifier = 'br.lumen.campo.autoexport',\n  LrPluginName = 'LUMEN Auto Export',\n  LrInitPlugin = 'Init.lua',\n  LrExportMenuItems = {\n    { title = 'LUMEN: ligar exportação automática', file = 'Start.lua' },\n    { title = 'LUMEN: desligar exportação automática', file = 'Stop.lua' },\n    { title = 'LUMEN: ver situação', file = 'Status.lua' },\n  },\n  LrLibraryMenuItems = {\n    { title = 'LUMEN: ligar exportação automática', file = 'Start.lua' },\n    { title = 'LUMEN: desligar exportação automática', file = 'Stop.lua' },\n    { title = 'LUMEN: ver situação', file = 'Status.lua' },\n  },\n  VERSION = { major = 1, minor = 1, revision = 1 },\n}\n", "Init.lua": "-- Lightroom abriu: se estava ligado, volta a exportar sozinho\nlocal LrPrefs = import 'LrPrefs'\nlocal prefs = LrPrefs.prefsForPlugin()\nif prefs.enabled and prefs.srcFolder and prefs.dstFolder then\n  local Core = require 'Core'\n  Core.start(false)\nend\n", "Start.lua": "local LrTasks   = import 'LrTasks'\nlocal LrDialogs = import 'LrDialogs'\nlocal Core = require 'Core'\nLrTasks.startAsyncTask(function()\n  if not Core.configure(true) then return end\n  local r = LrDialogs.confirm('Exportar também as fotos que JÁ estão na pasta?',\n    'Escolha \"Só as novas\" para começar a partir de agora.', 'Só as novas', 'Cancelar', 'Todas também')\n  if r == 'cancel' then return end\n  Core.start(r == 'ok')\n  LrDialogs.message('LUMEN Auto Export ligado',\n    'Cada foto nova que a Importação automática trouxer (já com o seu preset) será exportada como JPEG para:\\n\\n' .. (Core.status().dstFolder or '') ..\n    '\\n\\nO LUMEN vê cada foto chegar e manda ao site. Continua ligado mesmo se você fechar e abrir o Lightroom.', 'info')\nend)\n", "Status.lua": "local LrDialogs = import 'LrDialogs'\nlocal Core = require 'Core'\nlocal p = Core.status()\nLrDialogs.message('LUMEN Auto Export · situação',\n  'Ligado: ' .. (p.enabled and 'sim' or 'não') ..\n  '\\nPasta vigiada: ' .. (p.srcFolder or '—') ..\n  '\\nExporta para: ' .. (p.dstFolder or '—') ..\n  '\\nFotos exportadas: ' .. tostring(p.count or 0) ..\n  '\\nÚltima exportação: ' .. (p.last or '—') ..\n  (p.lastError and ('\\n\\nÚltimo erro: ' .. p.lastError) or ''), 'info')\n", "Stop.lua": "local LrDialogs = import 'LrDialogs'\nlocal Core = require 'Core'\nCore.stop()\nLrDialogs.message('LUMEN Auto Export', 'Exportação automática desligada.', 'info')\n"};
+ async function dlPlugin(b){try{const E=Object.entries(FILES).map(([n,t])=>({name:'LUMEN-AutoExport.lrplugin/'+n,blob:new Blob([t],{type:'text/plain'}),t:Date.now()}));
+  const z=await buildZip(E),a=document.createElement('a');a.href=URL.createObjectURL(z);a.download='LUMEN-AutoExport.lrplugin.zip';a.click();if(b)b.textContent='✔ Baixado: veja os passos abaixo'}catch(e){log('Plug-in: '+e.message,'bad')}}
+ window.lumenLrPlugin=dlPlugin;
+ const html='<div class="v70h" style="margin-top:12px"><b>⚡ Exportar sozinho (plug-in do LUMEN)</b><span class="pillS ok">novo</span></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">O Lightroom não exporta sozinho, mas aceita plug-ins. O <b>LUMEN Auto Export</b> fica rodando dentro do Lightroom Classic e, a cada foto que a Importação automática trouxer (já com o seu preset), gera o JPEG editado em <b>Editadas/Fotos</b>. O LUMEN vê a foto chegar e manda ao site. Você só fotografa.</div>'
+  +'<div class="v75pipe"><div data-s="ok"><i>📷</i><b>1</b><small>você fotografa</small></div><u>→</u><div data-s="ok"><i>📥</i><b>2</b><small>LR_Entrada</small></div><u>→</u><div data-s="ok"><i>🅻</i><b>3</b><small>importa + preset</small></div><u>→</u><div data-s="ok"><i>⚡</i><b>4</b><small>plug-in exporta</small></div><u>→</u><div data-s="ok"><i>🌐</i><b>5</b><small>LUMEN manda ao site</small></div></div>'
+  +'<div class="fx3a"><button type="button" class="f p lrPlugDl">⬇ Baixar o plug-in LUMEN Auto Export</button></div>'
+  +'<ol class="steps" data-ex="1"><li><b>Descompacte o arquivo baixado.</b><small>Dê dois cliques no .zip em Downloads. Aparece a pasta <b>LUMEN-AutoExport.lrplugin</b>. Mova para um lugar fixo (ex.: Documentos).</small></li>'
+  +'<li><b>Instale no Lightroom Classic.</b><small>Arquivo › <b>Gerenciador de plug-ins</b> › botão <b>Adicionar</b> › escolha a pasta LUMEN-AutoExport.lrplugin › Concluído.</small></li>'
+  +'<li><b>Ligue a Importação automática</b> (se ainda não ligou).<small>Arquivo › Importação automática › Configurações: Pasta monitorada = <b>LR_Entrada</b>; Destino = uma pasta sua (pode ter subpasta da sessão); Configurações de revelação = <b>seu preset</b>. Depois Arquivo › Importação automática › Ativar.</small></li>'
+  +'<li><b>Ligue o plug-in.</b><small>Arquivo › <b>Extras de plug-in</b> › <b>LUMEN: ligar exportação automática</b>. Ele pede 2 pastas: (1) o <b>Destino</b> da Importação automática e (2) a pasta <b>Editadas › Fotos</b> do LUMEN. Escolha "Só as novas".</small></li>'
+  +'<li><b>Pronto.</b><small>Cada foto aparece em Editadas/Fotos poucos segundos depois de importada, e o contador "Editadas" acima sobe. Ele continua ligado mesmo se você fechar e abrir o Lightroom. Para ver ou desligar: Extras de plug-in › LUMEN: ver situação / desligar.</small></li></ol>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal">Ajuste de cor: quem edita é o preset da Importação automática. Quer retocar uma foto? Edite no Lightroom e use Arquivo › Exportar normal para Editadas/Fotos (substitui a anterior). Requer Lightroom Classic (o Lightroom da nuvem/celular não aceita plug-ins).</div>';
+ function put(){$$('.lrPair').forEach(c=>{if(c.querySelector('.lrPlug'))return;const d=document.createElement('div');d.className='lrPlug';d.innerHTML=html;const det=c.querySelector('details.ex');(det||c.lastChild).before(d);d.querySelector('.lrPlugDl').onclick=e=>dlPlugin(e.target);
+  if(det){const sum=det.querySelector('summary');if(sum)sum.textContent='Sem o plug-in: os passos manuais no Lightroom'}})}
+ put();setTimeout(put,1500);setTimeout(put,6000);
+ log('Build v76: plug-in LUMEN Auto Export para o Lightroom exportar sozinho','ok');
+}catch(e){try{log('v76: '+e.message,'bad')}catch(_){}}})();
+</script>
+
+<script id="v77">
+/* ===== v77 · Evento blindado: vigia cada etapa (câmera no LUMEN, modo de fotografar, bateria, Mac, LR_Entrada,
+   Importação automática, plug-in do Lightroom, site) e avisa na tela do Mac na hora em que algo parar, dizendo o que fazer. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+ const MAC=/Mac/i.test(navigator.userAgent)&&!IOS;
+ const PG={st:null,at:0,mt:0,busy:false};
+ async function readPlugin(){if(PG.busy||!S.dir||!S.perm||S.dir.virtual)return;PG.busy=true;
+  try{const fh=await(await(await S.dir.getDirectoryHandle('Editadas')).getDirectoryHandle('Fotos')).getFileHandle('.lumen_plugin.json');const f=await fh.getFile();PG.mt=f.lastModified;PG.st=JSON.parse(await f.text());PG.at=Date.now()}
+  catch(_){PG.st=null}finally{PG.busy=false}}
+ setInterval(()=>{if(C.lrOn&&!document.hidden||C.lrOn&&S.run)readPlugin()},4000);setTimeout(readPlugin,3000);
+ let lastPhoto=0,photos0=0;
+ function items(){const ok=S.sess&&S.src==='usb'&&S.dev,now=Date.now(),L=[];
+  /* câmera */
+  if(S.cm==='usb'||S.src==='usb'){
+   L.push(S.hold?{k:'cam',s:'bad',t:'Câmera com outro programa',d:'Toque em "Trazer a câmera de volta" no cartão Câmera + Lightroom.'}
+    :ok?{k:'cam',s:'ok',t:'Câmera no LUMEN',d:((S.dev.productName||'Canon')+' · cabo USB')}
+    :S.usbBusyNow?{k:'cam',s:'bad',t:'Outro programa pegou a câmera',d:'Feche no Lightroom a Captura conectada (Arquivo › Captura conectada › Parar) e feche o EOS Utility.'+(MAC?' Confira também o Protetor USB do Mac.':'')}
+    :(S.conn||S.pend||S.rec)?{k:'cam',s:'warn',t:'Reconectando a câmera…',d:'O LUMEN volta sozinho em 1 a 2 s.'}
+    :{k:'cam',s:'bad',t:'Câmera desconectada',d:'Ligue a câmera e confira o cabo. O LUMEN conecta sozinho.'});
+   if(ok&&S.dev.vendorId===0x04a9)L.push(S.canon?{k:'rem',s:'ok',t:'Câmera pronta para fotografar',d:'Fora da tela de bateria/computador.'}:{k:'rem',s:'warn',t:'Câmera pode estar na tela do computador',d:'Toque em "Liberar para fotografar" no card Fotografar e enviar.'});
+   if(ok&&S.bp!=null)L.push({k:'bat',s:S.bp<=15?'bad':S.bp<=30?'warn':'ok',t:'Bateria da câmera '+S.bp+'%',d:S.bp<=30?'Troque a bateria ou ligue a fonte em breve.':'Ok.'});
+   if(MAC){let g={};try{g=JSON.parse(localStorage.getItem('lumen_macguard')||'{}')}catch(_){}const w=g.ok&&(!g.busy||g.ok>g.busy);L.push(w?{k:'mac',s:'ok',t:'Mac protegido',d:'O Mac não abre Pré-Visualização/Fotos ao plugar.'}:{k:'mac',s:'warn',t:'Protetor USB do Mac não confirmado',d:'Instale no cartão "Protetor USB do Mac" (Início) e replugue o cabo uma vez.'})}}
+  else L.push(S.sess?{k:'cam',s:'ok',t:'Origem: '+CN(),d:''}:{k:'cam',s:'bad',t:'Sem origem de fotos',d:'Conecte a câmera (aba Conectar).'});
+  /* pasta */
+  L.push(S.dir&&S.perm?{k:'dir',s:'ok',t:'Pasta '+S.dir.name,d:'Gravando.'}:S.dir?{k:'dir',s:'bad',t:'A pasta precisa de permissão',d:'Toque em "Liberar pasta" no card Fotografar e enviar.'}:{k:'dir',s:'bad',t:'Sem pasta do evento',d:'Escolha a pasta (passo 2 do card Fotografar e enviar).'});
+  L.push(S.run&&!S.pause?{k:'run',s:'ok',t:'Recebendo fotos',d:(S.recvN||0)+' recebidas nesta sessão.'}:{k:'run',s:'warn',t:S.pause?'Recebimento pausado':'Recebimento não iniciado',d:S.why||'Toque em Começar.'});
+  /* Lightroom */
+  if(C.lrOn){let wait=0,tk=0,warn='';try{wait=LRS.n||0;tk=LRS.taken||0;warn=LRS.warn||''}catch(_){}
+   L.push(warn?{k:'lri',s:'bad',t:'Importação automática parada',d:wait+' foto(s) esperando na LR_Entrada. Abra o Lightroom e confira Arquivo › Importação automática › Ativar (com ✓).'}
+    :{k:'lri',s:'ok',t:'Importação automática em dia',d:tk+' importada(s) · '+wait+' na fila'});
+   const age=PG.mt?(now-PG.mt)/1000:Infinity;
+   if(C.edWatch){if(!PG.st)L.push({k:'plg',s:'warn',t:'Plug-in LUMEN Auto Export não detectado',d:'Instale e ligue o plug-in (aba Lightroom) ou publique à mão em Editadas/Fotos.'});
+    else if(!PG.st.enabled)L.push({k:'plg',s:'bad',t:'Plug-in desligado',d:'No Lightroom: Arquivo › Extras de plug-in › LUMEN: ligar exportação automática.'});
+    else if(age>45)L.push({k:'plg',s:'bad',t:'Lightroom fechado ou travado',d:'O plug-in parou de dar sinal há '+Math.round(age)+' s. Abra o Lightroom Classic (ele volta sozinho).'});
+    else if(PG.st.err)L.push({k:'plg',s:'bad',t:'Erro no plug-in',d:String(PG.st.err).slice(0,140)});
+    else L.push({k:'plg',s:'ok',t:'Lightroom exportando sozinho',d:PG.st.count+' exportada(s)'+(PG.st.pending?' · '+PG.st.pending+' na vez':'')+(PG.st.last?' · última '+PG.st.last:'')})}}
+  /* site */
+  if(eps().length){const f=S.upF.length,q=S.uq.length+S.ua;L.push(!S.svc?{k:'site',s:'bad',t:'Site sem resposta',d:'As fotos esperam guardadas e sobem quando a internet voltar.'}:f?{k:'site',s:'warn',t:'Reenviando '+f+' foto(s)',d:'Tentando de novo sozinho.'}:{k:'site',s:'ok',t:'Site recebendo',d:(S.upOk||0)+' enviada(s)'+(q?' · '+q+' na fila':'')})}
+  else L.push({k:'site',s:'warn',t:'Envio ao site desligado',d:'Configure o endereço em Config › Destinos.'});
+  if(navigator.onLine===false)L.push({k:'net',s:'bad',t:'Sem internet',d:'Nada se perde: sobe quando voltar.'});
+  return L}
+ /* avisos: notificação do Mac + som + vibração, um por problema a cada 5 min */
+ const AL=JSON.parse(localStorage.getItem('lumen_alerts')||'{"on":true,"sound":true}');const prev={},sent={};
+ function beep(){if(!AL.sound)return;try{const a=new (window.AudioContext||window.webkitAudioContext)();[0,.22].forEach(t=>{const o=a.createOscillator(),g=a.createGain();o.frequency.value=t?660:880;g.gain.value=.12;o.connect(g);g.connect(a.destination);o.start(a.currentTime+t);o.stop(a.currentTime+t+.16)});setTimeout(()=>a.close(),900)}catch(_){}}
+ function alertFor(it){if(!AL.on)return;const now=Date.now();if(now-(sent[it.k]||0)<300000)return;sent[it.k]=now;beep();try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(_){}
+  try{if(window.Notification&&Notification.permission==='granted'){const n=new Notification('LUMEN · '+it.t,{body:it.d,tag:'lumen-'+it.k,renotify:true,requireInteraction:it.k==='cam'||it.k==='plg'});n.onclick=()=>{window.focus();n.close()}}}catch(_){}
+  log('⚠ '+it.t+': '+it.d,'bad')}
+ const HTML='<div class="v70h"><b>🛡 Evento blindado</b><span class="pillS ebSt">—</span></div><div class="sub wrap ebSum" data-ex="1" style="white-space:normal;color:var(--ink)"></div><ul class="fr-st ebL" style="margin-top:8px"></ul>'
+  +'<div class="fx3a"><button type="button" class="f ebN">🔔 Avisar na tela do Mac</button><button type="button" class="f ebS"></button></div>';
+ function mk(){const d=document.createElement('div');d.className='c v70c eb';d.innerHTML=HTML;d.querySelector('.ebN').onclick=async()=>{try{if(!window.Notification){log('Este navegador não mostra avisos na tela.','bad');return}const p=await Notification.requestPermission();if(p==='granted'){AL.on=true;localStorage.setItem('lumen_alerts',JSON.stringify(AL));new Notification('LUMEN',{body:'Pronto: se algo parar durante o evento, aviso aqui, mesmo com o Lightroom na frente.'})}else log('Avisos bloqueados: libere em Chrome › Configurações › Privacidade › Notificações.','bad')}catch(e){log(e.message,'bad')}render()};
+  d.querySelector('.ebS').onclick=()=>{AL.sound=!AL.sound;localStorage.setItem('lumen_alerts',JSON.stringify(AL));render()};return d}
+ const A=mk(),B=mk();
+ function place(){const lr=$1('#t-lr .lrPair');if(lr&&B.previousElementSibling!==lr)lr.before(B);const f=$1('#fluxo');if(f&&A.previousElementSibling!==f)f.after(A)}
+ const ic={ok:'✓',warn:'!',bad:'✕'},cl={ok:'ok',warn:'ew',bad:'no'};
+ function render(){try{place();const L=items(),bad=L.filter(i=>i.s==='bad'),w=L.filter(i=>i.s==='warn'),on=S.sess||S.run||C.lrOn;
+  A.hidden=!on;
+  L.forEach(it=>{if(it.s==='bad'&&prev[it.k]!=='bad'&&(S.run||C.lrPair))alertFor(it);prev[it.k]=it.s});
+  [A,B].forEach(c=>{const st=c.querySelector('.ebSt');st.textContent=bad.length?bad.length+' problema(s)':w.length?'atenção':'tudo certo';st.className='pillS ebSt '+(bad.length?'bad':w.length?'warn':'ok');
+   c.querySelector('.ebSum').textContent=bad.length?'Resolva o item em vermelho: o que fazer está escrito nele.':w.length?'Funcionando, com pontos de atenção.':'Câmera, Lightroom e site funcionando. Pode fotografar.';
+   c.querySelector('.ebL').innerHTML=L.map(it=>'<li class="'+cl[it.s]+'"><i>'+ic[it.s]+'</i><span><b>'+esc(it.t)+'</b>'+(it.d?'<br><small>'+esc(it.d)+'</small>':'')+'</span></li>').join('');
+   const n=c.querySelector('.ebN'),perm=window.Notification?Notification.permission:'x';n.textContent=perm==='granted'?'🔔 Avisos na tela ligados':'🔔 Avisar na tela do Mac';n.disabled=perm==='granted';
+   c.querySelector('.ebS').textContent=AL.sound?'🔊 Som de alerta ligado':'🔇 Som de alerta desligado'})}catch(_){}}
+ setInterval(render,1500);render();
+ log('Build v77: evento blindado (vigia câmera, Lightroom, plug-in e site e avisa na tela)','ok');
+}catch(e){try{log('v77: '+e.message,'bad')}catch(_){}}})();
 </script>
 
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
