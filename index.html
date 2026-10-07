@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v77</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v81</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -1152,6 +1152,53 @@ body.kiosk #t-pick{font-size:17px;max-width:900px!important;margin:0 auto!import
 body.kiosk #t-pick .f{min-height:60px;font-size:18px}
 body.kiosk .v75kio #kioOn{display:none}body:not(.kiosk) .v75kio #kioOff{display:none}
 body.kiosk>.w,body.kiosk>section.tab.w{margin:0 auto!important}
+.lrA .laGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin:8px 0}
+.lrA .laGrid label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600}
+.lrA .laGrid input,.lrA .laGrid select{width:100%;min-width:0;padding:8px;border-radius:8px;border:1px solid var(--ln,#ccc);background:var(--bg2,transparent);color:var(--ink);font-size:14px}
+.lrA .laHelp details{border-top:1px solid rgba(127,127,127,.2);padding:6px 0}.lrA .laHelp summary{cursor:pointer;font-weight:600}.lrA .laHelp p{margin:6px 0 2px;font-size:13px;line-height:1.45}
+.lrA .laL .f,.lrA .laL button{width:auto;display:inline-block;padding:4px 10px;margin:4px 6px 0 0;font-size:12px;min-height:0}
+.lrA details.ex{margin-top:10px}.lrA .laTestBox{margin-top:8px}
+.pbC .pbModes{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin:10px 0}
+.pbC .pbModes label{display:flex;gap:8px;align-items:flex-start;padding:10px;border:1px solid rgba(127,127,127,.25);border-radius:12px;cursor:pointer}
+.pbC .pbModes label:has(input:checked){border-color:var(--acc,#ffc21a);background:rgba(255,194,26,.10)}
+.pbC .pbModes input{width:auto;margin-top:3px}.pbC .pbModes small{display:block;color:var(--mut);font-weight:400;font-size:12px;margin-top:2px}
+.pbC .laGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin:8px 0}
+.pbC .laGrid label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600}
+.pbC .laGrid select{width:100%;min-width:0;padding:8px;border-radius:8px;border:1px solid var(--ln,#ccc);background:var(--bg2,transparent);color:var(--ink);font-size:14px}
+.pbC .pbCmp{position:relative;margin-top:10px;border-radius:12px;overflow:hidden;background:#000;line-height:0}
+.pbC .pbCmp img{width:100%;display:block}.pbC .pbCmp .pbB{position:absolute;inset:0;height:100%;object-fit:cover}
+.pbC .pbCmp input{position:absolute;left:0;right:0;bottom:8px;width:90%;margin:0 5%}
+.pbC .pbCap{display:block;margin-top:6px;color:var(--mut)}
+.pbC label.f{display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.25;padding:10px 12px}
+#lrBadge[data-st=ok]{background:#1f7a3d;border-color:#1f7a3d;color:#fff}#lrBadge[data-st=pb],#lrBadge[data-st=warn]{background:#a86b00;border-color:#a86b00;color:#fff}#lrBadge[data-st=bad]{background:var(--bad);border-color:var(--bad);color:#fff}#lrBadge[data-st=off]{background:transparent;color:var(--mut)}
+#camChip{border:1px solid var(--line);font-family:inherit;cursor:pointer;white-space:nowrap;max-width:200px;overflow:hidden;text-overflow:ellipsis}@media (max-width:560px){#camChip{display:none}}
+.lrgLive{display:flex;gap:10px;align-items:flex-start;text-align:left;padding:10px 12px;border-radius:12px;margin-bottom:10px;background:rgba(127,127,127,.10);border:1px solid rgba(127,127,127,.25)}
+.lrgLive i{width:10px;height:10px;border-radius:50%;margin-top:5px;flex:none;background:#888}.lrgLive span{display:flex;flex-direction:column;gap:2px}.lrgLive small{color:var(--mut)}
+.lrgLive[data-st=ok] i{background:#2ecc71;box-shadow:0 0 0 4px rgba(46,204,113,.2)}.lrgLive[data-st=pb] i,.lrgLive[data-st=warn] i{background:#f5a623}.lrgLive[data-st=bad] i{background:#ff4d4d}
+.camId .ciBig{font-size:22px;font-weight:800;margin-top:4px}.camId .ciGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-top:10px}
+.camId .ciGrid div,.camId .ciQ div{background:rgba(127,127,127,.08);border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;gap:2px;min-width:0}.camId .ciGrid small,.camId .ciQ small{color:var(--mut);font-size:11px}.camId .ciGrid b{font-size:14px;overflow-wrap:anywhere}
+.camId .ciQ{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:6px 0}.camId .ciQ b{font-size:20px}
+.camId .laGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0 6px}.camId .laGrid label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600}
+.camId .laGrid select{width:100%;min-width:0;padding:8px;border-radius:8px;border:1px solid var(--ln,#ccc);background:var(--bg2,transparent);color:var(--ink);font-size:14px}
+.camId.off .ciGrid,.camId.off .ciQ,.camId.off .ciQb,.camId.off .ciQh{display:none}.camId.off .ciBig{font-size:17px}
+#t-dev .apHero{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:8px 0}
+#t-dev .apQr{width:172px;height:172px;flex:none;background:#fff;border-radius:14px;padding:6px;display:flex;align-items:center;justify-content:center;color:#111}#t-dev .apQr svg{width:100%;height:100%}
+#t-dev .apQ0{font-size:56px;opacity:.5}#t-dev .apInfo{flex:1;min-width:220px}#t-dev .apCode{font-size:34px;font-weight:800;letter-spacing:.08em;font-variant-numeric:tabular-nums}
+#t-dev .laGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:8px 0}#t-dev .laGrid label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600}
+#t-dev .laGrid input{width:100%;min-width:0;padding:9px;border-radius:8px;border:1px solid var(--ln,#ccc);background:var(--bg2,transparent);color:var(--ink);font-size:15px}
+#t-dev .apDevs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:8px}
+#t-dev .apD{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;background:rgba(127,127,127,.08);border:1px solid rgba(127,127,127,.2)}#t-dev .apD.me{border-color:var(--acc,#ffc21a)}
+#t-dev .apD span{display:flex;flex-direction:column;min-width:0}#t-dev .apDi{font-size:26px}#t-dev .apD small{color:var(--mut);font-size:12px;overflow-wrap:anywhere}
+#t-dev .apF{margin:8px 0}#t-dev .apF button.on{background:var(--acc,#ffc21a);color:#111}
+#t-dev .apGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-top:10px}
+#t-dev .apT{position:relative;border-radius:12px;overflow:hidden;background:rgba(127,127,127,.12);cursor:pointer;border:2px solid transparent}#t-dev .apT.sel{border-color:var(--acc,#ffc21a)}
+#t-dev .apI{aspect-ratio:3/2;background:#222 center/cover no-repeat}#t-dev .apI.vid::after{content:'▶';position:absolute;left:8px;top:8px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;padding:1px 6px;font-size:12px}
+#t-dev .apT small{display:block;padding:5px 7px;font-size:11px;line-height:1.3;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#t-dev .apC{position:absolute;right:6px;top:6px;width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.5);color:transparent;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid #fff}#t-dev .apT.sel .apC{background:var(--acc,#ffc21a);color:#111}
+#t-dev .apO{position:absolute;right:6px;bottom:44px;width:30px;height:30px;padding:0;border-radius:8px;background:rgba(0,0,0,.55);color:#fff;border:0;font-size:15px;min-height:0}
+.apOv{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;padding:16px}
+.apOv .apBox{background:var(--card,#16161a);border-radius:16px;padding:12px;max-width:min(96vw,1100px);width:100%;max-height:94vh;display:flex;flex-direction:column;gap:8px}
+.apOv .apMed{flex:1;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--mut)}.apOv .apMed img,.apOv .apMed video{max-width:100%;max-height:72vh;border-radius:10px}.apOv small{color:var(--mut)}
 </style>
 
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -2102,14 +2149,14 @@ async function work(h){
  const isW=typeof h==='string',isF=typeof h==='object',inf=isF?{name:h.name,size:h.size}:isW?await ccInfo(h):info((await ptp(0x1008,[h])).data),ext=inf.name.split('.').pop().toLowerCase(),sig=inf.name+'|'+inf.size;S.cs=sig;if(!S.sig.has(sig))LG.set(sig,{n:inf.name,sz:inf.size,ev:C.ev,h:isF?undefined:h,st:'fila',e:''});
  const vid=['mp4','mov','mxf'].includes(ext),jpg=['jpg','jpeg'].includes(ext);
  if(S.sig.has(sig)){log(inf.name+': repetido, ignorado');S.done.add(h);return}
- if(!vid&&!jpg&&!C.raw){S.done.add(h);return}
+ if(!vid&&!jpg&&!C.raw&&!((C.rawPv==='keep'||C.rawPv==='lr')&&/^(cr3|cr2|dng)$/.test(ext))){S.done.add(h);return}
  
  await bp();const tDl0=performance.now();let dat;if(isF)dat=h;else if(isW)dat=await ccGet(h);else{dat=await ptpGetObject(h,inf.size,(inf.size>48e6&&window.libSink)?await libSink(sig,inf.name,inf.size):null)}
  LG.set(sig,{st:'baixado'});const tDl=performance.now()-tDl0;S.recvN=(S.recvN||0)+1;let ct=isF&&h.lastModified?h.lastModified:Date.now();
  let blob=new Blob([dat],{type:vid?'video/mp4':jpg?'image/jpeg':'application/octet-stream'});{let lf=null;if(window.libPut&&(!isF||S.src!=='folder'))lf=await libPut(sig,inf.name,blob,blob.type,isF&&h.lastModified);if(lf)blob=lf;else if(!isF&&window.guardPut)await guardPut(inf.name,blob)}if(jpg){const ed=await exifDate(blob);if(ed)ct=ed}const name=stamp(ct)+'_'+normName(inf.name);if(window.libMeta)libMeta(sig,{name,ct,kind:vid?'video':jpg?'foto':'raw',ev:C.ev});
  let queued=false,recd=null,dfO=null;const run=async()=>{
   if(vid){const df=await put('Videos',name,blob,ct),vb=df||blob;if(C.upv)qsend(vb,name,{'X-Class':'video'},sig);await toLR(name,vb,ct);add({name,kind:'video',ct,sig,t:Date.now(),cls:'b',blob:vb,disk:!!df,url:URL.createObjectURL(vb),size:blob.size});S.u.v++;log(inf.name+' → vídeo salvo'+(C.upv?' e na fila de envio':''),'ok')}
-  else if(!jpg){S.rawN=(S.rawN||0)+1;fmtUi();log(inf.name+' → RAW ignorado (a pasta guarda só JPG e MP4)')}
+  else if(!jpg){if(window.lumenRaw&&(C.rawPv==='keep'||C.rawPv==='lr'))await lumenRaw({name,blob,ct,sig});else{S.rawN=(S.rawN||0)+1;fmtUi();log(inf.name+' → RAW ignorado (a pasta guarda só JPG e MP4)')}}
   else{const m=await analyze(blob),d=decide(m);if(isF&&S.src==='folder'&&d.cls==='d'&&FD.h&&/^Editadas$/i.test(FD.h.name))d.cls='b';if(RAWM())d.x=1;fmtNote(m,blob.size,inf.name);
    if(d.cls==='d'){const qd=await put('Quarentena',name,blob,ct);await toLR(name,blob,ct);sidecar('Quarentena',name,'d',ct);add({name,kind:'foto',cls:'d',blob:qd||blob,disk:!!qd,m,ct,sig,t:Date.now(),thumb:await thumb(blob,1),size:blob.size});S.c.d++;log(inf.name+' → quarentena ('+(m?'tremida/escura':'ilegível')+')','bad')}
    else{
@@ -3310,12 +3357,12 @@ const LRR={
   ['Escolha o preset ao importar','Na importação, selecione o preset (Apply Preset), ou depois selecione todas e aplique.']]]};
 const LRS={exists:false,n:0,seen:new Map(),taken:0,test:null,testT:0,ok:false,warn:''};
 const lrRoute=()=>{const k=C.lrRoute||(IOS?'cc':'sync');return LRR[k]?k:(LRR[IOS?'cc':'sync']?(IOS?'cc':'sync'):Object.keys(LRR)[0])};
-async function lrScan(){if(!S.dir)return null;try{const d=await S.dir.getDirectoryHandle('LR_Entrada'),names=[];for await(const [nm,h] of d.entries())if(h.kind==='file'&&/\.(jpe?g|mp4)$/i.test(nm))names.push(nm);return names}catch(e){return null}}
+async function lrScan(){if(!S.dir)return null;try{const d=await S.dir.getDirectoryHandle('LR_Entrada'),names=[];for await(const [nm,h] of d.entries())if(h.kind==='file'&&/\.(jpe?g|mp4|mov|cr3|cr2|dng|heic|tiff?|png)$/i.test(nm))names.push(nm);return names}catch(e){return null}}
 async function lrPoll(){try{const L=await lrScan(),now=Date.now();LRS.exists=L!==null;if(L===null){LRS.n=0;LRS.warn='';return lrUi()}
  for(const nm of [...LRS.seen.keys()])if(!L.includes(nm)){LRS.seen.delete(nm);LRS.taken++}
  for(const nm of L)if(!LRS.seen.has(nm))LRS.seen.set(nm,now);LRS.n=L.length;
- if(LRS.test&&!L.includes(LRS.test)&&now-LRS.testT>2500){LRS.ok=true;LRS.test=null;log('Lightroom pegou a foto de teste: importação automática funcionando','ok')}
- const old=L.length?Math.max(...L.filter(n=>n!==LRS.test).map(n=>now-LRS.seen.get(n)),0):0;LRS.warn=old>120000?'Há arquivo(s) esperando há '+Math.round(old/60000)+' min: confira se a Importação automática está ativada e se o Lightroom Classic está aberto.':'';
+ if(LRS.test&&!L.includes(LRS.test)&&now-LRS.testT>2500){LRS.ok=true;LRS.test=null;log('Lightroom pegou a foto de teste','ok')}
+ const old=L.length?Math.max(...L.filter(n=>n!==LRS.test).map(n=>now-LRS.seen.get(n)),0):0;LRS.warn=old>120000?'Há arquivo(s) esperando há '+Math.round(old/60000)+' min: confira se o Lightroom Classic está aberto e o plug-in LUMEN ligado (aba Lightroom › Assistente).':'';
  lrUi()}catch(e){}}
 function lrUi(){const R=LRR[lrRoute()],E=$('#lrRoute');if(!E)return;E.innerHTML='';Object.keys(LRR).forEach(k=>{const b=document.createElement('button');b.textContent=LRR[k][0];b.className=k===lrRoute()?'on':'';b.onclick=()=>{C.lrRoute=k;store();lrUi()};E.appendChild(b)});
  $('#lrRouteT').textContent=R[1];$('#lrOn').checked=!!C.lrOn;
@@ -4065,7 +4112,7 @@ const FAM=[[/EOS R|\bR(1|3|5|6|7|8|10|50|100)\b/i,'EOS R (mirrorless)','No menu 
 const card=document.createElement('div');card.className='c';card.id='cnCard';sec.insertBefore(card,sec.firstChild);
 card.innerHTML='<div class="l">Câmeras Canon · qualquer modelo <small>R8 é o padrão</small></div><div class="sub wrap" style="color:var(--ink);white-space:normal">Plugou o cabo: o LUMEN reconhece a Canon, abre a sessão, ativa o controle remoto quando a câmera aceita e começa a importar só as fotos novas.</div><div class="sub wrap" id="cnLive" style="margin-top:10px;color:var(--ink);white-space:normal"></div><label class="r" style="margin-top:10px"><input type="checkbox" id="cnAuto"><span>Iniciar sozinho ao plugar (só fotos novas; as antigas ficam no cartão)</span></label><details class="sub wrap"><summary>Vale para toda Canon, uma vez</summary><ul><li>Cabo USB de DADOS, ligado direto no aparelho, sem hub.</li><li>Desligamento automático da câmera desativado e bateria cheia.</li><li>Wi-Fi e Bluetooth da câmera desligados; feche EOS Utility e Camera Connect.</li><li>Na primeira vez de cada modelo o navegador pede permissão USB (Conectar › escolher a câmera › Permitir). Depois ela é lembrada e conecta sozinha.</li><li>Windows e Mac costumam segurar a câmera: use o Android, ou feche os apps da Canon.</li></ul></details>';
 const ck=card.querySelector('#cnAuto');ck.checked=C.autoGo!==false;ck.onchange=()=>{C.autoGo=ck.checked;store()};
-function live(){if(document.hidden||!sec.classList.contains('on'))return;const d=S.dev,nm=d?((d.manufacturerName||'')+' '+(d.productName||'')).trim():'',f=d&&FAM.find(x=>x[0].test(d.productName||''));
+function live(){if(document.hidden||!sec.classList.contains('on'))return;const d=S.dev,nm=d?((S.cam&&S.cam.model)||((d.manufacturerName||'')+' '+(d.productName||'')).trim()):'',f=d&&FAM.find(x=>x[0].test((S.cam&&S.cam.model)||d.productName||''));
  {const li=(k,t)=>'<li class="'+k+'"><i>'+({ok:'✔',no:'✕',w:'!',i:'i'}[k])+'</i><span>'+t+'</span></li>',ok=d&&S.sess;
  card.querySelector('#cnLive').innerHTML='<ul class="fr-st">'+li(ok?'ok':'no',ok?(nm||'USB')+(f?' · '+f[1]:''):'Nenhuma câmera conectada: plugue o cabo e ligue a câmera')+(f&&ok?li('i',f[2]):'')+(ok?li(S.canon?'ok':'i',S.canon?'Controle remoto ativo':'Modo padrão: importa as fotos normalmente'):'')+li(eps().length?(S.svc?'ok':'w'):'i',eps().length?(S.svc?'Site respondendo':'Site não respondeu (confira endereço e internet)'):'Sem endereço de envio: salvando só na pasta')+'</ul>'}}
 setInterval(live,2000);live();
@@ -4077,7 +4124,7 @@ if(!C.upvMig){C.upv=true;C.upvMig=1;if(C.edHold===undefined)C.edHold=true;store(
 const LK='lumen_edled';let led=new Set();try{led=new Set(JSON.parse(localStorage.getItem(LK)||'[]'))}catch(e){}
 const saveL=()=>{try{localStorage.setItem(LK,JSON.stringify([...led].slice(-20000)))}catch(e){}};
 const E={pend:0,sent:0,bad:'',ok:false,busy:false},stab=new Map(),bigS=new Set();
-async function walk(d,pre,out,dep){for await(const[n,h] of d.entries()){if(h.kind==='directory'){if(dep<3&&!n.startsWith('.'))await walk(h,pre+n+'/',out,dep+1)}else if(/\.(jpe?g|mp4|mov)$/i.test(n))out.push([pre+n,h])}}
+async function walk(d,pre,out,dep){for await(const[n,h] of d.entries()){if(h.kind==='directory'){if(dep<3&&!n.startsWith('.'))await walk(h,pre+n+'/',out,dep+1)}else if(/\.(jpe?g|mp4|mov)$/i.test(n)&&!/^LUMEN_teste_/i.test(n))out.push([pre+n,h])}}
 async function scan(){if(E.busy||!C.edWatch||!S.dir||!S.perm)return;E.busy=true;
  try{let d;try{d=await S.dir.getDirectoryHandle('Editadas');E.ok=true}catch(e){E.ok=false;E.pend=0;return}
   const L=[];await walk(d,'',L,0);L.sort((x,y)=>x[0].localeCompare(y[0],undefined,{numeric:true}));let pend=0,lote=0;
@@ -4201,7 +4248,7 @@ async function hasExif(b){const u=new Uint8Array(await b.slice(0,65536).arrayBuf
 async function inject(blob,o){const u=new Uint8Array(await blob.arrayBuffer());if(u[0]!==0xFF||u[1]!==0xD8)return blob;const t=exifBuf(o),L=8+t.length,seg=new Uint8Array(4+6+t.length);seg.set([0xFF,0xE1,L>>8,L&255,0x45,0x78,0x69,0x66,0,0]);seg.set(t,10);let at=2;if(u[2]===0xFF&&u[3]===0xE0)at=4+((u[4]<<8)|u[5]);return new Blob([u.slice(0,at),seg,u.slice(at)],{type:'image/jpeg'})}
 /* garante EXIF: copia o da foto original; se ela não tiver, grava data, câmera, evento e programa */
 window.metaOut=async(orig,out,o={})=>{try{if(await hasExif(out))return out;if(orig&&orig!==out&&typeof keepExif==='function'){const r=await keepExif(orig,out);if(r!==out&&await hasExif(r))return r}
- return await inject(out,Object.assign({make:(S.dev&&S.dev.manufacturerName)||'Canon',model:(S.dev&&S.dev.productName)||'',desc:C.ev||''},o))}catch(e){return out}};
+ return await inject(out,Object.assign({make:(S.dev&&S.dev.manufacturerName)||'Canon',model:(S.cam&&S.cam.model)||(S.dev&&S.dev.productName)||'',desc:C.ev||''},o))}catch(e){return out}};
 /* envio: paralelismo adaptativo à conexão, recua se houver falhas */
 window.upPar=()=>{const c=navigator.connection||{},d=c.downlink||0,base=C.par||3;let a=d>=10?5:d>=5?4:d>=1.5?3:d?2:base;if(c.saveData)a=Math.min(a,2);if(S.upF.length>=3)return Math.min(base,2);return Math.min(6,Math.max(base,a))};
 const pt=document.querySelector('#pt');if(pt){const d=document.createElement('div');d.className='sub wrap';d.id='upSp';pt.after(d);let l=0,t0=Date.now();setInterval(()=>{const b=S.upB||0,n=Date.now(),sp=(b-l)/((n-t0)/1000)/1048576;l=b;t0=n;d.textContent=(S.ua||S.uq.length)?'⚡ '+sp.toFixed(1)+' MB/s · '+S.ua+' em paralelo (até '+upPar()+') · '+S.uq.length+' na fila':''},2000)}
@@ -4407,7 +4454,7 @@ function lmUi(){
  else{p.className='pillS warn';p.textContent='processando';msg=pend+' em andamento'+(LM.rate>0?' · ~'+LM.rate.toFixed(1)+' fotos/min · faltam ~'+Math.max(1,Math.ceil(pend/LM.rate))+' min':'')+(C.lrEdit==='lote'?' · modo em lote: sem alarme de parada':'')}
  g('lmTxt').textContent=msg;
  const a=g('lmAlert');a.className=LM.stalled?'on':'';a.textContent=LM.stalled?'⚠ A exportação do Lightroom parou há mais de '+(C.lrLim||3)+' min.':'';
- const b=Q1('#lrBadge');if(b)b.style.display=LM.stalled?'':'none';
+ const b=Q1('#lrBadge');if(b&&!window.LUMEN_LRBADGE)b.style.display=LM.stalled?'':'none';
  const cl=Q1('#cpLR');if(cl){cl.style.display=LM.stalled?'block':'none';cl.textContent='⚠ LIGHTROOM PAROU DE EXPORTAR · faltam '+pend}}
 function lmBuild(){
  const t=Q1('#t-lr');if(!t||Q1('#lrMon'))return;
@@ -5507,7 +5554,7 @@ applyLook();refresh();
   else if(S.cm==='folder'){set('fs1',FD.h?'ok':'wait',FD.h?'✔ Vigiando a pasta "'+FD.h.name+'": cada foto nova que cair nela entra sozinha':'Escolha a pasta onde a câmera (ou o app da Canon) salva as fotos','📁 '+(FD.h?'Trocar pasta da câmera':'Escolher pasta da câmera'),true)}
   else if(S.cm==='wifi'){const ok=S.src==='wifi'&&S.sess;set('fs1',ok?'ok':'wait',ok?'✔ Wi-Fi: '+(cc.name||cc.base):'Digite o IP da câmera na aba Conectar › Wi-Fi','Abrir Conectar',!ok)}
   else if(S.hold)set('fs1','wait','Liberada para o Lightroom. O LUMEN não usa o cabo até você voltar.','Voltar a usar a câmera',true);
-  else if(usbLive()){const nm=((S.dev&&S.dev.productName)||'Canon').replace(/^Canon\s+/,'');
+  else if(usbLive()){const nm=((S.cam&&S.cam.model)||(S.dev&&S.dev.productName)||'Canon').replace(/^Canon\s+/,'');
    if(S.canon)set('fs1','ok','✔ '+nm+' conectada e liberada: pode fotografar e gravar pela câmera','',false);
    else if(S.dev&&S.dev.vendorId===0x04a9)set('fs1','warn','⚠ Conectada, mas a câmera pode estar travada na tela do computador'+(S.remoteErr?' ('+S.remoteErr+')':''),'Liberar para fotografar',true);
    else set('fs1','ok','✔ '+nm+' conectada','',false)}
@@ -5560,7 +5607,7 @@ applyLook();refresh();
   try{LRS.exists=true}catch(_){}
   ['#lrOn','#frW','#frH'].forEach(id=>{const e=$1(id);if(e)e.checked=true});
   try{modeUi();verUi();lrUi();lrPoll()}catch(_){}
-  countEd();say('✔ Lightroom automático ligado: cada foto vai para '+S.dir.name+'/LR_Entrada; o que o Lightroom exportar em '+S.dir.name+'/Editadas/Fotos sobe sozinho para o site. Agora faça os 3 passos no Lightroom (abaixo).')}
+  countEd();say('✔ Lightroom automático ligado: cada foto vai para '+S.dir.name+'/LR_Entrada; o que o Lightroom exportar em '+S.dir.name+'/Editadas/Fotos sobe sozinho para o site. Agora instale e ligue o plug-in LUMEN 2.0 (aba Lightroom › Assistente do Lightroom).')}
  window.lrAuto=lrAuto;
  const lrCard=()=>{const d=document.createElement('div');d.className='c lrx';d.innerHTML=
   '<div class="l">Lightroom automático <small>câmera → Lightroom edita → site</small></div>'
@@ -6976,7 +7023,7 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
  async function pairStart(btn){
   if(!S.dir){const b=$1('#fs2b');if(b)b.click();lrpMsg('Primeiro escolha a pasta do evento (ela abre agora). Depois toque de novo aqui.');return}
   if(window.lrAuto)await lrAuto(btn);
-  C.lrPair=true;store();lrpMsg('✔ Ligado. A câmera fica no LUMEN (fotografando normalmente) e o Lightroom recebe cada foto pela pasta LR_Entrada. Agora faça os 2 passos no Lightroom logo abaixo.');render()}
+  C.lrPair=true;store();lrpMsg('✔ Ligado. A câmera fica no LUMEN (fotografando normalmente) e o Lightroom recebe cada foto pela pasta LR_Entrada. Agora no Lightroom Classic: instale o plug-in LUMEN 2.0 e ligue em Arquivo › Extras de plug-in › LUMEN: ligar. O Assistente do Lightroom confere tudo e corrige sozinho.');render()}
  function lrpMsg(t){$$('.lrpM').forEach(e=>e.textContent=t)}
  function mkPair(){const d=mk('div','c v70c lrPair');d.innerHTML='<div class="v70h"><b>🅻 Câmera + Lightroom juntos</b><span class="pillS lrpSt">—</span></div>'
   +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Só um programa por vez consegue usar o cabo. Se o Lightroom usar a câmera pela <b>Captura conectada</b>, ele toma o USB do LUMEN: a câmera vai para a tela da bateria e as fotos param de ir para o site. O jeito certo é: <b>a câmera fica no LUMEN</b>, que entrega cada foto ao Lightroom por uma pasta. Assim você fotografa sem parar, o Lightroom edita e o site recebe.</div>'
@@ -7199,17 +7246,17 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
 (function(){try{
  const $1=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
  const MAC=/Mac/i.test(navigator.userAgent)&&!IOS;
- const PG={st:null,at:0,mt:0,busy:false};
+ const PG=window.LUMEN_PG={st:null,at:0,mt:0,busy:false};
  async function readPlugin(){if(PG.busy||!S.dir||!S.perm||S.dir.virtual)return;PG.busy=true;
-  try{const fh=await(await(await S.dir.getDirectoryHandle('Editadas')).getDirectoryHandle('Fotos')).getFileHandle('.lumen_plugin.json');const f=await fh.getFile();PG.mt=f.lastModified;PG.st=JSON.parse(await f.text());PG.at=Date.now()}
+  try{let fh;try{fh=await S.dir.getFileHandle('.lumen_lr_status.json')}catch(_){fh=await(await(await S.dir.getDirectoryHandle('Editadas')).getDirectoryHandle('Fotos')).getFileHandle('.lumen_plugin.json')}const f=await fh.getFile();PG.mt=f.lastModified;PG.st=JSON.parse(await f.text());PG.at=Date.now()}
   catch(_){PG.st=null}finally{PG.busy=false}}
- setInterval(()=>{if(C.lrOn&&!document.hidden||C.lrOn&&S.run)readPlugin()},4000);setTimeout(readPlugin,3000);
+ window.LUMEN_readPlugin=readPlugin;setInterval(()=>{if(C.lrOn&&!document.hidden||C.lrOn&&S.run)readPlugin()},4000);setTimeout(readPlugin,3000);
  let lastPhoto=0,photos0=0;
  function items(){const ok=S.sess&&S.src==='usb'&&S.dev,now=Date.now(),L=[];
   /* câmera */
   if(S.cm==='usb'||S.src==='usb'){
    L.push(S.hold?{k:'cam',s:'bad',t:'Câmera com outro programa',d:'Toque em "Trazer a câmera de volta" no cartão Câmera + Lightroom.'}
-    :ok?{k:'cam',s:'ok',t:'Câmera no LUMEN',d:((S.dev.productName||'Canon')+' · cabo USB')}
+    :ok?{k:'cam',s:'ok',t:'Câmera no LUMEN',d:(((S.cam&&S.cam.model)||S.dev.productName||'Canon')+' · cabo USB')}
     :S.usbBusyNow?{k:'cam',s:'bad',t:'Outro programa pegou a câmera',d:'Feche no Lightroom a Captura conectada (Arquivo › Captura conectada › Parar) e feche o EOS Utility.'+(MAC?' Confira também o Protetor USB do Mac.':'')}
     :(S.conn||S.pend||S.rec)?{k:'cam',s:'warn',t:'Reconectando a câmera…',d:'O LUMEN volta sozinho em 1 a 2 s.'}
     :{k:'cam',s:'bad',t:'Câmera desconectada',d:'Ligue a câmera e confira o cabo. O LUMEN conecta sozinho.'});
@@ -7222,14 +7269,16 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
   L.push(S.run&&!S.pause?{k:'run',s:'ok',t:'Recebendo fotos',d:(S.recvN||0)+' recebidas nesta sessão.'}:{k:'run',s:'warn',t:S.pause?'Recebimento pausado':'Recebimento não iniciado',d:S.why||'Toque em Começar.'});
   /* Lightroom */
   if(C.lrOn){let wait=0,tk=0,warn='';try{wait=LRS.n||0;tk=LRS.taken||0;warn=LRS.warn||''}catch(_){}
-   L.push(warn?{k:'lri',s:'bad',t:'Importação automática parada',d:wait+' foto(s) esperando na LR_Entrada. Abra o Lightroom e confira Arquivo › Importação automática › Ativar (com ✓).'}
-    :{k:'lri',s:'ok',t:'Importação automática em dia',d:tk+' importada(s) · '+wait+' na fila'});
+   L.push(warn?{k:'lri',s:'bad',t:'Fotos paradas na LR_Entrada',d:wait+' foto(s) esperando o Lightroom. Abra o Lightroom Classic e ligue o plug-in: Arquivo › Extras de plug-in › LUMEN: ligar. Aba Lightroom › Assistente corrige o resto.'}
+    :{k:'lri',s:'ok',t:'Lightroom pegando as fotos',d:tk+' importada(s) · '+wait+' na fila'});
    const age=PG.mt?(now-PG.mt)/1000:Infinity;
-   if(C.edWatch){if(!PG.st)L.push({k:'plg',s:'warn',t:'Plug-in LUMEN Auto Export não detectado',d:'Instale e ligue o plug-in (aba Lightroom) ou publique à mão em Editadas/Fotos.'});
-    else if(!PG.st.enabled)L.push({k:'plg',s:'bad',t:'Plug-in desligado',d:'No Lightroom: Arquivo › Extras de plug-in › LUMEN: ligar exportação automática.'});
-    else if(age>45)L.push({k:'plg',s:'bad',t:'Lightroom fechado ou travado',d:'O plug-in parou de dar sinal há '+Math.round(age)+' s. Abra o Lightroom Classic (ele volta sozinho).'});
+   if(C.edWatch){if(!PG.st)L.push({k:'plg',s:'warn',t:'Plug-in LUMEN 2.0 não detectado',d:'Aba Lightroom › Assistente do Lightroom: baixe, instale e ligue o plug-in.'});
+    else if(PG.st.mode!=='import')L.push({k:'plg',s:'bad',t:'Plug-in antigo (1.x)',d:'Troque pelo 2.0 (aba Lightroom › Assistente). O 1.x dependia da Importação automática da Adobe.'});
+    else if(!PG.st.enabled)L.push({k:'plg',s:'bad',t:'Plug-in desligado',d:'No Lightroom: Arquivo › Extras de plug-in › LUMEN: ligar (importar + editar + exportar).'});
+    else if(age>60)L.push({k:'plg',s:'bad',t:'Lightroom fechado ou travado',d:'O plug-in parou de dar sinal há '+Math.round(age)+' s. Abra o Lightroom Classic (ele volta sozinho).'});
     else if(PG.st.err)L.push({k:'plg',s:'bad',t:'Erro no plug-in',d:String(PG.st.err).slice(0,140)});
-    else L.push({k:'plg',s:'ok',t:'Lightroom exportando sozinho',d:PG.st.count+' exportada(s)'+(PG.st.pending?' · '+PG.st.pending+' na vez':'')+(PG.st.last?' · última '+PG.st.last:'')})}}
+    else L.push({k:'plg',s:'ok',t:'Lightroom importando, editando e exportando sozinho',d:(PG.st.imported!=null?PG.st.imported+' importada(s) · ':'')+(PG.st.count||0)+' exportada(s)'+(PG.st.pending?' · '+PG.st.pending+' na vez':'')+(PG.st.last?' · última '+PG.st.last:'')})}}
+  try{if(C.lrOn&&window.LUMEN_PB){const pb=LUMEN_PB.item();if(pb)L.push(pb)}}catch(_){}
   /* site */
   if(eps().length){const f=S.upF.length,q=S.uq.length+S.ua;L.push(!S.svc?{k:'site',s:'bad',t:'Site sem resposta',d:'As fotos esperam guardadas e sobem quando a internet voltar.'}:f?{k:'site',s:'warn',t:'Reenviando '+f+' foto(s)',d:'Tentando de novo sozinho.'}:{k:'site',s:'ok',t:'Site recebendo',d:(S.upOk||0)+' enviada(s)'+(q?' · '+q+' na fila':'')})}
   else L.push({k:'site',s:'warn',t:'Envio ao site desligado',d:'Configure o endereço em Config › Destinos.'});
@@ -7246,7 +7295,8 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
  function mk(){const d=document.createElement('div');d.className='c v70c eb';d.innerHTML=HTML;d.querySelector('.ebN').onclick=async()=>{try{if(!window.Notification){log('Este navegador não mostra avisos na tela.','bad');return}const p=await Notification.requestPermission();if(p==='granted'){AL.on=true;localStorage.setItem('lumen_alerts',JSON.stringify(AL));new Notification('LUMEN',{body:'Pronto: se algo parar durante o evento, aviso aqui, mesmo com o Lightroom na frente.'})}else log('Avisos bloqueados: libere em Chrome › Configurações › Privacidade › Notificações.','bad')}catch(e){log(e.message,'bad')}render()};
   d.querySelector('.ebS').onclick=()=>{AL.sound=!AL.sound;localStorage.setItem('lumen_alerts',JSON.stringify(AL));render()};return d}
  const A=mk(),B=mk();
- function place(){const lr=$1('#t-lr .lrPair');if(lr&&B.previousElementSibling!==lr)lr.before(B);const f=$1('#fluxo');if(f&&A.previousElementSibling!==f)f.after(A)}
+ (window.__lrPlace=window.__lrPlace||[]).push(()=>{const lr=$1('#t-lr .lrA')||$1('#t-lr .lrPair');if(lr&&B.previousElementSibling!==lr)lr.after(B)});
+ function place(){const lr=$1('#t-lr .lrA')||$1('#t-lr .lrPair');if(lr&&B.previousElementSibling!==lr)lr.after(B);const f=$1('#fluxo');if(f&&A.previousElementSibling!==f)f.after(A)}
  const ic={ok:'✓',warn:'!',bad:'✕'},cl={ok:'ok',warn:'ew',bad:'no'};
  function render(){try{place();const L=items(),bad=L.filter(i=>i.s==='bad'),w=L.filter(i=>i.s==='warn'),on=S.sess||S.run||C.lrOn;
   A.hidden=!on;
@@ -7259,6 +7309,655 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
  setInterval(render,1500);render();
  log('Build v77: evento blindado (vigia câmera, Lightroom, plug-in e site e avisa na tela)','ok');
 }catch(e){try{log('v77: '+e.message,'bad')}catch(_){}}})();
+</script>
+
+<script id="v78">
+/* ===== v78 · Lightroom sem a Importação automática da Adobe: plug-in LUMEN 2.0 importa da LR_Entrada, aplica o preset
+   numa sessão e exporta para Editadas/Fotos. Assistente que confere cada etapa, corrige sozinho o que dá e explica o resto. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+ const FILES={"Config.lua": "local LrTasks   = import 'LrTasks'\nlocal LrDialogs = import 'LrDialogs'\nlocal Core = require 'Core'\nLrTasks.startAsyncTask(function()\n  if Core.configure(false) then\n    local p = Core.status()\n    LrDialogs.message('LUMEN', 'Salvo. Sessão: ' .. (p.session or '') .. '. As próximas fotos já usam essa configuração.', 'info')\n  end\nend)\n", "Core.lua": "local LrApplication   = import 'LrApplication'\nlocal LrExportSession = import 'LrExportSession'\nlocal LrTasks         = import 'LrTasks'\nlocal LrPrefs         = import 'LrPrefs'\nlocal LrDialogs       = import 'LrDialogs'\nlocal LrFileUtils     = import 'LrFileUtils'\nlocal LrPathUtils     = import 'LrPathUtils'\nlocal LrDate          = import 'LrDate'\nlocal LrView          = import 'LrView'\nlocal LrBinding       = import 'LrBinding'\nlocal LrFunctionContext = import 'LrFunctionContext'\n\nlocal prefs = LrPrefs.prefsForPlugin()\nlocal M = {}\nlocal IMG = { jpg = true, jpeg = true, cr3 = true, cr2 = true, crw = true, dng = true, nef = true, arw = true, raf = true, orf = true, rw2 = true, heic = true, tif = true, tiff = true, png = true }\nlocal VID = { mp4 = true, mov = true, m4v = true, avi = true }\n\n-- ---------- pastas (tudo derivado da pasta do evento do LUMEN) ----------\nlocal function P(...) local p = prefs.root; for _, s in ipairs({ ... }) do p = LrPathUtils.child(p, s) end; return p end\nlocal function inbox() return P('LR_Entrada') end\nlocal function outDir() return P('Editadas', 'Fotos') end\nlocal function sessionDir() return P('Lightroom_Sessoes', prefs.session or 'Sessao') end\nlocal function errDir() return P('LR_Entrada_com_erro') end\n\nlocal function today() return LrDate.timeToUserFormat(LrDate.currentTime(), '%Y-%m-%d') end\nlocal function cleanName(s) s = tostring(s or ''):gsub('[/\\\\:%*%?\"<>|]', '_'):gsub('^%s+', ''):gsub('%s+$', ''); if s == '' then s = 'Sessao_' .. today() end; return s end\n\n-- ---------- presets do Lightroom ----------\nlocal function allPresets()\n  local L = {}\n  for _, folder in ipairs(LrApplication.developPresetFolders() or {}) do\n    for _, p in ipairs(folder:getDevelopPresets() or {}) do\n      L[#L + 1] = { title = folder:getName() .. ' › ' .. p:getName(), name = p:getName(), uuid = p:getUuid(), preset = p }\n    end\n  end\n  table.sort(L, function(a, b) return a.title < b.title end)\n  return L\nend\nlocal function findPreset()\n  local want = prefs.cmdPreset\n  for _, it in ipairs(allPresets()) do\n    if want and want ~= '' and (it.name == want or it.title == want) then return it.preset, it.name end\n  end\n  if prefs.presetUuid and prefs.presetUuid ~= '' then\n    local ok, p = pcall(LrApplication.developPresetByUuid, prefs.presetUuid)\n    if ok and p then return p, p:getName() end\n  end\n  return nil, nil\nend\n\n-- ---------- melhoria LUMEN: nitidez + contraste ----------\n-- Somado ao que o preset já fez (não apaga a sua edição). Níveis: 1 leve, 2 média, 3 forte.\nlocal ENH = {\n  [1] = { sharp = 20, clar = 8,  tex = 8,  con = 8,  dz = 0 },\n  [2] = { sharp = 35, clar = 15, tex = 14, con = 14, dz = 3 },\n  [3] = { sharp = 55, clar = 25, tex = 22, con = 22, dz = 6 },\n}\nM.ENH_NAMES = { [0] = 'Nenhuma', [1] = 'Leve', [2] = 'Média', [3] = 'Forte' }\nlocal function cl(v, a, b) v = tonumber(v) or 0; if v < a then return a elseif v > b then return b end; return v end\nlocal enhPresets = {}\nfunction M.enhance(cat, photo, level)\n  local e = ENH[tonumber(level) or 0]\n  if not e then return true end\n  -- 1) Lightroom Classic recente: soma aos valores atuais da foto\n  local okF, fn = pcall(function() return photo.applyDevelopSettings end)\n  if okF and fn then\n    local cur = photo:getDevelopSettings() or {}\n    local set = {\n      Sharpness = cl((cur.Sharpness or 0) + e.sharp, 0, 150),\n      SharpenRadius = cl(cur.SharpenRadius or 1.0, 0.5, 1.2),\n      SharpenDetail = math.max(cur.SharpenDetail or 25, 30),\n      SharpenEdgeMasking = math.max(cur.SharpenEdgeMasking or 0, 25),\n      Clarity2012 = cl((cur.Clarity2012 or 0) + e.clar, -100, 100),\n      Texture = cl((cur.Texture or 0) + e.tex, -100, 100),\n      Contrast2012 = cl((cur.Contrast2012 or 0) + e.con, -100, 100),\n      Dehaze = cl((cur.Dehaze or 0) + e.dz, -100, 100),\n    }\n    local ok, err = LrTasks.pcall(function()\n      cat:withWriteAccessDo('LUMEN: nitidez + contraste', function() photo:applyDevelopSettings(set, 'LUMEN Nitidez + Contraste') end, { timeout = 60 })\n    end)\n    if ok then return true end\n    prefs.lastError = 'melhoria: ' .. tostring(err)\n  end\n  -- 2) versões antigas: preset do plug-in (nitidez, claridade e textura; não mexe no contraste do seu preset)\n  local pr = enhPresets[level]\n  if not pr then\n    local name = 'LUMEN Nitidez + Contraste (' .. M.ENH_NAMES[level] .. ')'\n    local abs = { Sharpness = 40 + e.sharp, SharpenRadius = 1.0, SharpenDetail = 30, SharpenEdgeMasking = 25, Clarity2012 = e.clar + 4, Texture = e.tex }\n    local ok1, p1 = LrTasks.pcall(LrApplication.addDevelopPresetForPlugin, _PLUGIN, name, abs)\n    if not (ok1 and p1) then\n      LrTasks.pcall(function() cat:withWriteAccessDo('LUMEN: criar melhoria', function() p1 = LrApplication.addDevelopPresetForPlugin(_PLUGIN, name, abs) end, { timeout = 30 }) end)\n    end\n    pr = p1; enhPresets[level] = pr\n  end\n  if not pr then prefs.lastError = 'melhoria: este Lightroom não aceitou o ajuste'; return false end\n  local ok, err = LrTasks.pcall(function()\n    cat:withWriteAccessDo('LUMEN: nitidez + contraste', function() photo:applyDevelopPreset(pr, _PLUGIN) end, { timeout = 60 })\n  end)\n  if not ok then prefs.lastError = 'melhoria: ' .. tostring(err) end\n  return ok\nend\n\n-- ---------- configuração (uma janela) ----------\nfunction M.configure(askRoot)\n  local ok = false\n  LrFunctionContext.callWithContext('lumenCfg', function(context)\n    if askRoot or not prefs.root then\n      LrDialogs.message('LUMEN · escolha a pasta do evento',\n        'Escolha a MESMA pasta de destino que você escolheu no LUMEN (a que tem dentro as pastas LR_Entrada e Editadas).\\n\\nO plug-in cria e usa sozinho:\\n• LR_Entrada → de onde ele importa\\n• Lightroom_Sessoes/<sessão> → onde guarda os originais\\n• Editadas/Fotos → onde coloca as fotos editadas', 'info')\n      local r = LrDialogs.runOpenPanel { title = 'Pasta do evento do LUMEN', prompt = 'Usar esta pasta', canChooseFiles = false, canChooseDirectories = true, canCreateDirectories = true, allowsMultipleSelection = false }\n      if not (r and r[1]) then return end\n      local root = r[1]\n      local leaf = LrPathUtils.leafName(root)\n      if leaf == 'Fotos' and LrPathUtils.leafName(LrPathUtils.parent(root)) == 'Editadas' then root = LrPathUtils.parent(LrPathUtils.parent(root))\n      elseif leaf == 'LR_Entrada' or leaf == 'Editadas' or leaf == 'Lightroom_Sessoes' or leaf == 'LR_Entrada_com_erro' then root = LrPathUtils.parent(root) end\n      prefs.root = root\n    end\n    local props = LrBinding.makePropertyTable(context)\n    props.session = prefs.session or ('Sessao_' .. today())\n    props.preset = prefs.presetUuid or ''\n    local items = { { title = '(nenhum: só importar e exportar)', value = '' } }\n    for _, it in ipairs(allPresets()) do items[#items + 1] = { title = it.title, value = it.uuid } end\n    props.quality = prefs.quality or 90\n    props.enh = prefs.enh or 0\n    local f = LrView.osFactory()\n    local c = f:column {\n      bind_to_object = props, spacing = f:control_spacing(),\n      f:static_text { title = 'Pasta do evento: ' .. prefs.root, width_in_chars = 60 },\n      f:static_text { title = 'Nome da sessão (vira uma subpasta em Lightroom_Sessoes):' },\n      f:edit_field { value = LrView.bind('session'), width_in_chars = 40 },\n      f:static_text { title = 'Preset aplicado em cada foto:' },\n      f:popup_menu { value = LrView.bind('preset'), items = items, width_in_chars = 40 },\n      f:static_text { title = 'Melhoria LUMEN depois do preset (nitidez + contraste):' },\n      f:popup_menu { value = LrView.bind('enh'), items = { { title = 'Nenhuma', value = 0 }, { title = 'Leve', value = 1 }, { title = 'Média (recomendada)', value = 2 }, { title = 'Forte', value = 3 } }, width_in_chars = 40 },\n      f:row { f:static_text { title = 'Qualidade do JPEG (60–100):' }, f:edit_field { value = LrView.bind('quality'), width_in_chars = 5, min = 60, max = 100, precision = 0 } },\n    }\n    local res = LrDialogs.presentModalDialog { title = 'LUMEN Auto Import + Export', contents = c, actionVerb = 'Salvar' }\n    if res == 'ok' then\n      prefs.session = cleanName(props.session)\n      prefs.presetUuid = props.preset\n      prefs.cmdPreset = nil\n      prefs.quality = tonumber(props.quality) or 90\n      prefs.enh = tonumber(props.enh) or 0\n      ok = true\n    end\n  end)\n  return ok\nend\n\n-- ---------- comandos vindos do site (arquivo .lumen_lr.json na pasta do evento) ----------\nlocal function readText(path) local f = io.open(path, 'r'); if not f then return nil end; local s = f:read('*a'); f:close(); return s end\nlocal function jget(s, k) return s and s:match('\"' .. k .. '\"%s*:%s*\"([^\"]*)\"') end\nlocal function jnum(s, k) local v = s and s:match('\"' .. k .. '\"%s*:%s*(%d+)'); return v and tonumber(v) end\nlocal lastCmd = ''\nlocal function readCmd()\n  local s = readText(P('.lumen_lr.json'))\n  if not s or s == lastCmd then return end\n  lastCmd = s\n  local sess = jget(s, 'session'); if sess and sess ~= '' then prefs.session = cleanName(sess) end\n  local pr = jget(s, 'preset'); if pr ~= nil then prefs.cmdPreset = pr end\n  local q = jnum(s, 'quality'); if q and q >= 60 and q <= 100 then prefs.quality = q end\n  local mx = jnum(s, 'maxSize'); if mx then prefs.maxSize = mx end\n  local en = jnum(s, 'enh'); if en and en >= 0 and en <= 3 then prefs.enh = en end\n  local pa = jnum(s, 'paused'); if pa ~= nil then prefs.paused = (pa == 1) end\n  local rt = jnum(s, 'retry'); if rt and rt ~= prefs.lastRetry then prefs.lastRetry = rt; prefs.fails = {}; prefs.lastError = nil end\nend\n\n-- ---------- sinal de vida para o LUMEN ----------\nlocal stat = { pending = 0 }\nlocal writeStatus\nlocal function jesc(v) return (tostring(v or ''):gsub('\\\\', '/'):gsub('\"', \"'\"):gsub('[%c]', ' ')) end\nwriteStatus = function()\n  if not prefs.root then return end\n  local now = LrDate.currentTime()\n  if not stat.names or now - (stat.namesAt or 0) > 30 then\n    local names = {}\n    local okp, L = pcall(allPresets)\n    if okp then for i, it in ipairs(L) do if i > 300 then break end; names[#names + 1] = '\"' .. jesc(it.title) .. '\"' end end\n    stat.names, stat.namesAt = names, now\n  end\n  local names = stat.names\n  local _, pname = findPreset()\n  local s = '{\"app\":\"lumen-autoexport\",\"v\":\"2.2\",\"mode\":\"import\",\"enabled\":' .. tostring(prefs.enabled and true or false) .. ',\"paused\":' .. tostring(prefs.paused and true or false) .. ',\"enh\":' .. tostring(prefs.enh or 0) ..\n    ',\"root\":\"' .. jesc(LrPathUtils.leafName(prefs.root)) .. '\",\"session\":\"' .. jesc(prefs.session) .. '\",\"preset\":\"' .. jesc(pname or '') ..\n    '\",\"imported\":' .. tostring(prefs.imported or 0) .. ',\"count\":' .. tostring(prefs.count or 0) .. ',\"pending\":' .. tostring(stat.pending or 0) ..\n    ',\"waitExport\":' .. tostring(#(prefs.toExport or {})) .. ',\"failed\":' .. tostring(prefs.failedN or 0) ..\n    ',\"last\":\"' .. jesc(prefs.last) .. '\",\"err\":\"' .. jesc(prefs.lastError) .. '\",\"presets\":[' .. table.concat(names, ',') .. ']}'\n  local f = io.open(P('.lumen_lr_status.json'), 'w')\n  if f then f:write(s); f:close() end\nend\nM.writeStatus = writeStatus\n\n-- ---------- uma passada ----------\nlocal seen = {}\nlocal function uniqueDest(dir, leaf)\n  local d = LrPathUtils.child(dir, leaf)\n  if not LrFileUtils.exists(d) then return d end\n  local base, ext = LrPathUtils.removeExtension(leaf), LrPathUtils.extension(leaf)\n  for i = 2, 999 do\n    d = LrPathUtils.child(dir, base .. '_' .. i .. (ext ~= '' and ('.' .. ext) or ''))\n    if not LrFileUtils.exists(d) then return d end\n  end\n  return d\nend\nlocal function moveFile(src, dst)\n  local ok = LrFileUtils.move(src, dst)\n  if ok and LrFileUtils.exists(dst) then return true end\n  if LrFileUtils.copy(src, dst) and LrFileUtils.exists(dst) then LrFileUtils.delete(src); return true end\n  return false\nend\n\nlocal function importReady()\n  local cat = LrApplication.activeCatalog()\n  local inb = inbox()\n  LrFileUtils.createAllDirectories(inb)\n  local ready, pending = {}, 0\n  for path in LrFileUtils.files(inb) do\n    local leaf = LrPathUtils.leafName(path)\n    local ext = string.lower(LrPathUtils.extension(path) or '')\n    if leaf:sub(1, 1) ~= '.' and (IMG[ext] or VID[ext]) then\n      pending = pending + 1\n      local a = LrFileUtils.fileAttributes(path) or {}\n      local size = a.fileSize or 0\n      if size > 0 and seen[path] == size then\n        if #ready < 12 then ready[#ready + 1] = { path = path, leaf = leaf, video = VID[ext] } end\n      else\n        seen[path] = size   -- espera ficar igual em 2 passadas: arquivo completo\n      end\n    end\n  end\n  stat.pending = pending\n  if #ready == 0 then return end\n  local sdir = sessionDir()\n  LrFileUtils.createAllDirectories(sdir)\n  local preset = findPreset()\n  local fails = prefs.fails or {}\n  local toExport = prefs.toExport or {}\n  for _, it in ipairs(ready) do\n    local dst = uniqueDest(sdir, it.leaf)\n    if moveFile(it.path, dst) then\n      seen[it.path] = nil\n      local photo\n      local okA, errA = LrTasks.pcall(function()\n        cat:withWriteAccessDo('LUMEN: importar ' .. it.leaf, function()\n          photo = cat:findPhotoByPath(dst) or cat:addPhoto(dst)\n        end, { timeout = 60 })\n      end)\n      if okA and photo then\n        prefs.imported = (prefs.imported or 0) + 1\n        if preset and not it.video then\n          local okP, errP = LrTasks.pcall(function()\n            cat:withWriteAccessDo('LUMEN: preset ' .. it.leaf, function() photo:applyDevelopPreset(preset, _PLUGIN) end, { timeout = 60 })\n          end)\n          if not okP then prefs.lastError = 'preset: ' .. tostring(errP) end\n        end\n        if (prefs.enh or 0) > 0 and not it.video then M.enhance(cat, photo, prefs.enh) end\n        if not it.video then toExport[#toExport + 1] = photo.localIdentifier end\n        stat.pending = math.max(0, (stat.pending or 1) - 1)\n      else\n        prefs.lastError = 'importar ' .. it.leaf .. ': ' .. tostring(errA)\n      end\n    else\n      fails[it.path] = (fails[it.path] or 0) + 1\n      prefs.lastError = 'não consegui mover ' .. it.leaf .. ' (arquivo em uso?)'\n      if fails[it.path] >= 3 then\n        LrFileUtils.createAllDirectories(errDir())\n        moveFile(it.path, uniqueDest(errDir(), it.leaf))\n        prefs.failedN = (prefs.failedN or 0) + 1\n        fails[it.path] = nil\n      end\n    end\n  end\n  prefs.fails = fails\n  prefs.toExport = toExport\nend\n\nlocal function exportPending()\n  local ids = prefs.toExport or {}\n  if #ids == 0 then return end\n  local cat = LrApplication.activeCatalog()\n  local batch, rest = {}, {}\n  for i, id in ipairs(ids) do\n    local p = cat:getPhotoByLocalId(id)\n    if p then\n      if #batch < 12 then batch[#batch + 1] = p else rest[#rest + 1] = id end\n    end\n  end\n  if #batch == 0 then prefs.toExport = rest; return end\n  LrFileUtils.createAllDirectories(outDir())\n  local mx = prefs.maxSize or 0\n  local session = LrExportSession {\n    photosToExport = batch,\n    exportSettings = {\n      LR_export_destinationType = 'specificFolder',\n      LR_export_destinationPathPrefix = outDir(),\n      LR_export_useSubfolder = false,\n      LR_collisionHandling = 'overwrite',\n      LR_reimportExportedPhoto = false,\n      LR_renamingTokensOn = false,\n      LR_format = 'JPEG',\n      LR_jpeg_quality = (prefs.quality or 90) / 100,\n      LR_export_colorSpace = 'sRGB',\n      LR_size_doConstrain = mx > 0,\n      LR_size_maxWidth = mx, LR_size_maxHeight = mx,\n      LR_size_resizeType = 'longEdge', LR_size_units = 'pixels',\n      LR_outputSharpeningOn = false,\n      LR_minimizeEmbeddedMetadata = false,\n    },\n  }\n  session:doExportOnCurrentTask()\n  local okIds = {}\n  for _, rendition in session:renditions() do\n    local ok, msg = rendition:waitForRender()\n    if ok then okIds[rendition.photo.localIdentifier] = true; prefs.count = (prefs.count or 0) + 1; prefs.lastError = nil\n    else prefs.lastError = 'exportar: ' .. tostring(msg) end\n    pcall(writeStatus)\n  end\n  for _, p in ipairs(batch) do if not okIds[p.localIdentifier] then rest[#rest + 1] = p.localIdentifier end end\n  prefs.toExport = rest\n  prefs.last = LrDate.timeToUserFormat(LrDate.currentTime(), '%H:%M:%S')\nend\n\nlocal function scanOnce()\n  if not prefs.root then return end\n  readCmd()\n  if prefs.paused then stat.pending = 0 else importReady() end\n  pcall(writeStatus)\n  exportPending()\nend\nM.scanOnce = scanOnce\nfunction M.queueExport(ids)\n  local q = prefs.toExport or {}\n  for _, id in ipairs(ids) do q[#q + 1] = id end\n  prefs.toExport = q\n  if not prefs.enabled then\n    for _ = 1, 200 do if #(prefs.toExport or {}) == 0 then break end; exportPending() end\n  end\nend\n\nfunction M.start()\n  prefs.enabled = true\n  local myId = tostring(LrDate.currentTime()) .. tostring(math.random(100000))\n  prefs.loopId = myId\n  LrTasks.startAsyncTask(function()\n    LrTasks.sleep(2)\n    while prefs.enabled and prefs.loopId == myId do\n      local ok, err = LrTasks.pcall(scanOnce)\n      if not ok then prefs.lastError = tostring(err) end\n      LrTasks.pcall(writeStatus)\n      LrTasks.sleep(prefs.interval or 3)\n    end\n  end, 'LUMEN Auto Import + Export')\nend\n\nfunction M.stop()\n  prefs.enabled = false\n  prefs.loopId = nil\n  pcall(writeStatus)\nend\n\nfunction M.status() return prefs, stat end\nreturn M\n", "Enhance.lua": "-- LUMEN · melhorar nitidez e contraste das fotos selecionadas (soma ao que já está editado)\nlocal LrTasks     = import 'LrTasks'\nlocal LrDialogs   = import 'LrDialogs'\nlocal LrApplication = import 'LrApplication'\nlocal LrView      = import 'LrView'\nlocal LrBinding   = import 'LrBinding'\nlocal LrFunctionContext = import 'LrFunctionContext'\nlocal LrProgressScope = import 'LrProgressScope'\nlocal LrPrefs     = import 'LrPrefs'\nlocal Core = require 'Core'\nlocal prefs = LrPrefs.prefsForPlugin()\nLrTasks.startAsyncTask(function()\n  LrFunctionContext.callWithContext('lumenEnh', function(context)\n    local cat = LrApplication.activeCatalog()\n    local photos = cat:getTargetPhotos() or {}\n    if #photos == 0 then LrDialogs.message('LUMEN', 'Selecione as fotos na Biblioteca primeiro.', 'info'); return end\n    local props = LrBinding.makePropertyTable(context)\n    props.level = prefs.enhSel or 2\n    props.send = prefs.root ~= nil\n    local f = LrView.osFactory()\n    local c = f:column { bind_to_object = props, spacing = f:control_spacing(),\n      f:static_text { title = #photos .. ' foto(s) selecionada(s). A melhoria soma ao que já está editado:' },\n      f:popup_menu { value = LrView.bind('level'), items = { { title = 'Leve', value = 1 }, { title = 'Média (recomendada)', value = 2 }, { title = 'Forte', value = 3 } }, width_in_chars = 30 },\n      f:checkbox { title = 'Depois, mandar para o site (exporta em Editadas/Fotos do LUMEN)', value = LrView.bind('send'), enabled = prefs.root ~= nil },\n    }\n    if LrDialogs.presentModalDialog { title = 'LUMEN · Nitidez + Contraste', contents = c, actionVerb = 'Melhorar' } ~= 'ok' then return end\n    prefs.enhSel = props.level\n    local pr = LrProgressScope { title = 'LUMEN: melhorando nitidez e contraste' }\n    local ids, ok = {}, 0\n    for i, p in ipairs(photos) do\n      if pr:isCanceled() then break end\n      pr:setPortionComplete(i - 1, #photos)\n      if p:getRawMetadata('isVideo') ~= true then\n        if Core.enhance(cat, p, props.level) then ok = ok + 1; ids[#ids + 1] = p.localIdentifier end\n      end\n    end\n    pr:done()\n    if props.send and #ids > 0 then Core.queueExport(ids) end\n    LrDialogs.message('LUMEN', ok .. ' foto(s) melhorada(s)' .. ((props.send and #ids > 0) and ' e enviadas para Editadas/Fotos (o LUMEN manda ao site).' or '.') .. '\\n\\nPara desfazer: painel Histórico › volte um passo.', 'info')\n  end)\nend)\n", "Info.lua": "-- LUMEN Auto Import + Export · plug-in do Lightroom Classic\n-- Vigia a pasta LR_Entrada do LUMEN, importa cada foto nova para a sessão, aplica o seu preset\n-- e exporta o JPEG editado em Editadas/Fotos. Inclui a Melhoria LUMEN (nitidez + contraste). Não depende da Importação automática do Lightroom.\nreturn {\n  LrSdkVersion = 6.0,\n  LrSdkMinimumVersion = 6.0,\n  LrToolkitIdentifier = 'br.lumen.campo.autoexport',\n  LrPluginName = 'LUMEN Auto Import + Export',\n  LrInitPlugin = 'Init.lua',\n  LrExportMenuItems = {\n    { title = 'LUMEN: ligar (importar + editar + exportar)', file = 'Start.lua' },\n    { title = 'LUMEN: trocar sessão ou preset', file = 'Config.lua' },\n    { title = 'LUMEN: melhorar nitidez e contraste (selecionadas)', file = 'Enhance.lua' },\n    { title = 'LUMEN: ver situação', file = 'Status.lua' },\n    { title = 'LUMEN: desligar', file = 'Stop.lua' },\n  },\n  LrLibraryMenuItems = {\n    { title = 'LUMEN: ligar (importar + editar + exportar)', file = 'Start.lua' },\n    { title = 'LUMEN: trocar sessão ou preset', file = 'Config.lua' },\n    { title = 'LUMEN: melhorar nitidez e contraste (selecionadas)', file = 'Enhance.lua' },\n    { title = 'LUMEN: ver situação', file = 'Status.lua' },\n    { title = 'LUMEN: desligar', file = 'Stop.lua' },\n  },\n  VERSION = { major = 2, minor = 2, revision = 0 },\n}\n", "Init.lua": "-- Lightroom abriu: se estava ligado, volta a trabalhar sozinho\nlocal LrPrefs = import 'LrPrefs'\nlocal prefs = LrPrefs.prefsForPlugin()\nif prefs.enabled and prefs.root then\n  local Core = require 'Core'\n  Core.start()\nend\n", "Start.lua": "local LrTasks   = import 'LrTasks'\nlocal LrDialogs = import 'LrDialogs'\nlocal Core = require 'Core'\nLrTasks.startAsyncTask(function()\n  if not Core.configure(true) then return end\n  Core.start()\n  local p = Core.status()\n  LrDialogs.message('LUMEN ligado',\n    'Pronto. A partir de agora, sem a Importação automática do Lightroom:\\n\\n1. Cada foto que o LUMEN colocar em LR_Entrada é importada para a sessão \"' .. (p.session or '') .. '\".\\n2. O seu preset é aplicado.\\n3. O JPEG editado vai para Editadas/Fotos e o LUMEN manda ao site.\\n\\nSe a Importação automática do Lightroom estiver ligada, DESLIGUE (Arquivo › Importação automática › Ativar, sem ✓) para os dois não disputarem as fotos.\\n\\nContinua ligado quando você fechar e abrir o Lightroom.', 'info')\nend)\n", "Status.lua": "local LrDialogs = import 'LrDialogs'\nlocal LrTasks   = import 'LrTasks'\nlocal Core = require 'Core'\nLrTasks.startAsyncTask(function()\n  local p, s = Core.status()\n  LrTasks.pcall(Core.writeStatus)\n  LrDialogs.message('LUMEN · situação',\n    'Ligado: ' .. (p.enabled and 'sim' or 'não') .. (p.paused and ' (em pausa: o LUMEN está editando tudo)' or '') ..\n    '\\nPasta do evento: ' .. (p.root or '—') ..\n    '\\nSessão: ' .. (p.session or '—') .. '   Melhoria: ' .. (Core.ENH_NAMES[p.enh or 0] or 'Nenhuma') ..\n    '\\nImportadas: ' .. tostring(p.imported or 0) .. '   Exportadas: ' .. tostring(p.count or 0) ..\n    '\\nEsperando em LR_Entrada: ' .. tostring(s.pending or 0) .. '   Na fila de exportação: ' .. tostring(#(p.toExport or {})) ..\n    '\\nCom erro (movidas para LR_Entrada_com_erro): ' .. tostring(p.failedN or 0) ..\n    '\\nÚltima exportação: ' .. (p.last or '—') ..\n    (p.lastError and ('\\n\\nÚltimo erro: ' .. p.lastError) or ''), 'info')\nend)\n", "Stop.lua": "local LrDialogs = import 'LrDialogs'\nlocal Core = require 'Core'\nCore.stop()\nLrDialogs.message('LUMEN', 'Desligado. As fotos ficam esperando em LR_Entrada até você ligar de novo.', 'info')\n"};
+ async function dlPlugin(b){try{const E=Object.entries(FILES).map(([n,t])=>({name:'LUMEN-AutoExport.lrplugin/'+n,blob:new Blob([t],{type:'text/plain'}),t:Date.now()}));
+  const z=await buildZip(E),a=document.createElement('a');a.href=URL.createObjectURL(z);a.download='LUMEN-AutoExport.lrplugin.zip';a.click();if(b&&b.textContent!=null)b.textContent='✔ Baixado (versão 2.2): siga os passos';LA.dl=1}catch(e){log('Plug-in: '+e.message,'bad')}}
+ window.lumenLrPlugin=dlPlugin;
+ const PG=window.LUMEN_PG||{st:null,mt:0};
+ const LA={busy:false,test:null,msg:'',ed:false,errN:0,dl:0};
+ const KEY='lumen_lrcmd';let CMD={};try{CMD=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(_){}
+ const dirOk=()=>!!(S.dir&&S.perm&&!S.dir.virtual);
+ async function dh(parts,create){let d=S.dir;for(const p of parts)d=await d.getDirectoryHandle(p,create?{create:true}:undefined);return d}
+ async function listDir(parts){const L=[];try{for await(const[n,h] of (await dh(parts)).entries())if(h.kind==='file'&&!n.startsWith('.'))L.push(n)}catch(_){return null}return L}
+ async function writeCmd(o){try{CMD=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(_){}CMD=Object.assign({},CMD,o,{at:Date.now()});try{localStorage.setItem(KEY,JSON.stringify(CMD))}catch(_){}
+  if(!dirOk())throw new Error('escolha a pasta do evento primeiro');const fh=await S.dir.getFileHandle('.lumen_lr.json',{create:true});const w=await fh.createWritable();await w.write(JSON.stringify(CMD));await w.close();return CMD}
+ const st=()=>PG.st&&PG.st.mode==='import'?PG.st:null;
+ const age=()=>PG.mt?(Date.now()-PG.mt)/1000:Infinity;
+ function plugState(){const s=PG.st;if(!s)return'none';if(s.mode!=='import')return'old';if(!s.enabled)return'off';if(s.paused&&age()<=60)return'on';if(age()>60)return'closed';return'on'}
+ function explain(e){e=String(e||'');if(!e)return'';
+  if(/mover|em uso/i.test(e))return'O Lightroom não conseguiu pegar um arquivo da LR_Entrada (estava sendo gravado ou aberto em outro programa). Ele tenta 3 vezes sozinho; se não der, guarda em LR_Entrada_com_erro. Toque em "Tentar de novo as fotos com erro".';
+  if(/^importar/i.test(e))return'O Lightroom recusou um arquivo ao importar. Quase sempre é Lightroom desatualizado para os arquivos .CR3 da R8 (atualize o Lightroom Classic pela Creative Cloud) ou arquivo corrompido. Detalhe: '+e;
+  if(/^preset/i.test(e))return'O preset não pôde ser aplicado. Escolha outro preset logo abaixo e toque em "Mandar para o Lightroom". Detalhe: '+e;
+  if(/^exportar/i.test(e))return'O Lightroom não conseguiu gerar o JPEG editado. Confira se há espaço no disco e toque em "Corrigir tudo sozinho" (ele recria Editadas/Fotos). Detalhe: '+e;
+  return e}
+ async function scanFolders(){if(!dirOk())return;try{await dh(['Editadas','Fotos']);LA.ed=true}catch(_){LA.ed=false}const er=await listDir(['LR_Entrada_com_erro']);LA.errN=er?er.length:0}
+ /* ---------- as etapas, cada uma com o que significa e como resolver ---------- */
+ function checks(){const s=st(),ps=plugState(),L=[];
+  L.push(dirOk()?{k:'dir',s:'ok',t:'Pasta do evento: '+S.dir.name,d:'É esta a pasta que você escolhe no Lightroom quando o plug-in perguntar.'}
+   :S.dir&&S.dir.virtual?{k:'dir',s:'bad',t:'Este aparelho não serve para o Lightroom',d:'O plug-in roda no computador com o Lightroom Classic. Abra o LUMEN no Mac e escolha a pasta lá.'}
+   :S.dir?{k:'dir',s:'bad',t:'A pasta precisa de permissão',d:'O Chrome pede de novo depois que fecha. Toque em Corrigir.',fix:'perm'}
+   :{k:'dir',s:'bad',t:'Nenhuma pasta do evento escolhida',d:'Toque em Corrigir e escolha uma pasta (ex.: Documentos/LUMEN).',fix:'dir'});
+  const fold=!!(LRS.exists&&LA.ed&&C.lrOn);
+  L.push(fold?{k:'cp',s:'ok',t:'Cada foto vai para a LR_Entrada',d:(LRS.n||0)+' esperando o Lightroom agora.'}:{k:'cp',s:'bad',t:C.lrOn?'Faltam as pastas LR_Entrada e Editadas/Fotos':'A cópia para o Lightroom está desligada',d:'Sem isso o Lightroom não recebe nada. Toque em Corrigir.',fix:'fold'});
+  L.push(C.edWatch?{k:'up',s:'ok',t:'O que chega em Editadas/Fotos vai para o site',d:'Envio das editadas ligado.'}:{k:'up',s:'bad',t:'Envio das editadas desligado',d:'As fotos editadas ficariam só no computador. Toque em Corrigir.',fix:'up'});
+  L.push(ps==='on'?{k:'plg',s:'ok',t:'Plug-in LUMEN 2.0 ligado no Lightroom',d:(s.imported||0)+' importada(s) · '+(s.count||0)+' exportada(s)'+(s.last?' · última às '+s.last:'')}
+   :ps==='none'?{k:'plg',s:'bad',t:'O Lightroom ainda não respondeu',d:'Instale e ligue o plug-in (passos 1 a 4 abaixo). Se já ligou, você escolheu outra pasta: no Lightroom faça Arquivo › Extras de plug-in › LUMEN: ligar e escolha a pasta '+(S.dir?'"'+S.dir.name+'"':'do evento')+'.',how:1}
+   :ps==='old'?{k:'plg',s:'bad',t:'Plug-in antigo (1.x) instalado',d:'Ele dependia da Importação automática da Adobe. Baixe o 2.0 abaixo, troque a pasta e, no Gerenciador de plug-ins, toque em Recarregar.',how:1}
+   :ps==='off'?{k:'plg',s:'bad',t:'Plug-in desligado',d:'No Lightroom Classic: Arquivo › Extras de plug-in › LUMEN: ligar (importar + editar + exportar).'}
+   :{k:'plg',s:'bad',t:'Lightroom fechado ou travado',d:'O plug-in parou de dar sinal há '+Math.round(age())+' s. Abra o Lightroom Classic: ele volta a trabalhar sozinho. Se estiver aberto, feche janelas de aviso que estejam na frente.'});
+  if(s&&ps==='on'){L.push(s.preset?{k:'pre',s:'ok',t:'Preset: '+s.preset,d:'Sessão "'+s.session+'". Para trocar, use "Sessão e preset" abaixo.'}:{k:'pre',s:'warn',t:'Nenhum preset escolhido',d:'As fotos saem do Lightroom sem edição. Escolha o preset abaixo.',fix:'preset'});
+   const stuck=(s.pending||0)+(s.waitExport||0);L.push(s.err?{k:'err',s:'bad',t:'O Lightroom avisou um problema',d:explain(s.err),fix:LA.errN?'retry':null}
+    :LA.errN?{k:'err',s:'warn',t:LA.errN+' foto(s) em LR_Entrada_com_erro',d:'O Lightroom não conseguiu pegar estas fotos. Toque em Corrigir para tentar de novo.',fix:'retry'}
+    :{k:'err',s:'ok',t:stuck?stuck+' foto(s) sendo processadas':'Sem erros',d:stuck?'Normal durante rajadas: ele faz 12 por vez.':'Tudo que chegou já saiu editado.'})}
+  L.push({k:'adb',s:LA.stolen?'bad':'i',t:LA.stolen?'A Importação automática da Adobe pegou a foto':'Importação automática da Adobe: deixe DESLIGADA',d:LA.stolen?'Ela tira as fotos da LR_Entrada antes do plug-in. No Lightroom: Arquivo › Importação automática › Ativar (clique para tirar o ✓).':'O plug-in faz a importação. Se ela estiver ligada, as duas disputam as fotos. Lightroom: Arquivo › Importação automática › Ativar sem ✓.'});
+  try{const pb=window.LUMEN_PB&&LUMEN_PB.item();if(pb)L.push(pb)}catch(_){}
+  L.push(LA.testOk?{k:'test',s:'ok',t:'Teste completo aprovado às '+LA.testOk,d:'Foto foi da LR_Entrada para o Lightroom e voltou editada.'}:{k:'test',s:'warn',t:'Falta o teste completo',d:'Toque em "Testar agora": leva 10 a 30 s e diz em qual etapa parou.'});
+  return L}
+ /* ---------- correções automáticas ---------- */
+ const FIX={
+  dir:async()=>{const b=$1('#fs2b')||$1('#bDir');if(b)b.click();say('Escolha a pasta na janela que abriu. Depois toque em Corrigir de novo.')},
+  perm:async()=>{const r=await S.dir.requestPermission({mode:'readwrite'});S.perm=r==='granted';say(S.perm?'✔ Pasta liberada.':'O Chrome não liberou: toque em Permitir quando ele perguntar.')},
+  fold:async()=>{await dh(['LR_Entrada'],1);await dh(['Editadas','Fotos'],1);await dh(['Editadas','Videos'],1);C.lrOn=true;C.lrPair=true;store();LRS.exists=true;LA.ed=true;['#lrOn'].forEach(i=>{const e=$1(i);if(e)e.checked=true});try{lrUi();lrPoll()}catch(_){}say('✔ Pastas criadas e cópia ligada.')},
+  up:async()=>{C.edWatch=true;if(C.edHold===undefined)C.edHold=true;store();const e=$1('#frW');if(e)e.checked=true;say('✔ Envio das editadas ligado.')},
+  preset:async()=>{const p=$1('.lrA .laPre');if(p){p.scrollIntoView({behavior:'smooth',block:'center'});p.focus()}},
+  retry:retryErr};
+ async function retryErr(){if(!dirOk())return;let n=0;try{const d=await dh(['LR_Entrada_com_erro']);const L=[];for await(const[nm,h] of d.entries())if(h.kind==='file'&&!nm.startsWith('.'))L.push([nm,h]);
+   for(const[nm,h] of L){await writeTo(S.dir,'LR_Entrada',nm,await h.getFile());await d.removeEntry(nm);n++}}catch(e){if(e.name!=='NotFoundError')say('Não consegui mover: '+e.message)}
+  try{await writeCmd({retry:Date.now()})}catch(_){}LA.errN=0;say(n?'✔ '+n+' foto(s) voltaram para a LR_Entrada. O Lightroom tenta de novo em segundos.':'✔ Pedi ao Lightroom para tentar de novo.')}
+ async function fixAll(btn){if(LA.busy)return;LA.busy=true;if(btn)btn.disabled=true;const done=[];
+  try{if(!S.dir){await FIX.dir();return}
+   if(!S.perm){await FIX.perm();if(!S.perm)return}
+   if(S.dir.virtual){say('Neste aparelho a pasta é interna. Use o LUMEN no computador onde está o Lightroom Classic.');return}
+   await scanFolders();
+   if(!(LRS.exists&&LA.ed&&C.lrOn)){await FIX.fold();done.push('pastas criadas e cópia ligada')}
+   if(!C.edWatch){await FIX.up();done.push('envio das editadas ligado')}
+   if(LA.errN){await retryErr();done.push('fotos com erro devolvidas')}
+   else if(st()&&st().err){await writeCmd({retry:Date.now()});done.push('erro antigo limpo')}
+   if(window.LUMEN_readPlugin)await LUMEN_readPlugin();
+   const ps=plugState(),need={none:'instalar e ligar o plug-in (passos abaixo)',old:'trocar o plug-in pelo 2.0 (passos abaixo)',off:'no Lightroom: Arquivo › Extras de plug-in › LUMEN: ligar',closed:'abrir o Lightroom Classic'}[ps];
+   say((done.length?'✔ Corrigi: '+done.join(', ')+'. ':'✔ Do lado do LUMEN está tudo certo. ')+(need?'Só falta você '+need+'. O resto eu confiro sozinho a cada 4 s.':'O Lightroom está respondendo. Toque em "Testar agora" para confirmar.'))}
+  catch(e){say('Não consegui terminar: '+e.message)}finally{LA.busy=false;if(btn)btn.disabled=false;render()}}
+ /* ---------- teste ponta a ponta ---------- */
+ const TS=[['w','A foto de teste foi gravada na LR_Entrada'],['i','O Lightroom pegou a foto (importou para a sessão)'],['e','O Lightroom aplicou o preset e exportou para Editadas/Fotos'],['c','Limpeza: a foto de teste não vai para o site']];
+ async function runTest(btn){if(LA.test&&LA.test.run)return;
+  if(!dirOk()){say('Primeiro toque em "Corrigir tudo sozinho".');return}
+  await scanFolders();if(!(LRS.exists&&LA.ed&&C.lrOn))await FIX.fold();
+  const T=LA.test={run:true,st:{},t0:Date.now(),diag:''};LA.stolen=false;if(btn)btn.disabled=true;
+  try{const cv=document.createElement('canvas');cv.width=1600;cv.height=1067;const g=cv.getContext('2d');const gr=g.createLinearGradient(0,0,1600,1067);gr.addColorStop(0,'#1b2a4a');gr.addColorStop(1,'#c77d2a');g.fillStyle=gr;g.fillRect(0,0,1600,1067);
+   g.fillStyle='#fff';g.textAlign='center';g.font='bold 110px sans-serif';g.fillText('LUMEN · TESTE',800,500);g.font='50px sans-serif';g.fillText('Lightroom: importar + preset + exportar · '+new Date().toLocaleTimeString(),800,600);
+   const blob=await new Promise(r=>cv.toBlob(r,'image/jpeg',.9)),nm='LUMEN_teste_'+new Date().toTimeString().slice(0,8).replace(/:/g,'')+'.jpg',base=nm.replace(/\.jpg$/,'');
+   const imp0=st()?st().imported||0:0;
+   await writeTo(S.dir,'LR_Entrada',nm,blob);T.st.w='ok';render();
+   const end=Date.now()+90000;let goneAt=0;
+   while(Date.now()<end){await new Promise(r=>setTimeout(r,2000));if(window.LUMEN_readPlugin)await LUMEN_readPlugin();
+    const inb=await listDir(['LR_Entrada'])||[];const out=await listDir(['Editadas','Fotos'])||[];
+    if(!inb.includes(nm)){if(!goneAt)goneAt=Date.now();T.st.i='ok'}
+    const hit=out.find(n=>n.startsWith(base));
+    if(hit){T.st.i='ok';T.st.e='ok';await new Promise(r=>setTimeout(r,1500));try{await (await dh(['Editadas','Fotos'])).removeEntry(hit)}catch(_){}T.st.c='ok';LA.testOk=new Date().toLocaleTimeString().slice(0,5);T.diag='✔ Funcionou de ponta a ponta em '+Math.round((Date.now()-T.t0)/1000)+' s. Pode fotografar: cada foto vai sair editada e subir para o site sozinha.';log('Lightroom: teste completo aprovado (plug-in 2.0)','ok');break}
+    if(goneAt&&Date.now()-goneAt>15000&&st()&&(st().imported||0)===imp0&&plugState()==='on'){LA.stolen=true;T.st.i='bad';T.diag='A foto saiu da LR_Entrada, mas não foi o plug-in que pegou: é a Importação automática da Adobe que ainda está ligada. No Lightroom: Arquivo › Importação automática › Ativar (tire o ✓). Depois teste de novo.';break}
+    if(!goneAt&&Date.now()-T.t0>20000){const ps=plugState();if(ps!=='on'){T.st.i='bad';T.diag={none:'O Lightroom não pegou a foto porque o plug-in não está respondendo nesta pasta. Faça os passos 1 a 4 abaixo (no passo 4 escolha a pasta "'+S.dir.name+'").',old:'Você está com o plug-in antigo. Baixe o 2.0, troque a pasta e, no Gerenciador de plug-ins, toque em Recarregar.',off:'O plug-in está desligado. No Lightroom: Arquivo › Extras de plug-in › LUMEN: ligar.',closed:'O Lightroom Classic está fechado ou travado. Abra o Lightroom e teste de novo.'}[ps];break}}
+   }
+   if(!T.diag){const s=st();if(!goneAt){T.st.i='bad';T.diag='O plug-in está ligado, mas não pegou a foto em 90 s. '+(s&&s.err?explain(s.err):'Feche janelas de aviso abertas no Lightroom e teste de novo. Se repetir: Arquivo › Gerenciador de plug-ins › LUMEN › Recarregar.')}
+    else{T.st.e='bad';T.diag='O Lightroom importou a foto mas não exportou em 90 s. '+(s&&s.err?explain(s.err):'Ele pode estar ocupado com muitas fotos (veja "sendo processadas"). Espere um pouco e teste de novo.')}}
+  }catch(e){T.diag='Não consegui fazer o teste: '+e.message}
+  finally{T.run=false;if(btn)btn.disabled=false;render()}}
+ /* ---------- interface ---------- */
+ function say(t){LA.msg=t;clearTimeout(LA.mt);LA.mt=setTimeout(()=>{if(LA.msg===t){LA.msg='';$$('.lrA .laMsg').forEach(e=>e.hidden=true)}},60000);$$('.lrA .laMsg').forEach(e=>{e.textContent=t;e.hidden=!t});log(t,/^✔/.test(t)?'ok':'')}
+ const HELP=[
+  ['O plug-in não aparece no menu do Lightroom','Ele só funciona no <b>Lightroom Classic</b> (o Lightroom da nuvem/celular não aceita plug-ins). Veja em Arquivo › <b>Gerenciador de plug-ins</b>: o LUMEN deve estar na lista com bolinha verde. Se estiver com bolinha vermelha, selecione e toque em <b>Ativar</b>. Se não estiver na lista: botão <b>Adicionar</b> › escolha a pasta LUMEN-AutoExport.lrplugin. O menu fica em Arquivo › <b>Extras de plug-in</b> (e também em Biblioteca › Extras de plug-in).'],
+  ['As fotos ficam paradas na LR_Entrada','O Lightroom Classic precisa estar <b>aberto</b> e o plug-in <b>ligado</b> (Arquivo › Extras de plug-in › LUMEN: ligar). Ao ligar, escolha a <b>mesma pasta do evento</b> do LUMEN'+'. O item "Plug-in" acima fica verde quando ele está trabalhando.'],
+  ['As fotos somem da LR_Entrada mas não chegam editadas','A Importação automática da Adobe está ligada e pegou as fotos antes do plug-in. Desligue: Arquivo › Importação automática › Ativar (sem ✓). As fotos que ela pegou estão na pasta de destino dela: copie de volta para a LR_Entrada se quiser que saiam editadas.'],
+  ['As fotos chegam sem a minha edição','Nenhum preset foi escolhido. Use "Sessão e preset" logo abaixo (a lista vem do seu Lightroom) e toque em Mandar para o Lightroom. Vale para as próximas fotos.'],
+  ['Quero separar por sessão (ex.: Largada, Chegada)','Escreva o nome da sessão abaixo e toque em Mandar para o Lightroom. As próximas fotos vão para Lightroom_Sessoes/<nome> no disco e aparecem nessa pasta na Biblioteca do Lightroom.'],
+  ['Mudei de evento ou de pasta','No Lightroom faça de novo Arquivo › Extras de plug-in › <b>LUMEN: ligar</b> e escolha a pasta nova. O plug-in só trabalha em uma pasta por vez.'],
+  ['A câmera foi para a tela da bateria','Não use a <b>Captura conectada</b> do Lightroom nem o EOS Utility: eles tomam o cabo do LUMEN. Com o plug-in, o Lightroom nunca toca na câmera, só na pasta.'],
+  ['O Lightroom fica lento durante o evento','Normal em rajadas grandes: ele faz 12 fotos por vez. Para aliviar, escolha "Tamanho" 3000 px abaixo (o site não precisa do arquivo gigante) e qualidade 85.'],
+  ['O Lightroom não funciona de jeito nenhum','Use o <b>Plano B</b> (cartão logo abaixo): suba o seu preset .xmp e escolha <b>Sempre o LUMEN</b>. O LUMEN edita cada foto na hora e manda ao site, sem Lightroom. Depois, com calma, toque em Devolver ao Lightroom se quiser a versão dele.'],
+  ['Quero retocar uma foto à mão','Edite no Lightroom e use Arquivo › Exportar para a pasta Editadas/Fotos com o mesmo nome (substituir). O LUMEN vê que mudou e manda a nova versão.']];
+ const HTML='<div class="v70h"><b>🧭 Assistente do Lightroom</b><span class="pillS laSt">—</span></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Com o <b>plug-in LUMEN 2.0</b> você não precisa da Importação automática da Adobe. Ele mesmo pega cada foto da <b>LR_Entrada</b>, importa numa <b>sessão</b>, aplica o seu <b>preset</b> e exporta o JPEG editado para <b>Editadas/Fotos</b>; o LUMEN manda ao site. Este assistente confere cada etapa a cada 4 s, corrige sozinho o que é do lado do LUMEN e diz exatamente o que fazer no Lightroom.</div>'
+  +'<div class="v75pipe laPipe"><div data-k="in"><i>📥</i><b>0</b><small>LR_Entrada</small></div><u>→</u><div data-k="imp"><i>🅻</i><b>0</b><small>importadas</small></div><u>→</u><div data-k="pre"><i>🎨</i><b>–</b><small>preset</small></div><u>→</u><div data-k="ex"><i>📁</i><b>0</b><small>editadas</small></div><u>→</u><div data-k="up"><i>🌐</i><b>0</b><small>no site</small></div></div>'
+  +'<div class="fx3a"><button type="button" class="f p laFix">🛠 Corrigir tudo sozinho</button><button type="button" class="f laTest">▶ Testar agora (10 a 30 s)</button></div>'
+  +'<div class="sub wrap laMsg" data-ex="1" hidden style="white-space:normal;color:var(--ink);font-weight:600"></div>'
+  +'<div class="laTestBox" hidden><ul class="fr-st laTL"></ul><div class="sub wrap laDiag" data-ex="1" style="white-space:normal;color:var(--ink)"></div></div>'
+  +'<div class="v70h" style="margin-top:10px"><b>Situação de cada etapa</b></div><ul class="fr-st laL"></ul>'
+  +'<details class="ex laSet" data-ex="1"><summary>🎨 Sessão e preset (manda direto para o Lightroom)</summary>'
+  +'<div class="laGrid"><label>Nome da sessão<input class="laSes" maxlength="60" placeholder="ex.: Corrida Natal · Largada"></label>'
+  +'<label>Preset<select class="laPre"><option value="">(abra o Lightroom com o plug-in ligado para listar)</option></select></label>'
+  +'<label>Qualidade<select class="laQ"><option>100</option><option selected>90</option><option>85</option><option>80</option><option>70</option></select></label>'
+  +'<label>Melhoria (nitidez + contraste)<select class="laE"><option value="0">nenhuma</option><option value="1">leve</option><option value="2">média (recomendada)</option><option value="3">forte</option></select></label>'
+  +'<label>Tamanho<select class="laMx"><option value="0">original</option><option value="4000">4000 px</option><option value="3000">3000 px</option><option value="2048">2048 px</option></select></label></div>'
+  +'<div class="fx3a"><button type="button" class="f p laSend">Mandar para o Lightroom</button></div><div class="sub wrap laSendM" data-ex="1" style="white-space:normal"></div></details>'
+  +'<details class="ex laInst" data-ex="1"><summary>⬇ Instalar ou atualizar o plug-in (4 passos, uma vez só)</summary>'
+  +'<div class="fx3a"><button type="button" class="f p laDl">⬇ Baixar o plug-in LUMEN 2.2</button></div>'
+  +'<ol class="steps" data-ex="1"><li><b>Descompacte.</b><small>Dois cliques no LUMEN-AutoExport.lrplugin.zip em Downloads. Mova a pasta <b>LUMEN-AutoExport.lrplugin</b> para Documentos. <b>Já tinha o antigo?</b> Substitua a pasta antiga por esta.</small></li>'
+  +'<li><b>Instale ou recarregue.</b><small>Lightroom Classic › Arquivo › <b>Gerenciador de plug-ins</b>. Novo: <b>Adicionar</b> › escolha a pasta. Já tinha: selecione LUMEN e toque em <b>Recarregar plug-in</b>. Concluído.</small></li>'
+  +'<li><b>Desligue a Importação automática da Adobe.</b><small>Arquivo › Importação automática › <b>Ativar</b>: clique para ficar <b>sem ✓</b>. (Ela disputaria as fotos com o plug-in.)</small></li>'
+  +'<li><b>Ligue o plug-in.</b><small>Arquivo › <b>Extras de plug-in</b> › <b>LUMEN: ligar (importar + editar + exportar)</b>. Escolha a pasta do evento <b class="laDirN">do LUMEN</b> (a que tem LR_Entrada dentro), dê o nome da sessão, escolha o preset › Salvar. Ele continua ligado quando você fechar e abrir o Lightroom.</small></li></ol>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal">Depois volte aqui e toque em <b>Testar agora</b>. Para ver ou desligar dentro do Lightroom: Extras de plug-in › LUMEN: ver situação / desligar.</div></details>'
+  +'<details class="ex" data-ex="1"><summary>🆘 Algo deu errado? Toque no problema</summary><div class="laHelp">'+HELP.map(h=>'<details><summary>'+h[0]+'</summary><p>'+h[1]+'</p></details>').join('')+'</div></details>';
+ function mk(){const d=document.createElement('div');d.className='c v70c lrA';d.innerHTML=HTML;
+  d.querySelector('.laFix').onclick=e=>fixAll(e.target);d.querySelector('.laTest').onclick=e=>runTest(e.target);d.querySelector('.laDl').onclick=e=>dlPlugin(e.target);
+  d.querySelector('.laSes').value=CMD.session||'';d.querySelector('.laQ').value=String(CMD.quality||90);d.querySelector('.laMx').value=String(CMD.maxSize||0);d.querySelector('.laE').value=String(CMD.enh||0);
+  d.querySelector('.laSend').onclick=async()=>{const m=d.querySelector('.laSendM');try{const o={quality:+d.querySelector('.laQ').value,maxSize:+d.querySelector('.laMx').value,enh:+d.querySelector('.laE').value};const ses=d.querySelector('.laSes').value.trim(),pr=d.querySelector('.laPre').value;if(ses)o.session=ses;if(pr)o.preset=pr;
+   await writeCmd(o);LA.sent=o;m.textContent='✔ Enviado. O Lightroom aplica em até 5 s (só nas próximas fotos). Confirmação aparece aqui.'}catch(e){m.textContent='Não deu: '+e.message}};
+  d.querySelector('.laSt').onclick=()=>d.scrollIntoView({behavior:'smooth'});return d}
+ const A=mk();
+ (window.__lrPlace=window.__lrPlace||[]).unshift(()=>place());
+ function place(){const t=$1('#t-lr');if(!t)return;const p=t.querySelector(':scope>.lrPair'),h=t.querySelector(':scope>.v70ph'),mon=t.querySelector(':scope>#lrMon');if(p&&mon&&mon.previousElementSibling!==p)p.after(mon);const ref=(p&&mon)?mon:(p||h);if(ref&&A.previousElementSibling!==ref)ref.after(A);else if(!ref&&A.parentNode!==t)t.prepend(A);
+  const more=$1('#lrMore');if(more&&!more.querySelector('.laOld')){const n=document.createElement('div');n.className='sub wrap laOld';n.setAttribute('data-ex','1');n.style.cssText='white-space:normal;color:var(--ink);background:rgba(255,190,40,.12);border-radius:10px;padding:8px 10px;margin:8px 0';n.innerHTML='⚠ <b>Com o plug-in LUMEN 2.0 não use a Importação automática da Adobe</b> (deixe desligada). Os guias abaixo são do método antigo ou manual; use só se não puder instalar o plug-in.';const s=more.querySelector('summary');s?s.after(n):more.prepend(n)}}
+ /* versão curta dentro dos cartões "Câmera + Lightroom" (Conectar e Lightroom) */
+ const SHORT='<div class="v70h" style="margin-top:12px"><b>⚡ Lightroom 100% sozinho (plug-in LUMEN 2.0)</b><span class="pillS lpSt">—</span></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Sem Importação automática da Adobe: o plug-in importa da LR_Entrada numa sessão, aplica o preset e exporta para Editadas/Fotos. Você só fotografa.</div>'
+  +'<div class="fx3a"><button type="button" class="f p lpDl">⬇ Baixar o plug-in 2.2</button><button type="button" class="f lpGo">🧭 Abrir o assistente (corrige sozinho)</button></div>'
+  +'<div class="sub wrap lpS" data-ex="1" style="white-space:normal"></div>';
+ function short(){$$('.lrPair .lrPlug').forEach(c=>{if(c.dataset.v78)return;c.dataset.v78=1;c.innerHTML=SHORT;c.querySelector('.lpDl').onclick=e=>dlPlugin(e.target);c.querySelector('.lpGo').onclick=()=>{goTab('lr');setTimeout(()=>A.scrollIntoView({behavior:'smooth'}),250)}});
+  $$('.lrPair details.ex > summary').forEach(s=>{if(/Sem o plug-in/.test(s.textContent))s.textContent='Sem o plug-in: método antigo (Importação automática da Adobe)'})}
+ const ic={ok:'✓',warn:'!',bad:'✕',i:'i'},cl={ok:'ok',warn:'ew',bad:'no',i:'ew'};
+ let lastPre='';
+ function render(){try{place();short();const L=checks(),bad=L.filter(i=>i.s==='bad').length,w=L.filter(i=>i.s==='warn').length,s=st(),ps=plugState();
+  const pill=A.querySelector('.laSt');pill.textContent=bad?bad+' para resolver':w?'quase lá':'tudo certo';pill.className='pillS laSt '+(bad?'bad':w?'warn':'ok');
+  A.querySelector('.laL').innerHTML=L.map(it=>'<li class="'+cl[it.s]+'"><i>'+ic[it.s]+'</i><span><b>'+esc(it.t)+'</b>'+(it.d?'<br><small>'+esc(it.d)+'</small>':'')+(it.fix?' <button type="button" class="f laF" data-f="'+it.fix+'">Corrigir</button>':'')+(it.how?' <button type="button" class="f laH">Ver os passos</button>':'')+'</span></li>').join('');
+  A.querySelectorAll('.laF').forEach(b=>b.onclick=async()=>{b.disabled=true;try{await FIX[b.dataset.f]()}catch(e){say('Não deu: '+e.message)}await scanFolders();render()});
+  A.querySelectorAll('.laH').forEach(b=>b.onclick=()=>{const d=A.querySelector('.laInst');d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'})});
+  const P=(k,v,ok)=>{const e=A.querySelector('.laPipe [data-k="'+k+'"]');if(!e)return;e.querySelector('b').textContent=v;e.dataset.s=ok};
+  P('in',LRS.n||0,C.lrOn&&LRS.exists?'ok':'no');P('imp',s?s.imported||0:'–',ps==='on'?'ok':'no');P('pre',s&&s.preset?'✓':'–',s&&s.preset?'ok':'no');P('ex',s?s.count||0:'–',ps==='on'&&!s.err?'ok':'no');P('up',S.upOk||0,C.edWatch&&eps().length?'ok':'no');
+  A.querySelectorAll('.laDirN').forEach(e=>e.textContent=S.dir?'"'+S.dir.name+'"':'do LUMEN');
+  if(s&&s.presets){const key=s.presets.join('|')+'#'+(CMD.preset||s.preset);if(key!==lastPre){lastPre=key;const sel=A.querySelector('.laPre'),cur=CMD.preset||'';
+   sel.innerHTML='<option value="">'+(s.preset?'(manter: '+esc(s.preset)+')':'(nenhum: só importar e exportar)')+'</option>'+s.presets.map(t=>'<option'+(t===cur?' selected':'')+'>'+esc(t)+'</option>').join('')}}
+  const sm=A.querySelector('.laSendM');if(LA.sent&&s&&ps==='on'){const okS=!LA.sent.session||s.session===LA.sent.session.replace(/[\/\\:*?"<>|]/g,'_').trim(),okP=!LA.sent.preset||LA.sent.preset.endsWith(s.preset);if(okS&&okP){sm.textContent='✔ O Lightroom confirmou: sessão "'+s.session+'"'+(s.preset?', preset "'+s.preset+'"':'')+'.';LA.sent=null}}
+  const T=LA.test,tb=A.querySelector('.laTestBox');tb.hidden=!T;if(T){A.querySelector('.laTL').innerHTML=TS.map(([k,t])=>{const v=T.st[k]||(T.run?'run':'');return'<li class="'+(v==='ok'?'ok':v==='bad'?'no':'ew')+'"><i>'+(v==='ok'?'✓':v==='bad'?'✕':T.run?'…':'·')+'</i><span>'+t+'</span></li>'}).join('');A.querySelector('.laDiag').textContent=T.run?'Testando… ('+Math.round((Date.now()-T.t0)/1000)+' s)':T.diag}
+  const m=A.querySelector('.laMsg');m.hidden=!LA.msg;
+  $$('.lrPlug .lpSt').forEach(e=>{e.textContent=bad?bad+' para resolver':'tudo certo';e.className='pillS lpSt '+(bad?'bad':'ok')});
+  $$('.lrPlug .lpS').forEach(e=>{const b=L.find(i=>i.s==='bad');e.textContent=b?'⚠ '+b.t+': '+b.d:'✔ Lightroom pronto: '+(s?(s.count||0)+' foto(s) editadas e exportadas.':'')})}catch(e){}}
+ setInterval(render,1500);setInterval(()=>{if(C.lrOn||!$1('#t-lr').hidden)scanFolders()},8000);setTimeout(scanFolders,2500);setInterval(()=>{const t=$1('#t-lr');if(window.LUMEN_readPlugin&&!C.lrOn&&t&&!t.hidden)LUMEN_readPlugin()},4000);render();setTimeout(render,1600);setTimeout(render,6500);
+ log('Build v78: plug-in Lightroom 2.0 (importa sozinho, sem a Importação automática da Adobe) + assistente que corrige sozinho','ok');
+}catch(e){try{log('v78: '+e.message,'bad')}catch(_){}}})();
+</script>
+
+<script id="v79">
+/* ===== v79 · Plano B: se o Lightroom parar, fechar ou errar, o próprio LUMEN edita as fotos da LR_Entrada com o seu preset
+   (o .xmp do Lightroom ou um preset do LUMEN), grava em Editadas/Fotos e o site recebe. Nada se perde: o original fica em Plano_B_originais. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+ const K='lumen_planob';let CF={mode:'auto',wait:45,pid:'',size:0,q:92,n:0};try{CF=Object.assign(CF,JSON.parse(localStorage.getItem(K)||'{}'))}catch(_){}
+ const sv=()=>{try{localStorage.setItem(K,JSON.stringify(CF))}catch(_){}};
+ const IMG=/\.(jpe?g|png|webp)$/i,RAW=/\.(cr3|cr2|dng|nef|arw|raf|orf|rw2)$/i,VID=/\.(mp4|mov|m4v)$/i;
+ const PB={back:new Map(),seen:new Map(),busy:false,on:false,since:0,last:'',err:'',done:0,queue:0,skip:new Set(),told:0};
+ const dirOk=()=>!!(S.dir&&S.perm&&!S.dir.virtual);
+ const PGs=()=>window.LUMEN_PG||{};
+ function lrState(){const P=PGs(),s=P.st;if(!s||s.mode!=='import')return s?'old':'none';if(!s.enabled)return'off';if(s.paused)return'paused';return P.mt&&(Date.now()-P.mt)/1000<=60?'on':'closed'}
+ const lrDown=()=>lrState()!=='on';
+ /* ---------- preset usado no Plano B ---------- */
+ const COR=()=>window.LUMENCOR;
+ function presets(){try{return COR()?COR().list():[]}catch(_){return[]}}
+ const norm=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+ function pick(){const L=presets();if(!L.length)return null;
+  if(CF.pid&&CF.pid!=='same'){const p=L.find(x=>x.id===CF.pid);if(p)return p}
+  const s=PGs().st,want=norm(s&&s.preset);if(want){const p=L.find(x=>norm(x.name)===want)||L.find(x=>x.mine&&(norm(x.name).includes(want)||want.includes(norm(x.name))));if(p)return p}
+  const ph=COR().photo&&COR().photo();if(ph&&ph.id){const p=L.find(x=>x.id===ph.id);if(p)return p}
+  return L.find(x=>x.mine)||null}
+ let MAXT=0;function maxTex(){if(MAXT)return MAXT;try{const g=document.createElement('canvas').getContext('webgl2');MAXT=g?g.getParameter(g.MAX_TEXTURE_SIZE):4096}catch(_){MAXT=4096}return MAXT}
+ /* ---------- RAW: usa o JPEG grande que a câmera guarda dentro do arquivo ---------- */
+ async function rawJpeg(file){const head=new Uint8Array(await file.arrayBuffer()),st=[];
+  for(let i=0;i<head.length-3&&st.length<10;i++)if(head[i]===0xFF&&head[i+1]===0xD8&&head[i+2]===0xFF){st.push(i);i+=1000}
+  let best=null,bw=0;for(const s of st){try{const b=file.slice(s,file.size,'image/jpeg'),bm=await createImageBitmap(b);if(bm.width>bw){bw=bm.width;best=b}bm.close()}catch(_){}}
+  return best}
+ /* ---------- edição de 1 foto ---------- */
+ function enhLv(){if(CF.enh!=null&&CF.enh!=='same')return +CF.enh;try{return +(JSON.parse(localStorage.getItem('lumen_lrcmd')||'{}').enh||0)}catch(_){return 0}}
+ async function editBlob(src,p,max,q,noEnh){let g=p?COR().presetG(p.id):null;const lv=noEnh?0:enhLv(),EN=[null,[8,8,.15],[14,15,.28],[22,25,.42]][lv];if(EN){g=g||COR().neu();g.con=(g.con||0)+EN[0];g.clar=(g.clar||0)+EN[1]}const bm=await createImageBitmap(src);let w=bm.width,h=bm.height;
+  const lim=Math.min(max||1e9,maxTex());if(Math.max(w,h)>lim){const k=lim/Math.max(w,h);w=Math.round(w*k);h=Math.round(h*k)}
+  const cv=document.createElement('canvas');cv.width=w;cv.height=h;const x=cv.getContext('2d');x.imageSmoothingQuality='high';x.drawImage(bm,0,0,w,h);bm.close();
+  if(g){const r=COR().gradeWith(g,cv,w,h);if(!r)throw new Error('este aparelho não tem WebGL 2 para editar');x.drawImage(r,0,0,w,h)}
+  if(EN&&typeof sharpen==='function')try{sharpen(cv,EN[2]*Math.min(1.4,Math.max(.7,Math.max(w,h)/3000)))}catch(_){}
+  return await new Promise(r=>cv.toBlob(r,'image/jpeg',(q||92)/100))}
+ async function dh(parts,create){let d=S.dir;for(const p of parts)d=await d.getDirectoryHandle(p,create?{create:true}:undefined);return d}
+ async function doOne(dir,name,from){const fh=await dir.getFileHandle(name),file=await fh.getFile();
+  if(VID.test(name)){await writeTo(S.dir,'Plano_B_originais',name,file);await dir.removeEntry(name);return'video'}
+  let src=file;if(RAW.test(name)){src=await rawJpeg(file);if(!src)throw new Error('não achei a imagem dentro do RAW')}
+  const p=pick();let out=await editBlob(src,p,CF.size,CF.q);
+  if(IMG.test(name)&&/\.jpe?g$/i.test(name))try{const k=window.metaOut||window.keepExif;if(k){const r=await k(file,out);if(r&&r.size)out=r}}catch(_){}
+  const on=name.replace(/\.[^.]+$/,'')+'.jpg';
+  /* confere de novo: se o Lightroom pegou enquanto editávamos, não duplica */
+  try{await dir.getFileHandle(name)}catch(_){return'lr'}
+  await writeTo(S.dir,'Editadas/Fotos',on,out);await writeTo(S.dir,'Plano_B_originais',name,file);try{await dir.removeEntry(name)}catch(_){}
+  CF.n=(CF.n||0)+1;sv();PB.done++;PB.last=on+' · '+(p?p.name:'sem preset')+' · '+new Date().toLocaleTimeString().slice(0,5);return'ok'}
+ /* ---------- vigia: decide quando o LUMEN assume ---------- */
+ function notify(t,d){log('🅱 '+t+': '+d,'bad');try{if(window.Notification&&Notification.permission==='granted')new Notification('LUMEN · '+t,{body:d,tag:'lumen-pb'})}catch(_){}}
+ async function tick(){if(PB.busy||CF.mode==='off'||!dirOk()||!C.lrOn)return;PB.busy=true;
+  try{const now=Date.now(),jobs=[],wait=Math.max(10,+CF.wait||45)*1000,down=lrDown(),seen=new Set();
+   const scan=async(parts,force)=>{let d;try{d=await dh(parts)}catch(_){return}for await(const[n,h] of d.entries()){if(h.kind!=='file'||n.startsWith('.')||!(IMG.test(n)||RAW.test(n)||VID.test(n)))continue;
+    const k=parts.join('/')+'/'+n,f=await h.getFile(),o=PB.seen.get(k);seen.add(k);
+    if(!o||o.size!==f.size){PB.seen.set(k,{size:f.size,t:o?o.t:now,st:0});continue}o.st++;
+    if(PB.skip.has(k))continue;const bk=PB.back.get(k);if(bk&&now-bk<600000)continue;const age=now-o.t;
+    const go=force||CF.mode==='always'||(age>wait&&down)||age>wait*4;
+    if(go&&o.st>=1)jobs.push([d,n,k])}};
+   await scan(['LR_Entrada'],false);if(CF.mode!=='off')await scan(['LR_Entrada_com_erro'],true);
+   for(const k of [...PB.seen.keys()])if(!seen.has(k))PB.seen.delete(k);
+   PB.queue=jobs.length;
+   if(jobs.length&&!PB.on){PB.on=true;PB.since=now;if(CF.mode!=='always'&&now-PB.told>300000){PB.told=now;notify('Plano B ligado','O Lightroom não pegou as fotos ('+({none:'plug-in não responde',old:'plug-in antigo',off:'plug-in desligado',closed:'Lightroom fechado ou travado',paused:'plug-in pausado',on:'demorando demais'}[lrState()])+'). O LUMEN está editando com o seu preset e mandando ao site.')}}
+   if(!jobs.length&&PB.on&&!PB.queue){PB.on=false;if(CF.mode!=='always')log('🅱 Plano B em espera: o Lightroom voltou a pegar as fotos.','ok')}
+   let n=0;for(const[d,nm,k] of jobs){if(n>=4)break;n++;try{const r=await doOne(d,nm);if(r==='ok'){PB.err=''}PB.seen.delete(k)}catch(e){PB.err=nm+': '+e.message;PB.skip.add(k);log('Plano B: '+PB.err,'bad')}}
+  }catch(e){PB.err=e.message}finally{PB.busy=false}}
+ (function lp(){Promise.resolve(tick()).catch(()=>{}).then(()=>setTimeout(lp,PB.queue?600:3000))})();
+ /* pausa o plug-in quando o LUMEN faz tudo (plug-in 2.1+); ignora em versões antigas */
+ async function tellPlugin(){if(!dirOk())return;try{const fh=await S.dir.getFileHandle('.lumen_lr.json',{create:true});let cur={};try{cur=JSON.parse(await (await fh.getFile()).text()||'{}')}catch(_){}
+  const want=CF.mode==='always'?1:0;if(cur.paused===want)return;cur.paused=want;cur.at=Date.now();const w=await fh.createWritable();await w.write(JSON.stringify(cur));await w.close();try{const L=JSON.parse(localStorage.getItem('lumen_lrcmd')||'{}');L.paused=want;localStorage.setItem('lumen_lrcmd',JSON.stringify(L))}catch(_){}}catch(_){}}
+ async function giveBack(){if(!dirOk())return 0;let n=0;try{const d=await dh(['Plano_B_originais']);const L=[];for await(const[nm,h] of d.entries())if(h.kind==='file'&&!nm.startsWith('.'))L.push([nm,h]);
+  for(const[nm,h] of L){await writeTo(S.dir,'LR_Entrada',nm,await h.getFile());await d.removeEntry(nm);PB.back.set('LR_Entrada/'+nm,Date.now());n++}}catch(_){}return n}
+ /* ---------- estado para o Assistente e o Evento blindado ---------- */
+ window.LUMEN_PB={state:()=>({mode:CF.mode,on:PB.on,done:CF.n||0,queue:PB.queue,err:PB.err,preset:(pick()||{}).name||''}),
+  item:()=>{if(CF.mode==='off')return{k:'pb',s:'warn',t:'Plano B desligado',d:'Se o Lightroom parar, as fotos ficam esperando. Ligue o Plano B (aba Lightroom).'};
+   const p=pick();if(!p)return{k:'pb',s:'warn',t:'Plano B sem preset',d:'Suba o seu preset .xmp no cartão Plano B (aba Lightroom) para o LUMEN editar igual ao Lightroom se ele parar.'};
+   if(CF.mode==='always')return{k:'pb',s:'ok',t:'O LUMEN está editando tudo',d:'Preset "'+p.name+'" · '+(CF.n||0)+' foto(s) feitas.'};
+   return PB.on?{k:'pb',s:'warn',t:'Plano B trabalhando',d:'O Lightroom parou; o LUMEN está editando com "'+p.name+'". '+(CF.n||0)+' feita(s).'}:{k:'pb',s:'ok',t:'Plano B pronto',d:'Se o Lightroom parar por mais de '+CF.wait+' s, o LUMEN edita com "'+p.name+'" e manda ao site.'}}};
+ /* ---------- cartão ---------- */
+ const HTML='<div class="v70h"><b>🅱 Plano B: se o Lightroom falhar, o LUMEN edita</b><span class="pillS pbSt">—</span></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">O LUMEN vigia a <b>LR_Entrada</b>. Se uma foto ficar parada (Lightroom fechado, travado, plug-in desligado ou com erro), ele mesmo aplica o <b>seu preset</b>, grava em <b>Editadas/Fotos</b> e o site recebe. O arquivo original vai para <b>Plano_B_originais</b> (nada se perde). Quando o Lightroom volta, ele retoma sozinho.</div>'
+  +'<div class="pbNow sub wrap" data-ex="1" style="white-space:normal;font-weight:600;margin-top:8px"></div>'
+  +'<div class="pbModes"><label><input type="radio" name="pbM" value="auto"><span><b>Automático</b> (recomendado)<small>Lightroom edita; se ele parar, o LUMEN assume.</small></span></label>'
+  +'<label><input type="radio" name="pbM" value="always"><span><b>Sempre o LUMEN</b><small>Sem Lightroom: edita na hora, mais rápido.</small></span></label>'
+  +'<label><input type="radio" name="pbM" value="off"><span><b>Desligado</b><small>Fotos esperam o Lightroom.</small></span></label></div>'
+  +'<div class="laGrid"><label>Preset do Plano B<select class="pbP"></select></label>'
+  +'<label>Assumir depois de<select class="pbW"><option value="20">20 s parada</option><option value="45">45 s parada</option><option value="90">1 min 30 s</option><option value="180">3 min</option></select></label>'
+  +'<label>Tamanho<select class="pbS"><option value="0">original</option><option value="4000">4000 px</option><option value="3000">3000 px</option><option value="2048">2048 px</option></select></label>'
+  +'<label>Melhoria (nitidez + contraste)<select class="pbE"><option value="same">igual ao Lightroom</option><option value="0">nenhuma</option><option value="1">leve</option><option value="2">média</option><option value="3">forte</option></select></label>'
+  +'<label>Qualidade<select class="pbQ"><option>100</option><option>92</option><option>85</option><option>80</option></select></label></div>'
+  +'<div class="fx3a"><label class="f p" role="button" style="cursor:pointer">⬆ Subir meu preset do Lightroom (.xmp)<input type="file" class="pbUp" multiple accept=".xmp,.lrtemplate,.cube,.json" hidden></label><button type="button" class="f pbPv">👁 Ver antes e depois</button></div>'
+  +'<div class="pbPrev" hidden><div class="pbCmp"><img class="pbA" alt="antes"><img class="pbB" alt="depois"><input type="range" class="pbR" min="0" max="100" value="50" aria-label="Comparar antes e depois"></div><small class="pbCap"></small></div>'
+  +'<div class="fx3a"><button type="button" class="f pbGo">⚡ Editar agora as fotos paradas</button><button type="button" class="f pbBack">↩ Devolver ao Lightroom</button></div><div class="sub wrap pbMsg" data-ex="1" style="white-space:normal"></div>'
+  +'<details class="ex" data-ex="1"><summary>Como pegar o meu preset do Lightroom (.xmp)</summary><ol class="steps" data-ex="1"><li><b>Abra o Lightroom Classic › Revelação.</b><small>No painel <b>Predefinições</b> (esquerda), clique com o botão direito no seu preset › <b>Exportar…</b> › salve na Mesa.</small></li><li><b>Suba aqui.</b><small>Toque em "Subir meu preset" e escolha o arquivo .xmp. Pode subir vários.</small></li><li><b>Pronto.</b><small>Se o nome for igual ao preset escolhido no plug-in, o Plano B usa o mesmo automaticamente. Toque em "Ver antes e depois" para conferir.</small></li></ol>'
+  +'<div class="sub wrap" style="white-space:normal">O Plano B reproduz luz, contraste, cor, HSL, curva, color grading e vinheta do preset. Ajustes locais (máscaras, pincel, remoção de manchas) e o perfil da câmera só existem no Lightroom: por isso o resultado fica muito parecido, não idêntico. Se quiser a versão do Lightroom depois, toque em "Devolver ao Lightroom": ele refaz e substitui no site.</div></details>';
+ function mk(){const d=document.createElement('div');d.className='c v70c pbC';d.innerHTML=HTML;
+  d.querySelectorAll('input[name=pbM]').forEach(r=>{r.name='pbM'+Math.random().toString(36).slice(2,6);r.onchange=()=>{CF.mode=r.value;sv();tellPlugin();say({auto:'✔ Automático: o LUMEN só edita se o Lightroom parar.',always:'✔ O LUMEN edita tudo na hora. No Lightroom o plug-in fica em pausa (versão 2.1) ou pode ser desligado.',off:'Plano B desligado: as fotos esperam o Lightroom.'}[CF.mode]);render()}});
+  d.querySelector('.pbP').onchange=e=>{CF.pid=e.target.value;sv();lastSig='';render()};
+  d.querySelector('.pbW').onchange=e=>{CF.wait=+e.target.value;sv()};d.querySelector('.pbS').onchange=e=>{CF.size=+e.target.value;sv()};d.querySelector('.pbQ').onchange=e=>{CF.q=+e.target.value;sv()};d.querySelector('.pbE').onchange=e=>{CF.enh=e.target.value;sv()};
+  d.querySelector('.pbUp').onchange=async e=>{const f=[...e.target.files];e.target.value='';if(!f.length||!COR())return;try{await COR().importFiles(f);say('✔ Preset(s) adicionados. Escolha na lista "Preset do Plano B".');setTimeout(()=>{lastSig='';const L=presets().filter(x=>x.mine);const nm=f[0].name.replace(/\.[^.]+$/,'');const p=L.find(x=>norm(x.name)===norm(nm))||L[L.length-1];if(p&&!CF.pid){CF.pid=p.id;sv()}render()},800)}catch(er){say('Não consegui ler: '+er.message)}};
+  d.querySelector('.pbPv').onclick=()=>preview(d);
+  d.querySelector('.pbR').oninput=e=>{d.querySelector('.pbB').style.clipPath='inset(0 0 0 '+e.target.value+'%)'};
+  d.querySelector('.pbGo').onclick=async e=>{const b=e.target;b.disabled=true;const m0=CF.mode;if(m0==='off'){say('Ligue o Plano B (Automático) primeiro.');b.disabled=false;return}
+   const old=CF.wait;CF.wait=0;PB.seen.forEach(o=>{o.t=0});PB.skip.clear();say('Editando as fotos paradas…');await new Promise(r=>setTimeout(r,200));let guard=0;while(guard++<60){await tick();if(!PB.queue)break}CF.wait=old;b.disabled=false;say('✔ Pronto: '+(CF.n||0)+' foto(s) feitas pelo Plano B no total.')};
+  d.querySelector('.pbBack').onclick=async e=>{if(!confirm('Mandar os originais de Plano_B_originais de volta para a LR_Entrada?\n\nO Lightroom edita de novo e a versão dele substitui a do Plano B no site.'))return;
+   if(lrDown()){say('O Lightroom não está respondendo agora. Abra o Lightroom e ligue o plug-in antes de devolver (senão as fotos ficam paradas).');return}const prev=CF.mode;if(prev==='always'){CF.mode='auto';sv();tellPlugin()}const n=await giveBack();PB.seen.clear();say(n?'✔ '+n+' foto(s) devolvidas ao Lightroom.':'Não há fotos em Plano_B_originais.')};
+  return d}
+ const A=mk();let lastSig='';
+ function say(t){$$('.pbC .pbMsg').forEach(e=>e.textContent=t);if(t)log(t,/^✔/.test(t)?'ok':'')}
+ async function sample(){const it=(S.items||[]).slice().reverse().find(i=>i.kind==='foto'&&i.blob);if(it)return[it.blob,it.name];
+  if(dirOk())for(const parts of [['LR_Entrada'],['Plano_B_originais'],['Editadas','Fotos']]){try{const d=await dh(parts);for await(const[n,h] of d.entries())if(h.kind==='file'&&IMG.test(n)&&!/^LUMEN_teste/i.test(n))return[await h.getFile(),n]}catch(_){}}
+  const cv=document.createElement('canvas');cv.width=1200;cv.height=800;const g=cv.getContext('2d');const gr=g.createLinearGradient(0,0,0,800);gr.addColorStop(0,'#7fb6e6');gr.addColorStop(.55,'#f2d3a8');gr.addColorStop(1,'#3d5a2a');g.fillStyle=gr;g.fillRect(0,0,1200,800);
+  ['#d83a2e','#f39b1e','#f4e03a','#3aa64a','#2bb6c4','#2d63c8','#8a3fb8','#d33a85'].forEach((c,i)=>{g.fillStyle=c;g.fillRect(80+i*130,520,110,200)});g.fillStyle='#e9b48f';g.beginPath();g.arc(600,300,110,0,7);g.fill();
+  return[await new Promise(r=>cv.toBlob(r,'image/jpeg',.92)),'exemplo']}
+ async function preview(d){const box=d.querySelector('.pbPrev'),cap=d.querySelector('.pbCap');box.hidden=false;cap.textContent='Gerando…';
+  try{let[b,n]=await sample();if(RAW.test(n))b=await rawJpeg(b);const p=pick();const after=await editBlob(b,p,1400,88),before=await editBlob(b,null,1400,88,true);
+   d.querySelector('.pbA').src=URL.createObjectURL(before);d.querySelector('.pbB').src=URL.createObjectURL(after);d.querySelector('.pbB').style.clipPath='inset(0 0 0 '+d.querySelector('.pbR').value+'%)';
+   cap.textContent='Arraste: esquerda = original, direita = Plano B com "'+(p?p.name:'nenhum preset')+'" · foto: '+n}catch(e){cap.textContent='Não deu para mostrar: '+e.message}}
+ (window.__lrPlace=window.__lrPlace||[]).push(()=>place());
+ try{let busy=false;const T=$1('#t-lr');if(T)new MutationObserver(()=>{if(busy)return;busy=true;try{for(const f of window.__lrPlace)try{f()}catch(_){}}finally{busy=false}}).observe(T,{childList:true})}catch(_){}
+ function place(){const t=$1('#t-lr');if(!t)return;const ref=t.querySelector(':scope>.eb')||t.querySelector(':scope>.lrA')||t.querySelector(':scope>.lrPair');if(ref&&A.previousElementSibling!==ref)ref.after(A)}
+ function render(){try{place();const L=presets(),cur=pick(),s=PGs().st,sig=L.map(p=>p.id).join('|')+'#'+CF.pid+'#'+(s&&s.preset);
+  A.querySelectorAll('input[type=radio]').forEach(r=>r.checked=r.value===CF.mode);A.querySelector('.pbW').value=String(CF.wait);A.querySelector('.pbS').value=String(CF.size);A.querySelector('.pbQ').value=String(CF.q);A.querySelector('.pbE').value=String(CF.enh==null?'same':CF.enh);
+  if(sig!==lastSig){lastSig=sig;const sel=A.querySelector('.pbP');const mine=L.filter(p=>p.mine),built=L.filter(p=>!p.mine);
+   sel.innerHTML='<option value="">'+(s&&s.preset?'Igual ao Lightroom ("'+esc(s.preset)+'")':'Automático (o mesmo do Lightroom, quando houver)')+'</option>'
+    +(mine.length?'<optgroup label="Meus presets (.xmp)">'+mine.map(p=>'<option value="'+esc(p.id)+'">'+esc(p.name)+'</option>').join('')+'</optgroup>':'')
+    +'<optgroup label="Presets do LUMEN">'+built.map(p=>'<option value="'+esc(p.id)+'">'+esc(p.name)+'</option>').join('')+'</optgroup>';sel.value=CF.pid||''}
+  const st=A.querySelector('.pbSt'),now=A.querySelector('.pbNow'),ls=lrState();
+  const lsT={on:'Lightroom funcionando',none:'Lightroom não responde',old:'plug-in antigo',off:'plug-in desligado',closed:'Lightroom fechado/travado',paused:'plug-in em pausa'}[ls];
+  if(CF.mode==='off'){st.textContent='desligado';st.className='pillS pbSt warn';now.textContent='Plano B desligado. Se o Lightroom parar, as fotos ficam esperando na LR_Entrada.'}
+  else if(!cur){st.textContent='falta o preset';st.className='pillS pbSt warn';now.textContent='⚠ Suba o seu preset .xmp (ou escolha um do LUMEN) para o Plano B editar igual ao Lightroom. Sem preset, as fotos sairiam sem edição.'}
+  else if(CF.mode==='always'){st.textContent='LUMEN editando';st.className='pillS pbSt ok';now.textContent='⚡ O LUMEN edita cada foto na hora com "'+cur.name+'" · '+(CF.n||0)+' feita(s)'+(PB.queue?' · '+PB.queue+' na fila':'')+'.'}
+  else if(PB.on){st.textContent='assumiu';st.className='pillS pbSt warn';now.textContent='🅱 '+lsT+': o LUMEN está editando com "'+cur.name+'" · '+(CF.n||0)+' feita(s)'+(PB.queue?' · '+PB.queue+' na fila':'')+'. Volta sozinho para o Lightroom quando ele responder.'}
+  else{st.textContent='pronto';st.className='pillS pbSt ok';now.textContent='✔ Em espera ('+lsT+'). Se uma foto ficar parada mais de '+CF.wait+' s, o LUMEN edita com "'+cur.name+'". '+(CF.n?(CF.n+' feita(s) até agora.'):'')}
+  if(PB.err)now.textContent+=' Último problema: '+PB.err;
+  if(!COR()||(COR().gradeOk&&COR().gradeOk()===false)){now.textContent='⚠ Este navegador não consegue editar fotos (sem WebGL 2). Use o Chrome atualizado no Mac.'}
+ }catch(e){}}
+ setInterval(render,1500);setTimeout(render,1200);setTimeout(()=>{render();tellPlugin()},6000);
+ log('Build v79: Plano B (se o Lightroom falhar, o LUMEN edita com o seu preset e manda ao site)','ok');
+}catch(e){try{log('v79: '+e.message,'bad')}catch(_){}}})();
+</script>
+
+<script id="v80">
+/* ===== v80 · Câmera: nome e modelo reais (PTP GetDeviceInfo), aviso instantâneo de disparo (evento PTP ObjectAdded pelo
+   canal de interrupção USB), medidor da fila de transferência (rajadas), RAW (.CR3/.CR2) com prévia JPEG instantânea,
+   e status ao vivo do Lightroom no selo LR (#lrBadge) e no guia (#lrGuide). Acréscimo: nada é removido. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+ /* ---------- 1. Identificação da câmera (PTP 0x1001 GetDeviceInfo) ----------
+    O nome do USB da Canon costuma vir genérico ("Canon Digital Camera"). O DeviceInfo do PTP traz o modelo real
+    ("Canon EOS R8"), a versão do firmware e o número de série. */
+ function diParse(d){const v=new DataView(d.buffer,d.byteOffset,d.byteLength);let o=0;
+  const u8=()=>v.getUint8(o++),u16=()=>{const x=v.getUint16(o,true);o+=2;return x},u32=()=>{const x=v.getUint32(o,true);o+=4;return x};
+  const str=()=>{const n=u8();let s='';for(let i=0;i<n;i++){const c=v.getUint16(o+2*i,true);if(c)s+=String.fromCharCode(c)}o+=2*n;return s.trim()};
+  const arr=()=>{const n=u32(),a=[];for(let i=0;i<n;i++)a.push(u16());return a};
+  u16();u32();u16();str();u16();const ops=arr(),evs=arr(),props=arr();arr();arr();
+  return{maker:str(),model:str(),fw:str(),serial:str(),ops:ops.length,evs,props:props.length}}
+ function setCam(info){if(!info||!info.model)return;const prev=S.cam&&S.cam.model;S.cam=Object.assign({},info,{at:Date.now(),vid:S.dev&&S.dev.vendorId,pid:S.dev&&S.dev.productId});
+  if(prev!==info.model)log('📷 Câmera identificada: '+info.model+(info.fw?' · firmware '+info.fw:'')+(info.serial?' · série …'+info.serial.slice(-4):''),'ok')}
+ /* lê toda resposta 0x1001 que já passa pelo cabo (o teste de sinal do LUMEN usa esse comando a cada 20 s) */
+ try{const _r=ptpRaw;ptpRaw=async function(code){const r=await _r.apply(this,arguments);try{if(code===0x1001&&r&&r.rc===0x2001&&r.data&&r.data.byteLength>40)setCam(diParse(r.data))}catch(_){}return r}}catch(_){}
+ window.lumenDI=diParse;window.lumenSetCam=setCam;
+ window.camName=()=>(S.cam&&S.cam.model)||(S.dev&&S.dev.productName)||'';
+ /* pede o DeviceInfo uma vez logo que a sessão abre (sem disputar o cabo com downloads) */
+ let askT=0;setInterval(async()=>{try{if(!S.sess||!S.dev||S.src!=='usb'){if(!S.dev)S.cam=null;return}
+  if(S.cam&&S.cam.vid===S.dev.vendorId&&S.cam.pid===S.dev.productId)return;if(S.busy||S.pollBusy||S.dlT||Date.now()-askT<8000)return;askT=Date.now();await ptp(0x1001,[],6000)}catch(_){}},1500);
+
+ /* ---------- 2. Aviso instantâneo de disparo (evento PTP ObjectAdded 0x4002) ----------
+    Câmeras PTP padrão (Nikon, Sony, Fuji…) avisam pelo canal de interrupção USB quando um arquivo novo aparece.
+    Na Canon o LUMEN já usa os avisos próprios dela (GetEvent 0x9116), então aqui fica opcional. */
+ const IE={on:false,dev:null,fails:0,n:0};
+ const ieWanted=()=>{if(!S.dev||S.src!=='usb'||!S.sess)return false;const k=C.ptpInt||'auto';return k==='on'||(k==='auto'&&S.dev.vendorId!==0x04a9)};
+ function intEp(){try{const i=S.dev.configuration.interfaces.find(x=>x.interfaceNumber===S.ifn);const a=i&&(i.alternates.find(x=>(x.alternateSetting||0)===(S.alt||0))||i.alternate);const e=a&&a.endpoints.find(e=>e.type==='interrupt'&&e.direction==='in');return e?e.endpointNumber:null}catch(_){return null}}
+ async function ieLoop(){if(IE.on)return;const ep=intEp();if(ep==null)return;IE.on=true;IE.dev=S.dev;
+  try{while(ieWanted()&&S.dev===IE.dev&&IE.fails<6){let r;try{r=await S.dev.transferIn(ep,64)}catch(e){IE.fails++;await sleep(1200);continue}
+    IE.fails=0;if(!r||!r.data||r.data.byteLength<12)continue;const v=r.data,type=v.getUint16(4,true),code=v.getUint16(6,true);
+    if(type!==4)continue;IE.n++;
+    if(code===0x4002||code===0x400D){const h=v.byteLength>=16?v.getUint32(12,true):0;
+     if(code===0x4002&&h&&S.run&&!S.seen.has(h)){S.seen.add(h);S.q.push(h);S.u.total++;try{pump()}catch(_){}}else{try{pollTick()}catch(_){}}}}}
+  finally{IE.on=false}}
+ setInterval(()=>{if(ieWanted()&&!IE.on)ieLoop()},2000);
+
+ /* ---------- 3. RAW (.CR3/.CR2/.DNG): guarda o RAW e mostra na hora a prévia JPEG que a câmera grava dentro do arquivo ---------- */
+ async function rawPreview(file){
+  const scan=async lim=>{const buf=new Uint8Array(await file.slice(0,Math.min(file.size,lim)).arrayBuffer()),st=[];
+   for(let i=0;i<buf.length-3&&st.length<12;i++)if(buf[i]===0xFF&&buf[i+1]===0xD8&&buf[i+2]===0xFF){st.push(i);i+=512}
+   let best=null;for(const s of st){try{const bm=await createImageBitmap(file.slice(s,file.size,'image/jpeg'));if(!best||bm.width>best.width){if(best)best.close();best=bm}else bm.close()}catch(_){}}return best};
+  let bm=await scan(4e6);if(!bm||bm.width<1600){const b2=await scan(file.size);if(b2&&(!bm||b2.width>bm.width)){if(bm)bm.close();bm=b2}else if(b2)b2.close()}
+  if(!bm)return null;const k=Math.min(1,2560/Math.max(bm.width,bm.height)),w=Math.round(bm.width*k),h=Math.round(bm.height*k);
+  const cv=document.createElement('canvas');cv.width=w;cv.height=h;const g=cv.getContext('2d');g.imageSmoothingQuality='high';g.drawImage(bm,0,0,w,h);bm.close();
+  return await new Promise(r=>cv.toBlob(r,'image/jpeg',.9))}
+ window.lumenRawPreview=rawPreview;
+ window.lumenRaw=async({name,blob,ct,sig})=>{const t0=performance.now();let df=null;
+  try{df=await put('RAW',name,blob,ct)}catch(e){log(name+': não consegui gravar o RAW ('+e.message+')','bad')}
+  if(C.rawPv==='lr')try{await toLR(name,blob,ct)}catch(_){}
+  let pv=null;try{pv=await rawPreview(blob)}catch(_){}
+  if(pv){add({name:name.replace(/\.[^.]+$/,'')+'_previa.jpg',kind:'foto',cls:'b',blob:pv,raw:true,rawName:name,x:1,ct,sig,t:Date.now(),thumb:await thumb(pv,1),size:blob.size,ver:'RAW'})}
+  S.rawN=(S.rawN||0)+1;S.rawKeep=(S.rawKeep||0)+1;
+  log(name+' → RAW guardado'+(C.rawPv==='lr'?' e entregue ao Lightroom':'')+(pv?' · prévia em '+Math.round(performance.now()-t0)+' ms':' (sem prévia embutida)'),'ok')};
+
+ /* ---------- 4. Status ao vivo do Lightroom: selo LR no topo (#lrBadge) e faixa no guia (#lrGuide) ---------- */
+ window.LUMEN_LRBADGE=1;
+ try{const _t=toLR;toLR=async function(name){const r=await _t.apply(this,arguments);if(r){S.lrLastIn=Date.now();S.lrInN=(S.lrInN||0)+1}return r}}catch(_){}
+ const ago=t=>{if(!t)return'—';const s=Math.round((Date.now()-t)/1000);return s<60?s+' s':s<3600?Math.round(s/60)+' min':Math.round(s/3600)+' h'};
+ function lrStatus(){const P=window.LUMEN_PG||{},s=P.st,age=P.mt?(Date.now()-P.mt)/1000:1e9,pb=window.LUMEN_PB&&LUMEN_PB.state();let wait=0;try{wait=LRS.n||0}catch(_){}
+  if(!C.lrOn)return{k:'off',t:'Lightroom desligado',d:'A cópia para a LR_Entrada está desligada.',b:'LR –'};
+  if(pb&&pb.mode==='always')return{k:'pb',t:'LUMEN editando (sem Lightroom)',d:(pb.done||0)+' feita(s) com "'+pb.preset+'"',b:'LR 🅱'};
+  if(pb&&pb.on)return{k:'pb',t:'Plano B trabalhando',d:'O Lightroom parou; o LUMEN está editando.',b:'LR 🅱'};
+  if(s&&s.mode==='import'&&s.enabled&&age<=60)return{k:'ok',t:'Lightroom ativo: pasta monitorada recebendo',d:(s.imported||0)+' importada(s) · '+(s.count||0)+' exportada(s) · última foto entrou há '+ago(S.lrLastIn)+(wait?' · '+wait+' na fila':''),b:'LR ✓ '+(s.count||0)};
+  if(s&&s.mode==='import'&&s.enabled)return{k:'bad',t:'Lightroom fechado ou travado',d:'Sem sinal do plug-in há '+Math.round(age)+' s. '+(wait?wait+' foto(s) esperando.':''),b:'LR ⚠'};
+  if(s&&s.mode==='import')return{k:'bad',t:'Plug-in desligado',d:'Lightroom › Arquivo › Extras de plug-in › LUMEN: ligar.',b:'LR ⚠'};
+  return{k:wait?'bad':'warn',t:wait?'Fotos esperando o Lightroom':'Pasta monitorada pronta',d:(wait?wait+' na LR_Entrada · ':'')+'última entrou há '+ago(S.lrLastIn)+'. Ligue o plug-in LUMEN no Lightroom.',b:wait?'LR ⚠':'LR …'}}
+ window.lumenLrStatus=lrStatus;
+ function lrPaint(){const st=lrStatus(),b=$1('#lrBadge');
+  if(b){b.style.display=C.lrOn?'inline-flex':'none';b.textContent=st.b;b.dataset.st=st.k;b.title=st.t+' — '+st.d}
+  const g=$1('#lrGuide');if(g){let e=g.querySelector('.lrgLive');if(!e){e=document.createElement('div');e.className='lrgLive';g.prepend(e)}
+   e.dataset.st=st.k;e.innerHTML='<i></i><span><b>'+esc(st.t)+'</b><small>'+esc(st.d)+'</small></span>'}}
+ setInterval(lrPaint,1500);lrPaint();
+
+ /* ---------- 5. Cartão "Câmera conectada" (Conectar) + chip no topo + fila de transferência ---------- */
+ const card=document.createElement('div');card.className='c v70c camId';
+ card.innerHTML='<div class="v70h"><b>📷 Câmera conectada</b><span class="pillS ciSt">—</span></div><div class="ciMain"><div class="ciBig">—</div><div class="ciSub sub"></div></div>'
+  +'<div class="ciGrid"></div><div class="v70h ciQh" style="margin-top:10px"><b>Fila de transferência</b><span class="sub ciQt"></span></div><div class="ciQ"><div><b class="q1">0</b><small>esperando na câmera</small></div><div><b class="q2">0</b><small>processando</small></div><div><b class="q3">0</b><small>indo para o site</small></div></div><div class="bar2 ciQb"><div class="ciBar"></div></div>'
+  +'<details class="ex ciDet" data-ex="1"><summary>Opções de transferência (RAW e aviso de disparo)</summary><div class="laGrid ciOpt"><label>Arquivos RAW (.CR3)<select class="ciRaw"><option value="off">ignorar (só JPG e vídeo)</option><option value="keep">guardar RAW + prévia na galeria</option><option value="lr">guardar + prévia + mandar ao Lightroom</option></select></label>'
+  +'<label>Aviso instantâneo de disparo<select class="ciInt"><option value="auto">automático</option><option value="on">ligado (canal de interrupção)</option><option value="off">desligado</option></select></label></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal">RAW + JPG na câmera transfere os dois arquivos (mais lento em rajadas). Com só RAW, a galeria mostra a prévia JPEG que a câmera grava dentro do .CR3; o site recebe a foto editada pelo Lightroom ou pelo Plano B.</div></details>';
+ card.querySelector('.ciRaw').value=C.rawPv||'off';card.querySelector('.ciRaw').onchange=e=>{C.rawPv=e.target.value;store();log('RAW: '+e.target.selectedOptions[0].textContent,'ok')};
+ card.querySelector('.ciInt').value=C.ptpInt||'auto';card.querySelector('.ciInt').onchange=e=>{C.ptpInt=e.target.value;store()};
+ const chip=document.createElement('button');chip.type='button';chip.id='camChip';chip.className='bt';chip.onclick=()=>{try{goTab('con');setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'center'}),200)}catch(_){}};
+ let qMax=1;
+ function camPaint(){try{
+  const sec=$1('#t-con');if(sec){const ref=sec.querySelector(':scope>.v70ph');if(ref&&card.previousElementSibling!==ref)ref.after(card)}
+  const ui=$1('#usbInd');if(ui&&chip.previousElementSibling!==ui)ui.after(chip);
+  const live=!!(S.sess&&S.dev&&S.src==='usb'),c=S.cam,d=S.dev,model=(c&&c.model)||(d&&d.productName)||'';card.classList.toggle('off',!live);
+  chip.hidden=!live||!model;chip.textContent='📷 '+model.replace(/^Canon\s+/,'');chip.title=model+(c&&c.fw?' · firmware '+c.fw:'');
+  const st=card.querySelector('.ciSt');st.textContent=live?(S.canon?'pronta · controle remoto':'conectada'):S.src==='usb'?(S.conn||S.rec?'conectando…':'desconectada'):'origem: '+(typeof CN==='function'?CN():S.src);st.className='pillS ciSt '+(live?'ok':'warn');
+  card.querySelector('.ciBig').textContent=live?model||'Câmera USB':S.src==='usb'?'Nenhuma câmera no cabo':'Sem câmera no cabo';
+  card.querySelector('.ciSub').textContent=live?((c&&c.maker)||(d&&d.manufacturerName)||'')+(c?'':' · lendo o modelo…'):S.src==='usb'?'Ligue a câmera e plugue o cabo: o LUMEN reconhece sozinho e mostra aqui marca, modelo e firmware.':'Para ver o modelo, conecte a câmera pelo cabo (aba Conectar).';
+  const R=[];if(live){if(c&&c.fw)R.push(['Firmware',c.fw]);if(c&&c.serial)R.push(['Nº de série','…'+c.serial.slice(-6)]);R.push(['USB',(d.vendorId||0).toString(16).padStart(4,'0')+':'+(d.productId||0).toString(16).padStart(4,'0')]);
+   if(S.bp!=null)R.push(['Bateria',S.bp+'%']);R.push(['Modo',S.canon?'Canon remoto (sem tela de PC)':'PTP padrão']);R.push(['Aviso de disparo',d.vendorId===0x04a9?'Canon GetEvent'+(IE.on?' + interrupção':''):IE.on?'interrupção USB ('+IE.n+')':'consulta periódica']);
+   if(S.rawKeep)R.push(['RAW guardados',S.rawKeep])}
+  card.querySelector('.ciGrid').innerHTML=R.map(([k,v])=>'<div><small>'+esc(k)+'</small><b>'+esc(String(v))+'</b></div>').join('');
+  const q1=(S.q||[]).length,q2=(S.pq||[]).length+(S.pa||0),q3=(S.uq||[]).length+(S.ua||0),tot=q1+q2+q3;qMax=tot?Math.max(qMax,tot):1;
+  card.querySelector('.q1').textContent=q1;card.querySelector('.q2').textContent=q2;card.querySelector('.q3').textContent=q3;
+  card.querySelector('.ciBar').style.width=(tot?Math.max(4,100*(1-tot/qMax)):100)+'%';card.querySelector('.ciQt').textContent=tot?'rajada: '+tot+' na fila, nenhuma se perde':'em dia';
+ }catch(_){}}
+ setInterval(camPaint,1000);setTimeout(camPaint,800);
+ log('Build v80: câmera identificada pelo modelo real, aviso instantâneo de disparo, fila de rajada, RAW com prévia, selo LR ao vivo','ok');
+}catch(e){try{log('v80: '+e.message,'bad')}catch(_){}}})();
+</script>
+
+<script id="v81">
+/* ===== v81 · Aparelhos conectados: celulares, iPhone, Android, tablet, Mac e PC na mesma "sala" do LUMEN.
+   Cada aparelho mostra as fotos e vídeos dos outros ao vivo (inclusive o que está na pasta do evento e o que o
+   Lightroom exportou) e pode baixar, compartilhar ou receber cópia automática. Na mesma rede Wi-Fi os arquivos vão
+   direto de um aparelho para o outro (WebRTC); a internet só serve para os aparelhos se acharem (PeerJS).
+   Acréscimo: nada é removido. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+ const UA=navigator.userAgent,isIPad=/iPad/.test(UA)||(/Macintosh/.test(UA)&&navigator.maxTouchPoints>1);
+ const DEVT=/iPhone/.test(UA)?['iphone','📱','iPhone']:isIPad?['tablet','📲','iPad']:/Android/.test(UA)?(/Mobile/.test(UA)?['android','📱','Android']:['tablet','📲','Tablet Android']):/Mac/.test(UA)?['mac','💻','Mac']:/Windows/.test(UA)?['pc','🖥','PC']:['pc','🖥','Computador'];
+ const MOBILE=/iPhone|Android/.test(UA)||isIPad;
+ const RK='lumen_room';let RM={code:'',name:DEVT[2]+' · '+(/Edg\//.test(UA)?'Edge':/Chrome\//.test(UA)?'Chrome':/Safari\//.test(UA)?'Safari':'navegador'),auto:true,share:true,mirror:false,id:''};
+ try{RM=Object.assign(RM,JSON.parse(localStorage.getItem(RK)||'{}'))}catch(_){}
+ if(!RM.id)RM.id=Math.random().toString(36).slice(2,8);
+ const svR=()=>{try{localStorage.setItem(RK,JSON.stringify(RM))}catch(_){}};svR();
+ const newCode=()=>{const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='';const r=crypto.getRandomValues(new Uint8Array(8));for(const x of r)s+=A[x%A.length];return s};
+ const fromUrl=(new URLSearchParams(location.search).get('sala')||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+ if(fromUrl){RM.code=fromUrl;RM.auto=true;svR()}
+ const linkOf=c=>location.origin+location.pathname+'?sala='+c;
+ const fmtB=b=>b>1e9?(b/1e9).toFixed(1)+' GB':b>1e6?(b/1e6).toFixed(1)+' MB':Math.max(1,Math.round(b/1e3))+' KB';
+ const loadJs=(src,test)=>new Promise((ok,no)=>{if(test())return ok();const s=document.createElement('script');s.src=src;s.onload=()=>test()?ok():no(new Error('biblioteca não carregou'));s.onerror=()=>no(new Error('sem internet para carregar '+src.split('/').pop()));document.head.appendChild(s)});
+ const libPeer=()=>loadJs('https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js',()=>!!window.Peer);
+ const libQr=()=>loadJs('https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js',()=>!!window.qrcode);
+
+ /* ---------- 1. o que este aparelho mostra para a sala (galeria + pasta do evento + Editadas do Lightroom) ---------- */
+ const LOC=new Map();let locSig='';
+ const isMedia=n=>/\.(jpe?g|png|webp|heic|mp4|mov|m4v)$/i.test(n),isVid=n=>/\.(mp4|mov|m4v)$/i.test(n);
+ async function smallJpeg(blob,max){const bm=await createImageBitmap(blob,{resizeWidth:max,resizeQuality:'medium'});const cv=document.createElement('canvas');cv.width=bm.width;cv.height=bm.height;cv.getContext('2d').drawImage(bm,0,0);bm.close();return await new Promise(r=>cv.toBlob(r,'image/jpeg',.72))}
+ async function videoThumb(blob){return await new Promise(res=>{const v=document.createElement('video'),u=URL.createObjectURL(blob);let done=false;const fin=b=>{if(done)return;done=true;URL.revokeObjectURL(u);res(b)};
+  v.muted=true;v.playsInline=true;v.preload='metadata';v.src=u;v.onloadeddata=()=>{try{v.currentTime=Math.min(.5,(v.duration||1)/3)}catch(_){fin(null)}};
+  v.onseeked=()=>{try{const k=360/Math.max(v.videoWidth,v.videoHeight,1),cv=document.createElement('canvas');cv.width=Math.round(v.videoWidth*k);cv.height=Math.round(v.videoHeight*k);cv.getContext('2d').drawImage(v,0,0,cv.width,cv.height);cv.toBlob(b=>fin(b),'image/jpeg',.7)}catch(_){fin(null)}};v.onerror=()=>fin(null);setTimeout(()=>fin(null),6000)})}
+ function scanItems(){for(const it of S.items||[]){if((it.kind!=='foto'&&it.kind!=='video')||it.peer||it.remote)continue;const k='i'+it.id;if(LOC.has(k))continue;
+  LOC.set(k,{m:{k,n:it.name,kind:it.kind,sz:it.size||0,t:it.t||Date.now(),src:it.raw?'RAW (prévia)':'galeria'},
+   get:async()=>{if(!it.blob&&window.ensureBlob)await ensureBlob(it);if(it.blob)return it.blob;if(it.url)return await (await fetch(it.url)).blob();throw new Error('arquivo não está mais neste aparelho')},
+   th:async()=>{if(it.thumb)return await (await fetch(it.thumb)).blob();const b=await LOC.get(k).get();return it.kind==='video'?await videoThumb(b):await smallJpeg(b,360)}})}}
+ let walking=false,lastWalk=0;
+ async function scanFolder(){if(walking||!S.dir||!S.perm||S.dir.virtual||!RM.share)return;walking=true;lastWalk=Date.now();
+  try{const found=[];const SKIP=/^(LR_Entrada|LR_Entrada_com_erro|Plano_B_originais|Lightroom_Sessoes|Quarentena|RAW|cofre|Corrida_numerada)$/i;
+   const walk=async(d,pre,dep)=>{for await(const[n,h] of d.entries()){if(found.length>4000)return;if(n.startsWith('.'))continue;
+    if(h.kind==='directory'){if(dep<6&&!SKIP.test(n))await walk(h,pre+n+'/',dep+1)}else if(isMedia(n)&&!/^LUMEN_teste_/i.test(n))found.push([pre+n,n,h])}};
+   await walk(S.dir,'',0);
+   const best=new Map(),rank=p=>/(^|\/)Editadas\//i.test(p)?3:/\/Originais\//i.test(p)?1:2;
+   for(const[p,n,h] of found){const o=best.get(n);if(!o||rank(p)>rank(o[0]))best.set(n,[p,n,h])}
+   const L=[];for(const[p,n,h] of best.values()){try{const f=await h.getFile();L.push([p,n,h,f.size,f.lastModified])}catch(_){}}
+   L.sort((a,b)=>b[4]-a[4]);const keep=new Set();
+   for(const[p,n,h,sz,t] of L.slice(0,500)){const k='f:'+p;keep.add(k);if(LOC.has(k))continue;
+    LOC.set(k,{m:{k,n,kind:isVid(n)?'video':'foto',sz,t,src:/(^|\/)Editadas\//i.test(p)?'Lightroom (editada)':'pasta '+(p.split('/').slice(-2,-1)[0]||'')},
+     get:async()=>await h.getFile(),th:async()=>{const f=await h.getFile();return isVid(n)?await videoThumb(f):await smallJpeg(f,360)}})}
+   for(const k of [...LOC.keys()])if(k.startsWith('f:')&&!keep.has(k))LOC.delete(k);
+  }catch(_){}finally{walking=false}}
+ function myCat(){if(!RM.share)return[];const names=new Set(),out=[];const all=[...LOC.values()].map(x=>x.m).sort((a,b)=>b.t-a.t);
+  for(const m of all){if(m.k.startsWith('f:'))names.add(m.n)}for(const m of all){if(m.k.startsWith('i')&&names.has(m.n))continue;out.push(m);if(out.length>=600)break}return out}
+
+ /* ---------- 2. a sala (PeerJS): o 1º aparelho vira o "ponto de encontro"; os outros se ligam a ele ---------- */
+ const R={peer:null,hub:false,conns:new Map(),devs:new Map(),cats:new Map(),st:'off',err:'',joinT:0,retry:0,pend:new Map(),thumbs:new Map(),quality:new Map(),myId:''};
+ const hubId=c=>'lumen-sala-'+c.toLowerCase(),memId=c=>'lumen-'+c.toLowerCase()+'-'+RM.id;
+ function peerOpts(){let o={debug:0};try{const h=JSON.parse(localStorage.getItem('lumen_peerhost')||'null');if(h)o=Object.assign(o,h)}catch(_){}return o}
+ function me(){return{id:R.myId,name:RM.name,dev:DEVT[0],ic:DEVT[1],cam:(window.camName&&S.sess&&S.src==='usb')?camName():'',n:myCat().length,hub:R.hub,t:Date.now()}}
+ function send(conn,msg){try{if(conn&&conn.open)conn.send(msg)}catch(_){}}
+ function route(msg){/* hub entrega para o destino; membro manda tudo para o hub */
+  if(R.hub){if(msg.to==='*'){for(const c of R.conns.values())if(c.peer!==msg.from)send(c,msg)}else{const c=R.conns.get(msg.to);if(c)send(c,msg)}}
+  else{const c=[...R.conns.values()][0];send(c,msg)}}
+ function emit(msg){msg.from=R.myId;if(msg.to===R.myId){onMsg(msg);return}route(msg)}
+ async function join(code){code=(code||RM.code||'').toUpperCase();if(!code)return;RM.code=code;svR();leave(true);R.st='connecting';R.err='';paint();
+  try{await libPeer()}catch(e){R.st='off';R.err=e.message;paint();return}
+  const tryHub=()=>{const p=new Peer(hubId(code),peerOpts());R.peer=p;
+   p.on('open',id=>{R.hub=true;R.myId=id;R.st='on';R.retry=0;R.devs.set(id,me());log('📡 Sala '+code+' aberta neste aparelho ('+RM.name+')','ok');paint();shareCat()});
+   p.on('connection',c=>wire(c));
+   p.on('error',e=>{if(e.type==='unavailable-id'){try{p.destroy()}catch(_){}tryMember()}else netErr(e)});
+   p.on('disconnected',()=>{try{p.reconnect()}catch(_){}})};
+  const tryMember=()=>{const p=new Peer(memId(code),peerOpts());R.peer=p;R.hub=false;
+   p.on('open',id=>{R.myId=id;R.lastHub=Date.now();const c=p.connect(hubId(code),{reliable:true,metadata:{name:RM.name}});wire(c)});
+   p.on('connection',c=>{try{c.close()}catch(_){}});
+   p.on('error',e=>{if(e.type==='peer-unavailable'||e.type==='unavailable-id'){again()}else netErr(e)});
+   p.on('disconnected',()=>{try{p.reconnect()}catch(_){}})};
+  tryHub()}
+ function netErr(e){R.err=e.type==='network'||e.type==='server-error'||e.type==='socket-error'?'sem internet para achar os aparelhos (a sala volta sozinha)':(e.message||e.type);R.st='connecting';paint();again()}
+ function again(){clearTimeout(R.joinT);if(!RM.code)return;R.retry++;R.joinT=setTimeout(()=>join(RM.code),Math.min(15000,1500+R.retry*1500+Math.random()*1500))}
+ function leave(keep){clearTimeout(R.joinT);for(const c of R.conns.values())try{c.close()}catch(_){}R.conns.clear();R.devs.clear();R.cats.clear();if(R.peer)try{R.peer.destroy()}catch(_){}R.peer=null;R.hub=false;R.st='off';if(!keep){RM.code='';svR()}paint()}
+ function wire(c){c.on('open',()=>{R.conns.set(c.peer,c);R.st='on';R.retry=0;paint();emit({t:'hi',to:R.hub?c.peer:'*',d:me()});if(R.hub){c.send({t:'peers',list:[...R.devs.values()]});for(const[id,cat] of R.cats)c.send({t:'cat',from:id,items:cat})}shareCat();quality(c)});
+  c.on('data',m=>{if(!m||typeof m!=='object')return;if(R.hub&&m.to&&m.to!==R.myId){route(m);if(m.to!=='*')return}onMsg(m)});
+  c.on('close',()=>{R.conns.delete(c.peer);if(R.hub){R.devs.delete(c.peer);R.cats.delete(c.peer);bcastPeers()}else{R.devs.clear();R.cats.clear();R.st='connecting';again()}paint();draw()});
+  c.on('error',()=>{})}
+ function bcastPeers(){if(!R.hub)return;R.devs.set(R.myId,me());const msg={t:'peers',list:[...R.devs.values()],from:R.myId,to:'*'};for(const c of R.conns.values())send(c,msg)}
+ async function quality(c){setTimeout(async()=>{try{const st=await c.peerConnection.getStats();let pair=null;st.forEach(r=>{if(r.type==='candidate-pair'&&(r.nominated||r.selected)&&r.state==='succeeded')pair=r});if(!pair)return;const lc=st.get(pair.localCandidateId),rc=st.get(pair.remoteCandidateId);
+  const t=(lc&&lc.candidateType)==='host'&&(rc&&rc.candidateType)==='host'?'lan':(lc&&lc.candidateType)==='relay'||(rc&&rc.candidateType)==='relay'?'relay':'net';R.quality.set(c.peer,t);paint()}catch(_){}},2500)}
+ let catT=0;function shareCat(){clearTimeout(catT);catT=setTimeout(()=>{if(R.st!=='on')return;const items=myCat();R.cats.set(R.myId,items);emit({t:'cat',to:'*',items});if(R.hub)bcastPeers();else emit({t:'hi',to:'*',d:me()});draw()},400)}
+ /* ---------- 3. mensagens ---------- */
+ const CH=192*1024;
+ async function onMsg(m){try{
+  if(m.from){R.seen=R.seen||new Map();R.seen.set(m.from,Date.now());if(!R.hub)R.lastHub=Date.now()}
+  if(m.t==='hi'&&m.d){R.devs.set(m.from||m.d.id,Object.assign(m.d,{id:m.from||m.d.id}));if(R.hub)bcastPeers();paint()}
+  else if(m.t==='peers'){R.devs.clear();for(const d of m.list)R.devs.set(d.id,d);R.devs.set(R.myId,me());for(const id of [...R.cats.keys()])if(!R.devs.has(id))R.cats.delete(id);paint();draw()}
+  else if(m.t==='cat'){R.cats.set(m.from,m.items||[]);if(R.hub){const d=R.devs.get(m.from);if(d){d.n=(m.items||[]).length}}draw();paint();mirrorCheck(m.from,m.items||[])}
+  else if(m.t==='th?'){const L=LOC.get(m.k);if(!L)return;let b=null;try{b=await L.th()}catch(_){}emit({t:'th',to:m.from,k:m.k,data:b?await b.arrayBuffer():null})}
+  else if(m.t==='th'){const key=m.from+'|'+m.k;const u=m.data?URL.createObjectURL(new Blob([m.data],{type:'image/jpeg'})):'';R.thumbs.set(key,u||'none');$$('.apT[data-key="'+CSS.escape(key)+'"] .apI').forEach(e=>{if(u)e.style.backgroundImage='url("'+u+'")';e.classList.toggle('noimg',!u)})}
+  else if(m.t==='get'){const L=LOC.get(m.k);if(!L){emit({t:'nf',to:m.from,rid:m.rid,e:'arquivo não encontrado'});return}let b;try{b=await L.get()}catch(e){emit({t:'nf',to:m.from,rid:m.rid,e:e.message});return}
+   const buf=await b.arrayBuffer(),n=Math.max(1,Math.ceil(buf.byteLength/CH));emit({t:'beg',to:m.from,rid:m.rid,n,sz:buf.byteLength,type:b.type||'',name:L.m.n});
+   const c=R.hub?R.conns.get(m.from):[...R.conns.values()][0];
+   for(let i=0;i<n;i++){while(c&&c.dataChannel&&c.dataChannel.bufferedAmount>6e6)await new Promise(r=>setTimeout(r,40));emit({t:'ch',to:m.from,rid:m.rid,i,data:buf.slice(i*CH,(i+1)*CH)})}}
+  else if(m.t==='beg'){const P=R.pend.get(m.rid);if(P){P.n=m.n;P.sz=m.sz;P.type=m.type;P.parts=new Array(m.n);P.got=0}}
+  else if(m.t==='ch'){const P=R.pend.get(m.rid);if(!P||!P.parts)return;if(!P.parts[m.i]){P.parts[m.i]=m.data;P.got++}if(P.onp)P.onp(P.got/P.n);
+   if(P.got===P.n){R.pend.delete(m.rid);clearTimeout(P.to);P.ok(new Blob(P.parts,{type:P.type||(isVid(P.name)?'video/mp4':'image/jpeg')}))}}
+  else if(m.t==='nf'){const P=R.pend.get(m.rid);if(P){R.pend.delete(m.rid);clearTimeout(P.to);P.no(new Error(m.e))}}
+ }catch(e){}}
+ function fetchFile(dev,it,onp){return new Promise((ok,no)=>{const rid=Math.random().toString(36).slice(2);const P={ok,no,onp,name:it.n};
+  const arm=()=>{clearTimeout(P.to);P.to=setTimeout(()=>{R.pend.delete(rid);no(new Error('o outro aparelho não respondeu'))},45000)};arm();const _p=P.onp;P.onp=f=>{arm();if(_p)_p(f)};
+  R.pend.set(rid,P);emit({t:'get',to:dev,k:it.k,rid})})}
+
+ /* ---------- 4. baixar / compartilhar / cópia automática ---------- */
+ let saveDir=null;
+ async function saveMany(list,btn){/* list: [{dev,it}] */
+  if(!list.length)return;const lab=btn?btn.textContent:'';const set=t=>{if(btn)btn.textContent=t};const got=[];
+  for(let i=0;i<list.length;i++){const{dev,it}=list[i];try{const b=await fetchFile(dev,it,f=>set('⬇ '+(i+1)+'/'+list.length+' · '+Math.round(f*100)+'%'));got.push({name:it.n,blob:b,t:it.t||Date.now()})}catch(e){log('Aparelhos: '+it.n+' — '+e.message,'bad')}}
+  set(lab);if(!got.length)return;
+  if(window.showDirectoryPicker&&!MOBILE){try{if(!saveDir)saveDir=await showDirectoryPicker({id:'lumen-aparelhos',mode:'readwrite'});for(const g of got)await writeTo(saveDir,'',g.name,g.blob);say('✔ '+got.length+' arquivo(s) salvos em "'+saveDir.name+'".');return}catch(e){if(e.name==='AbortError')return}}
+  const files=got.map(g=>new File([g.blob],g.name,{type:g.blob.type||'image/jpeg'}));
+  if(MOBILE&&navigator.canShare&&navigator.canShare({files:files.slice(0,1)})){for(let i=0;i<files.length;i+=10){try{await navigator.share({files:files.slice(i,i+10)})}catch(e){if(e.name==='AbortError')break}}say('Toque em "Salvar imagens" (iPhone) ou "Salvar" para guardar nas Fotos.');return}
+  if(got.length>3&&typeof buildZip==='function'){const z=await buildZip(got),a=document.createElement('a');a.href=URL.createObjectURL(z);a.download='LUMEN_'+(RM.code||'sala')+'_'+got.length+'.zip';a.click();return}
+  for(const g of got){const a=document.createElement('a');a.href=URL.createObjectURL(g.blob);a.download=g.name;a.click();await new Promise(r=>setTimeout(r,350))}}
+ const MK='lumen_mirror_got';let MG=new Set();try{MG=new Set(JSON.parse(localStorage.getItem(MK)||'[]'))}catch(_){}
+ let mirDir=null,mirBusy=false;const mirQ=[];
+ function mirrorCheck(dev,items){if(!RM.mirror||dev===R.myId)return;const d=R.devs.get(dev),since=RM.mirrorSince||Date.now();
+  for(const it of items){const key=dev.split('-').pop()+'|'+it.n+'|'+it.sz;if(MG.has(key)||it.t<since-60000)continue;if(mirQ.some(x=>x.key===key))continue;mirQ.push({dev,it,key,dn:(d&&d.name)||'Aparelho'})}runMirror()}
+ async function runMirror(){if(mirBusy||!mirQ.length)return;mirBusy=true;try{while(mirQ.length&&RM.mirror){const j=mirQ.shift();try{const b=await fetchFile(j.dev,j.it);
+   if(mirDir){await writeTo(mirDir,(j.dn||'Aparelho').replace(/[\\/:*?"<>|]/g,'_'),j.it.n,b)}else{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=j.it.n;a.click()}
+   MG.add(j.key);try{localStorage.setItem(MK,JSON.stringify([...MG].slice(-20000)))}catch(_){}R.mirN=(R.mirN||0)+1;paint()}catch(e){}}}finally{mirBusy=false}}
+
+ /* ---------- 5. tela "Aparelhos" ---------- */
+ const sec=document.createElement('section');sec.className='tab w';sec.id='t-dev';
+ sec.innerHTML='<div class="v70ph"><span class="v70pi" aria-hidden="true">📡</span><div><h2>Aparelhos</h2><p>Celular, iPhone, tablet, Mac e PC juntos na mesma sala</p></div></div>'
+  +'<div class="c v70c apRoom"><div class="v70h"><b>Sala do LUMEN</b><span class="pillS apSt">—</span></div>'
+  +'<div class="apHero"><div class="apQr" aria-label="QR code da sala"></div><div class="apInfo"><small>Código da sala</small><div class="apCode">—</div><div class="sub wrap apHow" data-ex="1" style="white-space:normal;color:var(--ink)"></div>'
+  +'<div class="fx3a"><button type="button" class="f p apNew">Criar sala</button><button type="button" class="f apCopy">Copiar link</button><button type="button" class="f apShare">Compartilhar</button><button type="button" class="f apLeave">Sair da sala</button></div></div></div>'
+  +'<div class="laGrid"><label>Entrar numa sala (código)<input class="apIn" maxlength="10" placeholder="ex.: K7M2Q9XA" autocapitalize="characters"></label><label>Nome deste aparelho<input class="apName" maxlength="30"></label></div>'
+  +'<div class="fx3a"><button type="button" class="f p apJoin">Entrar</button></div>'
+  +'<label class="r"><input type="checkbox" class="apAuto"><span>Entrar sozinho nesta sala sempre que abrir o LUMEN</span></label>'
+  +'<label class="r"><input type="checkbox" class="apShareOn"><span>Mostrar as fotos e vídeos deste aparelho para a sala</span></label>'
+  +'<div class="sub wrap apErr" data-ex="1" style="white-space:normal"></div></div>'
+  +'<div class="c v70c"><div class="v70h"><b>Aparelhos na sala</b><span class="sub apDN"></span></div><div class="apDevs"></div></div>'
+  +'<div class="c v70c"><div class="v70h"><b>Fotos e vídeos de todos</b><span class="sub apCount"></span></div>'
+  +'<div class="chips apF"></div><div class="fx3a"><button type="button" class="f apAll">Selecionar tudo</button><button type="button" class="f p apDl">⬇ Baixar selecionadas</button><button type="button" class="f apClr">Limpar seleção</button></div>'
+  +'<div class="apGrid"></div><div class="sub wrap apEmpty" data-ex="1" style="white-space:normal"></div></div>'
+  +'<div class="c v70c"><div class="v70h"><b>Cópia automática (backup ao vivo)</b><span class="pillS apMS">—</span></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Este aparelho recebe sozinho cada foto e vídeo novo dos outros aparelhos da sala. No Mac/PC você escolhe uma pasta (uma subpasta por aparelho); no celular vai para Downloads.</div>'
+  +'<label class="r"><input type="checkbox" class="apMir"><span>Receber cópia de cada foto e vídeo novo</span></label><div class="fx3a"><button type="button" class="f apMirDir">📁 Escolher a pasta da cópia</button></div></div>'
+  +'<details class="c v70c ex" data-ex="1"><summary><b>Como funciona e dicas</b></summary><ol class="steps" data-ex="1">'
+  +'<li><b>Abra o LUMEN nos dois aparelhos.</b><small>Pode ser qualquer par: Mac + PC, iPhone + Mac, Android + iPhone, dois celulares, tablet…</small></li>'
+  +'<li><b>Num deles toque em "Criar sala".</b><small>Aparece um QR code e um código.</small></li>'
+  +'<li><b>No outro, leia o QR com a câmera</b> (ou digite o código em "Entrar numa sala").<small>Pronto: os dois aparecem em "Aparelhos na sala". Da próxima vez entram sozinhos.</small></li>'
+  +'<li><b>Mesma rede Wi-Fi = mais rápido.</b><small>Os arquivos vão direto de um aparelho para o outro pela rede local (aparece "📶 mesmo Wi-Fi"). Em redes diferentes também funciona, pela internet.</small></li>'
+  +'<li><b>Precisa de internet só para os aparelhos se acharem.</b><small>Pode ser o roteador do evento ou o roteamento (hotspot) do celular.</small></li></ol>'
+  +'<div class="sub wrap" style="white-space:normal">Privacidade: só quem tem o código vê as fotos. Os arquivos não ficam guardados em nenhum servidor. Para trocar o código, toque em Sair da sala e Criar sala de novo.</div></details>';
+ const home=$1('#t-con')||$1('#t-home');if(home)home.after(sec);
+ const nb=document.createElement('button');nb.type='button';nb.dataset.t='dev';nb.innerHTML='<i>📡</i><span class="v70l">Aparelhos</span><span class="v70s">Aparelhos</span>';nb.title='Aparelhos conectados';nb.setAttribute('aria-label','Aparelhos conectados');
+ nb.onclick=()=>{goTab('dev');opened()};
+ function navPlace(){const n=$1('nav'),g=n&&n.querySelector('button[data-t="con"]');if(g&&nb.previousElementSibling!==g)g.after(nb)}
+ navPlace();setInterval(navPlace,1500);
+ const q=s=>sec.querySelector(s);
+ function say(t){q('.apErr').textContent=t||''}
+ q('.apName').value=RM.name;q('.apName').onchange=e=>{RM.name=e.target.value.trim()||DEVT[2];svR();shareCat();paint()};
+ q('.apAuto').checked=RM.auto!==false;q('.apAuto').onchange=e=>{RM.auto=e.target.checked;svR()};
+ q('.apShareOn').checked=RM.share!==false;q('.apShareOn').onchange=e=>{RM.share=e.target.checked;svR();shareCat()};
+ q('.apNew').onclick=()=>{join(newCode())};
+ q('.apJoin').onclick=()=>{const c=q('.apIn').value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(c.length<4){say('Digite o código que aparece no outro aparelho.');return}join(c)};
+ q('.apLeave').onclick=()=>{if(confirm('Sair da sala? Os outros aparelhos deixam de ver as fotos deste.'))leave(false)};
+ q('.apCopy').onclick=async()=>{try{await navigator.clipboard.writeText(linkOf(RM.code));say('✔ Link copiado. Abra no outro aparelho.')}catch(_){say(linkOf(RM.code))}};
+ q('.apShare').onclick=async()=>{try{await navigator.share({title:'LUMEN · sala '+RM.code,text:'Entre na sala do LUMEN:',url:linkOf(RM.code)})}catch(_){q('.apCopy').click()}};
+ q('.apMir').checked=!!RM.mirror;q('.apMir').onchange=async e=>{RM.mirror=e.target.checked;if(RM.mirror){RM.mirrorSince=Date.now();if(window.showDirectoryPicker&&!MOBILE&&!mirDir){try{mirDir=await showDirectoryPicker({id:'lumen-copia',mode:'readwrite'})}catch(_){}}}svR();paint();for(const[id,cat] of R.cats)mirrorCheck(id,cat)};
+ q('.apMirDir').onclick=async()=>{if(!window.showDirectoryPicker){say('Neste aparelho a cópia vai para Downloads.');return}try{mirDir=await showDirectoryPicker({id:'lumen-copia',mode:'readwrite'});paint()}catch(_){}};
+ /* filtros e seleção */
+ let F='all';const SEL=new Map();
+ function allItems(){const L=[];for(const[dev,cat] of R.cats){const d=R.devs.get(dev)||{name:dev===R.myId?RM.name+' (este)':'Aparelho',ic:'📷'};for(const it of cat)L.push({dev,d,it})}
+  return L.sort((a,b)=>b.it.t-a.it.t)}
+ function filtered(){return allItems().filter(x=>F==='all'||(F==='foto'||F==='video'?x.it.kind===F:F==='ed'?/Lightroom/.test(x.it.src):x.dev===F))}
+ q('.apAll').onclick=()=>{for(const x of filtered())SEL.set(x.dev+'|'+x.it.k,x);draw()};
+ q('.apClr').onclick=()=>{SEL.clear();draw()};
+ q('.apDl').onclick=async e=>{const L=[...SEL.values()];if(!L.length){say('Toque nas fotos para selecionar (aparece ✓).');return}e.target.disabled=true;try{await saveMany(L,e.target)}finally{e.target.disabled=false}};
+ let io=null;
+ function draw(){if(!sec.classList.contains('on'))return;const all=allItems(),L=filtered();
+  const devs=[...R.devs.values()];const fc=[['all','Todos ('+all.length+')'],['foto','📷 Fotos'],['video','🎬 Vídeos'],['ed','🅻 Editadas']].concat(devs.filter(d=>R.cats.has(d.id)).map(d=>[d.id,(d.ic||'📱')+' '+(d.id===R.myId?'Este aparelho':d.name)]));
+  q('.apF').innerHTML=fc.map(([k,t])=>'<button type="button" class="'+(F===k?'on':'')+'" data-f="'+esc(k)+'">'+esc(t)+'</button>').join('');
+  q('.apF').querySelectorAll('button').forEach(b=>b.onclick=()=>{F=b.dataset.f;draw()});
+  q('.apCount').textContent=SEL.size?SEL.size+' selecionada(s)':L.length+' arquivo(s)';
+  q('.apEmpty').textContent=R.st!=='on'?'Entre numa sala para ver as fotos dos outros aparelhos.':!all.length?'Nenhuma foto ainda. Assim que um aparelho receber fotos da câmera, elas aparecem aqui.':'';
+  const G=q('.apGrid');const sig=L.slice(0,400).map(x=>x.dev+x.it.k).join('|')+'#'+[...SEL.keys()].join(',');if(G.dataset.sig===sig)return;G.dataset.sig=sig;
+  if(io)io.disconnect();io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const el=en.target;io.unobserve(el);const key=el.dataset.key,[dev,...kk]=key.split('|'),k=kk.join('|');
+   const u=R.thumbs.get(key);if(u){if(u!=='none')el.querySelector('.apI').style.backgroundImage='url("'+u+'")';return}
+   if(dev===R.myId){const Lc=LOC.get(k);if(Lc)Lc.th().then(b=>{const uu=b?URL.createObjectURL(b):'none';R.thumbs.set(key,uu);if(b)el.querySelector('.apI').style.backgroundImage='url("'+uu+'")'}).catch(()=>{})}
+   else emit({t:'th?',to:dev,k})}),{rootMargin:'300px'});
+  G.innerHTML=L.slice(0,400).map(x=>{const key=x.dev+'|'+x.it.k;return'<div class="apT'+(SEL.has(key)?' sel':'')+'" data-key="'+esc(key)+'"><div class="apI'+(x.it.kind==='video'?' vid':'')+'"></div><span class="apC">✓</span><small>'+esc((x.d.ic||'📱')+' '+(x.dev===R.myId?'este':x.d.name||''))+'<br>'+esc(x.it.n)+' · '+fmtB(x.it.sz||0)+'</small><button type="button" class="apO" title="Abrir">⤢</button></div>'}).join('');
+  G.querySelectorAll('.apT').forEach(el=>{io.observe(el);const key=el.dataset.key;const x=L.find(y=>y.dev+'|'+y.it.k===key);
+   el.onclick=e=>{if(e.target.classList.contains('apO')){openOne(x);return}if(SEL.has(key))SEL.delete(key);else SEL.set(key,x);el.classList.toggle('sel');q('.apCount').textContent=SEL.size?SEL.size+' selecionada(s)':L.length+' arquivo(s)';G.dataset.sig=''}})}
+ async function openOne(x){const ov=document.createElement('div');ov.className='apOv';ov.innerHTML='<div class="apBox"><div class="apMed">Carregando… 0%</div><div class="fx3a"><button type="button" class="f p apSv">⬇ Baixar</button><button type="button" class="f apX">Fechar</button></div><small>'+esc(x.it.n)+' · '+esc(x.it.src||'')+' · '+esc(x.d.name||'')+'</small></div>';document.body.appendChild(ov);
+  const close=()=>{ov.remove()};ov.querySelector('.apX').onclick=close;ov.onclick=e=>{if(e.target===ov)close()};
+  try{const b=x.dev===R.myId?await LOC.get(x.it.k).get():await fetchFile(x.dev,x.it,f=>{const m=ov.querySelector('.apMed');if(m&&!m.firstElementChild)m.textContent='Carregando… '+Math.round(f*100)+'%'});const u=URL.createObjectURL(b);
+   ov.querySelector('.apMed').innerHTML=x.it.kind==='video'?'<video src="'+u+'" controls playsinline></video>':'<img src="'+u+'" alt="">';
+   ov.querySelector('.apSv').onclick=async()=>{const f=new File([b],x.it.n,{type:b.type||'image/jpeg'});if(MOBILE&&navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f]})}catch(_){}}else{const a=document.createElement('a');a.href=u;a.download=x.it.n;a.click()}}}
+  catch(e){ov.querySelector('.apMed').textContent='Não deu: '+e.message}}
+ let qrFor='';
+ async function paint(){try{const on=R.st==='on',n=R.devs.size;
+  const st=q('.apSt');st.textContent=on?(n>1?n+' aparelhos':'só este aparelho'):R.st==='connecting'?'conectando…':RM.code?'fora da sala':'sem sala';st.className='pillS apSt '+(on&&n>1?'ok':on?'warn':'');
+  q('.apCode').textContent=RM.code?RM.code.replace(/(....)(....)/,'$1 $2'):'—';
+  q('.apHow').innerHTML=RM.code?'No outro aparelho, aponte a câmera para o QR <b>ou</b> abra o LUMEN e digite o código. '+(on?(R.hub?'Este aparelho é o ponto de encontro da sala.':'Ligado ao ponto de encontro.'):''):'Toque em <b>Criar sala</b> neste aparelho e leia o QR no outro. Ou digite o código de uma sala que já existe.';
+  ['.apCopy','.apShare','.apLeave'].forEach(s=>q(s).hidden=!RM.code);q('.apNew').hidden=!!RM.code;
+  if(R.err&&R.st!=='on')say('⚠ '+R.err);else if(/^⚠/.test(q('.apErr').textContent))say('');
+  if(RM.code&&qrFor!==RM.code){try{await libQr();const qr=qrcode(0,'M');qr.addData(linkOf(RM.code));qr.make();q('.apQr').innerHTML=qr.createSvgTag({cellSize:5,margin:2,scalable:true});qrFor=RM.code}catch(_){q('.apQr').textContent='QR indisponível'}}
+  if(!RM.code){q('.apQr').innerHTML='<div class="apQ0">📡</div>';qrFor=''}
+  const D=[...R.devs.values()].sort((a,b)=>(b.id===R.myId)-(a.id===R.myId));q('.apDN').textContent=D.length?D.length+' na sala':'';
+  q('.apDevs').innerHTML=D.length?D.map(d=>{const me_=d.id===R.myId,ql=R.quality.get(d.id)||(R.hub?'':R.quality.get([...R.conns.keys()][0]||''));const qt=me_?'este aparelho':ql==='lan'?'📶 mesmo Wi-Fi (direto)':ql==='relay'?'🌐 pela internet (retransmitido)':ql==='net'?'🌐 pela internet (direto)':'ligado';
+   return'<div class="apD'+(me_?' me':'')+'"><span class="apDi">'+esc(d.ic||'📱')+'</span><span><b>'+esc(d.name||'Aparelho')+(d.hub?' · ponto de encontro':'')+'</b><small>'+esc(qt)+(d.cam?' · 📷 '+d.cam:'')+' · '+(d.n||0)+' arquivo(s)</small></span></div>'}).join(''):'<div class="sub">Nenhum aparelho ainda.</div>';
+  const ms=q('.apMS');ms.textContent=RM.mirror?(R.mirN?R.mirN+' recebida(s)':'ligada'):'desligada';ms.className='pillS apMS '+(RM.mirror?'ok':'');
+  q('.apMirDir').textContent=mirDir?'📁 Pasta: '+mirDir.name:'📁 Escolher a pasta da cópia';q('.apMirDir').hidden=!window.showDirectoryPicker||MOBILE;
+ }catch(_){}}
+ function opened(){paint();draw();scanItems();if(R.st==='on')shareCat()}
+ const _go=window.goTab;window.goTab=function(t){const r=_go.apply(this,arguments);try{if(t==='dev')opened()}catch(_){}return r};try{goTab=window.goTab}catch(_){}
+ /* novas fotos entram na sala na hora */
+ const _add=window.add;window.add=function(it){const r=_add.apply(this,arguments);try{scanItems();if(R.st==='on')shareCat()}catch(_){}return r};try{add=window.add}catch(_){}
+ setInterval(async()=>{if(R.st!=='on')return;const before=locSig;scanItems();if(Date.now()-lastWalk>45000)await scanFolder();const sig=myCat().map(m=>m.k).join('|');if(sig!==before){locSig=sig;shareCat()}},5000);
+ setInterval(()=>{if(R.st==='on'){const now=Date.now();if(R.hub){for(const[id,c] of [...R.conns]){const t=(R.seen&&R.seen.get(id))||0;if(t&&now-t>30000){try{c.close()}catch(_){}R.conns.delete(id);R.devs.delete(id);R.cats.delete(id)}}bcastPeers()}
+  else{emit({t:'hi',to:'*',d:me()});if(R.lastHub&&now-R.lastHub>30000){R.lastHub=0;log('📡 O ponto de encontro da sala saiu; reconectando…');leave(true);again()}}}paint()},10000);
+ window.LUMEN_ROOM={state:()=>({code:RM.code,on:R.st==='on',devs:R.devs.size,hub:R.hub}),join,leave};
+ if(RM.code&&RM.auto!==false)setTimeout(()=>join(RM.code),fromUrl?300:2500);
+ if(fromUrl)setTimeout(()=>{try{goTab('dev')}catch(_){}},1200);
+ log('Build v81: Aparelhos conectados (sala com QR, fotos de todos ao vivo, baixar e cópia automática)','ok');
+}catch(e){try{log('v81: '+e.message,'bad')}catch(_){}}})();
 </script>
 
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
