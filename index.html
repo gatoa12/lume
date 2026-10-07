@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v85</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v88</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -1206,7 +1206,7 @@ body.kiosk>.w,body.kiosk>section.tab.w{margin:0 auto!important}
 #t-dev .apLR{padding:8px 0;border-top:1px solid rgba(127,127,127,.18)}#t-dev .apLH{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:14px}#t-dev .apLH span{color:var(--mut);font-variant-numeric:tabular-nums}
 #t-dev .apLBar{display:flex;height:10px;border-radius:6px;overflow:hidden;background:rgba(127,127,127,.18);margin:6px 0 4px}#t-dev .apLBar i{display:block;height:100%}#t-dev .apLBar .ok{background:#2ecc71}#t-dev .apLBar .q{background:#f5a623}#t-dev .apLBar .bad{background:#ff4d4d}
 #t-dev .apLR small{color:var(--mut);font-size:12px}#t-dev .apFails{margin-top:8px;font-size:13px}#t-dev .apFails ul{margin:6px 0 0 18px;max-height:220px;overflow:auto}
-#t-dev .apI{position:relative}#t-dev .apQ{max-width:calc(100% - 44px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#t-dev .apCp{right:auto;left:6px;top:28px}
+#t-dev .apI{position:relative}#t-dev .apI.noimg::before{content:'🖼 sem prévia — toque em ⤢ para abrir';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--mut);text-align:center;padding:6px}#t-dev .apWhy{margin-top:6px;font-size:12px;padding:8px;border-radius:8px;background:rgba(255,77,77,.08)}#t-dev .apWhy .f{width:auto;padding:5px 10px;min-height:0;font-size:12px;margin-top:6px}#t-dev .apQ{max-width:calc(100% - 44px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#t-dev .apCp{right:auto;left:6px;top:28px}
 #t-dev .apBanner{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:12px;margin:8px 0 4px;border:1px solid}
 #t-dev .apBanner.ok{background:rgba(46,204,113,.12);border-color:rgba(46,204,113,.55)}#t-dev .apBanner.warn{background:rgba(245,166,35,.10);border-color:rgba(245,166,35,.5)}
 #t-dev .apBanner b{font-size:16px}#t-dev .apBanner small{color:var(--ink);opacity:.85;font-size:13px;line-height:1.45}
@@ -1221,6 +1221,31 @@ body.kiosk>.w,body.kiosk>section.tab.w{margin:0 auto!important}
 #t-dev .apReqR{display:flex;gap:8px;align-items:center;flex-wrap:wrap}#t-dev .apReqR span{flex:1;min-width:140px}#t-dev .apReqR .f{width:auto;padding:6px 12px;min-height:0}
 #t-dev .apDt{flex:1;min-width:0}#t-dev .apAct{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}#t-dev .apAct .f{width:auto;padding:5px 10px;font-size:12px;min-height:0}
 #t-dev .apDevs{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+#t-pv .pvStage{position:relative;background:#000;border-radius:14px;overflow:hidden;height:calc(100vh - 230px);height:calc(100dvh - 230px);min-height:340px;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;outline:none}
+#t-pv .pvWrap{position:absolute;left:50%;top:50%;transform-origin:center center;will-change:transform}#t-pv .pvImg{display:block;width:100%;height:100%;-webkit-user-drag:none;pointer-events:none}
+#t-pv .pvClipC{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;animation:pvBlink 1s steps(2) infinite;image-rendering:pixelated}@keyframes pvBlink{50%{opacity:.15}}
+#t-pv .pvGridO{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent calc(33.33% - 1px),rgba(255,255,255,.55) calc(33.33% - 1px),rgba(255,255,255,.55) 33.33%,transparent 33.33%,transparent calc(66.66% - 1px),rgba(255,255,255,.55) calc(66.66% - 1px),rgba(255,255,255,.55) 66.66%,transparent 66.66%),linear-gradient(transparent calc(33.33% - 1px),rgba(255,255,255,.55) calc(33.33% - 1px),rgba(255,255,255,.55) 33.33%,transparent 33.33%,transparent calc(66.66% - 1px),rgba(255,255,255,.55) calc(66.66% - 1px),rgba(255,255,255,.55) 66.66%,transparent 66.66%)}
+#t-pv .pvEmpty{position:absolute;inset:0;color:#bbb;text-align:center;font-size:18px;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;padding:20px}#t-pv .pvEmpty small{font-size:13px;color:#888;max-width:420px}
+#t-pv .pvTop{position:absolute;left:10px;right:76px;top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;pointer-events:none;z-index:3}#t-pv .pvTop>*{pointer-events:auto}
+#t-pv .pvLive{background:#e02424;color:#fff;font-weight:800;font-size:12px;padding:5px 10px;border-radius:999px;letter-spacing:.04em}#t-pv .pvLive.off{background:#555}
+#t-pv .pvNew{background:#ffc21a;color:#111;font-weight:800;font-size:12px;padding:5px 10px;border-radius:999px;cursor:pointer}
+#t-pv .pvSrc,#t-pv .pvRes{background:rgba(0,0,0,.55);color:#fff;font-size:12px;padding:5px 10px;border-radius:999px;max-width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#t-pv .pvInfo{position:absolute;left:10px;bottom:64px;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:700;padding:5px 10px;border-radius:8px;font-variant-numeric:tabular-nums;z-index:3}
+#t-pv .pvHistC{position:absolute;right:10px;bottom:64px;width:256px;height:90px;border-radius:8px;z-index:3;max-width:45%}
+#t-pv .pvNav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:70px;border:0;border-radius:12px;background:rgba(0,0,0,.45);color:#fff;font-size:36px;line-height:1;padding:0;min-height:0;z-index:3}#t-pv .pvPrev{left:8px}#t-pv .pvNext{right:8px}
+#t-pv .pvBar{position:absolute;left:0;right:0;bottom:0;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:10px 8px;background:linear-gradient(transparent,rgba(0,0,0,.75));z-index:3}
+#t-pv .pvB{width:auto;min-height:0;padding:9px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(20,20,24,.78);color:#fff;font-weight:700;font-size:14px}#t-pv .pvB.on{background:#2b6fd6;border-color:#2b6fd6}#t-pv .pvPause{background:#ffc21a;color:#111;border-color:#ffc21a}
+#t-pv .pvFab{position:absolute;right:12px;top:10px;width:56px;height:56px;border-radius:50%;border:0;background:#ffc21a;color:#111;font-size:24px;font-weight:900;padding:0;min-height:0;z-index:4;box-shadow:0 4px 16px rgba(0,0,0,.5)}#t-pv .pvFab.on{background:#2ecc71}
+#t-pv .pvStrip{display:flex;gap:6px;overflow-x:auto;padding:8px 0;scrollbar-width:thin}#t-pv .pvT{flex:none;width:78px;height:56px;border-radius:8px;border:2px solid transparent;background:#222;padding:0;min-height:0;overflow:hidden;position:relative}#t-pv .pvT i{position:absolute;inset:0;background:center/cover no-repeat}#t-pv .pvT.on{border-color:#ffc21a}#t-pv .pvT.star::after{content:'★';color:#ffc21a;font-size:15px;position:absolute;right:3px;top:0;text-shadow:0 0 3px #000}
+#t-pv .pvOpts{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin:4px 0 8px}#t-pv .pvOpts label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600}#t-pv .pvOpts select{padding:8px;border-radius:8px;border:1px solid var(--ln,#ccc);background:var(--bg2,transparent);color:var(--ink)}#t-pv .pvChk{flex-direction:row!important;align-items:center}#t-pv .pvChk input{width:auto}
+#t-pv .pvTvBox{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:10px}#t-pv .pvTvQr{width:160px;height:160px;background:#fff;border-radius:12px;padding:6px}#t-pv .pvTvQr svg{width:100%;height:100%}#t-pv .pvTvBox>div:last-child{display:flex;flex-direction:column;gap:6px;flex:1;min-width:200px}#t-pv .pvTvBox small{color:var(--mut)}#t-pv .pvTvBox .f{width:auto}
+#t-pv .pvStage.full{position:fixed;inset:0;z-index:2147483000;height:100vh;height:100dvh;min-height:0;border-radius:0}
+#t-pv .pvStage.full .pvBar,#t-pv .pvStage.full .pvNav,#t-pv .pvStage.full .pvSrc,#t-pv .pvStage.full .pvInfo,#t-pv .pvStage.full .pvHistC{transition:opacity .35s}
+#t-pv .pvStage.full.idle .pvBar,#t-pv .pvStage.full.idle .pvNav,#t-pv .pvStage.full.idle .pvSrc,#t-pv .pvStage.full.idle .pvRes{opacity:0;pointer-events:none}
+#t-pv .pvStage.full.idle .pvFab{opacity:.75}body.pvFullOn{overflow:hidden}
+.pvGo{position:fixed;inset:0;z-index:2147483001;background:rgba(0,0,0,.88);color:#fff;border:0;font-size:24px;font-weight:800;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;width:100%;border-radius:0}.pvGo small{font-size:14px;font-weight:500;opacity:.8}
+#t-pv [hidden]{display:none!important}
+#t-pv [hidden]{display:none!important}
 </style>
 
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -2035,7 +2060,7 @@ function upw(){while(S.ua-S.uv<(window.upPar?upPar():(C.par||3))&&S.uq.length){
  const j=S.uq.splice(i,1)[0],isV=!!(j.extra&&j.extra['X-Class']==='video');S.ua++;if(isV)S.uv++;
  (async()=>{try{await send(j.blob,j.name,j.extra);S.upOk=(S.upOk||0)+1;S.upB=(S.upB||0)+j.blob.size;if(window.audSent)audSent(j.name);if(j.idp&&eps().length)OB.del(await j.idp);const it=S.items.find(x=>x.name===j.name);if(it){it.sent=true;gal()}}catch(e){S.upF.push(j);LG.set(j.sig,{st:'falha',e:'envio: '+e.message})}finally{S.ua--;if(isV)S.uv--;upw()}})()}}
 setInterval(()=>{if(navigator.onLine&&String(C.ev||'').trim()&&(S.upF.length||S.pF.length)&&!S.ua)retryFailed()},45000);
-function retryFailed(){let n=S.upF.length+S.pF.length;S.pF.splice(0).forEach(j=>{j.tries=0;S.pq.push(j);LG.set(j.sig,{st:'fila',e:'',mem:0})});pw();S.upF.splice(0).forEach(j=>{S.uq.push(j);LG.set(j.sig,{st:'ok',e:''})});upw();lgNow().forEach(([k,v])=>{if(v.st==='falha'&&v.h&&!(v.e||'').startsWith('envio')&&!v.mem){S.tries[v.h]=0;S.sig.delete(k);S.done.delete(v.h);S.q.push(v.h);S.u.total++;LG.set(k,{st:'fila',e:''});n++}});log(n+' arquivo(s) de volta na fila'+(S.run?'':' (toque em Iniciar para processar)'),n?'ok':'');if(S.run)pump()}
+function retryFailed(){let n=S.upF.length+S.pF.length;S.pF.splice(0).forEach(j=>{j.tries=0;S.pq.push(j);LG.set(j.sig,{st:'fila',e:'',mem:0})});pw();S.upF.splice(0).forEach(j=>{S.uq.push(j);LG.set(j.sig,{st:'ok',e:''})});upw();lgNow().forEach(([k,v])=>{if(v.st==='falha'&&v.h&&!(v.e||'').startsWith('envio')&&!v.mem){S.tries[v.h]=0;S.sig.delete(k);S.done.delete(v.h);S.q.push(v.h);LG.set(k,{st:'fila',e:''});n++}});log(n+' arquivo(s) de volta na fila'+(S.run?'':' (toque em Iniciar para processar)'),n?'ok':'');if(S.run)pump()}
 const RT={o:[5,'Green'],b:[4,'Blue'],a:[3,'Yellow'],d:[1,'Red']};
 async function sidecar(sub,name,cls,t){return;const[r,l]=RT[cls]||[0,''],kw=[C.ev,'LUMEN',{o:'otima',b:'boa',a:'ajustar',d:'descarte'}[cls]].filter(Boolean);
  const x='<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmp:Rating="'+r+'" xmp:Label="'+l+'"><dc:subject><rdf:Bag>'+kw.map(k=>'<rdf:li>'+esc(k)+'</rdf:li>').join('')+'</rdf:Bag></dc:subject></rdf:Description></rdf:RDF></x:xmpmeta>';
@@ -2171,7 +2196,7 @@ async function work(h){
  const isW=typeof h==='string',isF=typeof h==='object',inf=isF?{name:h.name,size:h.size}:isW?await ccInfo(h):info((await ptp(0x1008,[h])).data),ext=inf.name.split('.').pop().toLowerCase(),sig=inf.name+'|'+inf.size;S.cs=sig;if(!S.sig.has(sig))LG.set(sig,{n:inf.name,sz:inf.size,ev:C.ev,h:isF?undefined:h,st:'fila',e:''});
  const vid=['mp4','mov','mxf'].includes(ext),jpg=['jpg','jpeg'].includes(ext);
  if(S.sig.has(sig)){log(inf.name+': repetido, ignorado');S.done.add(h);return}
- if(!vid&&!jpg&&!C.raw&&!((C.rawPv==='keep'||C.rawPv==='lr')&&/^(cr3|cr2|dng)$/.test(ext))){S.done.add(h);return}
+ if(!vid&&!jpg&&!C.raw&&!((C.rawPv==='keep'||C.rawPv==='lr')&&/^(cr3|cr2|dng)$/.test(ext))){S.done.add(h);LG.set(sig,{st:'ign',e:'RAW ignorado (opção: só JPG e vídeo)'});return}
  
  await bp();const tDl0=performance.now();let dat;if(isF)dat=h;else if(isW)dat=await ccGet(h);else{dat=await ptpGetObject(h,inf.size,(inf.size>48e6&&window.libSink)?await libSink(sig,inf.name,inf.size):null)}
  LG.set(sig,{st:'baixado'});const tDl=performance.now()-tDl0;S.recvN=(S.recvN||0)+1;let ct=isF&&h.lastModified?h.lastModified:Date.now();
@@ -7509,7 +7534,9 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
    (o .xmp do Lightroom ou um preset do LUMEN), grava em Editadas/Fotos e o site recebe. Nada se perde: o original fica em Plano_B_originais. ===== */
 (function(){try{
  const $1=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
- const K='lumen_planob';let CF={mode:'auto',wait:45,pid:'',size:0,q:92,n:0};try{CF=Object.assign(CF,JSON.parse(localStorage.getItem(K)||'{}'))}catch(_){}
+ const K='lumen_planob';let CF={mode:'off',wait:45,pid:'',size:0,q:92,n:0};try{CF=Object.assign(CF,JSON.parse(localStorage.getItem(K)||'{}'))}catch(_){}
+ /* v87: o Plano B só edita se VOCÊ ligar (antes vinha ligado sozinho e editava sem você pedir) */
+ if(!CF.v87){CF.mode=CF.userMode||'off';CF.v87=1;try{localStorage.setItem(K,JSON.stringify(CF))}catch(_){}}
  const sv=()=>{try{localStorage.setItem(K,JSON.stringify(CF))}catch(_){}};
  const IMG=/\.(jpe?g|png|webp)$/i,RAW=/\.(cr3|cr2|dng|nef|arw|raf|orf|rw2)$/i,VID=/\.(mp4|mov|m4v)$/i;
  const PB={back:new Map(),seen:new Map(),busy:false,on:false,since:0,last:'',err:'',done:0,queue:0,skip:new Set(),told:0};
@@ -7598,7 +7625,7 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
   +'<details class="ex" data-ex="1"><summary>Como pegar o meu preset do Lightroom (.xmp)</summary><ol class="steps" data-ex="1"><li><b>Abra o Lightroom Classic › Revelação.</b><small>No painel <b>Predefinições</b> (esquerda), clique com o botão direito no seu preset › <b>Exportar…</b> › salve na Mesa.</small></li><li><b>Suba aqui.</b><small>Toque em "Subir meu preset" e escolha o arquivo .xmp. Pode subir vários.</small></li><li><b>Pronto.</b><small>Se o nome for igual ao preset escolhido no plug-in, o Plano B usa o mesmo automaticamente. Toque em "Ver antes e depois" para conferir.</small></li></ol>'
   +'<div class="sub wrap" style="white-space:normal">O Plano B reproduz luz, contraste, cor, HSL, curva, color grading e vinheta do preset. Ajustes locais (máscaras, pincel, remoção de manchas) e o perfil da câmera só existem no Lightroom: por isso o resultado fica muito parecido, não idêntico. Se quiser a versão do Lightroom depois, toque em "Devolver ao Lightroom": ele refaz e substitui no site.</div></details>';
  function mk(){const d=document.createElement('div');d.className='c v70c pbC';d.innerHTML=HTML;
-  d.querySelectorAll('input[name=pbM]').forEach(r=>{r.name='pbM'+Math.random().toString(36).slice(2,6);r.onchange=()=>{CF.mode=r.value;sv();tellPlugin();say({auto:'✔ Automático: o LUMEN só edita se o Lightroom parar.',always:'✔ O LUMEN edita tudo na hora. No Lightroom o plug-in fica em pausa (versão 2.1) ou pode ser desligado.',off:'Plano B desligado: as fotos esperam o Lightroom.'}[CF.mode]);render()}});
+  d.querySelectorAll('input[name=pbM]').forEach(r=>{r.name='pbM'+Math.random().toString(36).slice(2,6);r.onchange=()=>{CF.mode=r.value;CF.userMode=r.value;sv();tellPlugin();say({auto:'✔ Automático: o LUMEN só edita se o Lightroom parar.',always:'✔ O LUMEN edita tudo na hora. No Lightroom o plug-in fica em pausa (versão 2.1) ou pode ser desligado.',off:'Plano B desligado: as fotos esperam o Lightroom.'}[CF.mode]);render()}});
   d.querySelector('.pbP').onchange=e=>{CF.pid=e.target.value;sv();lastSig='';render()};
   d.querySelector('.pbW').onchange=e=>{CF.wait=+e.target.value;sv()};d.querySelector('.pbS').onchange=e=>{CF.size=+e.target.value;sv()};d.querySelector('.pbQ').onchange=e=>{CF.q=+e.target.value;sv()};d.querySelector('.pbE').onchange=e=>{CF.enh=e.target.value;sv()};
   d.querySelector('.pbUp').onchange=async e=>{const f=[...e.target.files];e.target.value='';if(!f.length||!COR())return;try{await COR().importFiles(f);say('✔ Preset(s) adicionados. Escolha na lista "Preset do Plano B".');setTimeout(()=>{lastSig='';const L=presets().filter(x=>x.mine);const nm=f[0].name.replace(/\.[^.]+$/,'');const p=L.find(x=>norm(x.name)===norm(nm))||L[L.length-1];if(p&&!CF.pid){CF.pid=p.id;sv()}render()},800)}catch(er){say('Não consegui ler: '+er.message)}};
@@ -7820,7 +7847,29 @@ mqtt/dist/mqtt.esm.js:
  async function videoThumb(blob){return await new Promise(res=>{const v=document.createElement('video'),u=URL.createObjectURL(blob);let done=false;const fin=b=>{if(done)return;done=true;URL.revokeObjectURL(u);res(b)};
   v.muted=true;v.playsInline=true;v.preload='metadata';v.src=u;v.onloadeddata=()=>{try{v.currentTime=Math.min(.5,(v.duration||1)/3)}catch(_){fin(null)}};
   v.onseeked=()=>{try{const k=360/Math.max(v.videoWidth,v.videoHeight,1),cv=document.createElement('canvas');cv.width=Math.round(v.videoWidth*k);cv.height=Math.round(v.videoHeight*k);cv.getContext('2d').drawImage(v,0,0,cv.width,cv.height);cv.toBlob(b=>fin(b),'image/jpeg',.7)}catch(_){fin(null)}};v.onerror=()=>fin(null);setTimeout(()=>fin(null),6000)})}
- async function thumbOf(f,n){if(isVid(n))return await videoThumb(f);if(isRaw(n)){const p=window.lumenRawPreview?await lumenRawPreview(f):null;return p?await smallJpeg(p,360):null}return await smallJpeg(f,360)}
+ /* miniatura instantânea: a câmera já grava uma miniatura dentro do JPG (EXIF); usa ela (girada certo) e só decodifica a foto inteira se não houver */
+ async function exifThumb(file){try{const b=new Uint8Array(await file.slice(0,196608).arrayBuffer());if(b[0]!==0xFF||b[1]!==0xD8)return null;let o=2;
+  while(o+10<b.length){if(b[o]!==0xFF)return null;const mk=b[o+1],len=(b[o+2]<<8)|b[o+3];
+   if(mk===0xE1&&b[o+4]===0x45&&b[o+5]===0x78&&b[o+6]===0x69&&b[o+7]===0x66){const t=o+10,le=b[t]===0x49,dv=new DataView(b.buffer,b.byteOffset+t,Math.min(b.length-t,len));const u16=x=>dv.getUint16(x,le),u32=x=>dv.getUint32(x,le);
+    const i0=u32(4),n0=u16(i0);let ori=1;for(let i=0;i<n0;i++){const e=i0+2+i*12;if(u16(e)===0x112)ori=u16(e+8)}
+    const i1=u32(i0+2+n0*12);if(!i1)return null;const n1=u16(i1);let off=0,ln=0;for(let i=0;i<n1;i++){const e=i1+2+i*12,tg=u16(e);if(tg===0x201)off=u32(e+8);if(tg===0x202)ln=u32(e+8)}
+    if(!off||!ln||t+off+ln>b.length)return null;let th=new Blob([b.slice(t+off,t+off+ln)],{type:'image/jpeg'});
+    if(ori>1){const bm=await createImageBitmap(th,{imageOrientation:'none'});const r=ori>=5,cv=document.createElement('canvas');cv.width=r?bm.height:bm.width;cv.height=r?bm.width:bm.height;const g=cv.getContext('2d');
+     const T={2:[-1,0,0,1,bm.width,0],3:[-1,0,0,-1,bm.width,bm.height],4:[1,0,0,-1,0,bm.height],5:[0,1,1,0,0,0],6:[0,1,-1,0,bm.height,0],7:[0,-1,-1,0,bm.height,bm.width],8:[0,-1,1,0,0,bm.width]}[ori];if(T)g.setTransform(...T);g.drawImage(bm,0,0);bm.close();th=await new Promise(r=>cv.toBlob(r,'image/jpeg',.8))}
+    return th}
+   if(mk===0xDA)return null;o+=2+len}}catch(_){}return null}
+ async function thumbOf(f,n){if(isVid(n))return await videoThumb(f);if(isRaw(n)){const p=window.lumenRawPreview?await lumenRawPreview(f):null;return p?await smallJpeg(p,360):null}return(await exifThumb(f))||await smallJpeg(f,360)}
+ const THC=new Map(),thQ=[],PVC=new Map(),PVP=new Map();let thBusy=0;
+ function previewOf(dev,k){return new Promise((ok,no)=>{const rid=Math.random().toString(36).slice(2);PVP.set(rid,{ok,no,to:setTimeout(()=>{PVP.delete(rid);no(new Error('sem resposta'))},20000)});emit({t:'pv?',to:dev,k,rid})})}
+ async function thumbBuf(k){if(THC.has(k))return THC.get(k);const L=LOC.get(k);if(!L)return null;let b=null;try{b=await L.th()}catch(_){}const ab=b?await b.arrayBuffer():null;THC.set(k,ab);if(THC.size>3000)THC.delete(THC.keys().next().value);return ab}
+ function thServe(m){const i=thQ.findIndex(x=>x.k===m.k&&x.from===m.from);if(i>=0)thQ.splice(i,1);thQ.push(m);if(thQ.length>400)thQ.shift();thPump()}
+ function thPump(){while(thBusy<3&&thQ.length){const m=thQ.pop();thBusy++;thumbBuf(m.k).then(ab=>emit(ab?{t:'th',to:m.from,k:m.k,data:ab}:{t:'th',to:m.from,k:m.k})).catch(()=>{}).finally(()=>{thBusy--;thPump()})}}
+ /* quem pede: no máximo 8 pedidos por aparelho ao mesmo tempo, e pede de novo se não vier em 12 s */
+ const TW=new Map();function wantThumb(dev,k){const key=dev+'|'+k;if(R.thumbs.has(key)||TW.has(key))return;TW.set(key,{dev,k,t:0});thAsk()}
+ function thAsk(){const now=Date.now(),per=new Map();for(const w of TW.values())if(w.t&&now-w.t<12000)per.set(w.dev,(per.get(w.dev)||0)+1);
+  for(const[key,w] of [...TW].reverse()){if(R.thumbs.has(key)){TW.delete(key);continue}if(w.t&&now-w.t<12000)continue;if((w.n||0)>=4){TW.delete(key);R.thumbs.set(key,'none');setThumbEl(key,'');continue}const c=per.get(w.dev)||0;if(c>=8)continue;per.set(w.dev,c+1);w.t=now;w.n=(w.n||0)+1;emit({t:'th?',to:w.dev,k:w.k})}}
+ setInterval(()=>{if(TW.size)thAsk()},800);
+ function setThumbEl(key,u){$$('.apT[data-key="'+CSS.escape(key)+'"] .apI').forEach(e=>{if(u){e.style.backgroundImage='url("'+u+'")';e.classList.remove('noimg')}else e.classList.add('noimg')})}
  function typeOf(p){const P='/'+p;if(/\/Editadas\//i.test(P))return'ed';if(/\/RAW\//i.test(P))return'raw';if(/\/Quarentena\//i.test(P))return'qua';if(/\/Videos\//i.test(P))return/\/Com_look\//i.test(P)?'vlook':'vid';if(/\/Originais\//i.test(P))return'orig';
   const n=p.split('/').pop();return isVid(n)?'vid':isRaw(n)?'raw':'pub'}
  let onDisk=new Set();
@@ -7852,7 +7901,7 @@ mqtt/dist/mqtt.esm.js:
  /* ---------- 2. a sala: WebRTC de aparelho para aparelho. Os aparelhos se procuram por TRÊS redes de encontro públicas
     ao mesmo tempo (MQTT, BitTorrent e Nostr, vários servidores em cada). Basta UMA funcionar para os dois se acharem.
     Depois a conversa é direta entre os aparelhos. Cada aparelho tem um número fixo (não muda ao recarregar). ---------- */
- const R={asked:new Map(),pendingMe:false,removed:null,rooms:[],devs:new Map(),cats:new Map(),st:'off',err:'',since:0,joinT:0,retry:0,pend:new Map(),thumbs:new Map(),quality:new Map(),myId:RM.id,sent:new Map(),out:new Map(),conns:new Map(),hub:false,T:null,lastJoin:'',links:new Map(),lk2dev:new Map(),seenPeers:new Map()};
+ const R={away:new Map(),lastSoft:0,offline:!navigator.onLine,asked:new Map(),pendingMe:false,removed:null,rooms:[],devs:new Map(),cats:new Map(),st:'off',err:'',since:0,joinT:0,retry:0,pend:new Map(),thumbs:new Map(),quality:new Map(),myId:RM.id,sent:new Map(),out:new Map(),conns:new Map(),hub:false,T:null,lastJoin:'',links:new Map(),lk2dev:new Map(),seenPeers:new Map()};
  const TRY_URLS=['https://cdn.jsdelivr.net/npm/trystero@0.26.0/+esm'];
  async function libT(){if(R.T)return R.T;let ov=null;try{ov=JSON.parse(localStorage.getItem('lumen_trystero')||'null')}catch(_){}
   const L=[];if(ov&&ov.esm)L.push(ov.esm);else{const el=document.getElementById('lumenTrystero');if(el&&el.textContent.length>1000)L.push(URL.createObjectURL(new Blob([el.textContent],{type:'text/javascript'})))}L.push(...TRY_URLS);
@@ -7863,7 +7912,8 @@ mqtt/dist/mqtt.esm.js:
     {urls:['turn:openrelay.metered.ca:80','turn:openrelay.metered.ca:443','turns:openrelay.metered.ca:443?transport=tcp'],username:'openrelayproject',credential:'openrelayproject'}]}};
   try{const o=JSON.parse(localStorage.getItem('lumen_trystero')||'null');if(o&&o.urls)c.relayConfig={urls:o.urls}}catch(_){}
   if(!c.relayConfig&&s!=='ws')c.relayConfig={redundancy:s==='nostr'?8:5};return c}
- function camStats(){const u=S.u||{};return{det:u.total||0,ok:u.done||0,fail:(S.pF||[]).length,upOk:S.upOk||0,upFail:(S.upF||[]).length}}
+ function camStats(){let ok=0,fail=0,q=0,ign=0,upf=0;const errs={};try{for(const[k,v] of lgNow()){if(v.st==='ok')ok++;else if(v.st==='ign')ign++;else if(v.st==='falha'){if(/^envio/.test(v.e||'')){ok++;upf++}else{fail++;const e=String(v.e||'erro desconhecido').slice(0,90);errs[e]=(errs[e]||0)+1}}else q++}}catch(_){}
+  return{det:ok+fail+q,ok,fail,q,ign,upOk:S.upOk||0,upFail:upf,errs:Object.entries(errs).sort((a,b)=>b[1]-a[1]).slice(0,3)}}
  function me(){return{id:RM.id,sid:RM.id,name:RM.name,dev:DEVT[0],ic:DEVT[1],cam:(window.camName&&S.sess&&S.src==='usb')?camName():'',n:myCat().length,hub:false,own:isOwner()?getOwn().pub:'',t:Date.now(),cs:camStats()}}
  /* ligações: "estratégia:peerId" → aparelho. Cada aparelho usa a 1ª ligação que funcionou; as outras ficam de reserva */
  const linksOf=sid=>[...R.links.entries()].filter(([lk,v])=>v.sid===sid).map(([lk,v])=>Object.assign({lk},v));
@@ -7879,22 +7929,32 @@ mqtt/dist/mqtt.esm.js:
   if(m.t==='hi'&&m.d&&m.d.sid){if(m.d.sid===RM.id)return;if(!L){L={room:RO,pid,s:RO.s,t:Date.now(),sid:''};R.links.set(lk,L)}L.sid=m.d.sid;m.from=m.d.sid}
   else{const sid=L&&L.sid;if(!sid)return;m.from=sid}
   onMsg(m)}
- async function join(code){code=(code||RM.code||'').toUpperCase().replace(/[^A-Z0-9]/g,'');if(!code)return;const rejoin=R.lastJoin===code;RM.code=code;svR();leave(true);R.removed=null;R.st='connecting';R.err='';R.since=Date.now();paint();
+ async function join(code){code=(code||RM.code||'').toUpperCase().replace(/[^A-Z0-9]/g,'');if(!code)return;const rejoin=R.lastJoin===code;RM.code=code;svR();if(rejoin)softLeave();else{leave(true);restoreDevs(code)}R.removed=null;R.st='connecting';R.err='';R.since=Date.now();paint();
   let ST;try{ST=await libT()}catch(e){R.st='off';R.err=e.message;paint();again();return}
   if(RM.code!==code)return;
   for(const[s,M] of ST){let room;try{room=M.joinRoom(tCfg(code,s),'lumen-sala-'+code.toLowerCase(),{onJoinError:d=>{R.err='Achei o outro aparelho, mas a rede não deixou ligar os dois. Coloquem os dois no mesmo Wi-Fi (sem "Wi-Fi de visitantes") ou usem o roteamento (hotspot) de um dos celulares.';paint()}})}catch(e){continue}
    const RO={s,M,room,act:room.makeAction('msg'),bin:room.makeAction('bin')};R.rooms.push(RO);
    RO.act.onMessage=(m,ctx)=>inMsg(RO,ctx.peerId,m);
    RO.bin.onMessage=(data,ctx)=>{const m=Object.assign({},ctx.metadata||{});m.data=data;inMsg(RO,ctx.peerId,m)};
-   room.onPeerJoin=pid=>{const lk=s+':'+pid;R.links.set(lk,{room:RO,pid,s,t:Date.now(),sid:''});R.seenPeers.set(s,(R.seenPeers.get(s)||0)+1);R.err='';rawSend(R.links.get(lk),{t:'hi',d:me()});paint()};
-   room.onPeerLeave=pid=>{const lk=s+':'+pid,L=R.links.get(lk);R.links.delete(lk);if(L&&L.sid&&!linksOf(L.sid).length){const sid=L.sid,d=R.devs.get(sid);R.conns.delete(sid);R.devs.delete(sid);R.cats.delete(sid);R.quality.delete(sid);
-     for(const[rid,P] of [...R.pend])if(P.dev===sid){R.pend.delete(rid);clearTimeout(P.to);try{if(P.sink)P.sink.abort()}catch(_){}P.no(new Error('o aparelho saiu da sala'))}
-     if(d)toast('📴 '+(d.name||'Um aparelho')+' saiu da sala');draw()}paint()}}
+   room.onPeerJoin=pid=>{const lk=s+':'+pid;R.links.set(lk,{room:RO,pid,s,t:Date.now(),sid:''});R.seenPeers.set(s,(R.seenPeers.get(s)||0)+1);R.err='';rawSend(R.links.get(lk),{t:'hi',d:Object.assign(me(),{fresh:1})});paint()};
+   room.onPeerLeave=pid=>{const lk=s+':'+pid,L=R.links.get(lk);R.links.delete(lk);if(L&&L.sid&&!linksOf(L.sid).length){const sid=L.sid;R.quality.delete(sid);if(R.devs.has(sid)&&!R.away.has(sid))R.away.set(sid,Date.now());
+     for(const[rid,P] of [...R.pend])if(P.dev===sid){R.pend.delete(rid);clearTimeout(P.to);try{if(P.sink)P.sink.abort()}catch(_){}P.no(new Error('o aparelho está reconectando'))}draw()}paint()}}
   if(!R.rooms.length){R.st='off';R.err='Este navegador não conseguiu abrir a conexão. Atualize o navegador.';paint();return}
   R.st='on';R.retry=0;R.lastJoin=code;R.devs.set(R.myId,me());
   if(!rejoin)log('📡 Entrou na sala '+code+' ('+RM.name+')','ok');paint();shareCat(true)}
+ /* ---- continuar na sala: recarregar a página, cair a internet ou trancar o celular não tira ninguém da sala ---- */
+ const DK=c=>'lumen_roomdevs_'+c;
+ function saveDevs(){if(!RM.code)return;try{const L=[...R.devs.values()].filter(d=>d.id!==R.myId).map(d=>({id:d.id,sid:d.sid,name:d.name,ic:d.ic,dev:d.dev,cam:d.cam,n:d.n,own:d.own}));localStorage.setItem(DK(RM.code),JSON.stringify(L))}catch(_){}}
+ function restoreDevs(code){try{const L=JSON.parse(localStorage.getItem(DK(code))||'[]');const now=Date.now();for(const d of L){if(d.id===RM.id)continue;R.devs.set(d.id,d);R.away.set(d.id,now)}}catch(_){}}
+ function softLeave(){for(const RO of R.rooms)try{RO.room.leave()}catch(_){}R.rooms=[];R.links.clear();const now=Date.now();for(const id of R.devs.keys())if(id!==R.myId&&!R.away.has(id))R.away.set(id,now);R.sentOnce=false}
+ function softRejoin(why){if(!RM.code||R.removed)return;if(Date.now()-R.lastSoft<20000)return;R.lastSoft=Date.now();join(RM.code)}
+ function goneFor(sid,why){const d=R.devs.get(sid);R.away.delete(sid);R.conns.delete(sid);R.devs.delete(sid);R.cats.delete(sid);R.quality.delete(sid);if(d)toast('📴 '+(d.name||'Um aparelho')+(why==='bye'?' saiu da sala':' ficou sem conexão e saiu da lista'));saveDevs();paint();draw()}
+ addEventListener('offline',()=>{R.offline=true;paint()});
+ addEventListener('online',()=>{R.offline=false;R.lastSoft=0;setTimeout(()=>softRejoin('online'),800);paint()});
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&RM.code&&R.st==='on'){const hasLinks=[...R.devs.keys()].some(id=>id!==R.myId&&linksOf(id).length);if(R.away.size||!hasLinks&&R.devs.size>1)setTimeout(()=>{R.lastSoft=0;softRejoin('voltou')},1000)}});
+ addEventListener('pagehide',()=>{try{if(R.st==='on')sendTo('*',{t:'brb'})}catch(_){}});
  function again(){clearTimeout(R.joinT);if(!RM.code)return;R.retry++;R.joinT=setTimeout(()=>join(RM.code),Math.min(15000,2000+R.retry*2000))}
- function leave(keep){clearTimeout(R.joinT);for(const RO of R.rooms)try{RO.room.leave()}catch(_){}R.rooms=[];R.links.clear();R.conns.clear();R.devs.clear();R.cats.clear();R.sent.clear();R.sentOnce=false;R.seenPeers.clear();R.pendingMe=false;R.asked.clear();R.st='off';if(!keep){RM.code='';R.lastJoin='';svR()}paint()}
+ function leave(keep){clearTimeout(R.joinT);if(!keep&&R.st==='on')try{sendTo('*',{t:'bye'})}catch(_){}if(!keep)try{localStorage.removeItem(DK(RM.code))}catch(_){}R.away.clear();for(const RO of R.rooms)try{RO.room.leave()}catch(_){}R.rooms=[];R.links.clear();R.conns.clear();R.devs.clear();R.cats.clear();R.sent.clear();R.sentOnce=false;R.seenPeers.clear();R.pendingMe=false;R.asked.clear();R.st='off';if(!keep){RM.code='';R.lastJoin='';svR()}paint()}
  function relayInfo(){try{let ok=0,tot=0;const per=[];for(const[s,M] of (R.T||[])){if(!M.getRelaySockets)continue;const L=Object.values(M.getRelaySockets()||{});const o=L.filter(w=>w&&w.readyState===1).length;ok+=o;tot+=L.length;per.push({s,ok:o,tot:L.length,peers:R.seenPeers.get(s)||0})}return tot?{ok,tot,per}:null}catch(_){return null}}
  async function quality(sid){try{const L=linkFor(sid);if(!L)return;const pc=L.room.room.getPeers()[L.pid];if(!pc||!pc.getStats)return;const st=await pc.getStats();let pair=null;st.forEach(r=>{if(r.type==='candidate-pair'&&(r.nominated||r.selected)&&r.state==='succeeded')pair=r});if(!pair)return;const lc=st.get(pair.localCandidateId),rc=st.get(pair.remoteCandidateId);
   const t=(lc&&lc.candidateType)==='host'&&(rc&&rc.candidateType)==='host'?'lan':(lc&&lc.candidateType)==='relay'||(rc&&rc.candidateType)==='relay'?'relay':'net';R.quality.set(sid,t);paint()}catch(_){}}
@@ -7912,14 +7972,20 @@ mqtt/dist/mqtt.esm.js:
  async function onMsg(m){try{
   if(m.from&&m.from!==R.myId)R.conns.set(m.from,Date.now());
   if(m.t==='acl'||m.t==='kick'||m.t==='move'){await ctrlMsg(m);return}
+  if(m.t==='bye'){goneFor(m.from,'bye');return}
+  if(m.t==='brb'){if(R.devs.has(m.from))R.away.set(m.from,Date.now());paint();return}
   if(m.t!=='hi'&&m.from&&m.from!==R.myId&&!allowed(m.from)){if(m.t==='get')emit({t:'nf',to:m.from,rid:m.rid,e:'o principal da sala não liberou este aparelho'});return}
   if(m.t==='get'&&m.from!==R.myId&&!canDl(m.from)){emit({t:'nf',to:m.from,rid:m.rid,e:'o principal da sala não liberou downloads para este aparelho'});return}
-  if(m.t==='hi'&&m.d){if(m.d.own&&!ownerPub()&&!isOwner()){try{localStorage.setItem(OPK(RM.code),m.d.own)}catch(_){}}ownerHi(m.from,m.d);const isNew=!R.devs.has(m.from);R.devs.set(m.from,Object.assign(m.d,{id:m.from,hub:false}));if(isNew&&m.from!==R.myId){sendTo(m.from,{t:'hi',d:me()});if(isOwner())pushACL(m.from);if(allowed(m.from))sendCatTo(m.from,myCat());setTimeout(()=>quality(m.from),2500);toast('✔ '+(m.d.ic||'📱')+' '+(m.d.name||'Aparelho')+' está conectado com você na sala '+fmtCode(RM.code));log('📡 '+(m.d.name||'Aparelho')+' entrou na sala '+RM.code,'ok')}paint()}
+  if(m.t==='hi'&&m.d){if(m.d.own&&!ownerPub()&&!isOwner()){try{localStorage.setItem(OPK(RM.code),m.d.own)}catch(_){}}ownerHi(m.from,m.d);const isNew=!R.devs.has(m.from),wasAway=R.away.has(m.from)||(m.d.fresh&&!isNew);R.away.delete(m.from);R.devs.set(m.from,Object.assign(m.d,{id:m.from,hub:false}));saveDevs();if(wasAway&&!isNew&&m.from!==R.myId){if(!m.d.reply)sendTo(m.from,{t:'hi',d:Object.assign(me(),{reply:1})});if(isOwner())pushACL(m.from);if(allowed(m.from))sendCatTo(m.from,myCat());setTimeout(()=>quality(m.from),2500);mirrorPlan()}
+  if(isNew&&m.from!==R.myId){sendTo(m.from,{t:'hi',d:me()});if(isOwner())pushACL(m.from);if(allowed(m.from))sendCatTo(m.from,myCat());setTimeout(()=>quality(m.from),2500);toast('✔ '+(m.d.ic||'📱')+' '+(m.d.name||'Aparelho')+' está conectado com você na sala '+fmtCode(RM.code));log('📡 '+(m.d.name||'Aparelho')+' entrou na sala '+RM.code,'ok')}paint()}
   else if(m.t==='cat'){let b=catBuf.get(m.from);if(!b||b.v!==m.v){b={v:m.v,got:0,items:[]};catBuf.set(m.from,b)}b.items.push(...(m.items||[]));b.got++;
    if(b.got>=(m.pages||1)){catBuf.delete(m.from);R.cats.set(m.from,new Map(b.items.map(x=>[x.k,x])));draw();paint();mirrorPlan()}}
-  else if(m.t==='catd'){let c=R.cats.get(m.from);if(!c){c=new Map();R.cats.set(m.from,c)}for(const x of m.add||[])c.set(x.k,x);for(const k of m.del||[])c.delete(k);draw();paint();mirrorPlan()}
-  else if(m.t==='th?'){const L=LOC.get(m.k);let b=null;if(L)try{b=await L.th()}catch(_){}if(b)emit({t:'th',to:m.from,k:m.k,data:await b.arrayBuffer()});else emit({t:'th',to:m.from,k:m.k})}
-  else if(m.t==='th'){const key=m.from+'|'+m.k;const u=m.data?URL.createObjectURL(new Blob([m.data],{type:'image/jpeg'})):'';R.thumbs.set(key,u||'none');$$('.apT[data-key="'+CSS.escape(key)+'"] .apI').forEach(e=>{if(u)e.style.backgroundImage='url("'+u+'")'})}
+  else if(m.t==='catd'){let c=R.cats.get(m.from);if(!c){c=new Map();R.cats.set(m.from,c)}for(const x of m.add||[]){const isNewK=!c.has(x.k);c.set(x.k,x);if(isNewK&&x.kind==='foto'&&x.ty!=='raw'&&Date.now()-(x.t||0)<180000){const d=R.devs.get(m.from);try{dispatchEvent(new CustomEvent('lumen-room-photo',{detail:{dev:m.from,it:x,devName:(d&&d.name)||'Aparelho',ic:(d&&d.ic)||'📱'}}))}catch(_){}}}for(const k of m.del||[])c.delete(k);draw();paint();mirrorPlan()}
+  else if(m.t==='th?')thServe(m);
+  else if(m.t==='pv?'){const L=LOC.get(m.k);let ab=PVC.get(m.k)||null;if(!ab&&L)try{const f=await L.get();const bm=await createImageBitmap(f,{resizeWidth:1600,resizeQuality:'medium'});const cv=document.createElement('canvas');cv.width=bm.width;cv.height=bm.height;cv.getContext('2d').drawImage(bm,0,0);bm.close();const b=await new Promise(r=>cv.toBlob(r,'image/jpeg',.86));ab=await b.arrayBuffer();PVC.set(m.k,ab);if(PVC.size>40)PVC.delete(PVC.keys().next().value)}catch(_){}
+   emit(ab?{t:'pv',to:m.from,rid:m.rid,data:ab}:{t:'pv',to:m.from,rid:m.rid})}
+  else if(m.t==='pv'){const P=PVP.get(m.rid);if(P){PVP.delete(m.rid);clearTimeout(P.to);m.data?P.ok(new Blob([m.data],{type:'image/jpeg'})):P.no(new Error('sem prévia'))}}
+  else if(m.t==='th'){const key=m.from+'|'+m.k;const u=m.data?URL.createObjectURL(new Blob([m.data],{type:'image/jpeg'})):'';R.thumbs.set(key,u||'none');TW.delete(key);setThumbEl(key,u);thAsk()}
   else if(m.t==='get')serve(m);
   else if(m.t==='ack'){const O=R.out.get(m.rid);if(O){O.acked=Math.max(O.acked,m.i+1);if(O.wake)O.wake()}}
   else if(m.t==='beg'){const P=R.pend.get(m.rid);if(P){P.n=m.n;P.sz=m.sz;P.type=m.type;P.sha=m.sha||'';P.parts=P.sink?null:[];P.next=0;P.hold=new Map();P.got=0;P.arm()}}
@@ -7938,7 +8004,7 @@ mqtt/dist/mqtt.esm.js:
  const b64u=buf=>{let s='';for(const x of new Uint8Array(buf))s+=String.fromCharCode(x);return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')};
  const ub64=s=>{s=String(s).replace(/-/g,'+').replace(/_/g,'/');s+='='.repeat((4-s.length%4)%4);return Uint8Array.from(atob(s),c=>c.charCodeAt(0))};
  const OWNK=c=>'lumen_own_'+c,ACLK=c=>'lumen_acl_'+c,OPK=c=>'lumen_ownpub_'+c;
- const CTRL={hi:1,acl:1,kick:1,move:1};
+ const CTRL={hi:1,acl:1,kick:1,move:1,bye:1,brb:1};
  function getOwn(c){try{return JSON.parse(localStorage.getItem(OWNK(c||RM.code))||'null')}catch(_){return null}}
  const isOwner=()=>!!(RM.code&&getOwn());
  function ACL(){if(!RM.code)return null;if(R.acl&&R.acl.code===RM.code)return R.acl.a;let a=null;try{a=JSON.parse(localStorage.getItem(ACLK(RM.code))||'null')}catch(_){}R.acl={code:RM.code,a};return a}
@@ -8043,13 +8109,13 @@ mqtt/dist/mqtt.esm.js:
   if(!mirDir&&(IOS_||!MOBILE)){paint();return}
   if(mirDir&&!mirPerm){paint();return}
   MQ.busy=true;try{while(MQ.q.length&&RM.mirror&&R.st==='on'){const j=MQ.q.shift();MQ.cur=j;paint();
-   if(!R.devs.has(j.dev)&&!R.cats.has(j.dev)){continue}
+   if(!R.devs.has(j.dev)&&!R.cats.has(j.dev)||!linkFor(j.dev)){continue}
    try{if(mirDir){/* já existe com o mesmo tamanho? conta como copiado (retomada) */
      let exists=false;try{const fh=await fileIn(mirDir,mirPath(j.dev,j.it),j.it.n,false);const f=await fh.getFile();exists=f.size===j.it.sz}catch(_){}
      if(!exists){const r=await toFolder(mirDir,j.dev,j.it,mirPath(j.dev,j.it),f=>{MQ.p=f;paintMirror()});ledgerOk(j.dev,j.it,'auto',r.ver)}else ledgerOk(j.dev,j.it,'auto','já existia')}
     else{const r=await fetchFile(j.dev,j.it,{onp:f=>{MQ.p=f;paintMirror()}});const a=document.createElement('a');a.href=URL.createObjectURL(r.blob);a.download=j.it.n;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),60000);ledgerOk(j.dev,j.it,'auto',r.ver)}
     MQ.fail.delete(j.key);MQ.n++;MQ.bytes+=j.it.sz||0}
-   catch(e){const f=MQ.fail.get(j.key)||{n:0};f.n++;f.e=e.message;f.dev=j.dev;f.it=j.it;MQ.fail.set(j.key,f);LED[j.key]={s:'fail',e:e.message,t:Date.now()};svL();if(f.n<3)setTimeout(()=>mirrorPlan(),4000*f.n)}
+   catch(e){if(R.away.has(j.dev)||!linkFor(j.dev)){MQ.cur=null;MQ.p=0;continue}const f=MQ.fail.get(j.key)||{n:0};f.n++;f.e=e.message;f.dev=j.dev;f.it=j.it;MQ.fail.set(j.key,f);LED[j.key]={s:'fail',e:e.message,t:Date.now()};svL();if(f.n<3)setTimeout(()=>mirrorPlan(),4000*f.n)}
    MQ.cur=null;MQ.p=0;paint()}}finally{MQ.busy=false;MQ.cur=null;paint()}}
 
  /* ---------- 6. tela "Aparelhos" ---------- */
@@ -8131,9 +8197,9 @@ mqtt/dist/mqtt.esm.js:
   q('.apMore').hidden=L.length<=SHOW;q('.apMore').textContent='Mostrar mais ('+(L.length-SHOW)+' restantes)';
   const G=q('.apGrid');const V=L.slice(0,SHOW);const sig=V.map(x=>x.dev+x.it.k+x.it.sz).join('|')+'#'+[...SEL.keys()].join(',');if(!force&&G.dataset.sig===sig)return;G.dataset.sig=sig;
   if(io)io.disconnect();io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const el=en.target;io.unobserve(el);const key=el.dataset.key,[dev,...kk]=key.split('|'),k=kk.join('|');
-   const u=R.thumbs.get(key);if(u){if(u!=='none')el.querySelector('.apI').style.backgroundImage='url("'+u+'")';return}
-   if(dev===R.myId){const Lc=LOC.get(k);if(Lc)Lc.th().then(b=>{const uu=b?URL.createObjectURL(b):'none';R.thumbs.set(key,uu);if(b)el.querySelector('.apI').style.backgroundImage='url("'+uu+'")'}).catch(()=>{})}
-   else emit({t:'th?',to:dev,k})}),{rootMargin:'300px'});
+   const u=R.thumbs.get(key);if(u){if(u!=='none')el.querySelector('.apI').style.backgroundImage='url("'+u+'")';else el.querySelector('.apI').classList.add('noimg');return}
+   if(dev===R.myId){thumbBuf(k).then(ab=>{const uu=ab?URL.createObjectURL(new Blob([ab],{type:'image/jpeg'})):'none';R.thumbs.set(key,uu);setThumbEl(key,ab?uu:'')}).catch(()=>{})}
+   else wantThumb(dev,k)}),{rootMargin:'300px'});
   G.innerHTML=V.map(x=>{const key=x.dev+'|'+x.it.k,L_=LED[lkey(x.dev,x.it)],cp=x.dev!==R.myId&&L_&&L_.s==='ok';return'<div class="apT'+(SEL.has(key)?' sel':'')+'" data-key="'+esc(key)+'"><div class="apI'+(x.it.kind==='video'?' vid':'')+'"></div><span class="apC">✓</span><span class="apQ apQ-'+esc(x.it.ty||'orig')+'">'+esc(TL[x.it.ty]||'100%')+'</span>'+(cp?'<span class="apCp" title="Já copiado para este aparelho">⬇✓</span>':'')+'<small>'+esc((x.d.ic||'📱')+' '+(x.dev===R.myId?'este':x.d.name||''))+'<br>'+esc(x.it.n)+' · '+fmtB(x.it.sz||0)+'</small><button type="button" class="apO" title="Abrir">⤢</button></div>'}).join('');
   G.querySelectorAll('.apT').forEach(el=>{io.observe(el);const key=el.dataset.key;const x=V.find(y=>y.dev+'|'+y.it.k===key);
    el.onclick=e=>{if(e.target.classList.contains('apO')){openOne(x);return}if(SEL.has(key))SEL.delete(key);else SEL.set(key,x);el.classList.toggle('sel');q('.apCount').textContent=SEL.size?SEL.size+' selecionada(s)':L.length+' arquivo(s)';G.dataset.sig=''}})}
@@ -8147,18 +8213,19 @@ mqtt/dist/mqtt.esm.js:
   catch(e){ov.querySelector('.apMed').textContent='Não deu: '+e.message}}
  /* demonstrativo de margem de perda */
  function lossRows(){const rows=[];
-  const mine=camStats();if(mine.det)rows.push({t:'📷 Câmera → '+RM.name+' (este)',tot:mine.det,ok:mine.ok,q:Math.max(0,mine.det-mine.ok-mine.fail),bad:mine.fail,d:'disparos detectados × salvos na pasta'});
-  for(const d of R.devs.values()){if(d.id===R.myId||!d.cs||!d.cs.det)continue;rows.push({t:'📷 Câmera → '+d.name,tot:d.cs.det,ok:d.cs.ok,q:Math.max(0,d.cs.det-d.cs.ok-d.cs.fail),bad:d.cs.fail,d:'informado pelo aparelho principal'})}
+  const camRow=(t,c,mine)=>({t,tot:c.det,ok:c.ok,q:c.q!=null?c.q:Math.max(0,c.det-c.ok-c.fail),bad:c.fail,mine,errs:c.errs||[],d:'fotos deste evento: salvas na pasta × com erro'+(c.ign?' · '+c.ign+' RAW ignorado(s) (não é perda: opção só JPG)':'')+(c.upFail?' · '+c.upFail+' salvas mas ainda não foram ao site':'')});
+  const mine=camStats();if(mine.det)rows.push(camRow('📷 Câmera → '+RM.name+' (este)',mine,true));
+  for(const d of R.devs.values()){if(d.id===R.myId||!d.cs||!d.cs.det)continue;rows.push(camRow('📷 Câmera → '+d.name,d.cs,false))}
   if(RM.mirror){const per=new Map();for(const{dev,it} of mirrorList()){const r=per.get(dev)||{tot:0,ok:0,q:0,bad:0,b:0,bo:0};r.tot++;r.b+=it.sz||0;const key=lkey(dev,it),L=LED[key],f=MQ.fail.get(key);
     if(L&&L.s==='ok'){r.ok++;r.bo+=it.sz||0}else if(f&&f.n>=3)r.bad++;else r.q++;per.set(dev,r)}
    for(const[dev,r] of per){const d=R.devs.get(dev)||{name:'Aparelho'};rows.push({t:(d.ic||'📱')+' '+d.name+' → este aparelho (cópia)',tot:r.tot,ok:r.ok,q:r.q,bad:r.bad,d:fmtB(r.bo)+' de '+fmtB(r.b)+' copiados e conferidos'})}}
   return rows}
- function paintLoss(){const rows=lossRows(),B=q('.apLossBody'),st=q('.apLS');
+ function paintLoss(){const rows=lossRows(),B=q('.apLossBody'),st=q('.apLS');setTimeout(()=>{const b=B.querySelector('.apRe');if(b)b.onclick=()=>{try{retryFailed();toast('↻ Fotos com erro de volta na fila')}catch(_){}}},0);
   if(!rows.length){B.innerHTML='<div class="sub wrap" style="white-space:normal">Aparece aqui quando a câmera estiver mandando fotos ou quando a cópia automática estiver ligada. Mostra quantos arquivos saíram, quantos chegaram conferidos, quantos estão na fila e quantos se perderam.</div>';st.textContent='—';st.className='pillS apLS';return}
   const T=rows.reduce((a,r)=>({tot:a.tot+r.tot,bad:a.bad+r.bad,q:a.q+r.q}),{tot:0,bad:0,q:0});
   st.textContent='perda '+pct(T.bad,T.tot);st.className='pillS apLS '+(T.bad?'bad':T.q?'warn':'ok');
   B.innerHTML='<div class="apLossTop"><b>'+pct(T.bad,T.tot)+'</b><span>margem de perda<br><small>'+T.bad+' perdida(s) de '+T.tot+' · '+T.q+' ainda na fila (não são perda)</small></span></div>'+rows.map(r=>{const okp=r.tot?100*r.ok/r.tot:0,qp=r.tot?100*r.q/r.tot:0,bp=r.tot?100*r.bad/r.tot:0;
-   return'<div class="apLR"><div class="apLH"><b>'+esc(r.t)+'</b><span>'+r.ok+' / '+r.tot+' · perda '+pct(r.bad,r.tot)+'</span></div><div class="apLBar"><i class="ok" style="width:'+okp+'%"></i><i class="q" style="width:'+qp+'%"></i><i class="bad" style="width:'+bp+'%"></i></div><small>✔ '+r.ok+' conferidos · ⏳ '+r.q+' na fila · ✕ '+r.bad+' falharam · '+esc(r.d)+'</small></div>'}).join('')
+   return'<div class="apLR"><div class="apLH"><b>'+esc(r.t)+'</b><span>'+r.ok+' / '+r.tot+' · perda '+pct(r.bad,r.tot)+'</span></div><div class="apLBar"><i class="ok" style="width:'+okp+'%"></i><i class="q" style="width:'+qp+'%"></i><i class="bad" style="width:'+bp+'%"></i></div><small>✔ '+r.ok+' ok · ⏳ '+r.q+' em andamento · ✕ '+r.bad+' com erro · '+esc(r.d)+'</small>'+(r.errs&&r.errs.length&&r.bad?'<div class="apWhy"><b>Motivo:</b> '+r.errs.map(e=>esc(e[0])+' ('+e[1]+'×)').join(' · ')+(r.mine?' <button type="button" class="f apRe">↻ Reprocessar as fotos com erro</button>':' <small>(reprocesse no aparelho principal)</small>')+'</div>':'')+'</div>'}).join('')
    +(MQ.fail.size?'<details class="apFails"><summary>Ver as que falharam ('+MQ.fail.size+')</summary><ul>'+[...MQ.fail.values()].slice(0,200).map(f=>'<li>'+esc(f.it.n)+' — '+esc(f.e||'')+' ('+f.n+'×)</li>').join('')+'</ul></details>':'')}
  function paintMirror(){const m=q('.apMNow');if(!m)return;if(!RM.mirror){m.textContent='Desligado.';return}
   if(IOS_&&!mirDir){m.textContent='⚠ No iPhone/iPad o Safari não permite baixar sozinho para uma pasta. Use "Baixar selecionadas" ou ligue a cópia automática no Mac, PC ou Android.';return}
@@ -8190,13 +8257,15 @@ mqtt/dist/mqtt.esm.js:
   const mk=box.querySelector('.apMk');if(mk)mk.onclick=()=>makeOwner(false)}
  let qrFor='';
  const chip=document.createElement('button');chip.type='button';chip.id='roomChip';chip.className='bt';chip.onclick=()=>{try{goTab('dev')}catch(_){}};
- async function paint(){try{const on=R.st==='on',n=R.devs.size,others=[...R.devs.values()].filter(d=>d.id!==R.myId&&allowed(d.id)&&!R.pendingMe);
-  {const ui=$1('#usbInd');const ref=$1('#camChip')||ui;if(ref&&chip.previousElementSibling!==ref)ref.after(chip);chip.hidden=!RM.code;chip.textContent='📡 '+fmtCode(RM.code)+(on?' · '+(others.length?(others.length+1)+' ✔':'só você'):' …');chip.dataset.st=on&&others.length?'ok':on?'warn':'off';chip.title=on&&others.length?'Conectado na sala '+fmtCode(RM.code):'Sala '+fmtCode(RM.code)}
+ async function paint(){try{const on=R.st==='on',n=R.devs.size,others=[...R.devs.values()].filter(d=>d.id!==R.myId&&allowed(d.id)&&!R.pendingMe&&!R.away.has(d.id)),awayN=[...R.away.keys()].filter(id=>R.devs.has(id)&&allowed(id)).length;
+  {const ui=$1('#usbInd');const ref=$1('#camChip')||ui;if(ref&&chip.previousElementSibling!==ref)ref.after(chip);chip.hidden=!RM.code;chip.textContent='📡 '+fmtCode(RM.code)+(R.offline?' · 📴':on?' · '+(others.length?(others.length+1)+' ✔':awayN?'🔄':'só você'):' …');chip.dataset.st=on&&others.length?'ok':on?'warn':'off';chip.title=on&&others.length?'Conectado na sala '+fmtCode(RM.code):'Sala '+fmtCode(RM.code)}
   {const B=q('.apBanner');B.hidden=!RM.code&&!R.removed;const a_=ACL();const ri=relayInfo(),secs=Math.round((Date.now()-(R.since||Date.now()))/1000);let cls='warn',h='';
    if(!RM.code&&R.removed){h='<b>'+(R.removed.ban?'⛔ Este aparelho foi bloqueado':'🚪 Este aparelho foi tirado')+' da sala '+esc(fmtCode(R.removed.code))+' pelo principal</b><small>'+(R.removed.ban?'Só o principal pode desbloquear.':'Para voltar, peça o código ao principal e toque em Entrar.')+'</small>';cls='bad'}
    else if(on&&R.pendingMe&&a_){h='<b>'+(a_.locked?'🔒 A sala '+esc(fmtCode(RM.code))+' está trancada pelo principal':'⏳ Aguardando o principal aprovar a entrada deste aparelho')+'</b><small>Principal: '+esc(a_.ownerName||'aparelho principal')+'. '+(a_.locked?'Peça para ele destrancar a sala.':'Ele recebe um aviso e toca em Permitir. Assim que aprovar, as fotos aparecem aqui.')+'</small>'}
    else if(R.st==='connecting'||R.st==='off')h='<b>⏳ Entrando na sala '+esc(fmtCode(RM.code))+'…</b><small>'+(R.err?esc(R.err):'Preparando a conexão.')+'</small>';
-   else if(others.length){cls='ok';h='<b>✔ Você está conectado na sala '+esc(fmtCode(RM.code))+'</b><small>Junto com: '+others.map(d=>esc((d.ic||'📱')+' '+(d.name||'Aparelho'))).join(', ')+'. As fotos e vídeos de todos aparecem abaixo.</small>'}
+   else if(R.offline){h='<b>📴 Sem internet agora · você continua na sala '+esc(fmtCode(RM.code))+'</b><small>Nada se perde. Assim que a internet voltar, o LUMEN reconecta sozinho com todos'+(awayN||others.length?' ('+(awayN+others.length)+' aparelho(s))':'')+'.</small>'}
+   else if(others.length){cls='ok';h='<b>✔ Você está conectado na sala '+esc(fmtCode(RM.code))+'</b><small>Junto com: '+others.map(d=>esc((d.ic||'📱')+' '+(d.name||'Aparelho'))).join(', ')+(awayN?' · 🔄 '+awayN+' reconectando':'')+'. As fotos e vídeos de todos aparecem abaixo.</small>'}
+   else if(awayN){h='<b>🔄 Reconectando com '+awayN+' aparelho(s) da sala '+esc(fmtCode(RM.code))+'…</b><small>Você continua na sala. Isso acontece depois de recarregar a página, trocar de rede ou desbloquear o celular, e leva alguns segundos.</small>'}
    else{h='<b>✔ Você está na sala '+esc(fmtCode(RM.code))+' · aguardando o outro aparelho entrar</b><small>'+(secs>15?'No outro aparelho: leia o QR (ou abra o LUMEN › Aparelhos › digite <b>'+esc(fmtCode(RM.code))+'</b> › Entrar). Os dois precisam de internet. ':'Procurando os outros aparelhos… ')+(ri?'Redes de encontro: '+ri.per.map(p=>({mqtt:'MQTT',torrent:'BitTorrent',nostr:'Nostr',ws:'Relay'}[p.s]||p.s)+' '+p.ok+'/'+p.tot).join(' · ')+(ri.tot&&!ri.ok&&secs>12?' — ⚠ nenhuma respondeu: confira a internet deste aparelho.':'.')+(R.links.size&&!others.length?'<br>⚠ Achei outro aparelho, mas ele ainda não respondeu: confira se ele está com o LUMEN aberto e atualizado (recarregue a página nele).':''):'')+(R.err?'<br>⚠ '+esc(R.err):'')+'</small>'}
    B.className='apBanner '+cls;B.innerHTML=h}
   const st=q('.apSt');st.textContent=on?(others.length?'conectado · '+(others.length+1)+' aparelhos':'aguardando outro aparelho'):R.st==='connecting'?'entrando…':RM.code?'fora da sala':'sem sala';st.className='pillS apSt '+(on&&others.length?'ok':on?'warn':'');
@@ -8207,8 +8276,8 @@ mqtt/dist/mqtt.esm.js:
   if(RM.code&&qrFor!==linkOf(RM.code)){try{await libQr();const lnk=linkOf(RM.code);const qr=qrcode(0,'M');qr.addData(lnk);qr.make();q('.apQr').innerHTML=qr.createSvgTag({cellSize:4,margin:2,scalable:true});qrFor=lnk}catch(_){q('.apQr').textContent='QR indisponível'}}
   if(!RM.code){q('.apQr').innerHTML='<div class="apQ0">📡</div>';qrFor=''}
   const own_=isOwner(),A_=ACL(),D=[...R.devs.values()].filter(d=>d.id===R.myId||allowed(d.id)).sort((a,b)=>(b.id===R.myId)-(a.id===R.myId));q('.apDN').textContent=D.length?D.length+' na sala':'';
-  q('.apDevs').innerHTML=D.length?D.map(d=>{const me_=d.id===R.myId,ql=R.quality.get(d.id);const qt=me_?'este aparelho':ql==='lan'?'📶 mesmo Wi-Fi (direto)':ql==='relay'?'🌐 pela internet (retransmitido)':ql==='net'?'🌐 pela internet (direto)':'ligado';
-   const isO=A_&&A_.owner===d.id,dl=!(A_&&(A_.nodl||[]).includes(d.id));return'<div class="apD'+(me_?' me':'')+'"><span class="apDi">'+esc(d.ic||'📱')+'</span><span class="apDt"><b>'+(isO?'👑 ':'')+esc(d.name||'Aparelho')+(me_?' (você)':' · conectado ✔')+'</b><small>'+esc(qt)+(d.cam?' · 📷 '+d.cam:'')+' · '+(d.n||0)+' arquivo(s)'+(!dl?' · ⬇ sem permissão de baixar':'')+'</small>'+(own_&&!me_?'<span class="apAct"><button type="button" class="f" data-dl="'+esc(d.id)+'">'+(dl?'⬇ Pode baixar ✓':'⬇ Não pode baixar')+'</button><button type="button" class="f" data-kick="'+esc(d.id)+'">🚪 Tirar</button><button type="button" class="f" data-ban="'+esc(d.id)+'">⛔ Bloquear</button></span>':'')+'</span></div>'}).join(''):'<div class="sub">Nenhum aparelho ainda.</div>';
+  q('.apDevs').innerHTML=D.length?D.map(d=>{const me_=d.id===R.myId,ql=R.quality.get(d.id);const aw=R.away.get(d.id),qt=me_?'este aparelho':aw?'🔄 reconectando… (há '+Math.round((Date.now()-aw)/1000)+' s)':ql==='lan'?'📶 mesmo Wi-Fi (direto)':ql==='relay'?'🌐 pela internet (retransmitido)':ql==='net'?'🌐 pela internet (direto)':'ligado';
+   const isO=A_&&A_.owner===d.id,dl=!(A_&&(A_.nodl||[]).includes(d.id));return'<div class="apD'+(me_?' me':'')+'"><span class="apDi">'+esc(d.ic||'📱')+'</span><span class="apDt"><b>'+(isO?'👑 ':'')+esc(d.name||'Aparelho')+(me_?' (você)':aw?' · reconectando':' · conectado ✔')+'</b><small>'+esc(qt)+(d.cam?' · 📷 '+d.cam:'')+' · '+(d.n||0)+' arquivo(s)'+(!dl?' · ⬇ sem permissão de baixar':'')+'</small>'+(own_&&!me_?'<span class="apAct"><button type="button" class="f" data-dl="'+esc(d.id)+'">'+(dl?'⬇ Pode baixar ✓':'⬇ Não pode baixar')+'</button><button type="button" class="f" data-kick="'+esc(d.id)+'">🚪 Tirar</button><button type="button" class="f" data-ban="'+esc(d.id)+'">⛔ Bloquear</button></span>':'')+'</span></div>'}).join(''):'<div class="sub">Nenhum aparelho ainda.</div>';
   paintOwner();q('.apDevs').querySelectorAll('[data-kick]').forEach(b=>b.onclick=()=>{if(confirm('Tirar este aparelho da sala? Ele pode voltar se tiver o código (a menos que a sala esteja trancada).'))kick(b.dataset.kick,false)});
   q('.apDevs').querySelectorAll('[data-ban]').forEach(b=>b.onclick=()=>{if(confirm('Bloquear este aparelho? Ele sai e não consegue mais entrar nesta sala.'))kick(b.dataset.ban,true)});
   q('.apDevs').querySelectorAll('[data-dl]').forEach(b=>b.onclick=()=>bump(x=>{const id=b.dataset.dl;x.nodl=x.nodl||[];x.nodl=x.nodl.includes(id)?x.nodl.filter(s=>s!==id):[...x.nodl,id]}));
@@ -8221,18 +8290,176 @@ mqtt/dist/mqtt.esm.js:
  const _go=window.goTab;window.goTab=function(t){const r=_go.apply(this,arguments);try{if(t==='dev')opened()}catch(_){}return r};try{goTab=window.goTab}catch(_){}
  const _add=window.add;window.add=function(it){const r=_add.apply(this,arguments);try{scanItems();if(R.st==='on')shareCat()}catch(_){}return r};try{add=window.add}catch(_){}
  let locSig='';setInterval(async()=>{if(R.st!=='on')return;scanItems();if(Date.now()-lastWalk>10000)await scanFolder();const sig=myCat().map(m=>m.k+m.sz).join('|');if(sig!==locSig){locSig=sig;shareCat()}},5000);
- setInterval(()=>{if(R.st==='on'){const now=Date.now();sendTo('*',{t:'hi',d:me()});R.devs.set(R.myId,me());
+ setInterval(()=>{if(R.st==='on'){const now=Date.now();for(const[sid,t] of [...R.away])if(now-t>120000)goneFor(sid,'timeout');
+  {const linked=[...R.devs.keys()].some(id=>id!==R.myId&&linksOf(id).length);if(R.away.size&&!linked&&[...R.away.values()].some(t=>now-t>15000)&&navigator.onLine)softRejoin('watchdog')}
+  {const ri=relayInfo();if(ri&&ri.tot&&!ri.ok&&navigator.onLine&&now-R.since>20000)softRejoin('relays')}
+  {const linked=[...R.devs.keys()].some(id=>id!==R.myId&&linksOf(id).length);if(!linked&&navigator.onLine&&now-R.since>25000)softRejoin('sozinho')}
+  sendTo('*',{t:'hi',d:me()});R.devs.set(R.myId,me());
   for(const[id,t] of [...R.conns])if(now-t>45000&&!linksOf(id).length){R.conns.delete(id);R.devs.delete(id);R.cats.delete(id)}
   for(const id of R.conns.keys())if(!R.quality.has(id))quality(id);mirrorPlan()}paint()},10000);
  setInterval(()=>{if(sec.classList.contains('on'))draw()},3000);
+ window.LUMEN_ROOM_DBG={drop:()=>{for(const RO of R.rooms)for(const pc of Object.values(RO.room.getPeers()))try{pc.close()}catch(_){}}};
+ window.LUMEN_ROOM_PV=previewOf;window.LUMEN_ROOM_GET=(dev,k)=>{const c=R.cats.get(dev);const it=c&&c.get(k);if(!it)return Promise.reject(new Error('foto não encontrada'));return fetchFile(dev,it).then(r=>r.blob)};window.LUMEN_ROOM_RECENT=n=>{const L=[];for(const[dev,cat] of R.cats){if(dev===R.myId||!allowed(dev))continue;const d=R.devs.get(dev)||{};for(const it of cat.values())if(it.kind==='foto'&&it.ty!=='raw')L.push({dev,it,devName:d.name||'Aparelho',ic:d.ic||'📱'})}return L.sort((a,b)=>a.it.t-b.it.t).slice(-(n||30))};window.LUMEN_ROOM_DEVS=()=>[...R.devs.values()].filter(d=>d.id!==R.myId&&allowed(d.id));
  window.LUMEN_ROOM={state:()=>({code:RM.code,on:R.st==='on',devs:R.devs.size,peers:R.conns.size,links:R.links.size,nets:relayInfo(),mirror:{q:MQ.q.length,n:MQ.n,fail:MQ.fail.size},loss:lossRows()}),join,leave};
- if(RM.code&&RM.auto!==false)setTimeout(()=>join(RM.code),fromUrl?300:2500);
+ if(RM.code&&RM.auto!==false)setTimeout(()=>join(RM.code),300);
  if(fromUrl)setTimeout(()=>{try{goTab('dev')}catch(_){}},1200);
  setInterval(()=>{if(RM.code&&R.st==='on'&&(!R.conns.size||R.asked.size))paint()},2000);
+ log('Build v86: continua na sala ao recarregar, sem internet ou com o celular bloqueado (reconecta sozinho)','ok');
  log('Build v85: principal da sala (aprovar, tirar, bloquear, trancar, trocar o código, permissão de baixar)','ok');
  log('Build v84: sala procura os aparelhos por 3 redes (MQTT, BitTorrent, Nostr) + retransmissão; v83: conexão direta entre todos os aparelhos e aviso "você está conectado"','ok');
  log('Build v82: Aparelhos em 100% (originais, RAW, vídeos), sem limite, cópia automática com as mesmas pastas e margem de perda','ok');
 }catch(e){try{log('v81: '+e.message,'bad')}catch(_){}}})();
+</script>
+
+<script id="v87">
+/* ===== v87/v88 · Pré-visual ON: a última foto na hora (só fotos), deste aparelho e dos outros da sala.
+   v88: tela cheia que cobre TODO o site · girar (uma ou todas) · lupa com pinça/arrastar · histograma, estouro de luz
+   e grade · Pausar sempre visível · modo TELÃO (deixa a tela ligada mostrando as fotos ao vivo, em outro aparelho também). ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+ const K='lumen_pv';let PC={src:'all',info:true,rotAll:0,hist:false,clip:false,grid:false};try{PC=Object.assign(PC,JSON.parse(localStorage.getItem(K)||'{}'))}catch(_){}
+ const sv=()=>{try{localStorage.setItem(K,JSON.stringify(PC))}catch(_){}};
+ const MOB=/iPhone|iPad|Android/.test(navigator.userAgent)||(/Macintosh/.test(navigator.userAgent)&&navigator.maxTouchPoints>1);
+ const H=[];let cur=-1,paused=false,newWhilePaused=0,V={s:1,x:0,y:0},urls=new Map(),nat={w:0,h:0};
+ /* ---------- dados da foto (EXIF rápido) ---------- */
+ async function exifInfo(blob){try{const b=new Uint8Array(await blob.slice(0,131072).arrayBuffer());if(b[0]!==0xFF||b[1]!==0xD8)return null;let o=2;
+  while(o+10<b.length){if(b[o]!==0xFF)return null;const mk=b[o+1],len=(b[o+2]<<8)|b[o+3];
+   if(mk===0xE1&&b[o+4]===0x45&&b[o+5]===0x78){const t=o+10,le=b[t]===0x49,dv=new DataView(b.buffer,b.byteOffset+t,Math.min(b.length-t,len));const u16=x=>dv.getUint16(x,le),u32=x=>dv.getUint32(x,le),rat=x=>{const a=u32(x),c=u32(x+4);return c?a/c:0};
+    const out={};const rd=(ifd,tags)=>{const n=u16(ifd);for(let i=0;i<n;i++){const e=ifd+2+i*12,tg=u16(e),ty=u16(e+2);const val=()=>ty===3?u16(e+8):ty===4?u32(e+8):ty===5?rat(u32(e+8)):u32(e+8);if(tags[tg])out[tags[tg]]=val()}};
+    const i0=u32(4);rd(i0,{0x8769:'exif'});if(out.exif)rd(out.exif,{0x829A:'exp',0x829D:'f',0x8827:'iso',0x920A:'mm'});return out}
+   if(mk===0xDA)return null;o+=2+len}}catch(_){}return null}
+ const fmtExp=e=>!e?'':e>=1?e.toFixed(e<10?1:0)+'s':'1/'+Math.round(1/e);
+ /* ---------- fila de fotos ---------- */
+ function push(e,silent){if(H.some(x=>x.key===e.key||x.name===e.name&&x.dev===e.dev))return;e.rot=PC.rotAll||0;H.push(e);H.sort((a,b)=>a.t-b.t);while(H.length>80){const x=H.shift();if(cur>0)cur--}
+  if(silent)return;if(!paused){cur=H.length-1;show(true)}else{newWhilePaused++;paint()}strip()}
+ function wantSrc(dev){return PC.src==='all'||(PC.src==='me'?dev==='me':PC.src===dev)}
+ const _add=window.add;window.add=function(it){const r=_add.apply(this,arguments);try{if(it&&it.kind==='foto'&&(it.blob||it.thumb)&&wantSrc('me'))push({key:'me|'+it.name,name:it.name,dev:'me',devName:'Este aparelho',ic:'📷',t:Date.now(),it,q:it.cls==='d'})}catch(_){}return r};try{add=window.add}catch(_){}
+ addEventListener('lumen-room-photo',ev=>{const d=ev.detail;if(!wantSrc(d.dev))return;push({key:d.dev+'|'+d.it.k,name:d.it.n,dev:d.dev,devName:d.devName,ic:d.ic,t:Date.now(),remote:d.it,q:d.it.ty==='qua'})});
+ async function blobOf(e){if(e.blob)return e.blob;if(e.it){if(!e.it.blob&&window.ensureBlob)try{await ensureBlob(e.it)}catch(_){}e.blob=e.it.blob||null;if(!e.blob&&e.it.thumb)e.blob=await (await fetch(e.it.thumb)).blob();e.full=true;return e.blob}
+  if(e.remote&&window.LUMEN_ROOM_PV){e.blob=await LUMEN_ROOM_PV(e.dev,e.remote.k);return e.blob}return null}
+ /* ---------- tela ---------- */
+ const sec=document.createElement('section');sec.className='tab w';sec.id='t-pv';
+ const BAR='<div class="pvBar"><button type="button" class="pvB pvPause">⏸ Pausar</button><button type="button" class="pvB pvRotL" title="Girar para a esquerda">↺</button><button type="button" class="pvB pvRotR" title="Girar para a direita">↻</button>'
+  +'<button type="button" class="pvB pvZoom">🔍 1×</button><button type="button" class="pvB pvHist" title="Histograma">📊</button><button type="button" class="pvB pvClip" title="Mostrar luz estourada">⚠</button><button type="button" class="pvB pvGrid" title="Grade">#</button>'
+  +'<button type="button" class="pvB pvStar">☆</button><button type="button" class="pvB pvDl" title="Baixar">⬇</button><button type="button" class="pvB pvFs">⛶ Tela cheia</button></div>';
+ sec.innerHTML='<div class="v70ph"><span class="v70pi" aria-hidden="true">👁</span><div><h2>Pré-visual ON</h2><p>A última foto aparece aqui na hora · segure para tela cheia</p></div></div>'
+  +'<div class="pvStage" tabindex="0" aria-label="Pré-visualização da última foto"><div class="pvWrap"><img class="pvImg" alt="" draggable="false"><canvas class="pvClipC"></canvas><div class="pvGridO"></div></div>'
+  +'<div class="pvEmpty">📷 Esperando a próxima foto…<small>Assim que a câmera disparar, a foto aparece aqui (deste aparelho e dos outros aparelhos da sala).</small></div>'
+  +'<div class="pvTop"><span class="pvLive">● AO VIVO</span><span class="pvNew" hidden></span><span class="pvSrc"></span><span class="pvRes" hidden></span></div><div class="pvInfo"></div><canvas class="pvHistC" width="256" height="90"></canvas>'
+  +'<button type="button" class="pvNav pvPrev" aria-label="Foto anterior">‹</button><button type="button" class="pvNav pvNext" aria-label="Próxima foto">›</button>'
+  +'<button type="button" class="pvFab">⏸</button>'+BAR+'</div>'
+  +'<div class="pvStrip"></div>'
+  +'<div class="c v70c pvOptsC"><div class="pvOpts"><label>Mostrar fotos de<select class="pvSel"></select></label>'
+  +'<label>Girar todas as fotos novas<select class="pvRA"><option value="0">não girar</option><option value="1">90° → direita</option><option value="3">90° ← esquerda</option><option value="2">180°</option></select></label>'
+  +'<label class="pvChk"><input type="checkbox" class="pvI"> Dados da foto (velocidade, abertura, ISO)</label></div>'
+  +'<div class="fx3a"><button type="button" class="f p pvTv">📺 Modo telão neste aparelho</button><button type="button" class="f pvTvO">📲 Abrir o telão em outro aparelho</button></div><div class="pvTvQ" hidden></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal">Dicas: <b>segure</b> a foto para tela cheia · <b>toque duas vezes</b> ou <b>pinça</b> para ampliar e conferir o foco (arraste para mover) · <b>arraste para os lados</b> para voltar nas fotos · <b>↺ ↻</b> giram a foto · <b>⏸</b> segura a foto atual. No teclado: ← → navegam, espaço pausa, R gira, F tela cheia.</div></div>';
+ const home=$1('#t-dev')||$1('#t-con');if(home)home.after(sec);
+ const nb=document.createElement('button');nb.type='button';nb.dataset.t='pv';nb.innerHTML='<i>👁</i><span class="v70l">Pré-visual ON</span><span class="v70s">Pré-visual</span>';nb.title='Pré-visual ON';nb.setAttribute('aria-label','Pré-visual ON');nb.onclick=()=>{goTab('pv')};
+ function navPlace(){const n=$1('nav'),g=n&&(n.querySelector('button[data-t="dev"]')||n.querySelector('button[data-t="con"]'));if(g&&nb.previousElementSibling!==g)g.after(nb)}navPlace();setInterval(navPlace,1500);
+ const q=s=>sec.querySelector(s),img=q('.pvImg'),stage=q('.pvStage'),wrap=q('.pvWrap'),clipC=q('.pvClipC'),histC=q('.pvHistC');
+ /* ---------- enquadrar: girar, ampliar e mover ---------- */
+ function layout(){const e=H[cur];if(!e||!nat.w){return}const W=stage.clientWidth,Hh=stage.clientHeight,r=((e.rot||0)%4+4)%4,sw=r%2?nat.h:nat.w,sh=r%2?nat.w:nat.h;
+  const fit=Math.min(W/sw,Hh/sh),w=nat.w*fit,h=nat.h*fit;wrap.style.width=w+'px';wrap.style.height=h+'px';
+  const lim=s=>{const mx=Math.max(0,(sw*fit*s-W)/2),my=Math.max(0,(sh*fit*s-Hh)/2);V.x=Math.max(-mx,Math.min(mx,V.x));V.y=Math.max(-my,Math.min(my,V.y))};lim(V.s);
+  wrap.style.transform='translate(-50%,-50%) translate('+V.x+'px,'+V.y+'px) scale('+V.s+') rotate('+(r*90)+'deg)';
+  q('.pvZoom').textContent='🔍 '+(V.s>1.05?(Math.round(V.s*10)/10)+'×':'1×');
+  if(V.s>1.6&&e.remote&&!e.full&&!e.loadingFull)loadFull(e)}
+ async function loadFull(e){if(!window.LUMEN_ROOM_GET)return;e.loadingFull=true;const r=q('.pvRes');r.hidden=false;r.textContent='carregando 100%…';
+  try{const b=await LUMEN_ROOM_GET(e.dev,e.remote.k);e.blob=b;e.full=true;const u=URL.createObjectURL(b);urls.set(e.key,u);if(H[cur]===e){img.src=u}r.textContent='100% ✓';setTimeout(()=>r.hidden=true,1500)}catch(_){r.textContent='100% indisponível';setTimeout(()=>r.hidden=true,2000)}e.loadingFull=false}
+ img.onload=()=>{nat={w:img.naturalWidth,h:img.naturalHeight};layout();analyze()};
+ addEventListener('resize',()=>layout());
+ let showTok=0;
+ async function show(fast){const e=H[cur];if(!e){paint();return}const tok=++showTok;V={s:1,x:0,y:0};
+  try{let u=urls.get(e.key);if(!u){if(e.it&&e.it.thumb&&!e.blob&&fast){img.src=e.it.thumb}const b=await blobOf(e);if(!b)throw 0;u=URL.createObjectURL(b);urls.set(e.key,u);if(urls.size>80){const[k0,u0]=urls.entries().next().value;URL.revokeObjectURL(u0);urls.delete(k0)}}
+   if(tok!==showTok)return;const n=new Image();n.decoding='async';n.src=u;try{await n.decode()}catch(_){}if(tok!==showTok)return;img.src=u;
+   if(PC.info&&!e.ex){e.ex=await exifInfo(e.blob||await blobOf(e))||{}}}catch(_){}
+  paint()}
+ /* ---------- análise: histograma e luz estourada ---------- */
+ let anTok=0;async function analyze(){const tok=++anTok;const g=histC.getContext('2d');histC.hidden=!PC.hist;clipC.hidden=!PC.clip;q('.pvGridO').hidden=!PC.grid;
+  if(!PC.hist&&!PC.clip)return;try{const bm=await createImageBitmap(img,{resizeWidth:Math.min(900,img.naturalWidth||900),resizeQuality:'low'});if(tok!==anTok){bm.close();return}
+   const cv=document.createElement('canvas');cv.width=bm.width;cv.height=bm.height;const c=cv.getContext('2d');c.drawImage(bm,0,0);bm.close();const d=c.getImageData(0,0,cv.width,cv.height).data;
+   if(PC.hist){const Hs=[new Uint32Array(256),new Uint32Array(256),new Uint32Array(256),new Uint32Array(256)];for(let i=0;i<d.length;i+=8){Hs[0][d[i]]++;Hs[1][d[i+1]]++;Hs[2][d[i+2]]++;Hs[3][(d[i]*54+d[i+1]*183+d[i+2]*19)>>8]++}
+    let mx=1;for(const a of Hs)for(let i=2;i<254;i++)mx=Math.max(mx,a[i]);g.clearRect(0,0,256,90);g.fillStyle='rgba(0,0,0,.55)';g.fillRect(0,0,256,90);g.globalCompositeOperation='lighter';
+    [['rgba(255,60,60,.55)',0],['rgba(60,255,60,.5)',1],['rgba(70,120,255,.6)',2]].forEach(([col,k])=>{g.fillStyle=col;for(let i=0;i<256;i++){const v=Math.min(88,Hs[k][i]/mx*88);g.fillRect(i,90-v,1,v)}});
+    g.globalCompositeOperation='source-over';g.strokeStyle='rgba(255,255,255,.85)';g.beginPath();for(let i=0;i<256;i++){const v=Math.min(88,Hs[3][i]/mx*88);i?g.lineTo(i,90-v):g.moveTo(i,90-v)}g.stroke()}
+   if(PC.clip){clipC.width=cv.width;clipC.height=cv.height;const o=clipC.getContext('2d'),im=o.createImageData(cv.width,cv.height),p=im.data;for(let i=0;i<d.length;i+=4){if(d[i]>=250||d[i+1]>=250||d[i+2]>=250){p[i]=255;p[i+1]=0;p[i+2]=0;p[i+3]=210}else if(d[i]<=4&&d[i+1]<=4&&d[i+2]<=4){p[i]=40;p[i+1]=120;p[i+2]=255;p[i+3]=190}}o.putImageData(im,0,0)}}catch(_){}}
+ function paint(){const e=H[cur];q('.pvLive').textContent=paused?'⏸ PAUSADO':'● AO VIVO';q('.pvLive').className='pvLive'+(paused?' off':'');
+  const pl=paused?'▶ Ao vivo':'⏸ Pausar';q('.pvPause').textContent=pl;q('.pvFab').textContent=paused?'▶':'⏸';q('.pvFab').classList.toggle('on',paused);
+  q('.pvNew').hidden=!(paused&&newWhilePaused);q('.pvNew').textContent='+'+newWhilePaused+' nova(s) · toque para ver';
+  q('.pvEmpty').hidden=!!e;wrap.hidden=!e;
+  q('.pvSrc').textContent=e?(e.ic+' '+e.devName+' · '+e.name+(e.q?' · quarentena':'')+' · '+(cur+1)+'/'+H.length):'';
+  const x=e&&e.ex;q('.pvInfo').hidden=!(PC.info&&x&&(x.exp||x.f||x.iso));if(x)q('.pvInfo').textContent=[fmtExp(x.exp),x.f?'f/'+(+x.f).toFixed(1):'',x.iso?'ISO '+x.iso:'',x.mm?Math.round(x.mm)+' mm':''].filter(Boolean).join('  ·  ');
+  q('.pvStar').textContent=e&&e.star?'★':'☆';q('.pvPrev').hidden=cur<=0;q('.pvNext').hidden=cur>=H.length-1;
+  q('.pvHist').classList.toggle('on',!!PC.hist);q('.pvClip').classList.toggle('on',!!PC.clip);q('.pvGrid').classList.toggle('on',!!PC.grid);histC.hidden=!PC.hist||!e;clipC.hidden=!PC.clip;q('.pvGridO').hidden=!PC.grid;
+  const sel=q('.pvSel'),opts=[['all','Todos os aparelhos'],['me','Só este aparelho']];try{for(const d of (window.LUMEN_ROOM_DEVS?LUMEN_ROOM_DEVS():[]))opts.push([d.id,(d.ic||'📱')+' '+d.name])}catch(_){}
+  const oh=opts.map(([v,t])=>'<option value="'+esc(v)+'">'+esc(t)+'</option>').join('');if(sel.dataset.h!==oh){sel.dataset.h=oh;sel.innerHTML=oh}sel.value=PC.src;q('.pvI').checked=!!PC.info;q('.pvRA').value=String(PC.rotAll||0);layout()}
+ let stripSig='';function strip(){const S_=q('.pvStrip');const sig=H.map(e=>e.key+(e.star?'*':'')+(e.rot||0)).join('|')+'#'+cur;if(sig===stripSig)return;stripSig=sig;
+  S_.innerHTML=H.map((e,i)=>{const bg=e.it&&e.it.thumb||urls.get(e.key)||'';return'<button type="button" class="pvT'+(i===cur?' on':'')+(e.star?' star':'')+'" data-i="'+i+'" title="'+esc(e.name)+'"><i style="'+(bg?'background-image:url(&quot;'+bg+'&quot;);':'')+'transform:rotate('+((e.rot||0)*90)+'deg)"></i></button>'}).reverse().join('');
+  S_.querySelectorAll('.pvT').forEach(b=>b.onclick=()=>go(+b.dataset.i,true))}
+ function go(i,pause){if(i<0||i>=H.length)return;cur=i;if(pause&&i!==H.length-1)paused=true;if(i===H.length-1)newWhilePaused=0;show();strip()}
+ function setPaused(p){paused=p;if(!p){newWhilePaused=0;cur=H.length-1;show()}paint();strip()}
+ function rot(d){const e=H[cur];if(!e)return;e.rot=(((e.rot||0)+d)%4+4)%4;V={s:1,x:0,y:0};layout();strip()}
+ const zoomTo=(s,cx,cy)=>{const r=stage.getBoundingClientRect(),px=(cx==null?r.width/2:cx-r.left)-r.width/2,py=(cy==null?r.height/2:cy-r.top)-r.height/2,k=s/V.s;V.x=px-(px-V.x)*k;V.y=py-(py-V.y)*k;V.s=s;if(s<=1.01)V={s:1,x:0,y:0};layout()};
+ q('.pvPause').onclick=e=>{e.stopPropagation();setPaused(!paused)};q('.pvFab').onclick=e=>{e.stopPropagation();setPaused(!paused)};
+ q('.pvNew').onclick=()=>setPaused(false);
+ q('.pvPrev').onclick=e=>{e.stopPropagation();go(cur-1,true)};q('.pvNext').onclick=e=>{e.stopPropagation();go(cur+1,true)};
+ q('.pvRotL').onclick=e=>{e.stopPropagation();rot(-1)};q('.pvRotR').onclick=e=>{e.stopPropagation();rot(1)};
+ q('.pvZoom').onclick=e=>{e.stopPropagation();zoomTo(V.s<1.5?2:V.s<3.5?4:1)};
+ q('.pvHist').onclick=e=>{e.stopPropagation();PC.hist=!PC.hist;sv();paint();analyze()};q('.pvClip').onclick=e=>{e.stopPropagation();PC.clip=!PC.clip;sv();paint();analyze()};q('.pvGrid').onclick=e=>{e.stopPropagation();PC.grid=!PC.grid;sv();paint()};
+ q('.pvStar').onclick=e=>{e.stopPropagation();const x=H[cur];if(!x)return;x.star=!x.star;paint();strip()};
+ q('.pvDl').onclick=async ev=>{ev.stopPropagation();const e=H[cur];if(!e)return;let b=e.full?await blobOf(e):null;if(!b&&e.remote&&window.LUMEN_ROOM_GET)try{b=await LUMEN_ROOM_GET(e.dev,e.remote.k)}catch(_){}if(!b)b=await blobOf(e);if(!b)return;
+  const f=new File([b],e.name,{type:'image/jpeg'});if(MOB&&navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f]})}catch(_){}}else{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=e.name;a.click()}};
+ q('.pvSel').onchange=e=>{PC.src=e.target.value;sv()};q('.pvI').onchange=e=>{PC.info=e.target.checked;sv();show()};
+ q('.pvRA').onchange=e=>{PC.rotAll=+e.target.value;sv();for(const x of H)x.rot=PC.rotAll;V={s:1,x:0,y:0};layout();strip()};
+ /* ---------- tela cheia: cobre o site inteiro (inclusive menus); no iPhone ocupa a tela toda ---------- */
+ let wl=null;async function wake(on){try{if(on&&navigator.wakeLock){if(!wl||wl.released)wl=await navigator.wakeLock.request('screen')}else if(!on&&wl){await wl.release();wl=null}}catch(_){}}
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&stage.classList.contains('full'))wake(true)});
+ function fs(on,tv){const doc=document;if(on){stage.classList.add('full');stage.classList.toggle('tv',!!tv);document.body.classList.add('pvFullOn');wake(true);try{if(doc.documentElement.requestFullscreen)doc.documentElement.requestFullscreen({navigationUI:'hide'}).catch(()=>{});else if(doc.documentElement.webkitRequestFullscreen)doc.documentElement.webkitRequestFullscreen()}catch(_){}idle()}
+  else{stage.classList.remove('full','tv','idle');document.body.classList.remove('pvFullOn');wake(false);try{if(doc.fullscreenElement)doc.exitFullscreen();else if(doc.webkitFullscreenElement)doc.webkitExitFullscreen()}catch(_){}}
+  q('.pvFs').textContent=on?'✕ Sair':'⛶ Tela cheia';setTimeout(layout,60);setTimeout(layout,400)}
+ q('.pvFs').onclick=e=>{e.stopPropagation();fs(!stage.classList.contains('full'))};
+ document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&stage.classList.contains('full'))fs(false);setTimeout(layout,60)});
+ let idleT=0;function idle(){stage.classList.remove('idle');clearTimeout(idleT);if(stage.classList.contains('full'))idleT=setTimeout(()=>stage.classList.add('idle'),stage.classList.contains('tv')?2500:4000)}
+ stage.addEventListener('pointermove',idle);
+ /* ---------- gestos: segurar = tela cheia · 2 toques = ampliar · pinça · arrastar = mover/ trocar de foto ---------- */
+ const P=new Map();let holdT=0,start=null,lastTap=0,pinch=null,moved=false;
+ stage.addEventListener('pointerdown',e=>{if(e.target.closest('button,.pvNew'))return;idle();P.set(e.pointerId,{x:e.clientX,y:e.clientY});try{stage.setPointerCapture(e.pointerId)}catch(_){}
+  if(P.size===1){start={x:e.clientX,y:e.clientY,vx:V.x,vy:V.y};moved=false;clearTimeout(holdT);holdT=setTimeout(()=>{if(!moved&&!stage.classList.contains('full')){fs(true);try{navigator.vibrate&&navigator.vibrate(20)}catch(_){}}},450)}
+  else if(P.size===2){clearTimeout(holdT);const[a,b]=[...P.values()];pinch={d:Math.hypot(a.x-b.x,a.y-b.y),s:V.s,cx:(a.x+b.x)/2,cy:(a.y+b.y)/2}}});
+ stage.addEventListener('pointermove',e=>{if(!P.has(e.pointerId))return;P.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(pinch&&P.size===2){const[a,b]=[...P.values()];const d=Math.hypot(a.x-b.x,a.y-b.y);zoomTo(Math.max(1,Math.min(8,pinch.s*d/pinch.d)),pinch.cx,pinch.cy);moved=true;return}
+  if(!start)return;const dx=e.clientX-start.x,dy=e.clientY-start.y;if(Math.abs(dx)>10||Math.abs(dy)>10){moved=true;clearTimeout(holdT)}
+  if(V.s>1.01){V.x=start.vx+dx;V.y=start.vy+dy;layout()}});
+ const up=e=>{clearTimeout(holdT);const was=P.has(e.pointerId);P.delete(e.pointerId);if(P.size<2)pinch=null;if(!was||!start||e.target.closest&&e.target.closest('button,.pvNew'))return;if(P.size)return;
+  const dx=e.clientX-start.x,dy=e.clientY-start.y;const st=start;start=null;
+  if(V.s<=1.01&&Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.3){go(cur+(dx<0?1:-1),true);return}
+  if(!moved){const now=Date.now();if(now-lastTap<300){zoomTo(V.s>1.05?1:2.5,e.clientX,e.clientY);lastTap=0}else lastTap=now}};
+ stage.addEventListener('pointerup',up);stage.addEventListener('pointercancel',up);
+ stage.addEventListener('wheel',e=>{if(!H[cur])return;e.preventDefault();zoomTo(Math.max(1,Math.min(8,V.s*(e.deltaY<0?1.2:1/1.2))),e.clientX,e.clientY)},{passive:false});
+ stage.addEventListener('contextmenu',e=>e.preventDefault());
+ document.addEventListener('keydown',e=>{if(!sec.classList.contains('on')||/INPUT|SELECT|TEXTAREA/.test((e.target||{}).tagName||''))return;
+  if(e.key==='ArrowLeft')go(cur-1,true);else if(e.key==='ArrowRight')go(cur+1,true);else if(e.key===' '){e.preventDefault();setPaused(!paused)}else if(e.key==='f'||e.key==='F')fs(!stage.classList.contains('full'));else if(e.key==='r')rot(1);else if(e.key==='R')rot(-1);else if(e.key==='Escape')fs(false)});
+ /* ---------- modo telão ---------- */
+ q('.pvTv').onclick=()=>{setPaused(false);fs(true,true)};
+ q('.pvTvO').onclick=async()=>{const st=window.LUMEN_ROOM&&LUMEN_ROOM.state();const box=q('.pvTvQ');box.hidden=false;
+  if(!st||!st.code){box.innerHTML='Primeiro crie ou entre numa sala em <b>Aparelhos</b>. O outro aparelho entra na mesma sala e abre o telão.';return}
+  let lnk=location.origin+location.pathname+'?sala='+st.code+'&tela=1';try{const o=JSON.parse(localStorage.getItem('lumen_own_'+st.code)||'null');const p=(o&&o.pub)||localStorage.getItem('lumen_ownpub_'+st.code);if(p)lnk+='&p='+p}catch(_){}
+  let svg='';try{if(!window.qrcode)await new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js';s.onload=ok;s.onerror=no;document.head.appendChild(s)});const qr=qrcode(0,'M');qr.addData(lnk);qr.make();svg=qr.createSvgTag({cellSize:4,margin:2,scalable:true})}catch(_){}
+  box.innerHTML='<div class="pvTvBox">'+(svg?'<div class="pvTvQr">'+svg+'</div>':'')+'<div><b>📺 Telão em outro aparelho</b><small>Leia este QR no celular, tablet ou computador que vai ficar mostrando as fotos. Ele entra na sala, abre esta tela e deixa a tela ligada. Se a sala pedir aprovação, toque em Permitir em Aparelhos.</small><button type="button" class="f pvTvCp">Copiar link do telão</button></div></div>';
+  box.querySelector('.pvTvCp').onclick=async()=>{try{await navigator.clipboard.writeText(lnk);box.querySelector('.pvTvCp').textContent='✔ Link copiado'}catch(_){prompt('Copie o link:',lnk)}}};
+ /* abriu pelo link do telão: vai direto para a Pré-visual e pede um toque para tela cheia (o navegador exige um toque) */
+ const TV=new URLSearchParams(location.search).get('tela')==='1';
+ if(TV)setTimeout(()=>{try{goTab('pv')}catch(_){}const o=document.createElement('button');o.type='button';o.className='pvGo';o.innerHTML='📺 Toque para começar o telão<small>As fotos da sala aparecem aqui ao vivo, em tela cheia.</small>';o.onclick=()=>{o.remove();setPaused(false);fs(true,true)};document.body.appendChild(o)},1600);
+ /* histórico ao abrir: fotos deste aparelho + últimas da sala */
+ function seed(){const before=H.length;for(const it of (S.items||[]).filter(i=>i.kind==='foto'&&(i.blob||i.thumb)).slice(0,30))push({key:'me|'+it.name,name:it.name,dev:'me',devName:'Este aparelho',ic:'📷',t:it.t||Date.now(),it,q:it.cls==='d'},true);
+  try{if(window.LUMEN_ROOM_RECENT)for(const r of LUMEN_ROOM_RECENT(30))if(wantSrc(r.dev))push({key:r.dev+'|'+r.it.k,name:r.it.n,dev:r.dev,devName:r.devName,ic:r.ic,t:r.it.t,remote:r.it,q:r.it.ty==='qua'},true)}catch(_){}
+  if(H.length!==before&&!paused){cur=H.length-1;show(true)}strip();paint()}
+ const _go=window.goTab;window.goTab=function(t){const r=_go.apply(this,arguments);try{document.body.classList.toggle('pvTab',t==='pv');if(t==='pv'){seed();setTimeout(layout,50)}else if(stage.classList.contains('full'))fs(false)}catch(_){}return r};try{goTab=window.goTab}catch(_){}
+ setInterval(()=>{if(sec.classList.contains('on')&&!H.length)seed()},4000);
+ window.LUMEN_PV={state:()=>({n:H.length,cur,paused,name:H[cur]&&H[cur].name,rot:H[cur]&&H[cur].rot,zoom:V.s,full:stage.classList.contains('full')}),pause:setPaused};
+ paint();log('Build v88: Pré-visual em tela cheia de verdade, girar, lupa com pinça, histograma, estouro, grade e modo telão','ok');
+}catch(e){try{log('v87: '+e.message,'bad')}catch(_){}}})();
 </script>
 
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
