@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v92</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v93</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -1261,6 +1261,19 @@ html:root body .vzEmpty{display:none!important}
 /* v92: erros não aparecem mais como quadro vermelho na tela: ficam só em Avisos (o sino pisca) */
 #tst.bad,#v47t .bad{display:none!important}
 #avBell.pulse{animation:avPulse 1.2s ease-out 3}@keyframes avPulse{0%{box-shadow:0 0 0 0 rgba(224,36,36,.8)}100%{box-shadow:0 0 0 12px rgba(224,36,36,0)}}
+
+#t-gal.galDir #gtabs,#t-gal.galDir #gbar,#t-gal.galDir #flt,#t-gal.galDir #grid,#t-gal.galDir .cntBar,#t-gal.galDir #galStats,#t-gal.galDir #galBar,#t-gal.galDir>.fb,#t-gal.galDir>details.fold{display:none!important}
+.gmGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:10px}
+.gmT{position:relative;aspect-ratio:1/1;border-radius:10px;background:#1a1a1a center/cover no-repeat;border:1px solid rgba(255,255,255,.08);cursor:pointer;overflow:hidden;padding:0}
+.gmT.vid::before{content:"🎬";position:absolute;top:6px;left:6px;background:rgba(0,0,0,.7);color:#fff;border-radius:6px;padding:1px 6px;font-size:11px}
+.gmT>span{position:absolute;left:0;right:0;bottom:0;padding:3px 6px;font-size:10px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.8));white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left}
+.gmTabs{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.gmTabs button,.galM .chips button{border-radius:999px}
+.gmTabs button.on,.gmF button.on,.galM .chips button.on{background:var(--acc,#e8b04b);color:#111;border-color:transparent}
+.xR,.pjR{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:6px 0;border-top:1px solid rgba(127,127,127,.15)}
+.xR>span,.pjR>span{flex:1 1 180px;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.pjRes{border:1px solid var(--acc,#e8b04b);border-radius:10px;padding:8px 10px;margin:8px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+@media(max-width:520px){.gmGrid{grid-template-columns:repeat(3,1fr);gap:4px}}
 </style>
 
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -2030,7 +2043,9 @@ if('usb' in navigator){
 
 /* ---------- Registro (nada se perde: tudo é anotado e conferido) ---------- */
 const LG={m:(()=>{try{return JSON.parse(localStorage.getItem('lumen_lg')||'{}')}catch(e){return{}}})(),
- set(k,v){if(!k)return;this.m[k]={...this.m[k],...v,t:Date.now()};clearTimeout(this.tm);this.tm=setTimeout(()=>{try{localStorage.setItem('lumen_lg',JSON.stringify(this.m))}catch(e){}},400)}};
+ set(k,v){if(!k)return;this.m[k]={...this.m[k],...v,t:Date.now()};if(this.tm)return;this.tm=setTimeout(()=>{this.tm=0;this.save()},4000)},
+ save(){try{const ks=Object.keys(this.m);if(ks.length>25000){const ev=(typeof C!=='undefined'&&C.ev)||'';ks.filter(k=>this.m[k].ev!==ev).sort((a,b)=>(this.m[a].t||0)-(this.m[b].t||0)).slice(0,ks.length-20000).forEach(k=>delete this.m[k])}localStorage.setItem('lumen_lg',JSON.stringify(this.m))}catch(e){}}};
+addEventListener('pagehide',()=>{try{LG.save()}catch(_){}});
 const esc=t=>String(t).replace(/[<>&"]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
 const dl=(n,t,ty)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:ty}));a.download=n;a.click()};
 const lgNow=()=>Object.entries(LG.m).filter(([k,v])=>v.ev===C.ev);
@@ -6925,11 +6940,11 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
  const review=r=>r.nums.some(x=>x.m!=='manual'&&x.c<CFG.conf);
  /* ---------- fila ---------- */
  const Q=[];let RUN=false,STOP=false,done=0,tot=0;
- function enqueue(it,blob){if(!it||it.kind!=='foto'||(/^ed\|/.test(it.sig||'')))return;if(!CFG.quar&&it.cls==='d')return;const k=kOf(C.ev,it.name);if(IDX.has(k)||Q.some(q=>q.name===it.name))return;Q.push({name:it.name,ct:it.ct||it.t,blob:blob||it.blob||null});tot++;loop()}
+ function enqueue(it,blob){if(!it||it.kind!=='foto'||(/^ed\|/.test(it.sig||'')))return;if(!CFG.quar&&it.cls==='d')return;const k=kOf(C.ev,it.name);if(IDX.has(k)||Q.some(q=>q.name===it.name))return;Q.push({name:it.name,ct:it.ct||it.t,blob:Q.length<2?(blob||it.blob||null):null});tot++;loop()}
  async function loop(){if(RUN)return;RUN=true;STOP=false;
-  try{while(Q.length&&!STOP){const q=Q.shift();msg('Lendo números… '+(done+1)+' de '+tot+(Q.length?' ('+Q.length+' na fila)':''));
+  try{while(Q.length&&!STOP){/* v93: a câmera tem prioridade: o leitor de números espera a importação esvaziar */let w=0;while(S.run&&((S.q||[]).length+(S.pq||[]).length+(S.pa||0))>0&&w<120){await new Promise(r=>setTimeout(r,500));w++}const q=Q.shift();msg('Lendo números… '+(done+1)+' de '+tot+(Q.length?' ('+Q.length+' na fila)':''));
     try{const b=q.blob||await blobOf(q.name);if(!b){done++;continue}const res=await detect(b),r={k:kOf(C.ev,q.name),ev:C.ev,name:q.name,ct:q.ct,t:Date.now(),nums:res.nums,saved:[]};put(r);
-     const acc=accepted(r);await writeNums(r,acc.length?acc:(CFG.noNum?['']:[]))}catch(e){msg('Leitor: '+e.message);if(/baixar o leitor/.test(e.message)){STOP=true;break}}
+     const acc=accepted(r);await writeNums(r,acc.length?acc:(CFG.noNum?['']:[]))}catch(e){msg('Leitor: '+e.message);if(/baixar o leitor/.test(e.message)){STOP=true;Q.forEach(x=>x.blob=null);break}}
     done++;draw(1)}}
   finally{RUN=false;const wasHold=HOLD;if(!Q.length){tot=done=0;msg(STOP?'Parado.':'')}HOLD=false;draw();if(wasHold&&!STOP)setTimeout(askDest,300)}}
  const _add=window.add;window.add=function(it){_add.apply(this,arguments);try{if(CFG.on)enqueue(it,it.blob)}catch(_){}};
@@ -8389,7 +8404,9 @@ mqtt/dist/mqtt.esm.js:
   try{let u=urls.get(e.key);if(!u){if(e.it&&e.it.thumb&&!e.blob&&fast){img.src=e.it.thumb}const b=await blobOf(e);if(!b)throw 0;u=URL.createObjectURL(b);urls.set(e.key,u);if(urls.size>80){const[k0,u0]=urls.entries().next().value;URL.revokeObjectURL(u0);urls.delete(k0)}}
    if(tok!==showTok)return;const n=new Image();n.decoding='async';n.src=u;try{await n.decode()}catch(_){}if(tok!==showTok)return;img.src=u;
    if(PC.info&&!e.ex){e.ex=await exifInfo(e.blob||await blobOf(e))||{}}}catch(_){}
-  paint()}
+  trim();paint()}
+ /* v93: só a foto da tela (e as vizinhas) ficam em memória em tamanho cheio: com milhares de fotos o site não fica lento */
+ function trim(){H.forEach((x,i)=>{if(Math.abs(i-cur)<=1||!x.it)return;if(x.blob){x.blob=null;x.full=false}const u=urls.get(x.key);if(u){try{URL.revokeObjectURL(u)}catch(_){}urls.delete(x.key)}})}
  /* ---------- análise: histograma e luz estourada ---------- */
  let anTok=0;async function analyze(){const tok=++anTok;const g=histC.getContext('2d');histC.hidden=!PC.hist;clipC.hidden=!PC.clip;q('.pvGridO').hidden=!PC.grid;
   if(!PC.hist&&!PC.clip)return;try{const bm=await createImageBitmap(img,{resizeWidth:Math.min(900,img.naturalWidth||900),resizeQuality:'low'});if(tok!==anTok){bm.close();return}
@@ -8705,6 +8722,147 @@ mqtt/dist/mqtt.esm.js:
 }catch(e){try{log('v91: '+e.message,'bad')}catch(_){}}})();
 </script>
 
+<script id="v93">
+/* ===== v93 · (1) Recuperar sozinho o que faltou do cartão depois de cada queda de conexão (fotos e vídeos);
+   (2) Vídeos editados: lista de tudo que você exportou, com "Salvar numa pasta…" e salvar sempre na mesma pasta;
+   (3) Projetos de vídeo que não somem: guardados no navegador E num arquivo (.lumenvideo) que você baixa e sobe de novo,
+       + continuar de onde parou depois de recarregar; (4) Galeria › Toda a pasta: vê todas as fotos e vídeos direto da
+       pasta do evento, sem carregar tudo no site. Acréscimo: nada é apagado. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+ const fmtB=b=>b>1e9?(b/1e9).toFixed(2)+' GB':b>1e6?(b/1e6).toFixed(1)+' MB':Math.max(1,Math.round(b/1e3))+' KB';
+ const isV=n=>/\.(mp4|mov|m4v|mxf|webm)$/i.test(n),isR=n=>/\.(cr3|cr2|dng|nef|arw)$/i.test(n),isI=n=>/\.(jpe?g|png|webp|heic)$/i.test(n);
+ function idb(name){return new Promise((a,b)=>{try{const r=indexedDB.open(name,1);r.onupgradeneeded=()=>r.result.createObjectStore('s');r.onsuccess=()=>a(r.result);r.onerror=()=>b(r.error)}catch(e){b(e)}})}
+ const DB=idb('lumen-v93');
+ const kv={get:async k=>{const db=await DB;return new Promise(r=>{const g=db.transaction('s').objectStore('s').get(k);g.onsuccess=()=>r(g.result);g.onerror=()=>r(null)})},
+  set:async(k,v)=>{const db=await DB;return new Promise(r=>{const t=db.transaction('s','readwrite');t.objectStore('s').put(v,k);t.oncomplete=()=>r(true);t.onerror=()=>r(false)})},
+  del:async k=>{const db=await DB;return new Promise(r=>{const t=db.transaction('s','readwrite');t.objectStore('s').delete(k);t.oncomplete=()=>r(true);t.onerror=()=>r(false)})},
+  all:async pre=>{const db=await DB;return new Promise(r=>{const out=[];const c=db.transaction('s').objectStore('s').openCursor();c.onsuccess=()=>{const x=c.result;if(!x){r(out);return}if(String(x.key).startsWith(pre))out.push([x.key,x.value]);x.continue()};c.onerror=()=>r(out)})}};
+
+ /* ===================== 1. recuperar o que faltou do cartão ===================== */
+ const RC={last:0,was:false,n:0,busy:false};
+ async function reconcile(why){if(RC.busy||!S.run||!S.sess||S.src!=='usb'||S.busy||S.pollBusy||S.dlT||typeof listSrc!=='function')return;RC.busy=true;S.pollBusy=true;
+  try{const L=await listSrc();const old=S.oldSet||new Set(),inQ=new Set(S.q),inP=new Set((S.pq||[]).map(j=>j.h));
+   const miss=L.filter(h=>!old.has(h)&&!S.done.has(h)&&!inQ.has(h)&&!inP.has(h));
+   if(miss.length){miss.forEach(h=>{S.seen.add(h);S.q.push(h);S.u.total++});RC.n+=miss.length;log('🔁 Conferência automática ('+why+'): '+miss.length+' arquivo(s) do cartão que não tinham chegado voltaram para a fila.','ok')}RC.last=Date.now()}
+  catch(_){}finally{S.pollBusy=false;RC.busy=false;if(S.q.length)try{pump()}catch(_){}}}
+ setInterval(()=>{const live=!!(S.sess&&S.dev&&S.src==='usb');if(live&&!RC.was){setTimeout(()=>reconcile('depois de reconectar'),7000)}RC.was=live;
+  if(live&&S.run&&!S.q.length&&!(S.pq||[]).length&&!S.pa&&Date.now()-RC.last>90000)reconcile('a cada 1 min e meio')},2000);
+ window.LUMEN_RECONCILE=()=>reconcile('manual');
+
+ /* ===================== 2. vídeos editados: lista + salvar numa pasta ===================== */
+ const EX=[];const XK='lumen_vxout';let XO={auto:false};try{XO=Object.assign(XO,JSON.parse(localStorage.getItem(XK)||'{}'))}catch(_){}
+ const svX=()=>{try{localStorage.setItem(XK,JSON.stringify(XO))}catch(_){}};
+ let outDir=null,outPerm=false;(async()=>{try{outDir=await kv.get('outDir');if(outDir)outPerm=(await outDir.queryPermission({mode:'readwrite'}))==='granted'}catch(_){}paintX()})();
+ async function record(name,blob,where){if(!blob||!blob.size)return;if(EX.some(x=>x.name===name&&x.size===blob.size))return;const x={name,blob,size:blob.size,t:Date.now(),where,saved:''};EX.unshift(x);if(EX.length>60)EX.pop();
+  if(XO.auto&&outDir&&outPerm)await saveOne(x);paintX();try{toastOk('🎞 Vídeo editado pronto: '+name)}catch(_){}}
+ function toastOk(t){log(t,'ok')}
+ try{const _put=put;put=async function(sub,name,blob){const r=await _put.apply(this,arguments);try{if((sub==='VideosVel'||sub==='Videos_look')&&blob)record(name,r&&r.size?r:blob,'pasta do evento › Videos/'+(sub==='VideosVel'?'Editados':'Com_look'))}catch(_){}return r};window.put=put}catch(_){}
+ try{const _c=HTMLAnchorElement.prototype.click;HTMLAnchorElement.prototype.click=function(){try{const n=this.download||'';if(n&&isV(n)&&/^blob:/.test(this.href)){const href=this.href;fetch(href).then(r=>r.blob()).then(b=>record(n,b,'Downloads')).catch(()=>{})}}catch(_){}return _c.apply(this,arguments)}}catch(_){}
+ async function saveOne(x){if(!outDir)return false;try{const fh=await outDir.getFileHandle(x.name.replace(/[\\/:*?"<>|]/g,'_'),{create:true});const w=await fh.createWritable();await w.write(x.blob);await w.close();x.saved=outDir.name;return true}catch(e){x.saved='';log('Vídeos editados: não consegui salvar '+x.name+' ('+e.message+')','bad');return false}}
+ async function pickOut(){try{outDir=await showDirectoryPicker({id:'lumen-videos-editados',mode:'readwrite'});outPerm=true;await kv.set('outDir',outDir);return true}catch(_){return false}}
+ const xc=document.createElement('div');xc.className='c v70c vxOutC';
+ xc.innerHTML='<div class="v70h"><b>🎞 Vídeos editados</b><span class="pillS xSt">—</span></div><div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Tudo que você exporta, gira ou corrige aparece aqui. Escolha uma pasta e salve todos de uma vez, ou deixe salvando sozinho.</div>'
+  +'<div class="fx3a"><button type="button" class="f p xSaveAll">📁 Salvar todos numa pasta…</button><button type="button" class="f xDlAll">⬇ Baixar todos</button></div>'
+  +'<label class="r"><input type="checkbox" class="xAuto"><span>Salvar sozinho na pasta escolhida assim que cada vídeo ficar pronto</span></label><div class="sub xDir"></div><div class="xList"></div>';
+ const qx=s=>xc.querySelector(s);
+ qx('.xAuto').checked=!!XO.auto;qx('.xAuto').onchange=async e=>{XO.auto=e.target.checked;svX();if(XO.auto&&!outDir&&window.showDirectoryPicker)await pickOut();if(XO.auto&&outDir&&!outPerm){try{outPerm=(await outDir.requestPermission({mode:'readwrite'}))==='granted'}catch(_){}}paintX()};
+ qx('.xSaveAll').onclick=async()=>{if(!window.showDirectoryPicker){qx('.xDlAll').click();return}if(!await pickOut())return;let k=0;for(const x of EX)if(await saveOne(x))k++;paintX();log('✔ '+k+' vídeo(s) editado(s) salvos em "'+outDir.name+'"','ok')};
+ qx('.xDlAll').onclick=async()=>{for(const x of EX){const a=document.createElement('a');a.href=URL.createObjectURL(x.blob);a.download=x.name;a.dispatchEvent(new MouseEvent('click'));await new Promise(r=>setTimeout(r,500))}};
+ function paintX(){const st=qx('.xSt');st.textContent=EX.length?EX.length+' pronto(s)':'nenhum ainda';st.className='pillS xSt '+(EX.length?'ok':'');
+  qx('.xDir').textContent=outDir?'Pasta escolhida: '+outDir.name+(outPerm?'':' (toque em Salvar para liberar de novo)'):'Nenhuma pasta escolhida ainda.';
+  qx('.xList').innerHTML=EX.map((x,i)=>'<div class="xR"><span>🎬 '+esc(x.name)+' <small>'+fmtB(x.size)+' · '+esc(x.saved?'salvo em '+x.saved:x.where)+'</small></span><button type="button" class="f" data-pl="'+i+'">▶</button><button type="button" class="f" data-dl="'+i+'">⬇</button><button type="button" class="f" data-sv="'+i+'">📁</button></div>').join('');
+  qx('.xList').querySelectorAll('[data-pl]').forEach(b=>b.onclick=()=>{const x=EX[+b.dataset.pl];const ov=document.createElement('div');ov.className='apOv';const u=URL.createObjectURL(x.blob);ov.innerHTML='<div class="apBox"><div class="apMed"><video src="'+u+'" controls autoplay playsinline></video></div><div class="fx3a"><button type="button" class="f apX">Fechar</button></div><small>'+esc(x.name)+'</small></div>';document.body.appendChild(ov);ov.querySelector('.apX').onclick=()=>{ov.remove();URL.revokeObjectURL(u)}});
+  qx('.xList').querySelectorAll('[data-dl]').forEach(b=>b.onclick=()=>{const x=EX[+b.dataset.dl];const a=document.createElement('a');a.href=URL.createObjectURL(x.blob);a.download=x.name;a.dispatchEvent(new MouseEvent('click'))});
+  qx('.xList').querySelectorAll('[data-sv]').forEach(b=>b.onclick=async()=>{if(!outDir||!outPerm){if(!outDir){if(!await pickOut())return}else{try{outPerm=(await outDir.requestPermission({mode:'readwrite'}))==='granted'}catch(_){}}}await saveOne(EX[+b.dataset.sv]);paintX()})}
+
+ /* ===================== 3. projetos de vídeo que não somem ===================== */
+ const VX=()=>window.VXAPI;
+ const vidKey=()=>{const s=VX()&&VX().sel;return s?String(s.name||'')+'|'+(s.size||0):''};
+ function ctrlSnap(){const o={};$$('#t-ved input[id],#t-ved select[id],#t-ved textarea[id]').forEach(e=>{if(e.type==='file'||/^(vxSel|pj|lv)/.test(e.id)||e.closest('.vxOutC,.pjC,.lvC'))return;o[e.id]=e.type==='checkbox'||e.type==='radio'?{c:e.checked}:{v:e.value}});return o}
+ function ctrlLoad(o){for(const[id,v] of Object.entries(o||{})){const e=document.getElementById(id);if(!e||!e.closest('#t-ved'))continue;try{if('c' in v){if(e.checked!==v.c){e.checked=v.c;e.dispatchEvent(new Event('change',{bubbles:true}))}}else if(e.value!==v.v){e.value=v.v;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}))}}catch(_){}}}
+ function snap(name){const A=VX();if(!A||!A.sel||!A.dur)return null;return{app:'LUMEN Campo',type:'projeto-video',v:1,name,video:{name:A.sel.name,size:A.sel.size||0,dur:A.dur},seg:A.SEG.map(g=>({s:g.s/A.dur,e:g.e/A.dur,rate:g.rate,cut:!!g.cut})),ctrl:ctrlSnap(),t:Date.now()}}
+ function apply(p){const A=VX();if(!A||!A.sel||!A.dur)return'Abra um vídeo no editor primeiro.';ctrlLoad(p.ctrl);
+  if(p.seg&&p.seg.length){A.SEG=p.seg.map(g=>({s:g.s*A.dur,e:g.e*A.dur,rate:g.rate,cut:!!g.cut}));A.selI=0;try{A.refresh()}catch(_){}}try{A.applyLook()}catch(_){}
+  return p.video&&p.video.name!==A.sel.name?'✔ Projeto “'+p.name+'” aplicado (era de outro vídeo: os cortes foram ajustados ao tamanho deste).':'✔ Projeto “'+p.name+'” aplicado.'}
+ async function saveProj(name){const p=snap(name);if(!p)return'Abra um vídeo no editor primeiro.';await kv.set('pj:'+name,p);
+  try{const L=JSON.parse(localStorage.getItem('lumen_vxproj')||'[]').filter(x=>x.n!==name);L.push({n:name,s:p.seg.map(g=>[g.s,g.e,g.rate,g.cut?1:0])});localStorage.setItem('lumen_vxproj',JSON.stringify(L))}catch(_){}
+  let f='';if(S.dir&&S.perm&&!S.dir.virtual)try{await writeTo(S.dir,'LUMEN_projetos',name.replace(/[\\/:*?"<>|]/g,'_')+'.lumenvideo',new Blob([JSON.stringify(p)],{type:'application/json'}));f=' e na pasta do evento (LUMEN_projetos)'}catch(_){}
+  return'✔ Projeto “'+name+'” salvo neste navegador'+f+'.'}
+ function dlProj(p){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(p,null,1)],{type:'application/json'}));a.download=p.name.replace(/[\\/:*?"<>|]/g,'_')+'.lumenvideo';a.dispatchEvent(new MouseEvent('click'))}
+ /* salva sozinho a cada poucos segundos, por vídeo, para continuar depois de recarregar */
+ let lastAuto='',lastSel='';
+ setInterval(async()=>{const k=vidKey();if(!k)return;const p=snap('(automático)');if(!p)return;const sig=JSON.stringify([p.seg,p.ctrl]);
+  if(k!==lastSel){lastSel=k;lastAuto=sig;const prev=await kv.get('auto:'+k);if(prev&&JSON.stringify([prev.seg,prev.ctrl])!==sig){PJ.resume=prev;paintP()}else{PJ.resume=null;paintP()}return}
+  if(sig!==lastAuto){lastAuto=sig;await kv.set('auto:'+k,p);PJ.autoT=Date.now();paintP()}},4000);
+ const PJ={resume:null,autoT:0};
+ const pc=document.createElement('div');pc.className='c v70c pjC';
+ pc.innerHTML='<div class="v70h"><b>📁 Projetos de vídeo</b><span class="pillS pjSt">—</span></div><div class="pjRes" hidden></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">O projeto guarda os cortes, velocidades, look, cor, texto, saída e os outros ajustes. Fica salvo neste navegador, na pasta do evento e num arquivo <b>.lumenvideo</b> que você baixa e sobe de novo (em outro computador ou em outro vídeo).</div>'
+  +'<div class="fx3a"><button type="button" class="f p pjSave">💾 Salvar projeto</button><label class="f" role="button" style="cursor:pointer">⬆ Abrir arquivo de projeto<input type="file" class="pjIn" accept=".lumenvideo,.json,application/json" hidden></label></div>'
+  +'<div class="pjList"></div><div class="sub wrap pjMsg" data-ex="1" style="white-space:normal"></div>';
+ const qp=s=>pc.querySelector(s);const sayP=t=>{qp('.pjMsg').textContent=t;if(t)log(t,/^✔/.test(t)?'ok':'')};
+ qp('.pjSave').onclick=async()=>{const A=VX();if(!A||!A.sel){sayP('Abra um vídeo no editor primeiro.');return}const n=prompt('Nome do projeto:',(A.sel.name||'Projeto').replace(/\.[^.]+$/,''));if(!n)return;sayP(await saveProj(n.trim()));paintP()};
+ qp('.pjIn').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{const p=JSON.parse(await f.text());if(p.type!=='projeto-video')throw new Error('este arquivo não é um projeto de vídeo do LUMEN');await kv.set('pj:'+p.name,p);sayP(apply(p));paintP()}catch(er){sayP('Não deu: '+er.message)}};
+ async function paintP(){const L=(await kv.all('pj:')).map(x=>x[1]).sort((a,b)=>b.t-a.t);const st=qp('.pjSt');st.textContent=L.length?L.length+' salvo(s)':'nenhum';st.className='pillS pjSt '+(L.length?'ok':'');
+  const R=qp('.pjRes');R.hidden=!PJ.resume;if(PJ.resume)R.innerHTML='<b>↩ Você estava editando este vídeo</b><small>Última alteração às '+new Date(PJ.resume.t).toLocaleTimeString().slice(0,5)+'. Continuar de onde parou?</small><div class="fx3a"><button type="button" class="f p pjGo">Continuar a edição</button><button type="button" class="f pjNo">Começar do zero</button></div>';
+  if(PJ.resume){qp('.pjGo').onclick=()=>{sayP(apply(Object.assign({},PJ.resume,{name:'edição anterior'})));PJ.resume=null;paintP()};qp('.pjNo').onclick=()=>{PJ.resume=null;paintP()}}
+  qp('.pjList').innerHTML=L.map((p,i)=>'<div class="xR"><span>📁 '+esc(p.name)+' <small>'+esc((p.video&&p.video.name)||'')+' · '+new Date(p.t).toLocaleString()+'</small></span><button type="button" class="f p" data-ap="'+i+'">Usar</button><button type="button" class="f" data-dl="'+i+'">⬇ Baixar</button><button type="button" class="f" data-rm="'+i+'">🗑</button></div>').join('')+(PJ.autoT?'<small class="pjAuto">Salvamento automático: '+new Date(PJ.autoT).toLocaleTimeString().slice(0,5)+'</small>':'');
+  qp('.pjList').querySelectorAll('[data-ap]').forEach(b=>b.onclick=()=>sayP(apply(L[+b.dataset.ap])));
+  qp('.pjList').querySelectorAll('[data-dl]').forEach(b=>b.onclick=()=>dlProj(L[+b.dataset.dl]));
+  qp('.pjList').querySelectorAll('[data-rm]').forEach(b=>b.onclick=async()=>{const p=L[+b.dataset.rm];if(!confirm('Tirar o projeto “'+p.name+'” da lista? (o arquivo baixado e o da pasta continuam)'))return;await kv.del('pj:'+p.name);paintP()})}
+ /* projetos antigos (do botão antigo) entram na lista nova */
+ (async()=>{try{const L=JSON.parse(localStorage.getItem('lumen_vxproj')||'[]');for(const x of L){if(await kv.get('pj:'+x.n))continue;await kv.set('pj:'+x.n,{app:'LUMEN Campo',type:'projeto-video',v:1,name:x.n,video:{name:'',size:0,dur:0},seg:(x.s||[]).map(([s,e,r,c])=>({s,e,rate:r,cut:!!c})),ctrl:{},t:Date.now()})}paintP()}catch(_){}})();
+ function placeVx(){const t=$1('#t-ved');if(!t)return;const prj=$1('#vxPrj');const host=(prj&&prj.closest('.vxColR'))||t;if(pc.parentNode!==host){if(prj&&prj.closest('.vxColR')){const card=prj.closest('.c')||prj.parentElement;card.after(pc)}else host.appendChild(pc)}
+  if(pc.nextElementSibling!==xc)pc.after(xc)}
+ setInterval(placeVx,1500);setTimeout(placeVx,800);
+
+ /* ===================== 4. Galeria › Toda a pasta ===================== */
+ const G={mode:localStorage.getItem('lumen_galmode')||'mem',list:[],f:'all',q:'',show:200,busy:false,at:0};
+ const SKIP=/^(LR_Entrada|LR_Entrada_com_erro|Plano_B_originais|Lightroom_Sessoes|cofre|LUMEN_backup|LUMEN_projetos)$/i;
+ const tyOf=p=>{const P='/'+p;if(/\/Editadas\//i.test(P))return'ed';if(/\/RAW\//i.test(P))return'raw';if(/\/Quarentena\//i.test(P))return'qua';if(/\/Escolhidas\//i.test(P))return'esc';if(/\/Corrida_numerada\//i.test(P))return'num';const n=p.split('/').pop();if(isV(n))return'vid';if(/\/Originais\//i.test(P))return'orig';return'pub'};
+ const TY={all:'Todas',orig:'📷 Originais',ed:'🅻 Editadas',vid:'🎬 Vídeos',raw:'RAW',qua:'Quarentena',esc:'⭐ Escolhidas',num:'🏃 Numeradas',pub:'Versão do site'};
+ async function walk(){if(G.busy||!S.dir||!S.perm)return;G.busy=true;const out=[];
+  try{const w=async(d,pre,dep)=>{for await(const[n,h] of d.entries()){if(n.startsWith('.'))continue;if(h.kind==='directory'){if(dep<8&&!SKIP.test(n))await w(h,pre+n+'/',dep+1)}else if(isI(n)||isV(n)||isR(n))out.push({p:pre+n,n,h,ty:tyOf(pre+n)})}};await w(S.dir,'',0);
+   out.sort((a,b)=>b.n.localeCompare(a.n,undefined,{numeric:true}));G.list=out;G.at=Date.now()}catch(_){}finally{G.busy=false}drawG()}
+ const gc=document.createElement('div');gc.className='c v70c galM';
+ gc.innerHTML='<div class="chips gmTabs"><button type="button" data-m="mem">⚡ Recebidas agora</button><button type="button" data-m="dir">📁 Toda a pasta</button></div><div class="gmDir" hidden><div class="sub wrap gmInfo" data-ex="1" style="white-space:normal"></div><div class="chips gmF"></div><div class="gmBar"><input type="search" class="gmQ" placeholder="Buscar pelo nome ou número (ex.: 4941)"><button type="button" class="f gmR">↻ Atualizar</button></div><div class="gmGrid"></div><div class="fx3a"><button type="button" class="f gmMore" hidden>Mostrar mais</button></div></div>';
+ const qg=s=>gc.querySelector(s);
+ gc.querySelectorAll('.gmTabs button').forEach(b=>b.onclick=()=>{G.mode=b.dataset.m;try{localStorage.setItem('lumen_galmode',G.mode)}catch(_){}setMode()});
+ qg('.gmR').onclick=()=>walk();qg('.gmQ').oninput=e=>{G.q=e.target.value.trim().toLowerCase();G.show=200;drawG()};qg('.gmMore').onclick=()=>{G.show+=200;drawG()};
+ function setMode(){gc.querySelectorAll('.gmTabs button').forEach(b=>b.classList.toggle('on',b.dataset.m===G.mode));const t=$1('#t-gal');if(t)t.classList.toggle('galDir',G.mode==='dir');qg('.gmDir').hidden=G.mode!=='dir';if(G.mode==='dir'&&(!G.list.length||Date.now()-G.at>30000))walk();else drawG()}
+ const TQ=[];let tRun=0;function tPump(){while(tRun<3&&TQ.length){const j=TQ.pop();tRun++;j().catch(()=>{}).finally(()=>{tRun--;tPump()})}}
+ async function thumbFile(f,n){if(isV(n)){return await new Promise(res=>{const v=document.createElement('video'),u=URL.createObjectURL(f);let done=false;const fin=b=>{if(done)return;done=true;URL.revokeObjectURL(u);res(b)};v.muted=true;v.preload='metadata';v.src=u;v.onloadeddata=()=>{try{v.currentTime=Math.min(.5,(v.duration||1)/3)}catch(_){fin(null)}};v.onseeked=()=>{try{const k=320/Math.max(v.videoWidth,v.videoHeight,1),cv=document.createElement('canvas');cv.width=Math.round(v.videoWidth*k);cv.height=Math.round(v.videoHeight*k);cv.getContext('2d').drawImage(v,0,0,cv.width,cv.height);cv.toBlob(fin,'image/jpeg',.7)}catch(_){fin(null)}};v.onerror=()=>fin(null);setTimeout(()=>fin(null),6000)})}
+  if(isR(n)){const p=window.lumenRawPreview?await lumenRawPreview(f):null;f=p||f}
+  try{const b=new Uint8Array(await f.slice(0,196608).arrayBuffer());if(b[0]===0xFF&&b[1]===0xD8){let o=2;while(o+10<b.length){if(b[o]!==0xFF)break;const mk=b[o+1],len=(b[o+2]<<8)|b[o+3];if(mk===0xE1&&b[o+4]===0x45){const t=o+10,le=b[t]===0x49,dv=new DataView(b.buffer,t,Math.min(b.length-t,len)),u16=x=>dv.getUint16(x,le),u32=x=>dv.getUint32(x,le);const i0=u32(4),n0=u16(i0);let ori=1;for(let i=0;i<n0;i++){const e=i0+2+i*12;if(u16(e)===0x112)ori=u16(e+8)}const i1=u32(i0+2+n0*12);if(i1){const n1=u16(i1);let off=0,ln=0;for(let i=0;i<n1;i++){const e=i1+2+i*12,tg=u16(e);if(tg===0x201)off=u32(e+8);if(tg===0x202)ln=u32(e+8)}if(off&&ln&&t+off+ln<=b.length&&ori===1)return new Blob([b.slice(t+off,t+off+ln)],{type:'image/jpeg'})}break}if(mk===0xDA)break;o+=2+len}}}catch(_){}
+  const bm=await createImageBitmap(f,{resizeWidth:320,resizeQuality:'medium'});const cv=document.createElement('canvas');cv.width=bm.width;cv.height=bm.height;cv.getContext('2d').drawImage(bm,0,0);bm.close();return await new Promise(r=>cv.toBlob(r,'image/jpeg',.7))}
+ let io=null;const TC=new Map();
+ function filtered(){return G.list.filter(x=>(G.f==='all'?x.ty!=='pub':x.ty===G.f)&&(!G.q||x.n.toLowerCase().includes(G.q)))}
+ function drawG(){if(G.mode!=='dir')return;if(!S.dir||!S.perm){qg('.gmInfo').textContent='Escolha (ou libere) a pasta do evento no Início para ver todas as fotos e vídeos dela aqui.';qg('.gmGrid').innerHTML='';return}
+  const cnt={};for(const x of G.list)cnt[x.ty]=(cnt[x.ty]||0)+1;const L=filtered();
+  qg('.gmInfo').textContent=G.busy?'Lendo a pasta…':'📁 '+S.dir.name+' · '+G.list.length+' arquivo(s) · as fotos são lidas direto da pasta, só quando aparecem na tela (o site não guarda cópias).';
+  const fs=['all',...Object.keys(TY).filter(k=>k!=='all'&&cnt[k])];qg('.gmF').innerHTML=fs.map(k=>'<button type="button" class="'+(G.f===k?'on':'')+'" data-f="'+k+'">'+TY[k]+' ('+(k==='all'?G.list.filter(x=>x.ty!=='pub').length:cnt[k])+')</button>').join('');
+  qg('.gmF').querySelectorAll('button').forEach(b=>b.onclick=()=>{G.f=b.dataset.f;G.show=200;drawG()});
+  const V=L.slice(0,G.show);qg('.gmMore').hidden=L.length<=G.show;qg('.gmMore').textContent='Mostrar mais ('+(L.length-G.show)+')';
+  if(io)io.disconnect();io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const el=en.target;io.unobserve(el);const x=V[+el.dataset.i];if(!x)return;if(TC.has(x.p)){el.style.backgroundImage='url("'+TC.get(x.p)+'")';return}
+   TQ.push(async()=>{const f=await x.h.getFile();x.sz=f.size;const t=await thumbFile(f,x.n);if(t){const u=URL.createObjectURL(t);TC.set(x.p,u);if(TC.size>1500){const[k0,u0]=TC.entries().next().value;URL.revokeObjectURL(u0);TC.delete(k0)}el.style.backgroundImage='url("'+u+'")'}else el.classList.add('noimg')});tPump()}),{rootMargin:'400px'});
+  const G2=qg('.gmGrid');G2.innerHTML=V.map((x,i)=>'<button type="button" class="gmT'+(x.ty==='vid'?' vid':'')+'" data-i="'+i+'" title="'+esc(x.p)+'"><span>'+esc(x.n.replace(/^\d{8}_\d{6}_/,''))+'</span></button>').join('');
+  G2.querySelectorAll('.gmT').forEach(el=>{io.observe(el);el.onclick=()=>viewer(V,+el.dataset.i)})}
+ function viewer(V,i){const ov=document.createElement('div');ov.className='apOv gmV';ov.innerHTML='<div class="apBox"><div class="apMed"></div><div class="fx3a"><button type="button" class="f gPrev">‹</button><button type="button" class="f gNext">›</button><button type="button" class="f p gDl">⬇ Baixar (100%)</button><button type="button" class="f gEd" hidden>🎬 Editar este vídeo</button><button type="button" class="f apX">Fechar</button></div><small class="gCap"></small></div>';document.body.appendChild(ov);
+  let u='';const close=()=>{if(u)URL.revokeObjectURL(u);ov.remove();removeEventListener('keydown',key)};ov.querySelector('.apX').onclick=close;ov.onclick=e=>{if(e.target===ov)close()};
+  async function show(){const x=V[i];if(!x)return;if(u){URL.revokeObjectURL(u);u=''}const f=await x.h.getFile();let src=f;if(isR(x.n)&&window.lumenRawPreview)src=await lumenRawPreview(f)||f;u=URL.createObjectURL(src);
+   ov.querySelector('.apMed').innerHTML=isV(x.n)?'<video src="'+u+'" controls autoplay playsinline></video>':'<img src="'+u+'" alt="">';ov.querySelector('.gCap').textContent=x.p+' · '+fmtB(f.size)+' · '+(i+1)+'/'+V.length;
+   ov.querySelector('.gEd').hidden=!isV(x.n);ov.querySelector('.gDl').onclick=()=>{const a=document.createElement('a');const uu=URL.createObjectURL(f);a.href=uu;a.download=x.n;a.dispatchEvent(new MouseEvent('click'));setTimeout(()=>URL.revokeObjectURL(uu),60000)};
+   ov.querySelector('.gEd').onclick=async()=>{if(window.LUMEN_LOCALVID){close();goTab('ved');await LUMEN_LOCALVID.add(f)}}}
+  ov.querySelector('.gPrev').onclick=()=>{if(i>0){i--;show()}};ov.querySelector('.gNext').onclick=()=>{if(i<V.length-1){i++;show()}};
+  const key=e=>{if(e.key==='ArrowLeft')ov.querySelector('.gPrev').click();else if(e.key==='ArrowRight')ov.querySelector('.gNext').click();else if(e.key==='Escape')close()};addEventListener('keydown',key);show()}
+ function placeG(){const t=$1('#t-gal');if(!t)return;const ref=t.querySelector(':scope>.v70ph');if(ref&&gc.previousElementSibling!==ref){const after=t.querySelector(':scope>#bbGal')||null;ref.after(gc)}}
+ setInterval(placeG,1500);setTimeout(()=>{placeG();setMode()},900);
+ const _go=window.goTab;window.goTab=function(t){const r=_go.apply(this,arguments);try{if(t==='gal'){placeG();setMode()}if(t==='ved'){placeVx();paintX();paintP()}}catch(_){}return r};try{goTab=window.goTab}catch(_){}
+ window.LUMEN_V93={reconcile:()=>reconcile('manual'),EX,saveProj,snap,apply,walk,G};
+ log('Build v93: recupera sozinho o que faltou do cartão, vídeos editados com escolher pasta, projetos que não somem (.lumenvideo), Galeria › Toda a pasta e site mais leve com muitas fotos','ok');
+}catch(e){try{log('v93: '+e.message,'bad')}catch(_){}}})();
+</script>
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
 
 <script id="v62hb">
