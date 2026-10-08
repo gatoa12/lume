@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v101</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v102</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -1369,6 +1369,22 @@ html:root body .vzEmpty{display:none!important}
 .pjC .pjRes b,.pjC .pjRes strong{font-size:14px}
 .pjC>.fx3a .f,.pjC>.fx3a label{min-height:42px}.pjC>.sub.wrap{font-size:12px;opacity:.72;line-height:1.35}.mpAct .mpUp{align-self:stretch}
 .dl95a .bt98ask.p2{background:linear-gradient(135deg,rgba(232,176,75,.25),rgba(232,176,75,.1));border:1px solid var(--acc,#e8b04b)}
+
+#vxTabs button.p102on{position:relative}#vxTabs button.p102on::after{content:"";position:absolute;top:6px;right:8px;width:8px;height:8px;border-radius:50%;background:#2ecc71}
+#vxTabs button{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.p102chip{position:absolute;left:8px;top:8px;z-index:6;background:rgba(0,0,0,.72);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;cursor:pointer;max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.p102chip[hidden]{display:none!important}
+.vxw.vxOrig #vxGlc{display:none!important}.vxw.vxOrig #vxPv{filter:none!important}.vxw.vxOrig #vxOv{background:none!important;box-shadow:none!important}
+.p102orig{position:absolute;left:50%;bottom:52px;transform:translateX(-50%);z-index:6;background:#fff;color:#111;font-weight:800;font-size:12px;letter-spacing:.04em;border-radius:999px;padding:5px 12px;pointer-events:none}.p102orig[hidden]{display:none!important}
+#vxCmp.on{background:var(--acc,#e8b04b)!important;color:#111!important}
+.vxTb .p102dl{background:rgba(46,204,113,.16);border:1px solid rgba(46,204,113,.55);color:inherit;font-weight:800}
+.p102bin{margin-top:8px;display:flex;flex-direction:column;gap:6px}.p102bin .p102binB{width:100%;min-height:36px;font-size:13px}
+.p102binL{display:flex;flex-direction:column;gap:6px}.p102binL[hidden]{display:none!important}
+.p102binL .xR{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:8px 10px;border:1px dashed rgba(127,127,127,.35);border-radius:10px}.p102binL .xR>span{flex:1 1 180px;font-weight:700;font-size:13px}.p102binL .xR small{display:block;font-weight:400;opacity:.7;font-size:11.5px}.p102binL .f{width:auto;min-height:32px;padding:5px 12px;font-size:12.5px}
+.p102n{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0}.p102n>div{background:rgba(127,127,127,.08);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column}.p102n b{font-size:24px;line-height:1.1}.p102n span{font-size:12px;opacity:.8}
+.p102n .ok b{color:var(--ok,#2ecc71)}.p102n .bad b{color:var(--bad,#ff5c5c)}
+.p102pb,.p102bar{height:8px;border-radius:99px;background:rgba(127,127,127,.2);overflow:hidden;margin:6px 0}.p102pb i,.p102bar i{display:block;height:100%;background:var(--ok,#2ecc71)}.p102bar[hidden]{display:none!important}.p102bar i{background:var(--acc,#e8b04b)}
+.p102ml{display:flex;flex-direction:column;gap:2px;max-height:260px;overflow:auto;font-size:12.5px;padding:6px 0}.p102ml small{opacity:.65}
+.p102ok{color:var(--ok,#2ecc71);font-weight:700;margin:8px 0}.p102warn{color:var(--warn,#f0b429);font-weight:700;margin:8px 0}
 </style>
 
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -5332,11 +5348,11 @@ E('vxGo').onclick=async()=>{const i=sel;if(!i||!i.url||run||S.rv)return;const li
   let t0=0;const prog=()=>{const p=Math.max(0,Math.min(1,(performance.now()-t0)/1000/T));E('vxBar').style.width=Math.round(p*100)+'%';B.textContent='⏺ '+Math.round(p*100)+'%';const el=(performance.now()-t0)/1000;E('vxMsg').textContent='Gravando '+W+'×'+H+' · '+FPS+' fps · faltam ~'+Math.max(0,Math.ceil(T-el))+' s (deixe a tela aberta)'};
   /* a música e o vídeo começam juntos */
   const first=SEG.find(g=>!g.cut);v.currentTime=first.s;await new Promise(a=>{v.onseeked=a;setTimeout(a,2500)});v.playbackRate=Math.max(.0625,first.rate);
-  rec.start(1000);t0=performance.now();
+  rec.start(1000);t0=performance.now();let hidAt=0;const onVis=()=>{try{if(document.hidden){hidAt=performance.now();if(!v.paused){v.__vp=1;v.pause()}if(rec.state==='recording')rec.pause();try{ac&&ac.suspend()}catch(_){}E('vxMsg').textContent='⏸ Gravação pausada: volte para esta aba para continuar (assim o vídeo sai igual à sua edição).'}else{if(rec.state==='paused')rec.resume();try{ac&&ac.resume()}catch(_){}if(hidAt)t0+=performance.now()-hidAt;hidAt=0;if(v.__vp){v.__vp=0;v.play().catch(()=>{})}}}catch(_){}};document.addEventListener('visibilitychange',onVis);
   if(useM){const src=ac.createBufferSource();src.buffer=MUS.buf;src.loop=E('vxLoop').checked;const gm=ac.createGain(),n0=ac.currentTime,fi=Math.max(0,+E('vxFi').value||0),fo=Math.max(0,+E('vxFo').value||0),V=vol();
    gm.gain.setValueAtTime(fi>0?0:V,n0);if(fi>0)gm.gain.linearRampToValueAtTime(V,n0+fi);if(fo>0&&T>fo){gm.gain.setValueAtTime(V,n0+T-fo);gm.gain.linearRampToValueAtTime(0,n0+T)}
    src.connect(gm);gm.connect(dest);src.start(0,ms());src.stop(n0+T+.2)}
-  const okRun=await runPlan(v,(r)=>{paint(r);prog()},()=>cancel);
+  const okRun=await runPlan(v,(r)=>{paint(r);prog()},()=>cancel);document.removeEventListener('visibilitychange',onVis);
   fin=true;v.pause();if(!cancel&&window.vxOutro)try{await vxOutro(cv,g,cv.width,cv.height,FPS,B)}catch(_){}await zz(300);rec.stop();await done;try{ac&&ac.close()}catch(_){}
   if(!okRun&&cancel){E('vxMsg').textContent='Cancelado. Nada foi salvo.';throw Object.assign(new Error('cancelado'),{quiet:true})}
   const blob=new Blob(ch,{type:mt.split(';')[0]}),lkN=VP[+E('vxLk').value][0],tag='ritmo'+(useM?'_musica':'')+(P.f&&lkN!=='Natural'?'_'+slug(lkN):''),nm=i.name.replace(/\.[^.]+$/,'')+'_'+tag+(RO?'_girado'+RO:'')+(AS?'_'+({0.5625:'9x16',0.8:'4x5',1:'1x1',1.7778:'16x9'}[AS]||'corte'):'')+'.'+EXT,ct=i.ct||i.t;
@@ -6168,7 +6184,7 @@ $1('#clSave').onclick=async()=>{if(isNeu(VG.g))return msg('Faça algum ajuste an
  const g=JSON.parse(JSON.stringify(VG.g)),lut=g.lut?LUTS.get(g.lut):null;await saveMine({id:'m:'+Date.now().toString(36),name:n,kind:'LUMEN',g:fill(g),lut});msg('✔ Salvo em "Meus presets": '+n)};
 /* miniaturas com o quadro atual do vídeo */
 const TB=document.createElement('canvas');
-function frameSrc(){if(PV&&PV.videoWidth&&PV.readyState>=2){const k=150/Math.max(PV.videoWidth,PV.videoHeight);TB.width=Math.round(PV.videoWidth*k);TB.height=Math.round(PV.videoHeight*k);const x=TB.getContext('2d');x.filter=PV.style.filter||'none';x.drawImage(PV,0,0,TB.width,TB.height);return TB}return null}
+function frameSrc(){if(PV&&PV.videoWidth&&PV.readyState>=2){const k=150/Math.max(PV.videoWidth,PV.videoHeight),w=Math.round(PV.videoWidth*k),hh=Math.round(PV.videoHeight*k);let d=0;try{d=window.vxRotFor&&window.VXAPI&&VXAPI.sel?vxRotFor(VXAPI.sel):0}catch(_){}const q=d===90||d===270;TB.width=q?hh:w;TB.height=q?w:hh;const x=TB.getContext('2d');x.setTransform(1,0,0,1,0,0);x.filter=PV.style.filter||'none';if(d){x.translate(TB.width/2,TB.height/2);x.rotate(d*Math.PI/180);x.drawImage(PV,-w/2,-hh/2,w,hh);x.setTransform(1,0,0,1,0,0)}else x.drawImage(PV,0,0,w,hh);x.filter='none';return TB}return null}
 function photoSrc(){const it=(S.items||[]).find(i=>i.kind==='foto'&&(i.thumb));return it?it:null}
 function thumb(p,src,el){try{if(!src){el.style.background='linear-gradient(135deg,#333,#555)';return}const g=fill(JSON.parse(JSON.stringify(p.g)));if(p.lut||LUTS.has(p.id))g.lut=p.id;g.amt=1;const r=grade(g,src,src.width,src.height,{});const c=el.querySelector('canvas');c.width=src.width;c.height=src.height;if(r)c.getContext('2d').drawImage(r,0,0)}catch(_){}}
 function card(p,target){const b=document.createElement('button');b.type='button';b.className='cl-c';b.innerHTML='<canvas></canvas><span></span>';b.querySelector('span').textContent=p.name;b.title=p.name+(p.kind?' · '+p.kind:'');
@@ -8908,7 +8924,7 @@ mqtt/dist/mqtt.esm.js:
   qp('.pjList').innerHTML=L.map((p,i)=>'<div class="xR"><span>📁 '+esc(p.name)+' <small>'+esc((p.video&&p.video.name)||'')+' · '+new Date(p.t).toLocaleString()+'</small></span><button type="button" class="f p" data-ap="'+i+'">Usar</button><button type="button" class="f" data-dl="'+i+'">⬇ Baixar</button><button type="button" class="f" data-rm="'+i+'">🗑</button></div>').join('')+(PJ.autoT?'<small class="pjAuto">Salvamento automático: '+new Date(PJ.autoT).toLocaleTimeString().slice(0,5)+'</small>':'');
   qp('.pjList').querySelectorAll('[data-ap]').forEach(b=>b.onclick=()=>sayP(apply(L[+b.dataset.ap])));
   qp('.pjList').querySelectorAll('[data-dl]').forEach(b=>b.onclick=()=>dlProj(L[+b.dataset.dl]));
-  qp('.pjList').querySelectorAll('[data-rm]').forEach(b=>b.onclick=async()=>{const p=L[+b.dataset.rm];if(!confirm('Tirar o projeto “'+p.name+'” da lista? (o arquivo baixado e o da pasta continuam)'))return;await kv.del('pj:'+p.name);paintP()})}
+  qp('.pjList').querySelectorAll('[data-rm]').forEach(b=>b.onclick=async()=>{const p=L[+b.dataset.rm];if(!confirm('Tirar o projeto “'+p.name+'” da lista? (o arquivo baixado e o da pasta continuam)'))return;try{await kv.set('trash:'+p.name,Object.assign({},p,{delAt:Date.now()}))}catch(_){}await kv.del('pj:'+p.name);paintP()})}
  /* projetos antigos (do botão antigo) entram na lista nova */
  (async()=>{try{const L=JSON.parse(localStorage.getItem('lumen_vxproj')||'[]');for(const x of L){if(await kv.get('pj:'+x.n))continue;await kv.set('pj:'+x.n,{app:'LUMEN Campo',type:'projeto-video',v:1,name:x.n,video:{name:'',size:0,dur:0},seg:(x.s||[]).map(([s,e,r,c])=>({s,e,rate:r,cut:!!c})),ctrl:{},t:Date.now()})}paintP()}catch(_){}})();
  function placeVx(){if(window.__vd96&&pc.isConnected&&xc.isConnected)return;const t=$1('#t-ved');if(!t)return;const prj=$1('#vxPrj');const host=(prj&&prj.closest('.vxColR'))||t;if(pc.parentNode!==host){if(prj&&prj.closest('.vxColR')){const card=prj.closest('.c')||prj.parentElement;card.after(pc)}else host.appendChild(pc)}
@@ -8957,7 +8973,7 @@ mqtt/dist/mqtt.esm.js:
  function placeG(){const t=$1('#t-gal');if(!t)return;const ref=t.querySelector(':scope>.v70ph');if(ref&&gc.previousElementSibling!==ref){const after=t.querySelector(':scope>#bbGal')||null;ref.after(gc)}}
  setInterval(placeG,1500);setTimeout(()=>{placeG();setMode()},900);
  const _go=window.goTab;window.goTab=function(t){const r=_go.apply(this,arguments);try{if(t==='gal'){placeG();setMode()}if(t==='ved'){placeVx();paintX();paintP()}}catch(_){}return r};try{goTab=window.goTab}catch(_){}
- window.LUMEN_V93={getB:x=>getB(x),rec:record,paintX:()=>paintX(),reconcile:()=>reconcile('manual'),EX,saveProj,snap,apply,walk,G};
+ window.LUMEN_V93={kv,paintP:()=>paintP(),dlProj:p=>dlProj(p),getB:x=>getB(x),rec:record,paintX:()=>paintX(),reconcile:()=>reconcile('manual'),EX,saveProj,snap,apply,walk,G};
  log('Build v93: recupera sozinho o que faltou do cartão, vídeos editados com escolher pasta, projetos que não somem (.lumenvideo), Galeria › Toda a pasta e site mais leve com muitas fotos','ok');
 }catch(e){try{log('v93: '+e.message,'bad')}catch(_){}}})();
 </script>
@@ -9176,7 +9192,7 @@ mqtt/dist/mqtt.esm.js:
   if(q('.dl95as'))q('.dl95as').onclick=async()=>{try{if(await saveAs(x))next()}catch(e){say('Não deu: '+e.message)}};
   if(q('.dl95sh'))q('.dl95sh').onclick=async()=>{try{await share(x);next()}catch(e){if(!(e&&e.name==='AbortError'))say('Não deu: '+e.message)}};
   if(q('.dl95all'))q('.dl95all').onclick=async()=>{for(const y of L){try{await dl(y)}catch(_){}await new Promise(r=>setTimeout(r,600))}close()}}
- addEventListener('lumen-vx-done',e=>{const x=e.detail;if(!x)return;if(window.__vxBatch)return;if(!ASK.on&&!x.ask)return;PEND.push(x);if(PEND.length>40)PEND.shift();
+ addEventListener('lumen-vx-done',e=>{const x=e.detail;if(!x)return;if(window.__vxBatch)return;if(!ASK.on&&!x.ask&&!window.__dlNext)return;window.__dlNext=false;PEND.push(x);if(PEND.length>40)PEND.shift();
   clearTimeout(busy);busy=setTimeout(()=>{if(ov.hidden)show();else{const a=ov.querySelector('.dl95all');if(!a)show()}},700);paintSteps()});
  const AK='lumen_vxask';const ASK={on:true};try{Object.assign(ASK,JSON.parse(localStorage.getItem(AK)||'{}'))}catch(_){}
 
@@ -9428,7 +9444,7 @@ mqtt/dist/mqtt.esm.js:
   RUN.done=true;drawRun()}
  let softT=0;function drawRunSoft(){if(Date.now()-softT<700)return;softT=Date.now();const b=ov.querySelector('.bt98pb>i');if(b&&RUN){b.style.width=Math.round(((RUN.i+(RUN.pct||0)/100)/RUN.items.length)*100)+'%'}const c=ov.querySelector('.bt98cur');if(c&&RUN)c.textContent=(RUN.pct||0)+'%'}
  function drawRun(){const R=RUN;const n=R.items.length,ok=R.res.length;
-  ov.innerHTML='<div class="bt98b"><div class="bt98h"><div><b>'+(R.done?'✔ Pronto: '+ok+' de '+n+' vídeo(s)':'🎬 Aplicando a mesma edição… '+(R.i+1)+' de '+n)+'</b><small>'+(R.done?'Os vídeos estão em ③ Vídeos editados'+(S.dir&&S.perm?' e na pasta do evento':'')+'.':'Deixe esta tela aberta. Pode minimizar a janela, mas não feche a aba.')+'</small></div>'+(R.done?'<button type="button" class="bt98x" aria-label="Fechar">✕</button>':'')+'</div>'
+  ov.innerHTML='<div class="bt98b"><div class="bt98h"><div><b>'+(R.done?'✔ Pronto: '+ok+' de '+n+' vídeo(s)':'🎬 Aplicando a mesma edição… '+(R.i+1)+' de '+n)+'</b><small>'+(R.done?'Os vídeos estão em ③ Vídeos editados'+(S.dir&&S.perm?' e na pasta do evento':'')+'.':'Deixe esta aba aberta na frente (não minimize nem troque de aba: a gravação pausa e continua quando você voltar).')+'</small></div>'+(R.done?'<button type="button" class="bt98x" aria-label="Fechar">✕</button>':'')+'</div>'
    +'<div class="bt98pb"><i style="width:'+Math.round(((R.done?n:R.i+(R.pct||0)/100)/n)*100)+'%"></i></div>'
    +'<div class="bt98rl">'+R.items.map((it,k)=>'<div class="'+(k===R.i&&!R.done?'cur':'')+'"><span>'+R.st[k]+'</span><b>'+esc(it.name)+'</b>'+(R.err&&R.err[k]?'<small class="bt98e">'+esc(String(R.err[k]).slice(0,120))+'</small>':'')+(k===R.i&&!R.done?'<small class="bt98cur">'+(R.pct||0)+'%</small>':'')+'</div>').join('')+'</div>'
    +'<div class="bt98f">'+(R.done?(ok?'<button type="button" class="f p bt98dl">⬇ Baixar os '+ok+' em MP4</button>'+(window.showDirectoryPicker?'<button type="button" class="f bt98sv">📁 Escolher a pasta e salvar todos</button>':''):'')+'<button type="button" class="f bt98cl">Fechar</button>'
@@ -9473,7 +9489,7 @@ mqtt/dist/mqtt.esm.js:
  let SAMPLE=null;function sample(){if(SAMPLE)return SAMPLE;const c=document.createElement('canvas');c.width=192;c.height=108;const g=c.getContext('2d');
   let gr=g.createLinearGradient(0,0,0,108);gr.addColorStop(0,'#6fa8dc');gr.addColorStop(.55,'#cfe2f3');gr.addColorStop(.56,'#6aa84f');gr.addColorStop(1,'#38761d');g.fillStyle=gr;g.fillRect(0,0,192,108);
   g.fillStyle='#e8b38f';g.beginPath();g.arc(70,52,13,0,7);g.fill();g.fillStyle='#cc3333';g.fillRect(58,66,24,30);g.fillStyle='#f1c232';g.fillRect(120,40,26,56);SAMPLE=c;return c}
- function src(){const v=$1('#vxPv');if(v&&v.videoWidth&&v.readyState>=2){try{const c=document.createElement('canvas');c.width=192;c.height=Math.max(60,Math.round(192*v.videoHeight/v.videoWidth));c.getContext('2d').drawImage(v,0,0,c.width,c.height);return c}catch(_){}}return sample()}
+ function src(){const v=$1('#vxPv');if(v&&v.videoWidth&&v.readyState>=2){try{const w=192,hh=Math.max(60,Math.round(192*v.videoHeight/v.videoWidth));let d=0;try{d=window.vxRotFor&&window.VXAPI&&VXAPI.sel?vxRotFor(VXAPI.sel):0}catch(_){}const q=d===90||d===270;const c=document.createElement('canvas');c.width=q?hh:w;c.height=q?w:hh;const x=c.getContext('2d');if(d){x.translate(c.width/2,c.height/2);x.rotate(d*Math.PI/180);x.drawImage(v,-w/2,-hh/2,w,hh)}else x.drawImage(v,0,0,w,hh);return c}catch(_){}}return sample()}
  function thumb(cv,id,base){try{const g=LC().presetG(id);const s=base||src();cv.width=s.width;cv.height=s.height;const x=cv.getContext('2d');x.drawImage(s,0,0);const r=LC().gradeWith(g,s,s.width,s.height);if(r)x.drawImage(r,0,0,s.width,s.height)}catch(_){}}
  const uid=()=>'m:'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 
@@ -9537,6 +9553,109 @@ mqtt/dist/mqtt.esm.js:
  window.LUMEN_V100={ED,PR,place};
  log('Build v100: Meus presets organizados (usar no vídeo com um toque, copiar, renomear, exportar) e Projetos compactos','ok');
 }catch(e){try{log('v100: '+e.message,'bad')}catch(_){}}})();
+</script>
+<script id="v102">
+/* ===== v102 · Editor: preset ativo à vista, "Original" de verdade, ⬇ Baixar ao lado do Salvar, lixeira de projetos
+   + Conferência cartão × site (sem abrir as fotos: só nomes e tamanhos). ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s);
+ const nf=n=>Number(n||0).toLocaleString('pt-BR');
+ /* ---------- 1. preset ativo: na aba Cor e em cima do vídeo ---------- */
+ const chip=document.createElement('button');chip.type='button';chip.className='p102chip';chip.hidden=true;chip.title='Cor aplicada no vídeo (toque para trocar)';
+ chip.onclick=()=>{const t=$1('#vxTabs [data-p=c]');t&&t.click()};
+ function paintPreset(){const C=window.LUMENCOR;if(!C||!C.video)return;let v={};try{v=C.video()}catch(_){}const on=!!(v&&v.on&&v.name);
+  const tab=$1('#vxTabs [data-p=c]');if(tab){if(!tab.dataset.base)tab.dataset.base=tab.textContent.trim();const want=on?tab.dataset.base+' · '+v.name:tab.dataset.base;if(tab.textContent!==want)tab.textContent=want;tab.classList.toggle('p102on',on);tab.title=on?'Cor do vídeo: '+v.name:'Cor do vídeo'}
+  const w=$1('#vxTop .vxw');if(w&&chip.parentNode!==w)w.appendChild(chip);const t='🎨 '+(on?v.name:'');if(chip.textContent!==t)chip.textContent=t;chip.hidden=!on||(w&&w.classList.contains('vxOrig'))}
+ setInterval(paintPreset,800);
+
+ /* ---------- 2. "Original" de verdade: tira cor, look e efeitos da prévia (toque = liga/desliga; segurar = só enquanto segura) ---------- */
+ let origOn=false,downAt=0;
+ const badge=document.createElement('div');badge.className='p102orig';badge.textContent='ORIGINAL · sem edição de cor';badge.hidden=true;
+ function setOrig(v){origOn=v;const w=$1('#vxTop .vxw');if(!w)return;if(badge.parentNode!==w)w.appendChild(badge);w.classList.toggle('vxOrig',v);badge.hidden=!v;
+  const b=$1('#vxCmp');if(b){b.classList.toggle('on',v);b.textContent=v?'✨ Ver editado':'👁 Original'}
+  const pv=$1('#vxPv');if(pv){if(v){pv.dataset.f102=pv.style.filter||'';pv.style.filter='none'}else{try{VXAPI.applyLook()}catch(_){if(pv.dataset.f102)pv.style.filter=pv.dataset.f102}}}paintPreset()}
+ function wireCmp(){const b=$1('#vxCmp');if(!b||b.dataset.v102)return;b.dataset.v102=1;
+  b.addEventListener('pointerdown',e=>{downAt=Date.now();setOrig(true)},true);
+  b.addEventListener('pointerup',e=>{const held=Date.now()-downAt>450;if(held){setOrig(false)}else{/* toque: alterna */setOrig(!b.dataset.t102);b.dataset.t102=b.dataset.t102?'':'1'}setTimeout(()=>{if(origOn){const pv=$1('#vxPv');pv&&(pv.style.filter='none')}},30)},true);
+  b.addEventListener('pointerleave',()=>{if(Date.now()-downAt>450&&!b.dataset.t102)setOrig(false)},true)}
+ setInterval(wireCmp,1200);
+ document.addEventListener('change',e=>{if(e.target&&e.target.id==='vxSel'){const b=$1('#vxCmp');if(b)b.dataset.t102='';setOrig(false)}},true);
+ addEventListener('keydown',e=>{if(!$1('#t-ved.on'))return;const tg=(e.target&&e.target.tagName)||'';if(/INPUT|TEXTAREA|SELECT/.test(tg)||e.ctrlKey||e.metaKey||e.altKey)return;if(e.key==='o'||e.key==='O'){e.preventDefault();const b=$1('#vxCmp');if(b){b.dataset.t102=origOn?'':'1'}setOrig(!origOn)}});
+
+ /* ---------- 3. ⬇ Baixar ao lado do 💾 Salvar ---------- */
+ let dirty=true,lastFor='';
+ const isMine=x=>{const s=window.VXAPI&&VXAPI.sel;if(!s||!x)return false;const b=String(s.name).replace(/\.[^.]+$/,'');return String(x.name).startsWith(b+'_')};
+ addEventListener('lumen-vx-done',e=>{if(isMine(e.detail)){dirty=false;lastFor=VXAPI.sel&&VXAPI.sel.name}});
+ ['input','change'].forEach(t=>document.addEventListener(t,e=>{if(e.target&&e.target.closest&&e.target.closest('#vxBox')&&e.target.id!=='vxSel')dirty=true},true));
+ document.addEventListener('click',e=>{const b=e.target&&e.target.closest&&e.target.closest('#vxBox button');if(b&&!b.closest('.vxTb')&&!b.matches('#vxCmp,.p102chip'))dirty=true;if(b&&b.closest('.vxTb')&&/Dividir|Zerar|↶/.test(b.textContent))dirty=true},true);
+ document.addEventListener('change',e=>{if(e.target&&e.target.id==='vxSel')dirty=true},true);
+ function wireDl(){const tb=$1('#vxBox .vxTb');const go=$1('#vxGo');if(!tb||!go||tb.querySelector('.p102dl'))return;const b=document.createElement('button');b.type='button';b.className='p102dl';b.title='Baixar o vídeo com as suas edições (MP4)';b.textContent='⬇ Baixar';
+  b.onclick=()=>{const EX=(window.LUMEN_V93&&LUMEN_V93.EX)||[];const x=EX.find(isMine);
+   if(x&&!dirty&&lastFor===(VXAPI.sel&&VXAPI.sel.name)){x.dl95=0;try{LUMEN_V95.PEND.unshift(x);LUMEN_V95.show()}catch(_){}return}
+   if(go.disabled)return;window.__dlNext=true;const m=$1('#vxMsg');if(m)m.textContent='⏺ Gerando o vídeo com as suas edições… quando terminar, aparece para baixar em MP4.';go.click()};
+  go.after(b)}
+ setInterval(wireDl,1200);
+
+ /* ---------- 4. Projetos: lixeira (recuperar o que foi tirado) ---------- */
+ const kv=()=>window.LUMEN_V93&&LUMEN_V93.kv;
+ const rb=document.createElement('div');rb.className='p102bin';
+ rb.innerHTML='<button type="button" class="f p102binB">♻ Recuperar projetos tirados</button><div class="p102binL" hidden></div>';
+ async function trashList(){const K=kv();if(!K)return[];let L=[];try{L=(await K.all('trash:')).map(x=>Object.assign({src:'lixeira'},x[1]))}catch(_){}
+  let have=new Set();try{have=new Set((await K.all('pj:')).map(x=>x[1].name))}catch(_){}
+  /* também os que estão na pasta do evento (LUMEN_projetos) */
+  try{if(S.dir&&S.perm&&!S.dir.virtual){const d=await S.dir.getDirectoryHandle('LUMEN_projetos');for await(const[n,h] of d.entries()){if(h.kind!=='file'||!/\.lumenvideo$/i.test(n))continue;try{const p=JSON.parse(await(await h.getFile()).text());if(p&&p.name&&!have.has(p.name)&&!L.some(x=>x.name===p.name))L.push(Object.assign({src:'pasta do evento'},p))}catch(_){}}}}catch(_){}
+  return L.filter(p=>p&&p.name&&!have.has(p.name)).sort((a,b)=>(b.delAt||b.t||0)-(a.delAt||a.t||0))}
+ async function paintBin(){const box=rb.querySelector('.p102binL');const L=await trashList();rb.querySelector('.p102binB').textContent='♻ Recuperar projetos tirados'+(L.length?' ('+L.length+')':'');
+  if(box.hidden)return;box.innerHTML=L.length?L.map((p,i)=>'<div class="xR"><span>📁 '+esc(p.name)+'<small>'+esc((p.video&&p.video.name)||'')+' · '+(p.delAt?'tirado em '+new Date(p.delAt).toLocaleString():'salvo na '+p.src)+'</small></span><button type="button" class="f p" data-r="'+i+'">↩ Recuperar</button></div>').join(''):'<div class="sub">Nada na lixeira. (Projetos tirados a partir de agora ficam aqui para recuperar.)</div>';
+  box.querySelectorAll('[data-r]').forEach(b=>b.onclick=async()=>{const p=L[+b.dataset.r];const c=Object.assign({},p);delete c.delAt;delete c.src;try{await kv().set('pj:'+c.name,c);await kv().del('trash:'+c.name)}catch(_){}try{LUMEN_V93.paintP()}catch(_){}paintBin();log('♻ Projeto “'+c.name+'” recuperado','ok')})}
+ rb.querySelector('.p102binB').onclick=()=>{const b=rb.querySelector('.p102binL');b.hidden=!b.hidden;paintBin()};
+ setInterval(()=>{const pc=$1('.pjC');if(pc&&rb.parentNode!==pc){pc.appendChild(rb);paintBin()}},1500);
+
+ /* ---------- 5. Conferência: cartão × site ---------- */
+ const cc=document.createElement('div');cc.className='c v70c p102cc';
+ cc.innerHTML='<div class="v70h"><b>📊 Conferência: cartão × site</b><span class="pillS p102st">—</span></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Compara <b>todas as fotos e vídeos do cartão</b> com o que <b>já passou pelo LUMEN</b>. Não abre nem copia as fotos: confere só o nome e o tamanho de cada arquivo, por isso é rápido mesmo com milhares.</div>'
+  +'<div class="fx3a"><button type="button" class="f p p102cam">📷 Conferir a câmera conectada</button><button type="button" class="f p102dir">💳 Escolher a pasta do cartão (leitor)</button></div>'
+  +'<label class="r"><input type="checkbox" class="p102all"><span>Comparar com todos os eventos (não só o evento atual)</span></label>'
+  +'<div class="p102bar" hidden><i></i></div><div class="p102res"></div>';
+ const qc=s=>cc.querySelector(s),say=t=>{qc('.p102res').innerHTML=t};
+ function siteIndex(all){const ev=(typeof C!=='undefined'&&C.ev)||'';const byName=new Map();for(const[k,v] of Object.entries(LG.m||{})){if(!v||!v.n)continue;if(!all&&v.ev!==ev)continue;const key=String(v.n).toUpperCase();const o=byName.get(key);if(!o||v.st==='ok')byName.set(key,{st:v.st,sz:v.sz,ev:v.ev,e:v.e})}return byName}
+ const media=n=>/\.(jpe?g|heic|cr3|cr2|dng|nef|arw|raf|mp4|mov|mxf|avi)$/i.test(n);
+ let LAST=null;
+ function show(card,label){const all=qc('.p102all').checked,S2=siteIndex(all);let ok=0,ign=0,fila=0,falha=0;const miss=[];
+  for(const f of card){const s=S2.get(String(f.n).toUpperCase());if(s&&(s.st==='ok'||s.st==='ign')&&(!s.sz||!f.sz||s.sz===f.sz)){s.st==='ign'?ign++:ok++}else if(s&&s.st==='fila'){fila++;miss.push(Object.assign({why:'na fila'},f))}else if(s&&s.st==='falha'){falha++;miss.push(Object.assign({why:'falhou: '+(s.e||'')},f))}else miss.push(Object.assign({why:'não chegou'},f))}
+  const cardSet=new Set(card.map(f=>String(f.n).toUpperCase()));let onlySite=0;S2.forEach((v,k)=>{if(v.st==='ok'&&!cardSet.has(k))onlySite++});
+  const pct=card.length?Math.round(100*(ok+ign)/card.length):0;LAST={card,miss,label};
+  const st=qc('.p102st');st.textContent=pct+'% conferido';st.className='pillS p102st '+(miss.length?'warn':'ok');
+  say('<div class="p102n"><div><b>'+nf(card.length)+'</b><span>no cartão</span></div><div class="ok"><b>'+nf(ok)+'</b><span>já passaram pelo site</span></div>'+(ign?'<div><b>'+nf(ign)+'</b><span>RAW ignorados (escolha sua)</span></div>':'')
+   +'<div class="'+(miss.length?'bad':'ok')+'"><b>'+nf(miss.length)+'</b><span>faltam'+(fila?' ('+nf(fila)+' na fila)':'')+(falha?' · '+nf(falha)+' com erro':'')+'</span></div><div><b>'+nf(onlySite)+'</b><span>no site e não mais no cartão</span></div></div>'
+   +'<div class="p102pb"><i style="width:'+pct+'%"></i></div><div class="sub">'+esc(label)+' · '+new Date().toLocaleTimeString()+'</div>'
+   +(miss.length?'<details class="p102m" open><summary>Ver os '+nf(miss.length)+' que faltam</summary><div class="p102ml">'+miss.slice(0,400).map(f=>'<span>'+esc(f.n)+' <small>'+esc(f.why)+'</small></span>').join('')+(miss.length>400?'<span>… e mais '+nf(miss.length-400)+'</span>':'')+'</div></details>'
+     +'<div class="fx3a"><button type="button" class="f p p102get">⬇ Trazer os que faltam ('+nf(miss.length)+')</button><button type="button" class="f p102csv">📄 Baixar relatório (planilha)</button></div>'
+     :'<div class="p102ok">✔ Tudo que está no cartão já passou pelo LUMEN.</div><div class="fx3a"><button type="button" class="f p102csv">📄 Baixar relatório (planilha)</button></div>'));
+  const g=qc('.p102get');if(g)g.onclick=getMissing;qc('.p102csv').onclick=csv}
+ function csv(){if(!LAST)return;const S2=siteIndex(qc('.p102all').checked);const rows=[['arquivo','tamanho','situação']].concat(LAST.card.map(f=>{const s=S2.get(String(f.n).toUpperCase());return[f.n,f.sz||'',s?(s.st==='ok'?'passou pelo site':s.st==='ign'?'ignorado (RAW)':s.st==='fila'?'na fila':s.st==='falha'?'erro: '+(s.e||''):s.st):'não chegou']}));
+  const t=rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+t],{type:'text/csv'}));a.download='conferencia_cartao_'+new Date().toISOString().slice(0,10)+'.csv';document.body.appendChild(a);a.dispatchEvent(new MouseEvent('click'));a.remove()}
+ async function getMissing(){if(!LAST||!LAST.miss.length)return;let n=0;for(const f of LAST.miss){if(f.file){S.q.push(f.file);n++}else if(f.h!=null){S.seen&&S.seen.add(f.h);S.done&&S.done.delete(f.h);if(!S.q.includes(f.h)){S.q.push(f.h);n++}}}
+  try{S.u.total+=n}catch(_){}if(S.run){try{pump()}catch(_){}say(qc('.p102res').innerHTML+'<div class="p102ok">⬇ '+nf(n)+' arquivo(s) entraram na fila. Acompanhe no Início.</div>')}else say(qc('.p102res').innerHTML+'<div class="p102warn">'+nf(n)+' arquivo(s) na fila: toque em ▶ Começar a receber (Início) para trazer.</div>');log('📊 Conferência: '+n+' arquivo(s) que faltavam voltaram para a fila','ok')}
+ const bar=p=>{const b=qc('.p102bar');b.hidden=p==null;if(p!=null)b.querySelector('i').style.width=Math.round(p*100)+'%'};
+ qc('.p102cam').onclick=async()=>{if(!S.dev||!S.sess||S.src!=='usb'){say('<div class="p102warn">Conecte a câmera por USB primeiro (aba Conectar). Ou use 💳 a pasta do cartão no leitor.</div>');return}
+  const btn=qc('.p102cam');btn.disabled=true;say('<div class="sub">Lendo a lista da câmera…</div>');
+  for(let k=0;k<40&&S.pollBusy;k++)await new Promise(r=>setTimeout(r,250));S.pollBusy=true;
+  try{const H=await handles();const byH=new Map();for(const v of Object.values(LG.m||{}))if(v&&v.h!=null&&v.n)byH.set(v.h,{n:v.n,sz:v.sz});
+   const out=[];let i=0;for(const h of H){i++;let f=byH.get(h);if(!f){try{const r=await ptp(0x1008,[h]);if(r&&r.data){const o=info(r.data);f={n:o.name,sz:o.size}}}catch(_){}}if(f&&media(f.n))out.push({n:f.n,sz:f.sz,h});if(i%25===0){bar(i/H.length);qc('.p102res').innerHTML='<div class="sub">Conferindo '+nf(i)+' de '+nf(H.length)+'…</div>'}}
+   bar(null);show(out,'Câmera '+((S.dev&&S.dev.productName)||'')+' (USB)')}
+  catch(e){bar(null);say('<div class="p102warn">Não consegui ler a câmera: '+esc(e.message)+'</div>')}finally{S.pollBusy=false;btn.disabled=false}};
+ qc('.p102dir').onclick=async()=>{if(!window.showDirectoryPicker){say('<div class="p102warn">Use o Chrome no computador para escolher a pasta do cartão.</div>');return}let d;try{d=await showDirectoryPicker({id:'lumen-cartao',mode:'read'})}catch(_){return}
+  say('<div class="sub">Lendo a pasta '+esc(d.name)+'…</div>');const out=[];let k=0;
+  const walk=async(x,dep)=>{for await(const[n,h] of x.entries()){if(n.startsWith('.'))continue;if(h.kind==='directory'){if(dep<6)await walk(h,dep+1)}else if(media(n)){let sz=0,file=null;try{file=await h.getFile();sz=file.size}catch(_){}out.push({n,sz,file});if(++k%200===0)qc('.p102res').innerHTML='<div class="sub">Lidos '+nf(k)+'…</div>'}}};
+  try{await walk(d,0);show(out,'Pasta do cartão: '+d.name)}catch(e){say('<div class="p102warn">Não consegui ler: '+esc(e.message)+'</div>')}};
+ function place(){const t=$1('#t-reg');if(!t)return;const ph=t.querySelector(':scope>.v70ph');if(ph){if(ph.nextElementSibling!==cc)ph.after(cc)}else if(cc.parentNode!==t)t.prepend(cc)}
+ place();setInterval(place,2000);
+
+ window.LUMEN_V102={setOrig,show,siteIndex,paintBin};
+ log('Build v102: preset ativo à vista, Original de verdade, ⬇ Baixar ao lado do Salvar, lixeira de projetos e conferência cartão × site','ok');
+}catch(e){try{log('v102: '+e.message,'bad')}catch(_){}}})();
 </script>
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
 
