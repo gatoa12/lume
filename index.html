@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v98</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v99</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -6022,7 +6022,7 @@ let pp=null;if(wrap){pp=document.createElement('button');pp.type='button';pp.id=
 function prevNow(){if(!ov||!PV)return;const a=A(),busy=a&&a.run;
  if(pp){const want=vOn()&&!showOrig&&!busy;pp.hidden=!want;if(want)PV.controls=false;else if(!busy&&!PV.controls&&ov.style.display==='block')PV.controls=true}
  if(!vOn()||showOrig||!PV.videoWidth||PV.readyState<2){ov.style.display='none';return}
- const R=PV.getBoundingClientRect(),P=wrap.getBoundingClientRect(),vw=PV.videoWidth,vh=PV.videoHeight,s=Math.min(R.width/vw,R.height/vh),dw=vw*s,dh=vh*s;
+ const lay=PV.offsetParent===wrap,R=lay?{left:PV.offsetLeft,top:PV.offsetTop,width:PV.offsetWidth,height:PV.offsetHeight}:PV.getBoundingClientRect(),P=lay?{left:0,top:0}:wrap.getBoundingClientRect(),vw=PV.videoWidth,vh=PV.videoHeight,s=Math.min(R.width/vw,R.height/vh),dw=vw*s,dh=vh*s;
  if(dw<4||dh<4){ov.style.display='none';return}
  const W=Math.max(2,Math.round(Math.min(dw*(devicePixelRatio||1),960))),H=Math.max(2,Math.round(W*dh/dw));
  if(tc.width!==W||tc.height!==H){tc.width=W;tc.height=H}tg.filter=PV.style.filter||'none';tg.drawImage(PV,0,0,W,H);tg.filter='none';
@@ -9251,9 +9251,9 @@ mqtt/dist/mqtt.esm.js:
   try{localStorage.setItem(RK,JSON.stringify(ROT))}catch(_){}const hv=$1('#vxRotV');if(hv&&hv.value!==String(d))hv.value=String(d);apply();
   if(!quiet)note(d?'🔄 Vídeo girado '+(d===270?'90° para a esquerda':d===90?'90° para a direita':'180°')+' — o 💾 Salvar já sai assim.':'🔄 Vídeo na posição original.')}
  let lastT='';
- function apply(){const it=curIt(),d=it?vxRotFor(it):0;['#vxPv','#vxGlc'].forEach(s=>{const e=$1(s);if(!e)return;let tf='';
-   if(d){const w=e.offsetWidth||e.clientWidth,h=e.offsetHeight||e.clientHeight;const sc=(d===90||d===270)&&w&&h?Math.min(w/h,h/w):1;tf='rotate('+d+'deg) scale('+sc.toFixed(4)+')'}
-   if(e.style.transform!==tf){e.style.transition='transform .25s ease';e.style.transform=tf}});
+ function apply(){const it=curIt(),d=it?vxRotFor(it):0;const PV=$1('#vxPv');let tf='';
+  if(d&&PV){let sc=1;if(d===90||d===270){const W=PV.offsetWidth,H=PV.offsetHeight,vw=PV.videoWidth||16,vh=PV.videoHeight||9,s0=Math.min(W/vw,H/vh),dw=vw*s0,dh=vh*s0;sc=dw&&dh?Math.min(H/dw,W/dh):1}tf='rotate('+d+'deg) scale('+sc.toFixed(4)+')'}
+  ['#vxPv','#vxGlc'].forEach(s=>{const e=$1(s);if(!e)return;if(e.style.transform!==tf){e.style.transformOrigin='50% 50%';e.style.transition='transform .25s ease';e.style.transform=tf}});
   const st=$1('#rotSt');const t=d?'girado '+d+'°':'original';if(st&&lastT!==t){lastT=t;st.textContent=t;st.className='pillS'+(d?' ok':'')}
   document.querySelectorAll('#rotD button').forEach(b=>b.classList.toggle('on',+b.dataset.d===d));
   document.querySelectorAll('.vd97sum').forEach(e=>e.textContent=d?'🔄 '+d+'°':'');
