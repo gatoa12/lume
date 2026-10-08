@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v99</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v101</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -1340,6 +1340,35 @@ html:root body .vzEmpty{display:none!important}
 .bt98pill{position:fixed;right:16px;bottom:90px;z-index:2147482400;background:var(--acc,#e8b04b);color:#111;border:0;border-radius:999px;padding:10px 16px;font-weight:800;box-shadow:0 8px 24px rgba(0,0,0,.4);cursor:pointer}.bt98pill[hidden]{display:none!important}
 .vd96h .bt98open{width:auto}
 @media(max-width:560px){.bt98g{grid-template-columns:repeat(2,1fr)}.bt98f .f{flex:1 1 100%}.bt98b{padding:12px}}
+
+.mpHide{display:none!important}
+.mp100{display:flex;flex-direction:column;gap:10px}
+.mpAct{display:flex;flex-wrap:wrap;gap:8px}.mpAct .f{width:auto;flex:1 1 160px;min-height:40px;font-size:13px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.mpTip{font-size:12px;opacity:.8;white-space:normal}
+.mpG{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.mpC{display:flex;flex-direction:column;border:2px solid rgba(127,127,127,.18);border-radius:12px;overflow:hidden;background:rgba(127,127,127,.05)}
+.mpC.on{border-color:var(--acc,#e8b04b);box-shadow:0 0 0 3px rgba(232,176,75,.2)}
+.mpUse{display:flex;flex-direction:column;gap:2px;padding:0 0 6px;border:0;background:none;color:inherit;text-align:left;cursor:pointer;position:relative}
+.mpUse canvas{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#222}
+.mpUse b{font-size:12.5px;padding:0 8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mpUse small{font-size:11px;opacity:.65;padding:0 8px}
+.mpOn{position:absolute;top:6px;left:6px;background:var(--acc,#e8b04b);color:#111;font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px}.mpOn:empty{display:none}
+.mpB{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(127,127,127,.15)}
+.mpB button{background:none;border:0;color:inherit;padding:7px 0;cursor:pointer;font-size:14px}.mpB button:hover{background:rgba(127,127,127,.15)}
+.mpE{display:flex;flex-direction:column;gap:4px;padding:6px}.mpE button{border-radius:8px;border:1px solid rgba(127,127,127,.3);background:rgba(127,127,127,.08);color:inherit;padding:6px;font-size:12px;cursor:pointer}
+.mpEmpty{grid-column:1/-1;font-size:13px;opacity:.85;padding:14px;border:1px dashed rgba(127,127,127,.35);border-radius:12px}
+.mpMsg{font-size:13px}.mpMsg.on{color:var(--ok,#2ecc71);font-weight:700}
+.vxColR .mp100 .mpG{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+/* projetos de vídeo: lista compacta */
+.pjC .pjList{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.pjC .pjList .xR{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 10px;border:1px solid rgba(127,127,127,.18);border-radius:10px;background:rgba(127,127,127,.05)}
+.pjC .pjList .xR>span{flex:1 1 100%;font-size:13px;font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.pjC .pjList .xR>span small{display:block;font-weight:400;opacity:.7;font-size:11.5px}
+.pjC .pjList .xR>.f,.pjC .pjList .xR>button{width:auto!important;flex:0 0 auto;min-height:32px!important;height:auto;padding:5px 11px!important;font-size:12.5px!important;border-radius:8px!important;box-shadow:none!important}
+.pjC .pjList .xR>button:first-of-type{flex:1 1 auto}
+.pjC .pjRes{padding:8px 10px;gap:6px}.pjC .pjRes .f,.pjC .pjRes button{width:auto!important;flex:1 1 140px;min-height:36px!important;padding:6px 10px!important;font-size:13px!important}
+.pjC .pjRes b,.pjC .pjRes strong{font-size:14px}
+.pjC>.fx3a .f,.pjC>.fx3a label{min-height:42px}.pjC>.sub.wrap{font-size:12px;opacity:.72;line-height:1.35}.mpAct .mpUp{align-self:stretch}
+.dl95a .bt98ask.p2{background:linear-gradient(135deg,rgba(232,176,75,.25),rgba(232,176,75,.1));border:1px solid var(--acc,#e8b04b)}
 </style>
 
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -5297,8 +5326,8 @@ E('vxGo').onclick=async()=>{const i=sel;if(!i||!i.url||run||S.rv)return;const li
    if(P.glow){gg.filter=lk;gg.drawImage(SRC(),SX,SY,SW,SH,0,0,gs.width,gs.height);gg.filter='none';g.globalCompositeOperation='screen';g.globalAlpha=P.glow;g.drawImage(gs,0,0,W,H);g.globalAlpha=1;g.globalCompositeOperation='source-over'}
    if(vig)g.drawImage(vig,0,0);
    if(noise){g.save();g.globalAlpha=P.grain;g.globalCompositeOperation='overlay';g.translate(-(Math.random()*256|0),-(Math.random()*256|0));g.fillStyle=noise;g.fillRect(0,0,W+256,H+256);g.restore()}
-   if(FXo.bars){const bh=Math.max(0,(H-W/2.39)/2);g.fillStyle='#000';g.fillRect(0,0,W,bh);g.fillRect(0,H-bh,W,bh)}
-   if(FXo.txt){const fs=Math.round(H*.055);g.save();g.font='800 '+fs+'px system-ui,Arial,sans-serif';g.textAlign='center';g.textBaseline='middle';g.shadowColor='rgba(0,0,0,.85)';g.shadowBlur=fs*.3;g.fillStyle='#fff';const yy=FXo.tp==='t'?H*.1:FXo.tp==='c'?H/2:H*.9-(FXo.bars?Math.max(0,(H-W/2.39)/2):0)*.5;g.fillText(FXo.txt,W/2,yy,W*.9);g.restore()}
+   if(FXo.bars&&W>H*1.3){const bh=Math.max(0,(H-W/2.39)/2);g.fillStyle='#000';g.fillRect(0,0,W,bh);g.fillRect(0,H-bh,W,bh)}
+   if(FXo.txt){const fs=Math.round(H*.055);g.save();g.font='800 '+fs+'px system-ui,Arial,sans-serif';g.textAlign='center';g.textBaseline='middle';g.shadowColor='rgba(0,0,0,.85)';g.shadowBlur=fs*.3;g.fillStyle='#fff';const yy=FXo.tp==='t'?H*.1:FXo.tp==='c'?H/2:H*.9-(FXo.bars&&W>H*1.3?Math.max(0,(H-W/2.39)/2):0)*.5;g.fillText(FXo.txt,W/2,yy,W*.9);g.restore()}
    let fa=0;if(FXo.fi>0&&el<FXo.fi)fa=1-el/FXo.fi;if(FXo.fo>0&&el>T-FXo.fo)fa=Math.max(fa,(el-(T-FXo.fo))/FXo.fo);if(fa>0){g.globalAlpha=Math.min(1,fa);g.fillStyle='#000';g.fillRect(0,0,W,H);g.globalAlpha=1}};
   let t0=0;const prog=()=>{const p=Math.max(0,Math.min(1,(performance.now()-t0)/1000/T));E('vxBar').style.width=Math.round(p*100)+'%';B.textContent='⏺ '+Math.round(p*100)+'%';const el=(performance.now()-t0)/1000;E('vxMsg').textContent='Gravando '+W+'×'+H+' · '+FPS+' fps · faltam ~'+Math.max(0,Math.ceil(T-el))+' s (deixe a tela aberta)'};
   /* a música e o vídeo começam juntos */
@@ -6194,7 +6223,7 @@ if(T&&RUL){const w=document.createElement('div');w.className='vxTlW';RUL.parentN
 if(VG.pid&&VG.g.lut==null&&MINE.length===0){}
 syncSliders();loadMine().then(()=>{prevNow()});
 /* v69: acesso para "Edição padrão" e "Meus presets" no Início */
-window.LUMENCOR={presetG:id=>{const p=all().find(x=>x.id===id);if(!p)return null;const g=fill(JSON.parse(JSON.stringify(p.g)));if(p.lut||LUTS.has(p.id))g.lut=p.id;return g},neu:()=>neu(),fill:g=>fill(g),gradeWith:(g,src,w,h)=>grade(fill(JSON.parse(JSON.stringify(g))),src,w,h),renderGrid:(el,t,src)=>drawGrid(el,all(),t,src||frameSrc()),renderMine:(el,t)=>mineList(el,t),all:()=>all(),list:()=>all().map(p=>({id:p.id,name:p.name,kind:p.kind||'pronto',mine:MINE.includes(p)})),use:(id,t)=>{const p=all().find(x=>x.id===id);if(p)usePreset(p,t)},video:()=>({id:VG.pid,name:VG.name||'',on:vOn()}),photo:()=>({id:PG.pid,name:PG.name||'',on:!!PG.on,active:lumenPhotoGradeOn()}),photoOn:v=>{PG.on=!!v;sv();try{drawAll()}catch(_){}},importFiles:f=>importFiles(f),mineN:()=>MINE.length,gradeOk:()=>GL.ok!==false};
+window.LUMENCOR={presetG:id=>{const p=all().find(x=>x.id===id);if(!p)return null;const g=fill(JSON.parse(JSON.stringify(p.g)));if(p.lut||LUTS.has(p.id))g.lut=p.id;return g},neu:()=>neu(),fill:g=>fill(g),gradeWith:(g,src,w,h)=>grade(fill(JSON.parse(JSON.stringify(g))),src,w,h),renderGrid:(el,t,src)=>drawGrid(el,all(),t,src||frameSrc()),renderMine:(el,t)=>mineList(el,t),all:()=>all(),list:()=>all().map(p=>({id:p.id,name:p.name,kind:p.kind||'pronto',mine:MINE.includes(p)})),use:(id,t)=>{const p=all().find(x=>x.id===id);if(p)usePreset(p,t)},video:()=>({id:VG.pid,name:VG.name||'',on:vOn()}),photo:()=>({id:PG.pid,name:PG.name||'',on:!!PG.on,active:lumenPhotoGradeOn()}),photoOn:v=>{PG.on=!!v;sv();try{drawAll()}catch(_){}},importFiles:f=>importFiles(f),mineN:()=>MINE.length,mineRaw:()=>MINE.slice(),saveP:p=>saveMine(p),delP:id=>delMine(id),lutOf:id=>LUTS.get(id)||null,curG:()=>JSON.parse(JSON.stringify(VG.g)),isNeu:g=>isNeu(fill(JSON.parse(JSON.stringify(g)))),exp:(id,f)=>{const p=all().find(x=>x.id===id);if(!p)return'';const nm=p.name.replace(/[^\w\- ]+/g,'_');if(f==='x'){if(p.lut||LUTS.has(p.id))return'lut';dl(nm+'.xmp',toXmp(p),'text/xml')}else if(f==='c')dl(nm+'.cube',toCube(p),'text/plain');else dl(nm+'.lumen.json',toJson(p),'application/json');return'ok'},gradeOk:()=>GL.ok!==false};
 log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-cor, copiar cor), linha do tempo com quadros e zoom','ok');
 }catch(e){try{log('v67: '+e.message,'bad')}catch(_){}}})();
 
@@ -9430,6 +9459,84 @@ mqtt/dist/mqtt.esm.js:
  window.LUMEN_V98={open,state:()=>RUN};
  log('Build v98: usar a mesma edição em outros vídeos (escolher de 1 a quantos quiser)','ok');
 }catch(e){try{log('v98: '+e.message,'bad')}catch(_){}}})();
+</script>
+<script id="v100">
+/* ===== v100 · Meus presets organizados (um lugar só, igual no Editor de vídeo e na aba Presets)
+   Tocar no preset = usar no vídeo na hora. ⧉ Copiar (duplicar), ✏ Renomear, ⬇ Exportar (.xmp/.cube/.json), 📷 Usar nas fotos, 🗑.
+   ＋ Salvar a cor atual · ⬆ Subir presets · 📋 Copiar para outros vídeos. Projetos de vídeo em lista compacta.
+   No fim do vídeo: "📋 Copiar este preset/edição para outros vídeos" e "🎨 Salvar a cor como meu preset". ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s);
+ const LC=()=>window.LUMENCOR;
+ const ok=()=>{const c=LC();return!!(c&&c.mineRaw)};
+ /* imagem de exemplo para as miniaturas quando não há vídeo aberto */
+ let SAMPLE=null;function sample(){if(SAMPLE)return SAMPLE;const c=document.createElement('canvas');c.width=192;c.height=108;const g=c.getContext('2d');
+  let gr=g.createLinearGradient(0,0,0,108);gr.addColorStop(0,'#6fa8dc');gr.addColorStop(.55,'#cfe2f3');gr.addColorStop(.56,'#6aa84f');gr.addColorStop(1,'#38761d');g.fillStyle=gr;g.fillRect(0,0,192,108);
+  g.fillStyle='#e8b38f';g.beginPath();g.arc(70,52,13,0,7);g.fill();g.fillStyle='#cc3333';g.fillRect(58,66,24,30);g.fillStyle='#f1c232';g.fillRect(120,40,26,56);SAMPLE=c;return c}
+ function src(){const v=$1('#vxPv');if(v&&v.videoWidth&&v.readyState>=2){try{const c=document.createElement('canvas');c.width=192;c.height=Math.max(60,Math.round(192*v.videoHeight/v.videoWidth));c.getContext('2d').drawImage(v,0,0,c.width,c.height);return c}catch(_){}}return sample()}
+ function thumb(cv,id,base){try{const g=LC().presetG(id);const s=base||src();cv.width=s.width;cv.height=s.height;const x=cv.getContext('2d');x.drawImage(s,0,0);const r=LC().gradeWith(g,s,s.width,s.height);if(r)x.drawImage(r,0,0,s.width,s.height)}catch(_){}}
+ const uid=()=>'m:'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+
+ function make(where){
+  const el=document.createElement('div');el.className='c v70c mp100';el.dataset.where=where;
+  el.innerHTML='<div class="v70h"><b>🎨 Meus presets</b><span class="pillS mpN">—</span></div>'
+   +'<div class="mpAct"><button type="button" class="f p mpSave">＋ Salvar a cor atual</button><label class="f mpUp" role="button">⬆ Subir presets<input type="file" multiple accept=".xmp,.cube,.json,.lrtemplate,.3dl" hidden></label><button type="button" class="f mpBatch">📋 Copiar para outros vídeos</button></div>'
+   +'<div class="sub wrap mpTip" data-ex="1">Toque no preset para <b>usar no vídeo</b>. Embaixo de cada um: 📷 fotos · ⧉ copiar · ✏ nome · ⬇ exportar · 🗑 excluir.</div>'
+   +'<div class="mpG"></div><div class="sub wrap mpMsg" data-ex="1"></div>';
+  const q=s=>el.querySelector(s),say=t=>{const m=q('.mpMsg');m.textContent=t||'';m.classList.toggle('on',!!t);clearTimeout(say.t);if(t)say.t=setTimeout(()=>{m.textContent='';m.classList.remove('on')},6000)};
+  let sig='',openExp='';
+  function render(force){if(!ok())return;const L=LC().mineRaw(),act=LC().video(),ph=LC().photo();const s=L.map(p=>p.id+':'+p.name).join('|')+'#'+act.id+'#'+ph.id+'#'+openExp;if(!force&&s===sig)return;sig=s;
+   q('.mpN').textContent=L.length?L.length+' salvo(s)':'nenhum';q('.mpN').className='pillS mpN'+(L.length?' ok':'');
+   const G=q('.mpG');if(!L.length){G.innerHTML='<div class="mpEmpty">Nenhum preset seu ainda. Ajuste a cor do vídeo (aba 🌈 Cor) e toque em <b>＋ Salvar a cor atual</b>, ou suba os seus presets do Lightroom (.xmp) e LUTs (.cube).</div>';return}
+   G.innerHTML='';const base=src();
+   L.slice().reverse().forEach(p=>{const c=document.createElement('div');c.className='mpC'+(act.id===p.id?' on':'')+(ph.id===p.id&&ph.on?' ph':'');
+    c.innerHTML='<button type="button" class="mpUse" title="Usar no vídeo"><canvas></canvas><span class="mpOn">'+(act.id===p.id?'✔ no vídeo':'')+'</span><b></b><small></small></button>'
+     +'<div class="mpB"><button type="button" data-a="f" title="Usar nas fotos">📷</button><button type="button" data-a="c" title="Copiar (duplicar)">⧉</button><button type="button" data-a="r" title="Renomear">✏</button><button type="button" data-a="e" title="Exportar">⬇</button><button type="button" data-a="d" title="Excluir">🗑</button></div>'
+     +(openExp===p.id?'<div class="mpE"><button type="button" data-x="x">.xmp (Lightroom)</button><button type="button" data-x="c">.cube (LUT)</button><button type="button" data-x="j">.json (LUMEN)</button></div>':'');
+    c.querySelector('b').textContent=p.name;c.querySelector('small').textContent=(p.kind||'meu preset')+(p.lut?' · LUT':'');
+    thumb(c.querySelector('canvas'),p.id,base);
+    c.querySelector('.mpUse').onclick=()=>use(p);
+    c.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>act_(p,b.dataset.a));
+    c.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{const r=LC().exp(p.id,b.dataset.x);if(r==='lut')say('Este preset usa uma LUT: o Lightroom não lê LUT em .xmp. Use o .cube (Premiere, DaVinci, CapCut, Photoshop).');else say('⬇ Exportado: '+p.name);openExp='';render(true)});
+    G.appendChild(c)})}
+  function use(p){LC().use(p.id,'video');const ed=$1('#t-ved.on');const v=window.VXAPI&&VXAPI.sel;
+   if(!ed){try{goTab('ved');setTimeout(()=>{const t=$1('#vxTabs [data-p=c]');t&&t.click()},300)}catch(_){}}
+   say(v?'✔ “'+p.name+'” aplicado no vídeo '+v.name+'. O 💾 Salvar já sai com esta cor.':'✔ “'+p.name+'” escolhido. Abra um vídeo no editor: ele já entra com esta cor.');
+   try{window.LUMEN_V94&&LUMEN_V94.flash('🎨 '+p.name,'cor aplicada no vídeo')}catch(_){}render(true)}
+  async function act_(p,a){try{
+   if(a==='f'){LC().use(p.id,'foto');say('📷 “'+p.name+'” vai nas fotos editadas.')}
+   else if(a==='c'){const n=prompt('Nome da cópia:',p.name+' (cópia)');if(!n)return;await LC().saveP({id:uid(),name:n.trim(),kind:p.kind||'meu preset',g:JSON.parse(JSON.stringify(p.g)),lut:p.lut||LC().lutOf(p.id),t:Date.now()});say('⧉ Copiado: '+n)}
+   else if(a==='r'){const n=prompt('Novo nome:',p.name);if(!n||n.trim()===p.name)return;await LC().saveP(Object.assign({},p,{name:n.trim(),lut:p.lut||LC().lutOf(p.id)}));say('✏ Agora se chama “'+n.trim()+'”.')}
+   else if(a==='e'){openExp=openExp===p.id?'':p.id}
+   else if(a==='d'){if(!confirm('Excluir o preset “'+p.name+'”? (os vídeos já salvos não mudam)'))return;await LC().delP(p.id);say('🗑 Excluído: '+p.name)}
+   render(true)}catch(e){say('Não deu: '+e.message)}}
+  async function saveCur(){if(!ok())return;const g=LC().curG();if(LC().isNeu(g)){say('Faça algum ajuste de cor no vídeo (ou escolha um preset pronto) antes de salvar.');return false}
+   const cur=LC().video();const n=prompt('Nome do seu preset:',cur.name&&!/^Auto/.test(cur.name)?cur.name+' (meu)':'Meu preset');if(!n)return false;
+   await LC().saveP({id:uid(),name:n.trim(),kind:'meu ajuste',g,lut:g.lut?LC().lutOf(g.lut):null,t:Date.now()});say('✔ Salvo em Meus presets: '+n.trim());render(true);return true}
+  q('.mpSave').onclick=saveCur;
+  q('.mpUp input').onchange=async e=>{const f=[...e.target.files];e.target.value='';if(!f.length)return;try{await LC().importFiles(f);say('⬆ '+f.length+' arquivo(s) enviados para Meus presets.')}catch(er){say('Não deu: '+er.message)}setTimeout(()=>render(true),600)};
+  q('.mpBatch').onclick=()=>{if(window.LUMEN_V98)LUMEN_V98.open();else say('Abra um vídeo no editor primeiro.')};
+  return{el,render,saveCur}}
+
+ const ED=make('ved'),PR=make('pre');
+ function place(){
+  /* editor › aba Cor: no topo, e esconde a lista antiga */
+  const cl=$1('#vxBox .cl-top');const pan=cl&&cl.closest('.vxPan');if(pan&&ED.el.parentNode!==pan){pan.prepend(ED.el);ED.render(true)}
+  const old=$1('#vxBox .cl-mine');if(old&&!old.classList.contains('mpHide'))old.classList.add('mpHide');
+  /* aba Presets: logo abaixo do título; as duas listas antigas "Meus presets" saem (o mesmo conteúdo está aqui) */
+  const t=$1('#t-pre');if(t){const ph=t.querySelector(':scope>.v70ph');if(ph&&ph.nextElementSibling!==PR.el){ph.after(PR.el);PR.render(true)}
+   const pm=t.querySelector('#prMine');if(pm){const c=pm.closest('.c');if(c&&c!==PR.el)c.classList.add('mpHide')}
+   const mu=t.querySelector('#myN')||t.querySelector('#myUp');if(mu){const box=mu.parentElement;if(box&&box.id!=='edPad'&&!box.classList.contains('mp100'))box.classList.add('mpHide')}}}
+ place();setInterval(()=>{place();if($1('#t-ved.on'))ED.render();if($1('#t-pre.on'))PR.render()},1500);
+ const _go=window.goTab;window.goTab=function(t){const r=_go.apply(this,arguments);try{place();if(t==='ved')ED.render(true);if(t==='pre')PR.render(true)}catch(_){}return r};try{goTab=window.goTab}catch(_){}
+
+ /* fim do vídeo: copiar este preset/edição para outro vídeo + salvar a cor */
+ setInterval(()=>{const d=$1('.dl95:not([hidden]) .dl95a');if(!d)return;const b=d.querySelector('.bt98ask');if(b&&!b.dataset.v100){b.dataset.v100=1;b.classList.add('p2');b.innerHTML='📋 Copiar este preset para outros vídeos'}
+  if(!d.querySelector('.mpSaveEnd')&&ok()&&!LC().isNeu(LC().curG())){const s=document.createElement('button');s.type='button';s.className='f mpSaveEnd';s.textContent='🎨 Salvar a cor deste vídeo como meu preset';s.onclick=async()=>{if(await ED.saveCur())s.textContent='✔ Salvo em Meus presets'};const ref=d.querySelector('.dl95no');ref?ref.before(s):d.appendChild(s)}},600);
+
+ window.LUMEN_V100={ED,PR,place};
+ log('Build v100: Meus presets organizados (usar no vídeo com um toque, copiar, renomear, exportar) e Projetos compactos','ok');
+}catch(e){try{log('v100: '+e.message,'bad')}catch(_){}}})();
 </script>
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
 
