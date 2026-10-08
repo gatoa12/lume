@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v113</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v116</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -1502,6 +1502,21 @@ html:root body .vzEmpty{display:none!important}
 #t-gal.gx113 #galStats span{border:0!important;background:none!important;padding:0!important;box-shadow:none!important}
 @media(max-width:640px){#t-gal.gx113 #galBar input#gq{flex:1 1 100%!important;width:100%}#t-gal.gx113 .gxS{gap:2px 12px}}
 #t-gal.gx113 .gmF button{border-radius:999px!important;font-size:12.5px!important;padding:5px 12px!important;box-shadow:none!important}
+
+.st114{display:flex;flex-direction:column;gap:10px}.st105 .st103pv{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}.st105 .st103pair{height:160px}.st105 .st103pair canvas{max-height:140px}
+.st103rt .pv114{flex:0 0 40px;height:32px;border-radius:8px;border:1px solid var(--acc,#e8b04b);background:rgba(232,176,75,.12);color:inherit;font-size:14px;cursor:pointer}
+.vc114{display:flex;align-items:center;gap:6px}.vc114 select{min-height:32px;padding:4px 8px;font-size:12.5px;max-width:170px}
+
+.up115{display:flex;flex-direction:column;gap:8px}.up115 .r{margin:0}
+.up115dir{display:flex;gap:6px;align-items:center;font-size:13px}.up115dir button{border-radius:999px;border:1px solid rgba(127,127,127,.3);background:rgba(127,127,127,.1);color:inherit;padding:6px 14px;font-weight:700;cursor:pointer}.up115dir button.on{background:var(--acc,#e8b04b);color:#111;border-color:transparent}
+.up115q{display:flex;flex-direction:column;gap:3px;font-size:12.5px;padding:8px 10px;border-radius:10px;background:rgba(127,127,127,.07)}
+.up115box{display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:12px;border:1px solid rgba(127,127,127,.22)}
+.up115row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12.5px}.up115row select{max-width:100%;padding:5px 8px;border-radius:8px;border:1px solid rgba(127,127,127,.3);background:rgba(127,127,127,.08);color:inherit;font-size:12.5px}
+.up115warn{font-size:12.5px;font-weight:700;padding:7px 10px;border-radius:10px;background:rgba(232,176,75,.14);border:1px solid rgba(232,176,75,.5);color:#e8b04b}
+.up115l{display:flex;flex-direction:column;gap:2px;margin-top:3px;max-height:120px;overflow:auto}.up115l span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.up115l small{opacity:.6;margin-left:6px}
+.up115 label.r{display:flex!important;flex-direction:row!important;align-items:center!important;gap:10px;margin:0;padding:4px 0}.up115 label.r input{flex:0 0 auto;margin:0!important;align-self:center!important}.up115 label.r span{flex:1;line-height:1.4}
+.up115box label.r{padding:2px 0}.up115row>span{min-width:110px}.up115row button.f{width:auto!important;flex:0 0 auto;padding:7px 14px;margin:0}.up115row select{width:auto!important;flex:1 1 220px;min-width:0}
+.up115tip{font-size:12px;padding:7px 10px;border-radius:10px;background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.35)}
 </style>
 
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -9105,7 +9120,7 @@ mqtt/dist/mqtt.esm.js:
    6) Galeria não redesenha a cada foto quando você está em outra aba (menos travadas). Convite da sala também pelo WhatsApp. ===== */
 (function(){try{
  const $1=s=>document.querySelector(s);
- const K='lumen_v94';const V=Object.assign({ask:true,cap:500,exp:true,expDl:false,libFree:true,ms:true},(()=>{try{return JSON.parse(localStorage.getItem(K)||'{}')}catch(_){return{}}})());
+ const K='lumen_v94';const V=Object.assign({vcap:10,ask:true,cap:500,exp:true,expDl:false,libFree:true,ms:true},(()=>{try{return JSON.parse(localStorage.getItem(K)||'{}')}catch(_){return{}}})());
  const sv=()=>{try{localStorage.setItem(K,JSON.stringify(V))}catch(_){}};
  const fmtB=b=>b>1e9?(b/1e9).toFixed(1)+' GB':b>1e6?Math.round(b/1e6)+' MB':Math.max(0,Math.round(b/1e3))+' KB';
  const nf=n=>Number(n||0).toLocaleString('pt-BR');
@@ -9116,11 +9131,11 @@ mqtt/dist/mqtt.esm.js:
  const HID=new Map();   /* nome|sig → resumo do que saiu da tela (o arquivo está na pasta) */
  const inQ=(L,i)=>(L||[]).some(x=>x===i||(x&&(x.it===i||x.name===i.name||x.id===i.id)));
  function canHide(i,now){if(!i||i===S.sel||i.local||i.peer||i.remote)return false;
-  if(!(i.disk||(i.edited&&DIROK())))return false;if(now-(i.t||0)<120000)return false;
+  const edSaved=/^ed\|/.test(i.sig||'')&&((window.LUMEN_V93&&LUMEN_V93.EX)||[]).some(x=>x.name===i.name&&(x.saved||/pasta/.test(x.where||'')));if(!(i.disk||(i.edited&&DIROK())||edSaved))return false;if(window.VXAPI&&VXAPI.sel===i)return false;if(now-(i.t||0)<120000)return false;
   if(S.gs&&S.gs.has&&S.gs.has(i.id))return false;
   if(inQ(S.uq,i)||inQ(S.memQ,i)||inQ(S.pq,i))return false;if(i.vaQ&&!i.vaDone)return false;return true}
- function trim(){try{if(!V.cap||!S.items||S.items.length<=V.cap)return 0;const now=Date.now(),keep=[],out=[];
-   S.items.forEach((i,ix)=>{if(ix<V.cap||!canHide(i,now))keep.push(i);else out.push(i)});if(!out.length)return 0;
+ function trim(){try{if(!S.items)return 0;const now=Date.now(),keep=[],out=[],cap=V.cap||1e9,vcap=V.vcap||1e9;let vc=0;
+   S.items.forEach((i,ix)=>{if(i.kind==='video'&&canHide(i,now)){vc++;if(vc>vcap){out.push(i);return}}if(ix<cap||!canHide(i,now))keep.push(i);else out.push(i)});if(!out.length)return 0;
    for(const i of out){HID.set(i.name+'|'+(i.sig||''),{k:i.kind,s:!!i.sent,c:i.cls,n:i.name,z:i.size||0});
     try{if(i.thumb&&/^blob:/.test(i.thumb))URL.revokeObjectURL(i.thumb)}catch(_){}try{if(i.kind==='video'&&i.url&&/^blob:/.test(i.url))URL.revokeObjectURL(i.url)}catch(_){}
     i.blob=null;i.thumb='';i.url=null;i.v94h=1}
@@ -9272,7 +9287,7 @@ mqtt/dist/mqtt.esm.js:
  const MP4=['video/mp4;codecs=avc1.640028,mp4a.40.2','video/mp4;codecs=avc1,mp4a.40.2','video/mp4;codecs=avc1','video/mp4'];
  const canMp4=()=>!!(window.MediaRecorder&&MP4.some(t=>{try{return MediaRecorder.isTypeSupported(t)}catch(_){return false}}));
  const mp4Name=(n,b)=>{n=String(n||'video').replace(/[\\/:*?"<>|]/g,'_');const isMp4=!b||!b.type||/mp4|quicktime/.test(b.type);if(isMp4)return n.replace(/\.(webm|mkv|mov|m4v)$/i,'')+(/\.mp4$/i.test(n)?'':'.mp4');return n};
- const edits=n=>{const o=[];let m;if((m=/_girado(\d+)/i.exec(n)))o.push('girado '+m[1]+'°');if(/_vel|_\d+x\b|Velocidade/i.test(n))o.push('velocidade');if(/_(COR|look)/i.test(n))o.push('cor / look');if(/_corte|_cut|_trim/i.test(n))o.push('corte');if(/_ed\b|_edit/i.test(n))o.push('edição');if(/_ritmo/i.test(n))o.push('ritmo');if(/_musica/i.test(n))o.push('música');return o.length?o.join(' · '):'edição do editor'};
+ const edits=n=>{const o=[];let m;if((m=/_girado(\d+)/i.exec(n)))o.push('girado '+m[1]+'°');if(/_vel|_\d+x\b|Velocidade/i.test(n))o.push('velocidade');if(/_(COR|look)/i.test(n))o.push('cor / look');if(/_corte|_cut|_trim/i.test(n))o.push('corte');if(/_ed\b|_edit/i.test(n))o.push('edição');if(/_ritmo/i.test(n))o.push('ritmo');if(/_em_pe/i.test(n))o.push('em pé');if(/_musica/i.test(n))o.push('música');return o.length?o.join(' · '):'edição do editor'};
  async function meta(b){return new Promise(res=>{try{const v=document.createElement('video');const u=URL.createObjectURL(b);v.preload='metadata';v.muted=true;v.src=u;const done=r=>{URL.revokeObjectURL(u);res(r)};v.onloadedmetadata=()=>done({w:v.videoWidth,h:v.videoHeight,d:v.duration});v.onerror=()=>done(null);setTimeout(()=>done(null),6000)}catch(_){res(null)}})}
  const dur=d=>!d||!isFinite(d)?'—':Math.floor(d/60)+':'+String(Math.round(d%60)).padStart(2,'0');
 
@@ -9885,6 +9900,7 @@ mqtt/dist/mqtt.esm.js:
    const w=im.naturalWidth,h=im.naturalHeight;A.width=w;A.height=h;A.getContext('2d').drawImage(im,0,0);
    const d=rotOf(it.id),q=d===90||d===270;D.width=q?h:w;D.height=q?w:h;const g=D.getContext('2d');g.save();g.translate(D.width/2,D.height/2);g.rotate(d*Math.PI/180);g.drawImage(im,-w/2,-h/2);g.restore();
    try{if(CH.cor&&window.LUMENCOR){const pg=LUMENCOR.presetG(CH.cor);const r=pg&&LUMENCOR.gradeWith(pg,D,D.width,D.height);if(r)g.drawImage(r,0,0,D.width,D.height)}}catch(_){}
+   try{window.__prevExtra&&__prevExtra(D,g,CH,it)}catch(_){}
    const o=await vInfo(it);const lab=box.querySelector('.st103nm');if(o&&o.w&&!lab.dataset.o){lab.dataset.o=1;const ori=o.h>o.w?'em pé':'deitado';lab.textContent=it.name+' · '+ori+(o.d?' · '+Math.round(o.d)+'s':'')}})}
  async function openIt(it){const s=$1('#vxSel');for(let k=0;k<40;k++){if(s&&[...s.options].some(o=>o.value===String(it.id)))break;await new Promise(r=>setTimeout(r,250))}if(!s)return;if(s.value!==String(it.id)){s.value=String(it.id);s.dispatchEvent(new Event('change'))}}
  async function applyStyle(st,it){const wait=ms=>new Promise(r=>setTimeout(r,ms));
@@ -9896,13 +9912,14 @@ mqtt/dist/mqtt.esm.js:
    else{const b=[...document.querySelectorAll('#vxTpl button')].find(x=>x.textContent.trim()==='Tudo normal');if(b)b.click()}}catch(_){}
   /* giro */
   try{if(window.LUMEN_V97)LUMEN_V97.setRot((it&&st.per&&st.per[it.id]!=null)?st.per[it.id]:(st.rot||0),true)}catch(_){}
+  try{window.__styleExtra&&await __styleExtra(st,it)}catch(_){}
   await wait(400);return '✔ estilo aplicado'}
  /* ao abrir um vídeo marcado, aplica o estilo escolhido */
  let lastSel=null;setInterval(async()=>{const a=window.VXAPI;if(!a||!a.sel||!a.dur||window.__vxBatch)return;if(a.sel===lastSel)return;lastSel=a.sel;const st=PEND.get(a.sel.id);if(!st)return;PEND.delete(a.sel.id);await applyStyle(st,a.sel);const m=$1('#vxMsg');if(m)m.textContent='🎨 Estilo aplicado: '+[st.cor?(cores().find(p=>p.id===st.cor)||{}).name:'sem cor',st.ritmo?st.ritmo.split(':').slice(1).join(':'):'ritmo normal',st.rot?'girado '+st.rot+'°':''].filter(Boolean).join(' · ')+'. Toque em 💾 Salvar ou ⬇ Baixar.'},700);
  /* botão para escolher o estilo depois */
  setInterval(()=>{const lv=$1('.lvC');if(!lv||lv.querySelector('.st103btn'))return;const b=document.createElement('button');b.type='button';b.className='f st103btn';b.textContent='🎨 Estilo dos vídeos trazidos (cor, ritmo, giro)';b.onclick=()=>{const L=(S.items||[]).filter(i=>i.local&&i.kind==='video');ask(L.length?L:[])};const drop=lv.querySelector('.lvDrop');drop?drop.after(b):lv.appendChild(b)},1500);
 
- window.LUMEN_V103={ask,applyStyle,PEND,vInfo:window.vInfo};
+ window.LUMEN_V103={ask,applyStyle,PEND,vInfo:window.vInfo,ch:()=>CH,items:()=>ITEMS,rotOf:id=>rotOf(id),imgOf:it=>imgOf(it),repaint:()=>{try{paintPrev();paintEnd()}catch(_){}}};
  log('Build v103: vídeos grandes sem travar (miniaturas leves) e estilo (cor, ritmo, giro) escolhido ao trazer os vídeos','ok');
 }catch(e){try{log('v103: '+e.message,'bad')}catch(_){}}})();
 </script>
@@ -9947,9 +9964,9 @@ mqtt/dist/mqtt.esm.js:
  async function rotateBlob(blob,deg,onp){const u=URL.createObjectURL(blob);const v=document.createElement('video');v.src=u;v.playsInline=true;v.preload='auto';
   await new Promise((a,b)=>{v.onloadedmetadata=a;v.onerror=()=>b(new Error('não consegui abrir o vídeo'))});
   const sw=v.videoWidth,sh=v.videoHeight,q=deg%180!==0,W=q?sh:sw,H=q?sw:sh;const cv=document.createElement('canvas');cv.width=W;cv.height=H;const g=cv.getContext('2d',{alpha:false});
-  const st=cv.captureStream(30);let ac=null;try{ac=new AudioContext();await ac.resume();const d=ac.createMediaStreamDestination();ac.createMediaElementSource(v).connect(d);d.stream.getAudioTracks().forEach(t=>st.addTrack(t))}catch(_){}
+  const st=cv.captureStream(window.__rotFps||30);let ac=null;try{ac=new AudioContext();await ac.resume();const d=ac.createMediaStreamDestination();ac.createMediaElementSource(v).connect(d);d.stream.getAudioTracks().forEach(t=>st.addTrack(t))}catch(_){}
   const mt=['video/mp4;codecs=avc1.640028,mp4a.40.2','video/mp4;codecs=avc1','video/mp4','video/webm;codecs=vp9,opus','video/webm'].find(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t));
-  const ch=[],rec=new MediaRecorder(st,{mimeType:mt,videoBitsPerSecond:W*H>2e6?16e6:10e6,audioBitsPerSecond:192000});rec.ondataavailable=e=>e.data.size&&ch.push(e.data);const done=new Promise(a=>rec.onstop=a);
+  const ch=[],rec=new MediaRecorder(st,{mimeType:mt,videoBitsPerSecond:window.__rotBr||(W*H>2e6?16e6:10e6),audioBitsPerSecond:192000});rec.ondataavailable=e=>e.data.size&&ch.push(e.data);const done=new Promise(a=>rec.onstop=a);
   const draw=()=>{g.setTransform(1,0,0,1,0,0);g.translate(W/2,H/2);g.rotate(deg*Math.PI/180);g.drawImage(v,-sw/2,-sh/2,sw,sh)};
   const onVis=()=>{if(document.hidden){v.pause();if(rec.state==='recording')rec.pause();try{ac&&ac.suspend()}catch(_){}}else{if(rec.state==='paused')rec.resume();try{ac&&ac.resume()}catch(_){}if(!v.ended)v.play().catch(()=>{})}};document.addEventListener('visibilitychange',onVis);
   rec.start(1000);await v.play();
@@ -10172,7 +10189,8 @@ If you want to offset all timestamps of a track such that the first one is zero,
  function closeLote(k,d){try{LUMEN_V94.flash('📦 Lote '+k+' completo: '+nf(d.n)+' fotos na pasta!','A tela foi limpa e a contagem recomeçou do zero',true)}catch(_){}try{LUMEN_V94.celebrate&&0}catch(_){}
   try{navigator.vibrate&&navigator.vibrate([150,80,150])}catch(_){}log('📦 Lote '+k+' completo: '+nf(d.n)+' fotos chegaram na pasta. Tela limpa para o próximo lote.','ok');
   /* limpa a tela: só as fotos que JÁ estão na pasta saem (continuam contadas e na pasta) */
-  try{const V=LUMEN_V94.V,old=V.cap;V.cap=60;LUMEN_V94.trim();V.cap=old}catch(_){}}
+  try{const V=LUMEN_V94.V,old=V.cap;V.cap=60;LUMEN_V94.trim();V.cap=old}catch(_){}
+  setTimeout(async()=>{try{const r=await LUMEN_V94.libFree(true);try{window.memPrune&&memPrune(true)}catch(_){}try{if(window.caches){const ks=await caches.keys();for(const k of ks)await caches.delete(k)}}catch(_){}log('🧹 Lote fechado: cache do navegador limpo'+(r&&r.n?' ('+r.n+' cópia(s) que já estavam na pasta)':'')+'. Nada foi perdido: tudo está na pasta.','ok')}catch(_){}},1500)}
  const card=document.createElement('div');card.className='c v70c lt110';
  function paint(){const p=Math.min(100,Math.round(100*L.cur.n/L.size)),k=L.done.length+1,tot=L.done.reduce((s,d)=>s+d.n,0)+L.cur.n;
   card.innerHTML='<div class="v70h"><b>📦 Lotes de fotos</b><span class="pillS ok">'+nf(tot)+' no total</span></div>'
@@ -10296,6 +10314,153 @@ If you want to offset all timestamps of a track such that the first one is zero,
  const _go=window.goTab;window.goTab=function(t){const r=_go.apply(this,arguments);try{if(t==='gal')clean()}catch(_){}return r};try{goTab=window.goTab}catch(_){}
  log('Build v113: Galeria com visual limpo e organizado','ok');
 }catch(e){try{log('v113: '+e.message,'bad')}catch(_){}}})();
+</script>
+<script id="v114">
+/* ===== v114 · Vídeos leves (só os 10 mais novos na tela) + janela de importar com Formato, Resolução e prévia em movimento ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s);
+ /* --- Galeria: quantos vídeos ficam na tela --- */
+ setInterval(()=>{const b=$1('#t-gal .g94 .g94b');if(!b||b.querySelector('.vc114'))return;const V=window.LUMEN_V94&&LUMEN_V94.V;if(!V)return;
+  const l=document.createElement('label');l.className='vc114';l.innerHTML='Vídeos <select>'+[5,10,20,50,0].map(n=>'<option value="'+n+'"'+((V.vcap||0)===n?' selected':'')+'>'+(n?'os '+n+' mais novos':'todos')+'</option>').join('')+'</select>';
+  l.querySelector('select').onchange=e=>{V.vcap=+e.target.value;try{localStorage.setItem('lumen_v94',JSON.stringify(V))}catch(_){}LUMEN_V94.trim()};
+  const all=b.querySelector('.g94all');all?all.before(l):b.appendChild(l)},1500);
+
+ /* --- janela de importar: Formato, Resolução e prévia em movimento --- */
+ const ASP=[['0','Original'],['0.5625','9:16 Reels / Stories'],['0.8','4:5 Feed'],['1','1:1 Quadrado'],['1.7778','16:9 YouTube']];
+ const RES=[['3840','Máxima (até 4K)'],['1920','Full HD 1080p'],['1280','HD 720p']];
+ const ch=()=>window.LUMEN_V103&&LUMEN_V103.ch&&LUMEN_V103.ch();
+ setInterval(()=>{const R=$1('.st105R');if(!R||R.querySelector('.st114'))return;const C=ch();if(!C)return;if(C.asp==null)C.asp='0';if(C.res==null)C.res='1920';
+  const box=document.createElement('div');box.className='st114';
+  box.innerHTML='<div class="st105row"><span class="st105k">📐 Formato</span><select class="st114a">'+ASP.map(([v,t])=>'<option value="'+v+'"'+(String(C.asp)===v?' selected':'')+'>'+t+'</option>').join('')+'</select></div>'
+   +'<div class="st105row"><span class="st105k">🖥 Qualidade</span><select class="st114r">'+RES.map(([v,t])=>'<option value="'+v+'"'+(String(C.res)===v?' selected':'')+'>'+t+'</option>').join('')+'</select></div>';
+  const giro=[...R.querySelectorAll('.st105row')].find(r=>/Giro/.test(r.textContent));(giro||R.firstElementChild).after(box);
+  box.querySelector('.st114a').onchange=e=>{C.asp=e.target.value;LUMEN_V103.repaint()};box.querySelector('.st114r').onchange=e=>{C.res=e.target.value};
+  LUMEN_V103.repaint()},700);
+ window.__styleExtra=async(st)=>{const set=(id,v)=>{const e=$1('#'+id);if(e&&v!=null&&e.value!==String(v)&&[...e.options].some(o=>o.value===String(v))){e.value=String(v);e.dispatchEvent(new Event('change',{bubbles:true}));e.dispatchEvent(new Event('input',{bubbles:true}))}};set('vxAsp',st.asp);set('vxRes',st.res)};
+ function crop(D,g,asp){const a=+asp||0;if(!a)return;const W=D.width,H=D.height;let cw=W,chh=H;if(W/H>a)cw=Math.round(H*a);else chh=Math.round(W/a);const x=(W-cw)/2,y=(H-chh)/2;
+  g.save();g.fillStyle='rgba(0,0,0,.62)';g.fillRect(0,0,W,y);g.fillRect(0,y+chh,W,H-y-chh);g.fillRect(0,y,x,chh);g.fillRect(x+cw,y,W-x-cw,chh);g.strokeStyle='rgba(255,255,255,.85)';g.lineWidth=Math.max(1,W/160);g.strokeRect(x,y,cw,chh);g.restore()}
+ window.__prevExtra=(D,g,C)=>crop(D,g,C&&C.asp);
+ /* ▶ prévia em movimento no "vai ficar" */
+ let PLAY=null;
+ function stop(){if(!PLAY)return;try{PLAY.v.pause();PLAY.v.removeAttribute('src');PLAY.v.load()}catch(_){}cancelAnimationFrame(PLAY.raf);PLAY.btn&&(PLAY.btn.textContent='▶');PLAY=null;try{LUMEN_V103.repaint()}catch(_){}}
+ async function play(box,btn){if(PLAY&&PLAY.box===box){stop();return}stop();const id=+box.dataset.id;const it=(LUMEN_V103.items()||[]).find(i=>i.id===id);if(!it)return;
+  const u=it.url||(it.blob&&URL.createObjectURL(it.blob));if(!u)return;const v=document.createElement('video');v.muted=true;v.playsInline=true;v.src=u;btn.textContent='■';
+  const D=box.querySelector('canvas.d');PLAY={v,box,btn,raf:0};try{await v.play()}catch(_){stop();return}const t0=performance.now();let last=0;
+  const C=ch();let pg=null;try{if(C&&C.cor&&window.LUMENCOR)pg=LUMENCOR.presetG(C.cor)}catch(_){}
+  const tick=now=>{if(!PLAY||PLAY.v!==v)return;if(now-last>60){last=now;const d=LUMEN_V103.rotOf(id),q=d===90||d===270,vw=v.videoWidth,vh=v.videoHeight;if(vw){const k=Math.min(1,220/Math.max(vw,vh)),w=Math.round(vw*k),h=Math.round(vh*k);D.width=q?h:w;D.height=q?w:h;const g=D.getContext('2d');g.save();g.translate(D.width/2,D.height/2);g.rotate(d*Math.PI/180);g.drawImage(v,-w/2,-h/2,w,h);g.restore();
+     if(pg){try{const r=LUMENCOR.gradeWith(pg,D,D.width,D.height);if(r)g.drawImage(r,0,0,D.width,D.height)}catch(_){}}crop(D,g,C&&C.asp)}}
+   if(now-t0>6000||v.ended){stop();return}PLAY.raf=requestAnimationFrame(tick)};PLAY.raf=requestAnimationFrame(tick)}
+ setInterval(()=>{document.querySelectorAll('.st103it').forEach(box=>{const rt=box.querySelector('.st103rt');if(!rt||rt.querySelector('.pv114'))return;const b=document.createElement('button');b.type='button';b.className='pv114';b.title='Ver a prévia em movimento (6 s)';b.textContent='▶';b.onclick=()=>play(box,b);const deg=rt.querySelector('.st103deg');deg?deg.after(b):rt.appendChild(b)});
+  const ov=$1('.st103');if(PLAY&&ov&&ov.hidden)stop()},500);
+ log('Build v114: só os vídeos mais novos na tela, cache limpo a cada lote, importar com formato, qualidade e prévia em movimento','ok');
+}catch(e){try{log('v114: '+e.message,'bad')}catch(_){}}})();
+</script>
+<script id="v115">
+/* ===== v115 · Vídeos sempre em pé
+   - Padrão: vídeo deitado (de lado) vira em pé sozinho, para o lado que você escolher (↻ ou ↺). Você corrige um ou outro na prévia.
+   - Vídeos da câmera: uma cópia EM PÉ vai sozinha para a pasta (Videos/Em_pe). O original nunca é apagado.
+   - Gravação fiel: cada quadro é gravado com o tempo dele (sem travadas) e o som original vai junto. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s);const nf=n=>Number(n||0).toLocaleString('pt-BR');
+ const K='lumen_up115';const UP=Object.assign({on:true,dir:90,auto:true,dlg:true},(()=>{try{return JSON.parse(localStorage.getItem(K)||'{}')}catch(_){return{}}})());
+ const sv=()=>{try{localStorage.setItem(K,JSON.stringify(UP))}catch(_){}};
+ const DK='lumen_up115_done';let DONE=new Set();try{DONE=new Set(JSON.parse(localStorage.getItem(DK)||'[]'))}catch(_){}
+ const svD=()=>{try{localStorage.setItem(DK,JSON.stringify([...DONE].slice(-3000)))}catch(_){}};
+ try{if(typeof LEAF!=='undefined')LEAF.VideosEmPe=['Videos','Em_pe']}catch(_){}
+ const keyOf=it=>it.name+'|'+(it.size||0);
+
+ /* ---------------- motor: girar o vídeo inteiro com tempo exato ---------------- */
+ async function canExact(W,H,audio){try{if(!window.VideoEncoder||!window.Mp4Muxer)return null;let vc=null;for(const codec of (W*H>2.2e6?['avc1.640033','avc1.640034']:['avc1.640028','avc1.640033'])){const c={codec,width:W,height:H,bitrate:8e6,framerate:30,avc:{format:'avc'}};const r=await VideoEncoder.isConfigSupported(c);if(r&&r.supported){vc=c;break}}
+  if(!vc)return null;if(audio){if(!window.AudioEncoder)return null;const r=await AudioEncoder.isConfigSupported({codec:'mp4a.40.2',sampleRate:48000,numberOfChannels:2,bitrate:192000});if(!(r&&r.supported))return null}return vc}catch(_){return null}}
+ async function upright(file,deg,onp){const u=URL.createObjectURL(file);const v=document.createElement('video');v.src=u;v.muted=true;v.playsInline=true;v.preload='auto';
+  await new Promise((a,b)=>{v.onloadedmetadata=a;v.onerror=()=>b(new Error('não abriu o vídeo'))});
+  const sw=v.videoWidth,sh=v.videoHeight,q=deg%180!==0;let W=q?sh:sw,H=q?sw:sh;W=W&~1;H=H&~1;const dur=v.duration||0;
+  let audio=null;try{const ab=await file.arrayBuffer();audio=await new OfflineAudioContext(2,48000,48000).decodeAudioData(ab)}catch(_){audio=null}
+  const vc=await canExact(W,H,!!audio);
+  if(!vc){URL.revokeObjectURL(u);if(window.LUMEN_V106)return await LUMEN_V106.rotateBlob(file,deg,onp);throw new Error('este navegador não grava vídeo')}
+  vc.bitrate=Math.round(Math.min(40e6,Math.max(8e6,dur?file.size*8/dur*1.05:16e6)));
+  const target=new Mp4Muxer.ArrayBufferTarget();const mux=new Mp4Muxer.Muxer({target,video:{codec:'avc',width:W,height:H},audio:audio?{codec:'aac',numberOfChannels:2,sampleRate:48000}:undefined,fastStart:'in-memory',firstTimestampBehavior:'offset'});
+  let err=null;const enc=new VideoEncoder({output:(c,m)=>mux.addVideoChunk(c,m),error:e=>{err=e}});enc.configure(vc);
+  const cv=document.createElement('canvas');cv.width=W;cv.height=H;const g=cv.getContext('2d',{alpha:false});
+  let lastKey=-9,n=0,lastTs=-1;
+  const onVis=()=>{if(document.hidden)v.pause();else if(!v.ended)v.play().catch(()=>{})};document.addEventListener('visibilitychange',onVis);
+  await new Promise((res,rej)=>{const f=(now,meta)=>{try{if(err)return rej(err);const ts=Math.round(meta.mediaTime*1e6);if(ts>lastTs){lastTs=ts;g.setTransform(1,0,0,1,0,0);g.translate(W/2,H/2);g.rotate(deg*Math.PI/180);g.drawImage(v,-sw/2,-sh/2,sw,sh);
+       const fr=new VideoFrame(cv,{timestamp:ts});const key=meta.mediaTime-lastKey>=2;if(key)lastKey=meta.mediaTime;enc.encode(fr,{keyFrame:key});fr.close();n++;if(onp&&dur)onp(meta.mediaTime/dur)}
+      if(v.ended)return res();v.requestVideoFrameCallback(f)}catch(e){rej(e)}};
+    v.requestVideoFrameCallback(f);v.onended=()=>setTimeout(res,200);v.play().catch(rej)});
+  document.removeEventListener('visibilitychange',onVis);await enc.flush();enc.close();URL.revokeObjectURL(u);
+  if(audio){const aenc=new AudioEncoder({output:(c,m)=>mux.addAudioChunk(c,m),error:e=>{err=e}});aenc.configure({codec:'mp4a.40.2',sampleRate:48000,numberOfChannels:2,bitrate:192000});
+   const L=audio.getChannelData(0),R=audio.numberOfChannels>1?audio.getChannelData(1):L,N=audio.length;for(let p=0;p<N;p+=1024){const k=Math.min(1024,N-p),d=new Float32Array(k*2);d.set(L.subarray(p,p+k),0);d.set(R.subarray(p,p+k),k);const ad=new AudioData({format:'f32-planar',sampleRate:48000,numberOfFrames:k,numberOfChannels:2,timestamp:Math.round(p/48000*1e6),data:d});aenc.encode(ad);ad.close()}
+   await aenc.flush();aenc.close()}
+  if(err)throw err;mux.finalize();return new Blob([target.buffer],{type:'video/mp4'})}
+
+ /* ---------------- fila automática: vídeos da câmera ---------------- */
+ const Q=[];let RUN=null,okN=0,failN=0;
+ const isCam=it=>it&&it.kind==='video'&&!it.local&&!it.peer&&!it.remote&&!/^ed\|/.test(it.sig||'')&&!/_(ritmo|girado\d+|em_pe|corrigido\d+|COR|look)/i.test(it.name||'');
+ const SEEN=new Set();
+ setInterval(async()=>{if(!UP.on||!UP.auto)return;for(const it of (S.items||[])){if(!isCam(it)||SEEN.has(it.id))continue;SEEN.add(it.id);if(DONE.has(keyOf(it)))continue;
+   try{const m=await vInfo(it);if(m&&m.w>m.h){Q.push(it);paint()}}catch(_){}}},3000);
+ const DB5=new Promise((a,b)=>{try{const r=indexedDB.open('lumen-v115',1);r.onupgradeneeded=()=>r.result.createObjectStore('k');r.onsuccess=()=>a(r.result);r.onerror=()=>b(r.error)}catch(e){b(e)}});
+ const kv5={get:async k=>{const db=await DB5;return new Promise(r=>{const g=db.transaction('k').objectStore('k').get(k);g.onsuccess=()=>r(g.result);g.onerror=()=>r(null)})},set:async(k,v)=>{const db=await DB5;return new Promise(r=>{const t=db.transaction('k','readwrite');t.objectStore('k').put(v,k);t.oncomplete=()=>r(true);t.onerror=()=>r(false)})}};
+ if(!UP.dest)UP.dest='pick';if(!UP.org)UP.org='evento_dia';if(!UP.name)UP.name='igual';
+ let DIR=null,DPERM=false,NEEDDIR=false;(async()=>{try{DIR=await kv5.get('dir');if(DIR)DPERM=(await DIR.queryPermission({mode:'readwrite'}))==='granted'}catch(_){}paint()})();
+ async function pickDir(){try{DIR=await showDirectoryPicker({id:'lumen-em-pe',mode:'readwrite'});DPERM=true;await kv5.set('dir',DIR);UP.dest='pick';sv();NEEDDIR=false;paint();return true}catch(_){return false}}
+ async function allow(){if(!DIR)return pickDir();try{DPERM=(await DIR.requestPermission({mode:'readwrite'}))==='granted'}catch(_){DPERM=false}NEEDDIR=!DPERM;paint();return DPERM}
+ function target(){if(UP.dest==='evento')return(S.dir&&S.perm&&!S.dir.virtual)?{root:S.dir,label:'pasta do evento'}:null;return DIR&&DPERM?{root:DIR,label:DIR.name}:null}
+ const clean=s=>String(s||'').replace(/[\\/:*?"<>|]+/g,'_').trim()||'Evento';
+ function subPath(it){const t=it.ct||it.t||Date.now();const day=(typeof dayOf==='function'?dayOf(t):new Date(t).toISOString().slice(0,10));const ev=clean((typeof C!=='undefined'&&(C.fev===undefined?C.ev:C.fev))||'Evento');
+  if(UP.dest==='evento')return(typeof pth==='function'?pth('VideosEmPe',t):ev+'/'+day+'/Videos/Em_pe');return UP.org==='evento_dia'?ev+'/'+day:''}
+ async function freeName(dir,nm,size){let n=nm,k=2;for(;;){try{const f=await(await dir.getFileHandle(n)).getFile();if(f.size===size)return{n,same:true};n=nm.replace(/(\.[^.]+)$/,' ('+(k++)+')$1')}catch(_){return{n,same:false}}}}
+ async function srcInfo(file){return new Promise(res=>{try{const u=URL.createObjectURL(file),v=document.createElement('video');v.muted=true;v.src=u;const ts=[];let done=false;const fin=()=>{if(done)return;done=true;try{v.pause()}catch(_){}URL.revokeObjectURL(u);const d=[];for(let i=1;i<ts.length;i++){const x=ts[i]-ts[i-1];if(x>0.004&&x<0.2)d.push(x)}d.sort((a,b)=>a-b);res({fps:d.length?Math.round(1/d[Math.floor(d.length/2)]):30,dur:v.duration||0})};
+   v.onloadedmetadata=()=>{if(!v.requestVideoFrameCallback)return fin();let n=0;const f=(now,m)=>{ts.push(m.mediaTime);if(++n<10)v.requestVideoFrameCallback(f);else fin()};v.requestVideoFrameCallback(f);v.play().catch(fin)};v.onerror=fin;setTimeout(fin,3000)}catch(_){res({fps:30,dur:0})}})}
+ setInterval(async()=>{if(RUN||!Q.length)return;const busy=(S.q&&S.q.length)||(S.pq&&S.pq.length)||(window.VXAPI&&VXAPI.run)||S.rv||window.__vxBatch;if(busy)return;
+  const T=target();if(!T){if(!NEEDDIR){NEEDDIR=true;paint()}return}NEEDDIR=false;
+  const it=Q.shift();RUN={it,p:0};paint();
+  try{if(!it.blob&&!it.url&&window.ensureBlob)await ensureBlob(it);const file=it.blob||(it.url?await(await fetch(it.url)).blob():null);if(!file)throw new Error('arquivo indisponível (libere a pasta no Início)');
+   const si=await srcInfo(file);window.__rotFps=Math.min(60,Math.max(24,si.fps||30));window.__rotBr=si.dur?Math.round(Math.min(40e6,Math.max(8e6,file.size*8/si.dur))):0;
+   const deg=+UP.dir||90;const out=await upright(file,deg,p=>{RUN.p=p;paintSoft()});window.__rotFps=0;window.__rotBr=0;
+   const base=String(it.name).replace(/\.[^.]+$/,'');const nm0=(UP.name==='igual'?base:base+'_em_pe')+'.mp4';
+   let d=T.root;const sp=subPath(it);for(const g of sp.split('/').filter(Boolean))d=await d.getDirectoryHandle(g,{create:true});
+   const fn=await freeName(d,nm0,out.size);let f=out;if(!fn.same){const fh=await d.getFileHandle(fn.n,{create:true});const w=await fh.createWritable();await w.write(out);await w.close();f=await fh.getFile()}
+   const where=T.label+(sp?' › '+sp:'');{const ob=window.__vxBatch;window.__vxBatch=true;try{LUMEN_V93.rec(fn.n,f,where,{s109:1,saved:where})}catch(_){}window.__vxBatch=ob}
+   DONE.add(keyOf(it));svD();okN++;LAST.unshift({n:fn.n,where,src:it.name});if(LAST.length>30)LAST.pop();log('📱 Em pé: '+fn.n+' → '+where,'ok')}
+  catch(e){failN++;Q.push(it);log('Vídeo em pé: '+it.name+' — '+e.message+' (vai tentar de novo)','bad')}finally{RUN=null;paint()}},2500);
+ const LAST=[];
+ /* ---------------- janela de importar: deitado já vem em pé ---------------- */
+ const DLG=new WeakSet();
+ setInterval(async()=>{if(!UP.on||!UP.dlg)return;const ov=$1('.st103:not([hidden])');if(!ov||!window.LUMEN_V103)return;const CH=LUMEN_V103.ch();if(!CH||DLG.has(CH))return;DLG.add(CH);CH.per=CH.per||{};let ch=false;
+  for(const it of (LUMEN_V103.items()||[])){if(CH.per[it.id]!=null)continue;const m=await vInfo(it);if(m&&m.w>m.h){CH.per[it.id]=+UP.dir||90;ch=true}}
+  if(ch){const b=ov.querySelector('.st103pv');/* redesenha os números de giro e as prévias */ov.querySelectorAll('.st103it').forEach(box=>{const id=+box.dataset.id,d=CH.per[id];const s=box.querySelector('.st103deg');if(s&&d!=null)s.textContent=d?d+'°':'sem giro'});LUMEN_V103.repaint();
+   let tip=ov.querySelector('.up115tip');if(!tip){tip=document.createElement('div');tip.className='up115tip';const L=ov.querySelector('.st105lab');L&&L.after(tip)}tip.textContent='📱 Os vídeos deitados já vão ficar em pé ('+(UP.dir===270?'↺':'↻')+' 90°). Se algum não for, toque em ↺ ↻ embaixo dele.'}},600);
+
+ /* ---------------- quadro de ajustes ---------------- */
+ const card=document.createElement('div');card.className='c v70c up115';
+ function paint(){const T=target();const dlab=UP.dest==='evento'?(S.dir?'pasta do evento ('+esc(S.dir.name)+') › Videos/Em_pe':'pasta do evento (escolha no Início)'):(DIR?'📁 '+esc(DIR.name)+(DPERM?'':' — toque em Liberar'):'nenhuma pasta escolhida');
+  card.innerHTML='<div class="v70h"><b>📱 Vídeos sempre em pé</b><span class="pillS '+(UP.on?'ok':'')+'">'+(UP.on?'ligado':'desligado')+'</span></div>'
+   +'<label class="r"><input type="checkbox" class="u1"'+(UP.on?' checked':'')+'><span>Vídeo deitado (de lado) vira em pé sozinho</span></label>'
+   +'<div class="up115dir"><span>Girar para:</span><button type="button" data-d="90" class="'+(UP.dir!==270?'on':'')+'">↻ direita</button><button type="button" data-d="270" class="'+(UP.dir===270?'on':'')+'">↺ esquerda</button></div>'
+   +'<label class="r"><input type="checkbox" class="u2"'+(UP.auto?' checked':'')+'><span>Vídeos da câmera: fazer uma cópia em pé sozinho (mesma qualidade, mesmo tamanho, mesmos quadros por segundo e o mesmo som — só que em pé). O original fica guardado.</span></label>'
+   +'<div class="up115box"><b>Onde salvar as cópias em pé</b>'
+   +'<label class="r"><input type="radio" name="u115d" value="pick"'+(UP.dest!=='evento'?' checked':'')+'><span>Numa pasta que eu escolher</span></label>'
+   +'<label class="r"><input type="radio" name="u115d" value="evento"'+(UP.dest==='evento'?' checked':'')+'><span>Na pasta do evento (Videos/Em_pe)</span></label>'
+   +'<div class="up115row"><span>Destino: <b>'+dlab+'</b></span>'+(UP.dest!=='evento'?'<button type="button" class="f u115p">📁 '+(DIR?'Trocar pasta':'Escolher pasta')+'</button>'+(DIR&&!DPERM?'<button type="button" class="f p u115a">Liberar a pasta</button>':''):'')+'</div>'
+   +(UP.dest!=='evento'?'<div class="up115row"><span>Organizar:</span><select class="u115o"><option value="evento_dia"'+(UP.org==='evento_dia'?' selected':'')+'>Por evento e dia (Evento › 2026-10-08)</option><option value="plana"'+(UP.org==='plana'?' selected':'')+'>Tudo junto na pasta</option></select></div>':'')
+   +'<div class="up115row"><span>Nome do arquivo:</span><select class="u115n"><option value="igual"'+(UP.name==='igual'?' selected':'')+'>Igual ao original (ex.: 6Q6A4957.mp4)</option><option value="sufixo"'+(UP.name==='sufixo'?' selected':'')+'>Com "_em_pe" no fim</option></select></div></div>'
+   +(NEEDDIR&&Q.length?'<div class="up115warn">⚠ '+nf(Q.length)+' vídeo(s) esperando: escolha a pasta para as cópias em pé.</div>':'')
+   +'<label class="r"><input type="checkbox" class="u3"'+(UP.dlg?' checked':'')+'><span>Ao trazer vídeos do PC/celular: os deitados já aparecem em pé na prévia</span></label>'
+   +'<div class="up115q">'+(RUN?'<div><b>⏺ Deixando em pé:</b> '+esc(RUN.it.name)+' <span class="up115p">'+Math.round((RUN.p||0)*100)+'%</span></div>':'')+(Q.length?'<div>⏳ Na fila: '+nf(Q.length)+'</div>':'')+'<div>✔ Prontos: '+nf(okN)+(failN?' · ✖ '+nf(failN)+' (tenta de novo)':'')+'</div>'+(LAST.length?'<div class="up115l">'+LAST.slice(0,6).map(x=>'<span>✔ '+esc(x.n)+' <small>'+esc(x.where)+'</small></span>').join('')+'</div>':'')+'</div>'
+   +'<div class="sub wrap" data-ex="1" style="white-space:normal">Dica: se a sua câmera tiver a opção de gravar a informação de rotação nos vídeos, deixe ligada. Aí os vídeos já chegam em pé, sem precisar girar.</div>';
+  const q=s=>card.querySelector(s);q('.u1').onchange=e=>{UP.on=e.target.checked;sv();paint()};q('.u2').onchange=e=>{UP.auto=e.target.checked;sv();paint()};q('.u3').onchange=e=>{UP.dlg=e.target.checked;sv()};
+  card.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{UP.dir=+b.dataset.d;sv();paint()});
+  card.querySelectorAll('input[name=u115d]').forEach(r=>r.onchange=()=>{UP.dest=r.value;sv();NEEDDIR=false;paint()});
+  const p=q('.u115p');if(p)p.onclick=pickDir;const a=q('.u115a');if(a)a.onclick=allow;
+  const o=q('.u115o');if(o)o.onchange=e=>{UP.org=e.target.value;sv()};const n=q('.u115n');if(n)n.onchange=e=>{UP.name=e.target.value;sv()}}
+ function paintSoft(){const p=card.querySelector('.up115p');if(p&&RUN)p.textContent=Math.round((RUN.p||0)*100)+'%'}
+ function place(){const t=$1('#t-vid');if(!t)return;const ref=t.querySelector(':scope>.lvSc')||t.querySelector(':scope>.v70ph');if(ref&&ref.nextElementSibling!==card)ref.after(card)}
+ setInterval(place,2000);setTimeout(()=>{place();paint()},1500);
+ window.LUMEN_V115={UP,upright,Q,state:()=>RUN};
+ log('Build v115: vídeos sempre em pé (padrão) com cópia em pé indo sozinha para a pasta','ok');
+}catch(e){try{log('v115: '+e.message,'bad')}catch(_){}}})();
 </script>
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
 
