@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v93</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v95</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -1274,6 +1274,31 @@ html:root body .vzEmpty{display:none!important}
 .xR>span,.pjR>span{flex:1 1 180px;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .pjRes{border:1px solid var(--acc,#e8b04b);border-radius:10px;padding:8px 10px;margin:8px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 @media(max-width:520px){.gmGrid{grid-template-columns:repeat(3,1fr);gap:4px}}
+
+.g94{padding:10px 14px}.g94r{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}.g94t{font-size:13px;flex:1 1 320px}.g94b{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.g94b select{max-width:200px}.g94b .f{width:auto;flex:0 0 auto;min-height:38px;padding:8px 14px}
+.fl94{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:2147483000;background:#0f2e1c;color:#d9ffe6;border:1px solid #2ecc71;border-radius:14px;padding:12px 18px;box-shadow:0 10px 40px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:2px;max-width:min(92vw,560px);cursor:pointer;animation:fl94 .35s ease-out}
+.fl94 small{opacity:.85;font-size:12px;word-break:break-all}.fl94.big{top:30%;padding:22px 28px;font-size:22px;text-align:center;border-width:2px}.fl94.big small{font-size:14px}
+.fl94[hidden]{display:none!important}@keyframes fl94{from{opacity:0;transform:translate(-50%,-10px) scale(.96)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+.ccBars{display:flex;flex-direction:column;gap:4px;margin:10px 0}.ccRow{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:6px 10px;border-radius:8px;background:rgba(127,127,127,.08)}
+.ms94[hidden]{display:none!important}
+
+.dl95{position:fixed;inset:0;z-index:2147482000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;padding:16px}
+.dl95[hidden]{display:none!important}
+.dl95b{background:var(--card,#16161a);color:var(--ink,#eee);border:1px solid rgba(255,255,255,.12);border-radius:18px;max-width:520px;width:100%;max-height:92vh;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.dl95h{display:flex;align-items:center;gap:12px}.dl95h>div{flex:1;display:flex;flex-direction:column}.dl95h small{opacity:.75}
+.dl95n{width:40px;height:40px;border-radius:50%;background:var(--acc,#e8b04b);color:#111;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;flex:0 0 auto}
+.dl95x{background:none;border:0;color:inherit;font-size:20px;cursor:pointer;padding:6px}
+.dl95v{width:100%;max-height:38vh;border-radius:12px;background:#000}
+.dl95d{display:grid;grid-template-columns:1fr 1fr;gap:6px}.dl95d>div{background:rgba(127,127,127,.1);border-radius:10px;padding:7px 10px;display:flex;flex-direction:column;min-width:0}
+.dl95d span{font-size:11px;opacity:.7}.dl95d b{font-size:13px;overflow-wrap:anywhere}
+.dl95a{display:flex;flex-direction:column;gap:8px}.dl95a .f{width:100%}
+.st95r{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.st95s{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:10px 12px;border-radius:12px;border:1px solid rgba(127,127,127,.25);background:rgba(127,127,127,.06);color:inherit;cursor:pointer}
+.st95s i{font-style:normal;font-size:20px;line-height:1}.st95s small{opacity:.7;font-size:11px}
+.st95s.on{border-color:var(--acc,#e8b04b);box-shadow:0 0 0 2px rgba(232,176,75,.25)}.st95s.ok i{color:#2ecc71}
+.st95s[data-s="3"].on{background:var(--acc,#e8b04b);color:#111}
+.st95w{margin-top:8px;font-size:13px;color:var(--warn,#f0b429)}.st95w[hidden]{display:none!important}
+@media(max-width:560px){.st95r{grid-template-columns:1fr}.dl95v{max-height:28vh}.dl95b{padding:12px;gap:10px}}
 </style>
 
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -6324,6 +6349,7 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
     close:async()=>{open=false;await w.close();const f=await fh.getFile();if(f.size!==size)throw new Error('vídeo incompleto ('+Math.round(f.size/1e6)+' de '+Math.round(size/1e6)+' MB)');
      putIdx({k,sig,src,size,t:Date.now(),done:true,saved:false,ev:C.ev});persist();const o=new File([f],src,{type:typeOf(src),lastModified:Date.now()});o.__lib=true;return o}}}
   catch(e){LIBERR=why(e,size);warn();return null}};
+ window.LUMEN_LIB={IDX,drop,loadIdx,total,est,CFG,fileOf,ready:()=>READY};
  window.libMeta=(sig,m)=>{const r=IDX.get(keyOf(sig));if(!r)return;Object.assign(r,m);putIdx(r)};
  const ORIG=/^(Originais|Videos|Quarentena|RAW)$/;
  window.libSub=(name,sub)=>{if(!ORIG.test(sub))return;for(const r of IDX.values())if(r.name===name&&r.sub!==sub){r.sub=sub;putIdx(r)}};
@@ -7911,7 +7937,7 @@ mqtt/dist/mqtt.esm.js:
   /* o tamanho real do arquivo da câmera (100%) */
   if(it.blob&&it.blob.size&&it.kind==='foto'&&!it.raw)LOC.get(k).m.sz=it.blob.size}}
  let walking=false,lastWalk=0,qsT=0;
- function quickScan(){clearTimeout(qsT);qsT=setTimeout(()=>{if(R.st!=='on')return;if(walking){quickScan();return}scanFolder().then(()=>shareCat())},1500)}
+ function quickScan(){clearTimeout(qsT);qsT=setTimeout(()=>{if(R.st!=='on')return;if(walking){quickScan();return}scanFolder().then(()=>shareCat())},Math.max(1500,lastWalk+(S.run?8000:3000)-Date.now()))}
  async function scanFolder(){if(walking||!S.dir||!S.perm||S.dir.virtual)return;walking=true;lastWalk=Date.now();
   try{const found=[];const SKIP=/^(LR_Entrada|LR_Entrada_com_erro|Plano_B_originais|Lightroom_Sessoes|cofre|Corrida_numerada|Escolhidas)$/i;
    const walk=async(d,pre,dep)=>{for await(const[n,h] of d.entries()){if(n.startsWith('.'))continue;
@@ -8330,7 +8356,7 @@ mqtt/dist/mqtt.esm.js:
  setInterval(()=>{if(sec.classList.contains('on'))draw()},3000);
  window.LUMEN_ROOM_DBG={drop:()=>{for(const RO of R.rooms)for(const pc of Object.values(RO.room.getPeers()))try{pc.close()}catch(_){}}};
  window.LUMEN_ROOM_PV=previewOf;window.LUMEN_ROOM_FAILS=()=>[...MQ.fail.values()].map(f=>({n:f.it.n,e:f.e,tries:f.n,dev:(R.devs.get(f.dev)||{}).name||''}));window.LUMEN_ROOM_RETRY=()=>{try{q('.apRetry').click()}catch(_){}};window.LUMEN_ROOM_GET=(dev,k)=>{const c=R.cats.get(dev);const it=c&&c.get(k);if(!it)return Promise.reject(new Error('foto não encontrada'));return fetchFile(dev,it).then(r=>r.blob)};window.LUMEN_ROOM_RECENT=n=>{const L=[];for(const[dev,cat] of R.cats){if(dev===R.myId||!allowed(dev))continue;const d=R.devs.get(dev)||{};for(const it of cat.values())if(it.kind==='foto'&&it.ty!=='raw')L.push({dev,it,devName:d.name||'Aparelho',ic:d.ic||'📱'})}return L.sort((a,b)=>a.it.t-b.it.t).slice(-(n||30))};window.LUMEN_ROOM_DEVS=()=>[...R.devs.values()].filter(d=>d.id!==R.myId&&allowed(d.id));
- window.LUMEN_ROOM={state:()=>({code:RM.code,on:R.st==='on',devs:R.devs.size,peers:R.conns.size,links:R.links.size,nets:relayInfo(),mirror:{q:MQ.q.length,n:MQ.n,fail:MQ.fail.size},loss:lossRows()}),join,leave};
+ window.LUMEN_ROOM={link:()=>RM.code?linkOf(RM.code):'',code:()=>RM.code,state:()=>({code:RM.code,on:R.st==='on',devs:R.devs.size,peers:R.conns.size,links:R.links.size,nets:relayInfo(),mirror:{q:MQ.q.length,n:MQ.n,fail:MQ.fail.size},loss:lossRows()}),join,leave};
  if(RM.code&&RM.auto!==false)setTimeout(()=>join(RM.code),300);
  if(fromUrl)setTimeout(()=>{try{goTab('dev')}catch(_){}},1200);
  setInterval(()=>{if(RM.code&&R.st==='on'&&(!R.conns.size||R.asked.size))paint()},2000);
@@ -8754,12 +8780,14 @@ mqtt/dist/mqtt.esm.js:
  const EX=[];const XK='lumen_vxout';let XO={auto:false};try{XO=Object.assign(XO,JSON.parse(localStorage.getItem(XK)||'{}'))}catch(_){}
  const svX=()=>{try{localStorage.setItem(XK,JSON.stringify(XO))}catch(_){}};
  let outDir=null,outPerm=false;(async()=>{try{outDir=await kv.get('outDir');if(outDir)outPerm=(await outDir.queryPermission({mode:'readwrite'}))==='granted'}catch(_){}paintX()})();
- async function record(name,blob,where){if(!blob||!blob.size)return;if(EX.some(x=>x.name===name&&x.size===blob.size))return;const x={name,blob,size:blob.size,t:Date.now(),where,saved:''};EX.unshift(x);if(EX.length>60)EX.pop();
+ async function record(name,blob,where,extra){if(!blob||!blob.size)return;if(EX.some(x=>x.name===name&&x.size===blob.size))return;const x=Object.assign({name,blob,size:blob.size,t:Date.now(),where,saved:''},extra||{});EX.unshift(x);if(EX.length>60)EX.pop();try{dispatchEvent(new CustomEvent('lumen-vx-done',{detail:x}))}catch(_){}
+  {let k=0;for(const y of EX){if(y.blob&&!(y.blob instanceof File)&&(y.fh||y.sub||y.saved)){if(++k>2)y.blob=null}}}
   if(XO.auto&&outDir&&outPerm)await saveOne(x);paintX();try{toastOk('🎞 Vídeo editado pronto: '+name)}catch(_){}}
  function toastOk(t){log(t,'ok')}
- try{const _put=put;put=async function(sub,name,blob){const r=await _put.apply(this,arguments);try{if((sub==='VideosVel'||sub==='Videos_look')&&blob)record(name,r&&r.size?r:blob,'pasta do evento › Videos/'+(sub==='VideosVel'?'Editados':'Com_look'))}catch(_){}return r};window.put=put}catch(_){}
+ try{const _put=put;put=async function(sub,name,blob){const r=await _put.apply(this,arguments);try{if((sub==='VideosVel'||sub==='Videos_look')&&blob)record(name,r&&r.size?r:blob,'pasta do evento › Videos/'+(sub==='VideosVel'?'Velocidade':'Com_look'),{sub})}catch(_){}return r};window.put=put}catch(_){}
  try{const _c=HTMLAnchorElement.prototype.click;HTMLAnchorElement.prototype.click=function(){try{const n=this.download||'';if(n&&isV(n)&&/^blob:/.test(this.href)){const href=this.href;fetch(href).then(r=>r.blob()).then(b=>record(n,b,'Downloads')).catch(()=>{})}}catch(_){}return _c.apply(this,arguments)}}catch(_){}
- async function saveOne(x){if(!outDir)return false;try{const fh=await outDir.getFileHandle(x.name.replace(/[\\/:*?"<>|]/g,'_'),{create:true});const w=await fh.createWritable();await w.write(x.blob);await w.close();x.saved=outDir.name;return true}catch(e){x.saved='';log('Vídeos editados: não consegui salvar '+x.name+' ('+e.message+')','bad');return false}}
+ async function getB(x){if(x.blob)return x.blob;if(x.fh)return await x.fh.getFile();if(x.sub)return await(await(await walkTo(pth(x.sub,x.t))).getFileHandle(x.name)).getFile();if(x.ofh)return await x.ofh.getFile();throw new Error('o vídeo não está mais na memória: abra pela pasta')}
+ async function saveOne(x){if(!outDir)return false;try{const fh=await outDir.getFileHandle(x.name.replace(/[\\/:*?"<>|]/g,'_'),{create:true});const w=await fh.createWritable();await w.write(await getB(x));x.ofh=fh;await w.close();x.saved=outDir.name;return true}catch(e){x.saved='';log('Vídeos editados: não consegui salvar '+x.name+' ('+e.message+')','bad');return false}}
  async function pickOut(){try{outDir=await showDirectoryPicker({id:'lumen-videos-editados',mode:'readwrite'});outPerm=true;await kv.set('outDir',outDir);return true}catch(_){return false}}
  const xc=document.createElement('div');xc.className='c v70c vxOutC';
  xc.innerHTML='<div class="v70h"><b>🎞 Vídeos editados</b><span class="pillS xSt">—</span></div><div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Tudo que você exporta, gira ou corrige aparece aqui. Escolha uma pasta e salve todos de uma vez, ou deixe salvando sozinho.</div>'
@@ -8768,12 +8796,12 @@ mqtt/dist/mqtt.esm.js:
  const qx=s=>xc.querySelector(s);
  qx('.xAuto').checked=!!XO.auto;qx('.xAuto').onchange=async e=>{XO.auto=e.target.checked;svX();if(XO.auto&&!outDir&&window.showDirectoryPicker)await pickOut();if(XO.auto&&outDir&&!outPerm){try{outPerm=(await outDir.requestPermission({mode:'readwrite'}))==='granted'}catch(_){}}paintX()};
  qx('.xSaveAll').onclick=async()=>{if(!window.showDirectoryPicker){qx('.xDlAll').click();return}if(!await pickOut())return;let k=0;for(const x of EX)if(await saveOne(x))k++;paintX();log('✔ '+k+' vídeo(s) editado(s) salvos em "'+outDir.name+'"','ok')};
- qx('.xDlAll').onclick=async()=>{for(const x of EX){const a=document.createElement('a');a.href=URL.createObjectURL(x.blob);a.download=x.name;a.dispatchEvent(new MouseEvent('click'));await new Promise(r=>setTimeout(r,500))}};
+ qx('.xDlAll').onclick=async()=>{for(const x of EX){const a=document.createElement('a');let b;try{b=await getB(x)}catch(e){log(e.message,'bad');continue}a.href=URL.createObjectURL(b);a.download=x.name;a.dispatchEvent(new MouseEvent('click'));await new Promise(r=>setTimeout(r,500))}};
  function paintX(){const st=qx('.xSt');st.textContent=EX.length?EX.length+' pronto(s)':'nenhum ainda';st.className='pillS xSt '+(EX.length?'ok':'');
   qx('.xDir').textContent=outDir?'Pasta escolhida: '+outDir.name+(outPerm?'':' (toque em Salvar para liberar de novo)'):'Nenhuma pasta escolhida ainda.';
   qx('.xList').innerHTML=EX.map((x,i)=>'<div class="xR"><span>🎬 '+esc(x.name)+' <small>'+fmtB(x.size)+' · '+esc(x.saved?'salvo em '+x.saved:x.where)+'</small></span><button type="button" class="f" data-pl="'+i+'">▶</button><button type="button" class="f" data-dl="'+i+'">⬇</button><button type="button" class="f" data-sv="'+i+'">📁</button></div>').join('');
-  qx('.xList').querySelectorAll('[data-pl]').forEach(b=>b.onclick=()=>{const x=EX[+b.dataset.pl];const ov=document.createElement('div');ov.className='apOv';const u=URL.createObjectURL(x.blob);ov.innerHTML='<div class="apBox"><div class="apMed"><video src="'+u+'" controls autoplay playsinline></video></div><div class="fx3a"><button type="button" class="f apX">Fechar</button></div><small>'+esc(x.name)+'</small></div>';document.body.appendChild(ov);ov.querySelector('.apX').onclick=()=>{ov.remove();URL.revokeObjectURL(u)}});
-  qx('.xList').querySelectorAll('[data-dl]').forEach(b=>b.onclick=()=>{const x=EX[+b.dataset.dl];const a=document.createElement('a');a.href=URL.createObjectURL(x.blob);a.download=x.name;a.dispatchEvent(new MouseEvent('click'))});
+  qx('.xList').querySelectorAll('[data-pl]').forEach(b=>b.onclick=async()=>{const x=EX[+b.dataset.pl];let bl;try{bl=await getB(x)}catch(e){log(e.message,'bad');return}const ov=document.createElement('div');ov.className='apOv';const u=URL.createObjectURL(bl);ov.innerHTML='<div class="apBox"><div class="apMed"><video src="'+u+'" controls autoplay playsinline></video></div><div class="fx3a"><button type="button" class="f apX">Fechar</button></div><small>'+esc(x.name)+'</small></div>';document.body.appendChild(ov);ov.querySelector('.apX').onclick=()=>{ov.remove();URL.revokeObjectURL(u)}});
+  qx('.xList').querySelectorAll('[data-dl]').forEach(b=>b.onclick=async()=>{const x=EX[+b.dataset.dl];let bl;try{bl=await getB(x)}catch(e){log(e.message,'bad');return}const a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download=x.name;a.dispatchEvent(new MouseEvent('click'))});
   qx('.xList').querySelectorAll('[data-sv]').forEach(b=>b.onclick=async()=>{if(!outDir||!outPerm){if(!outDir){if(!await pickOut())return}else{try{outPerm=(await outDir.requestPermission({mode:'readwrite'}))==='granted'}catch(_){}}}await saveOne(EX[+b.dataset.sv]);paintX()})}
 
  /* ===================== 3. projetos de vídeo que não somem ===================== */
@@ -8859,9 +8887,252 @@ mqtt/dist/mqtt.esm.js:
  function placeG(){const t=$1('#t-gal');if(!t)return;const ref=t.querySelector(':scope>.v70ph');if(ref&&gc.previousElementSibling!==ref){const after=t.querySelector(':scope>#bbGal')||null;ref.after(gc)}}
  setInterval(placeG,1500);setTimeout(()=>{placeG();setMode()},900);
  const _go=window.goTab;window.goTab=function(t){const r=_go.apply(this,arguments);try{if(t==='gal'){placeG();setMode()}if(t==='ved'){placeVx();paintX();paintP()}}catch(_){}return r};try{goTab=window.goTab}catch(_){}
- window.LUMEN_V93={reconcile:()=>reconcile('manual'),EX,saveProj,snap,apply,walk,G};
+ window.LUMEN_V93={getB:x=>getB(x),rec:record,paintX:()=>paintX(),reconcile:()=>reconcile('manual'),EX,saveProj,snap,apply,walk,G};
  log('Build v93: recupera sozinho o que faltou do cartão, vídeos editados com escolher pasta, projetos que não somem (.lumenvideo), Galeria › Toda a pasta e site mais leve com muitas fotos','ok');
 }catch(e){try{log('v93: '+e.message,'bad')}catch(_){}}})();
+</script>
+<script id="v94">
+/* ===== v94 · Site leve com muitos GB
+   1) Galeria mostra só as últimas N fotos/vídeos (500 por padrão). O resto continua na PASTA e é contado; "Toda a pasta" mostra tudo.
+   2) A cópia de segurança no navegador (biblioteca) é liberada sozinha quando o arquivo já está na pasta → o "cache" não cresce mais.
+   3) Botão "Limpar cache do app" (Configurações): libera de verdade o que já está na pasta. O que ainda não chegou à pasta NUNCA é apagado.
+   4) Exportações (fotos e vídeos editados) vão direto para a pasta do evento.
+   5) Aviso grande a cada marco de fotos salvas (100, 250, 500, 1.000, 1.500…).
+   6) Galeria não redesenha a cada foto quando você está em outra aba (menos travadas). Convite da sala também pelo WhatsApp. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s);
+ const K='lumen_v94';const V=Object.assign({ask:true,cap:500,exp:true,expDl:false,libFree:true,ms:true},(()=>{try{return JSON.parse(localStorage.getItem(K)||'{}')}catch(_){return{}}})());
+ const sv=()=>{try{localStorage.setItem(K,JSON.stringify(V))}catch(_){}};
+ const fmtB=b=>b>1e9?(b/1e9).toFixed(1)+' GB':b>1e6?Math.round(b/1e6)+' MB':Math.max(0,Math.round(b/1e3))+' KB';
+ const nf=n=>Number(n||0).toLocaleString('pt-BR');
+ const tabOn=t=>{const e=$1('#t-'+t);return!!(e&&e.classList.contains('on'))};
+ const DIROK=()=>!!(S.dir&&S.perm&&!S.dir.virtual);
+
+ /* ================= 1. Galeria leve: só as últimas N na tela ================= */
+ const HID=new Map();   /* nome|sig → resumo do que saiu da tela (o arquivo está na pasta) */
+ const inQ=(L,i)=>(L||[]).some(x=>x===i||(x&&(x.it===i||x.name===i.name||x.id===i.id)));
+ function canHide(i,now){if(!i||i===S.sel||i.local||i.peer||i.remote)return false;
+  if(!(i.disk||(i.edited&&DIROK())))return false;if(now-(i.t||0)<120000)return false;
+  if(S.gs&&S.gs.has&&S.gs.has(i.id))return false;
+  if(inQ(S.uq,i)||inQ(S.memQ,i)||inQ(S.pq,i))return false;if(i.vaQ&&!i.vaDone)return false;return true}
+ function trim(){try{if(!V.cap||!S.items||S.items.length<=V.cap)return 0;const now=Date.now(),keep=[],out=[];
+   S.items.forEach((i,ix)=>{if(ix<V.cap||!canHide(i,now))keep.push(i);else out.push(i)});if(!out.length)return 0;
+   for(const i of out){HID.set(i.name+'|'+(i.sig||''),{k:i.kind,s:!!i.sent,c:i.cls,n:i.name,z:i.size||0});
+    try{if(i.thumb&&/^blob:/.test(i.thumb))URL.revokeObjectURL(i.thumb)}catch(_){}try{if(i.kind==='video'&&i.url&&/^blob:/.test(i.url))URL.revokeObjectURL(i.url)}catch(_){}
+    i.blob=null;i.thumb='';i.url=null;i.v94h=1}
+   S.items.length=0;keep.forEach(i=>S.items.push(i));
+   try{gal()}catch(_){}paintHid();return out.length}catch(e){return 0}}
+ setInterval(trim,6000);setTimeout(trim,4000);
+ function hidCounts(){let f=0,v=0,s=0;HID.forEach(x=>{if(x.k==='video')v++;else f++;if(x.s)s++});return{f,v,s}}
+ const hb=document.createElement('div');hb.className='c v70c g94';
+ hb.innerHTML='<div class="g94r"><span class="g94t"></span><span class="g94b"><label>Mostrar aqui <select class="g94cap" aria-label="Quantas mostrar na tela">'
+  +[200,500,1000,2000,0].map(n=>'<option value="'+n+'">'+(n?'as últimas '+nf(n):'todas (mais pesado)')+'</option>').join('')+'</select></label>'
+  +'<button type="button" class="f p g94all">📁 Ver toda a pasta</button></span></div>';
+ hb.querySelector('.g94cap').value=String(V.cap);
+ hb.querySelector('.g94cap').onchange=e=>{V.cap=+e.target.value;sv();trim();paintHid()};
+ hb.querySelector('.g94all').onclick=()=>{const b=$1('.gmTabs button[data-m=dir]');if(b){b.click();scrollTo({top:0,behavior:'smooth'})}};
+ function paintHid(){const t=$1('#t-gal');if(!t)return;const ref=$1('#galStats');if(ref&&hb.previousElementSibling!==ref)ref.after(hb);
+  const c=hidCounts(),F=(S.items||[]).filter(i=>i.kind==='foto').length,Vv=(S.items||[]).filter(i=>i.kind==='video').length;
+  hb.querySelector('.g94t').innerHTML=HID.size
+   ?'Na tela: <b>'+nf(F)+'</b> fotos e <b>'+nf(Vv)+'</b> vídeos mais recentes · <b>+'+nf(HID.size)+'</b> já guardados na pasta (total do evento: <b>'+nf(F+c.f)+'</b> fotos e <b>'+nf(Vv+c.v)+'</b> vídeos)'
+   :'Total: <b>'+nf(F)+'</b> fotos e <b>'+nf(Vv)+'</b> vídeos. Acima de '+(V.cap?nf(V.cap):'—')+', as mais antigas ficam só na pasta (o site fica leve).';
+  hb.hidden=t.classList.contains('galDir')}
+ setInterval(paintHid,3000);
+
+ /* a galeria não precisa se redesenhar a cada foto enquanto você está em outra aba */
+ try{const g0=window.galNow;let last=0,dirty=false,tm=0;
+  const wrapped=function(){const vis=tabOn('gal')||tabOn('pick')||tabOn('edit');const now=Date.now();
+   if(!vis&&now-last<5000){dirty=true;if(!tm)tm=setTimeout(()=>{tm=0;if(dirty)wrapped()},5000-(now-last)+50);return}
+   dirty=false;last=now;return g0.apply(this,arguments)};
+  window.galNow=wrapped;try{galNow=wrapped}catch(_){}
+  const _go=window.goTab;window.goTab=function(t){const r=_go.apply(this,arguments);try{if(t==='gal'){if(dirty){dirty=false;last=0;g0()}paintHid()}}catch(_){}return r};try{goTab=window.goTab}catch(_){}}catch(_){}
+
+ /* ================= 2. Biblioteca do navegador: libera o que já está na pasta ================= */
+ const LIB=()=>window.LUMEN_LIB;
+ async function libStat(){const L=LIB();if(!L)return null;try{if(!L.ready())await L.loadIdx()}catch(_){}let sv_=0,ns=0,nsv=0,nns=0;
+  L.IDX.forEach(r=>{if(!r.done&&!r.part)return;const z=r.size||r.part||0;if(r.done&&r.saved){sv_+=z;nsv++}else{ns+=z;nns++}});return{saved:sv_,unsaved:ns,nsv,nns}}
+ let FREEING=false;
+ async function libFree(all){const L=LIB();if(!L||FREEING)return{n:0,b:0};FREEING=true;let n=0,b=0;
+  try{if(!L.ready())await L.loadIdx();const now=Date.now();const byName=new Map();(S.items||[]).forEach(i=>{if(i.name)byName.set(i.name,i)});
+   for(const r of [...L.IDX.values()]){if(!r.done||!r.saved)continue;                         /* só o que JÁ está na pasta */
+    if((S.memQ||[]).some(x=>x.name===r.name)||(S.uq||[]).some(x=>x&&x.name===r.name))continue;
+    if(!all&&now-(r.savedAt||r.t||0)<5*60000)continue;
+    const it=r.name&&byName.get(r.name);
+    if(it&&it.lib){if(it.kind==='video'){if(!DIROK())continue;if(it===S.vxCur)continue;try{if(it.url)URL.revokeObjectURL(it.url)}catch(_){}it.url=null;it.blob=null;it.lib=false;it.disk=true;try{window.ensureBlob&&ensureBlob(it)}catch(_){}}
+     else{it.blob=null;it.lib=false;it.disk=true}}
+    b+=r.size||0;await L.drop(r);n++}}
+  catch(_){}finally{FREEING=false}
+  if(n)log('🧹 Espaço do navegador liberado: '+nf(n)+' arquivo(s), '+fmtB(b)+' (todos já estão na pasta do evento).','ok');return{n,b}}
+ setInterval(()=>{if(V.libFree)libFree(false)},60000);setTimeout(()=>{if(V.libFree)libFree(false)},20000);
+
+ /* ================= 3. Limpar cache do app ================= */
+ async function usage(){try{const e=await navigator.storage.estimate();return{u:e.usage||0,q:e.quota||0}}catch(_){return{u:0,q:0}}}
+ async function clearCache(){const before=(await usage()).u;let msg=[];
+  const r=await libFree(true);if(r.n)msg.push(nf(r.n)+' cópia(s) que já estavam na pasta');
+  try{if(window.caches){const ks=await caches.keys();for(const k of ks)await caches.delete(k);if(ks.length)msg.push(ks.length+' cache(s) de página')}}catch(_){}
+  const t=trim();if(t)msg.push(nf(t)+' miniatura(s) antigas da tela');
+  try{(window.LUMEN_V93&&LUMEN_V93.EX||[]).forEach(x=>{if(x.blob&&(x.fh||x.sub||x.ofh))x.blob=null})}catch(_){}
+  try{window.memPrune&&memPrune(true)}catch(_){}
+  await new Promise(r=>setTimeout(r,800));const after=(await usage()).u;
+  return{freed:Math.max(0,before-after),before,after,msg}}
+ const cc=document.createElement('div');cc.className='c v70c ccC';
+ cc.innerHTML='<div class="v70h"><b>🧹 Cache e espaço do app</b><span class="pillS ccSt">—</span></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Para nada se perder, cada foto e vídeo que chega fica guardado primeiro no navegador e depois vai para a pasta do evento. Agora, quando o arquivo <b>já está na pasta</b>, a cópia do navegador é apagada sozinha. Este botão faz isso na hora. <b>O que ainda não chegou à pasta nunca é apagado.</b></div>'
+  +'<div class="ccBars"></div>'
+  +'<div class="fx3a"><button type="button" class="f p ccGo">🧹 Limpar cache agora</button><button type="button" class="f ccRe">↻ Recarregar o site (fica mais leve)</button></div>'
+  +'<label class="r"><input type="checkbox" class="ccAuto"><span>Liberar sozinho (5 min depois que o arquivo chega à pasta)</span></label>'
+  +'<div class="sub wrap ccMsg" data-ex="1" style="white-space:normal"></div>';
+ const qc=s=>cc.querySelector(s);
+ qc('.ccAuto').checked=!!V.libFree;qc('.ccAuto').onchange=e=>{V.libFree=e.target.checked;sv()};
+ qc('.ccRe').onclick=()=>{if(S.run&&!confirm('Você está recebendo fotos agora. Recarregar pausa por alguns segundos e depois o LUMEN volta sozinho. Recarregar?'))return;location.reload()};
+ qc('.ccGo').onclick=async()=>{const b=qc('.ccGo');b.disabled=true;qc('.ccMsg').textContent='Limpando…';
+  try{const r=await clearCache();qc('.ccMsg').textContent='✔ Pronto: '+(r.msg.length?r.msg.join(', '):'nada a limpar')+'. Espaço usado: '+fmtB(r.before)+' → '+fmtB(r.after)+(r.freed?' (liberou '+fmtB(r.freed)+')':'')+'.';log('🧹 Cache limpo: '+fmtB(r.before)+' → '+fmtB(r.after),'ok')}
+  catch(e){qc('.ccMsg').textContent='Não deu: '+e.message}finally{b.disabled=false;paintCC()}};
+ async function paintCC(){const t=$1('#t-cfg');if(!t)return;if(cc.parentNode!==t){const bk=t.querySelector('.bkC');bk?bk.before(cc):t.appendChild(cc)}
+  if(!t.classList.contains('on'))return;const u=await usage(),ls=await libStat();
+  const mem=performance&&performance.memory?performance.memory.usedJSHeapSize:0;
+  qc('.ccBars').innerHTML='<div class="ccRow"><span>Espaço do navegador em uso</span><b>'+fmtB(u.u)+'</b></div>'
+   +(ls?'<div class="ccRow"><span>✔ Cópias que já estão na pasta (podem sair)</span><b>'+fmtB(ls.saved)+' · '+nf(ls.nsv)+'</b></div><div class="ccRow"><span>🛡 Ainda indo para a pasta (ficam guardadas)</span><b>'+fmtB(ls.unsaved)+' · '+nf(ls.nns)+'</b></div>':'')
+   +(mem?'<div class="ccRow"><span>Memória do site agora</span><b>'+fmtB(mem)+'</b></div>':'')
+   +'<div class="ccRow"><span>Fotos e vídeos na tela</span><b>'+nf((S.items||[]).length)+(HID.size?' (+'+nf(HID.size)+' só na pasta)':'')+'</b></div>';
+  const st=qc('.ccSt');const big=ls&&ls.saved>2e9;st.textContent=big?fmtB(ls.saved)+' para liberar':'ok';st.className='pillS ccSt '+(big?'warn':'ok')}
+ setInterval(paintCC,4000);setTimeout(paintCC,1500);
+
+ /* ================= 4. Exportações direto para a pasta do evento ================= */
+ const LEAF_=window.LEAF||(typeof LEAF!=='undefined'?LEAF:null);
+ try{if(LEAF_){LEAF_.ExpFotos=['Fotos','Editadas_no_site'];LEAF_.ExpVideos=['Videos','Editados_no_site']}}catch(_){}
+ const isVidN=n=>/\.(mp4|mov|m4v|webm|mkv)$/i.test(n),isImgN=n=>/\.(jpe?g|png|webp|tiff?|heic)$/i.test(n);
+ const BUSY=new WeakSet();
+ try{const _c=HTMLAnchorElement.prototype.click;HTMLAnchorElement.prototype.click=function(){
+   try{const n=this.download||'',href=this.href||'';
+    if(V.exp&&n&&/^blob:/.test(href)&&(isVidN(n)||isImgN(n))&&DIROK()&&(tabOn('edit')||tabOn('ved')||tabOn('vid'))&&!BUSY.has(this)){
+     const a=this,sub=isVidN(n)?'ExpVideos':'ExpFotos';
+     (async()=>{try{const b=await(await fetch(href)).blob();const p=pth(sub,Date.now());const f=await writeTo(S.dir,p,n.replace(/[\\/:*?"<>|]/g,'_'),b);
+       log('✔ Salvo na pasta do evento: '+p+'/'+n,'ok');flash('✔ Salvo na pasta do evento','📁 '+p.split('/').slice(-2).join('/')+' / '+n);
+       if(sub==='ExpVideos')try{LUMEN_V93.rec(n,f,'pasta do evento › '+p,{})}catch(_){}
+       if(V.expDl){BUSY.add(a);_c.call(a)}}
+      catch(e){log('Não consegui salvar '+n+' na pasta ('+e.message+'). Baixando pelo navegador.','bad');BUSY.add(a);_c.call(a)}})();
+     return}
+    if(V.ask&&n&&/^blob:/.test(href)&&isVidN(n)&&tabOn('ved')&&!DIROK()&&!BUSY.has(this)&&window.LUMEN_V93){
+     fetch(href).then(r=>r.blob()).then(b=>LUMEN_V93.rec(n,b,'pronto para baixar',{ask:1})).catch(()=>{BUSY.add(this);_c.call(this)});return}}catch(_){}
+   return _c.apply(this,arguments)}}catch(_){}
+
+ /* ================= 5. Marcos: "1.000 fotos salvas!" ================= */
+ const MK=()=>'lumen_ms_'+(typeof C!=='undefined'?(C.ev||'evento'):'evento');
+ let MS=(()=>{try{return JSON.parse(localStorage.getItem(MK())||'null')}catch(_){return null}})()||{n:0,v:0,last:0,names:[]};
+ const SEEN=new Set(MS.names||[]);let msEv=MK();
+ const MARKS=n=>n===100||n===250||n===500||(n>=1000&&n%500===0);
+ function svMS(){try{MS.names=[...SEEN].slice(-3000);localStorage.setItem(msEv,JSON.stringify(MS))}catch(_){}}
+ let msT=0;function countSave(path,name){if(MK()!==msEv){msEv=MK();MS={n:0,v:0,last:0};SEEN.clear()}
+  const k=path+'/'+name;if(SEEN.has(name+'|'+(path.split('/')[0]||'')))return;SEEN.add(name+'|'+(path.split('/')[0]||''));
+  if(isVidN(name))MS.v++;else MS.n++;clearTimeout(msT);msT=setTimeout(svMS,3000);
+  if(V.ms&&MARKS(MS.n)&&MS.last<MS.n){MS.last=MS.n;svMS();celebrate(MS.n)}paintMS()}
+ try{const _w=window.writeTo;const w2=async function(root,sub,name,blob){const r=await _w.apply(this,arguments);
+   try{const p=String(sub||'');if((isImgN(name)||isVidN(name)||/\.(cr3|cr2|nef|arw|raf|dng)$/i.test(name))&&/(^|\/)(Originais|Quarentena|RAW)(\/|$)/.test(p)&&!/LR_Entrada|Plano_B|cofre|LUMEN_/.test(p))countSave(p,name)}catch(_){}
+   return r};window.writeTo=w2;try{writeTo=w2}catch(_){}}catch(_){}
+ function beep(){try{const ac=new(window.AudioContext||window.webkitAudioContext)();[0,.16,.32].forEach((d,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=[660,880,1320][i];g.gain.setValueAtTime(.0001,ac.currentTime+d);g.gain.exponentialRampToValueAtTime(.25,ac.currentTime+d+.02);g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+d+.25);o.connect(g).connect(ac.destination);o.start(ac.currentTime+d);o.stop(ac.currentTime+d+.3)});setTimeout(()=>ac.close(),1500)}catch(_){}}
+ const fl=document.createElement('div');fl.className='fl94';fl.hidden=true;document.body.appendChild(fl);let flT=0;
+ function flash(t,s,big){fl.innerHTML='<b>'+esc(t)+'</b>'+(s?'<small>'+esc(s)+'</small>':'');fl.className='fl94'+(big?' big':'');fl.hidden=false;clearTimeout(flT);flT=setTimeout(()=>fl.hidden=true,big?7000:3500);fl.onclick=()=>fl.hidden=true}
+ function celebrate(n){flash('🎉 '+nf(n)+' fotos salvas na pasta!',(MS.v?nf(MS.v)+' vídeo(s) também · ':'')+'tudo guardado em '+(S.dir?S.dir.name:'sua pasta'),true);beep();try{navigator.vibrate&&navigator.vibrate([120,60,120])}catch(_){}
+  log('🎉 Marco: '+nf(n)+' fotos salvas na pasta'+(MS.v?' e '+nf(MS.v)+' vídeo(s)':''),'ok')}
+ const chip=document.createElement('span');chip.className='pillS ok ms94';chip.title='Fotos e vídeos salvos na pasta neste evento';
+ function paintMS(){chip.textContent='📥 '+nf(MS.n)+' fotos'+(MS.v?' · '+nf(MS.v)+' vídeos':'')+' na pasta';chip.hidden=!(MS.n||MS.v);
+  const ref=hb.querySelector('.g94b');if(ref&&chip.parentNode!==ref)ref.prepend(chip)}
+ setInterval(paintMS,3000);
+
+ /* ================= 6. Sala: convite também pelo WhatsApp ================= */
+ function waBtn(){const s=$1('.apShare');if(!s||s.parentNode.querySelector('.apWa'))return;const b=document.createElement('button');b.type='button';b.className=s.className.replace(/\bapShare\b/,'apWa');b.textContent='🟢 WhatsApp';
+  b.onclick=()=>{const L=window.LUMEN_ROOM&&LUMEN_ROOM.link&&LUMEN_ROOM.link();if(!L){alert('Crie ou entre numa sala primeiro.');return}open('https://wa.me/?text='+encodeURIComponent('Entre na minha sala do LUMEN para ver e baixar as fotos: '+L),'_blank','noopener')};s.after(b)}
+ setInterval(waBtn,2000);
+
+ /* ================= ajustes (Configurações) ================= */
+ const ec=document.createElement('div');ec.className='c v70c exC';
+ ec.innerHTML='<div class="v70h"><b>📤 Exportações e avisos</b></div>'
+  +'<label class="r"><input type="checkbox" class="exOn"><span>Fotos e vídeos editados vão <b>direto para a pasta do evento</b> (Fotos/Editadas_no_site e Videos/Editados_no_site)</span></label>'
+  +'<label class="r"><input type="checkbox" class="exDl"><span>Também baixar no navegador (Downloads)</span></label>'
+  +'<label class="r"><input type="checkbox" class="exMs"><span>Avisar com som a cada marco de fotos salvas (100, 250, 500, 1.000…)</span></label>';
+ const qe=s=>ec.querySelector(s);[['.exOn','exp'],['.exDl','expDl'],['.exMs','ms']].forEach(([s,k])=>{qe(s).checked=!!V[k];qe(s).onchange=e=>{V[k]=e.target.checked;sv()}});
+ setInterval(()=>{const t=$1('#t-cfg');if(t&&ec.parentNode!==t){cc.parentNode===t?cc.after(ec):t.appendChild(ec)}},2500);
+
+ window.LUMEN_V94={V,trim,HID,libFree,libStat,clearCache,flash,celebrate,MS:()=>MS,countSave};
+ log('Build v94: site leve (só as últimas '+nf(V.cap)+' na tela), cache liberado sozinho, exportações direto na pasta, aviso de marcos','ok');
+}catch(e){try{log('v94: '+e.message,'bad')}catch(_){}}})();
+</script>
+<script id="v95">
+/* ===== v95 · Editor de vídeo em 3 passos + "Seu vídeo está pronto: quer baixar?" (sempre MP4)
+   ① Escolha o vídeo  ② Edite (girar, cor, cortar, velocidade)  ③ Baixe o vídeo já editado aqui.
+   Assim que uma edição termina, aparece uma janela com os dados do vídeo editado e os botões para baixar. ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s);
+ const fmtB=b=>b>1e9?(b/1e9).toFixed(2)+' GB':b>1e6?(b/1e6).toFixed(1)+' MB':Math.max(1,Math.round(b/1e3))+' KB';
+ const MP4=['video/mp4;codecs=avc1.640028,mp4a.40.2','video/mp4;codecs=avc1,mp4a.40.2','video/mp4;codecs=avc1','video/mp4'];
+ const canMp4=()=>!!(window.MediaRecorder&&MP4.some(t=>{try{return MediaRecorder.isTypeSupported(t)}catch(_){return false}}));
+ const mp4Name=(n,b)=>{n=String(n||'video').replace(/[\\/:*?"<>|]/g,'_');const isMp4=!b||!b.type||/mp4|quicktime/.test(b.type);if(isMp4)return n.replace(/\.(webm|mkv|mov|m4v)$/i,'')+(/\.mp4$/i.test(n)?'':'.mp4');return n};
+ const edits=n=>{const o=[];let m;if((m=/_girado(\d+)/i.exec(n)))o.push('girado '+m[1]+'°');if(/_vel|_\d+x\b|Velocidade/i.test(n))o.push('velocidade');if(/_(COR|look)/i.test(n))o.push('cor / look');if(/_corte|_cut|_trim/i.test(n))o.push('corte');if(/_ed\b|_edit/i.test(n))o.push('edição');return o.length?o.join(' · '):'edição do editor'};
+ async function meta(b){return new Promise(res=>{try{const v=document.createElement('video');const u=URL.createObjectURL(b);v.preload='metadata';v.muted=true;v.src=u;const done=r=>{URL.revokeObjectURL(u);res(r)};v.onloadedmetadata=()=>done({w:v.videoWidth,h:v.videoHeight,d:v.duration});v.onerror=()=>done(null);setTimeout(()=>done(null),6000)}catch(_){res(null)}})}
+ const dur=d=>!d||!isFinite(d)?'—':Math.floor(d/60)+':'+String(Math.round(d%60)).padStart(2,'0');
+
+ /* ---------- janela "pronto para baixar" ---------- */
+ const PEND=[];   /* vídeos editados ainda não baixados nesta janela */
+ const ov=document.createElement('div');ov.className='dl95';ov.hidden=true;ov.setAttribute('role','dialog');ov.setAttribute('aria-label','Vídeo editado pronto');document.body.appendChild(ov);
+ async function blobOf(x){return x.blob||await LUMEN_V93.getB(x)}
+ async function dl(x){const b=await blobOf(x);const a=document.createElement('a');const u=URL.createObjectURL(b);a.href=u;a.download=mp4Name(x.name,b);document.body.appendChild(a);a.dispatchEvent(new MouseEvent('click'));a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000);x.dl95=1;log('⬇ Vídeo editado baixado: '+a.download,'ok')}
+ async function saveAs(x){const b=await blobOf(x);const name=mp4Name(x.name,b);
+  if(window.showSaveFilePicker){try{const fh=await showSaveFilePicker({suggestedName:name,id:'lumen-video-mp4',types:[{description:'Vídeo MP4',accept:{'video/mp4':['.mp4']}}]});const w=await fh.createWritable();await w.write(b);await w.close();x.dl95=1;log('✔ Vídeo editado salvo: '+name,'ok');return true}catch(e){if(e&&e.name==='AbortError')return false}}
+  await dl(x);return true}
+ async function share(x){const b=await blobOf(x);const f=new File([b],mp4Name(x.name,b),{type:b.type||'video/mp4'});await navigator.share({files:[f],title:f.name});x.dl95=1}
+ let busy=false;
+ async function show(){const L=PEND.filter(x=>!x.dl95);if(!L.length){ov.hidden=true;return}const x=L[0];let b=null;try{b=await blobOf(x)}catch(_){}
+  const m=b?await meta(b):null;const isMp4=!b||/mp4|quicktime/.test(b.type||'')||/\.mp4$/i.test(x.name);
+  let u='';try{if(b)u=URL.createObjectURL(b)}catch(_){}
+  const inFolder=/pasta/.test(x.where||'')||x.saved;
+  ov.innerHTML='<div class="dl95b"><div class="dl95h"><span class="dl95n">③</span><div><b>Seu vídeo editado está pronto!</b><small>Quer baixar agora?</small></div><button type="button" class="dl95x" aria-label="Fechar">✕</button></div>'
+   +(u?'<video class="dl95v" src="'+u+'#t=0.3" controls playsinline muted></video>':'')
+   +'<div class="dl95d"><div><span>Arquivo</span><b>'+esc(mp4Name(x.name,b))+'</b></div><div><span>Formato</span><b>'+(isMp4?'MP4 (H.264)':'WebM — este navegador não grava MP4; atualize o Chrome')+'</b></div>'
+   +'<div><span>Edição</span><b>'+esc(edits(x.name))+'</b></div>'
+   +'<div><span>Resolução</span><b>'+(m&&m.w?m.w+' × '+m.h+(m.h>m.w?' (em pé)':' (deitado)'):'—')+'</b></div><div><span>Duração</span><b>'+dur(m&&m.d)+'</b></div><div><span>Tamanho</span><b>'+fmtB(x.size||0)+'</b></div>'
+   +(inFolder?'<div><span>Já guardado</span><b>'+esc(x.saved?'em '+x.saved:x.where)+'</b></div>':'')+'</div>'
+   +'<div class="dl95a"><button type="button" class="f p dl95go">⬇ Baixar o vídeo em MP4</button>'
+   +(window.showSaveFilePicker?'<button type="button" class="f dl95as">📁 Escolher a pasta e salvar…</button>':'')
+   +(navigator.canShare&&b&&(()=>{try{return navigator.canShare({files:[new File([b],'v.mp4',{type:b.type||'video/mp4'})]})}catch(_){return false}})()?'<button type="button" class="f dl95sh">📱 Salvar no celular / compartilhar</button>':'')
+   +(L.length>1?'<button type="button" class="f dl95all">⬇ Baixar todos os '+L.length+' prontos</button>':'')
+   +'<button type="button" class="f dl95no">Agora não</button></div><small class="dl95m"></small></div>';
+  ov.hidden=false;const q=s=>ov.querySelector(s),say=t=>{q('.dl95m').textContent=t};
+  const close=()=>{try{u&&URL.revokeObjectURL(u)}catch(_){}ov.hidden=true};
+  const next=()=>{close();setTimeout(show,250)};
+  q('.dl95x').onclick=()=>{L.forEach(y=>y.skip95=1);PEND.length=0;close()};
+  q('.dl95no').onclick=()=>{x.dl95=1;x.later95=1;next()};
+  q('.dl95go').onclick=async()=>{try{say('Baixando…');await dl(x);next()}catch(e){say('Não deu: '+e.message)}};
+  if(q('.dl95as'))q('.dl95as').onclick=async()=>{try{if(await saveAs(x))next()}catch(e){say('Não deu: '+e.message)}};
+  if(q('.dl95sh'))q('.dl95sh').onclick=async()=>{try{await share(x);next()}catch(e){if(!(e&&e.name==='AbortError'))say('Não deu: '+e.message)}};
+  if(q('.dl95all'))q('.dl95all').onclick=async()=>{for(const y of L){try{await dl(y)}catch(_){}await new Promise(r=>setTimeout(r,600))}close()}}
+ addEventListener('lumen-vx-done',e=>{const x=e.detail;if(!x)return;if(!ASK.on&&!x.ask)return;PEND.push(x);if(PEND.length>40)PEND.shift();
+  clearTimeout(busy);busy=setTimeout(()=>{if(ov.hidden)show();else{const a=ov.querySelector('.dl95all');if(!a)show()}},700);paintSteps()});
+ const AK='lumen_vxask';const ASK={on:true};try{Object.assign(ASK,JSON.parse(localStorage.getItem(AK)||'{}'))}catch(_){}
+
+ /* ---------- 3 passos no topo do Editor de vídeo ---------- */
+ const st=document.createElement('div');st.className='c v70c st95';
+ st.innerHTML='<div class="st95r"><button type="button" class="st95s" data-s="1"><i>①</i><b>Escolha o vídeo</b><small>da câmera ou do PC/celular</small></button>'
+  +'<button type="button" class="st95s" data-s="2"><i>②</i><b>Edite</b><small>girar, cor, cortar, velocidade</small></button>'
+  +'<button type="button" class="st95s" data-s="3"><i>③</i><b>Baixe o vídeo já editado aqui</b><small class="st95c">sempre em MP4</small></button></div>'
+  +'<label class="r st95ask"><input type="checkbox"><span>Perguntar se quero baixar assim que a edição terminar</span></label><div class="st95w" hidden></div>';
+ st.querySelector('.st95ask input').checked=!!ASK.on;st.querySelector('.st95ask input').onchange=e=>{ASK.on=e.target.checked;try{localStorage.setItem(AK,JSON.stringify(ASK))}catch(_){}};
+ const go=el=>{if(el)try{el.scrollIntoView({behavior:'smooth',block:'start'})}catch(_){}};
+ st.querySelector('[data-s="1"]').onclick=()=>{const s=$1('#vxSel');if(s&&s.options.length>1)go(s.closest('.c')||s);else go($1('.lvC'))};
+ st.querySelector('[data-s="2"]').onclick=()=>go($1('#vxBox')||$1('#rotCard'));
+ st.querySelector('[data-s="3"]').onclick=()=>{const L=(window.LUMEN_V93&&LUMEN_V93.EX)||[];if(!L.length){go($1('.vxOutC'));flashNo();return}L.forEach(x=>{if(!PEND.includes(x)){x.dl95=0;PEND.push(x)}});PEND.forEach(x=>{if(x===L[0])x.dl95=0});PEND.sort((a,b)=>(b===L[0])-(a===L[0]));show()};
+ function flashNo(){const w=st.querySelector('.st95w');w.hidden=false;w.textContent='Ainda não há vídeo editado. Faça o passo ② (por exemplo, gire o vídeo) e ele aparece aqui pronto para baixar.';setTimeout(()=>w.hidden=true,6000)}
+ function paintSteps(){const t=$1('#t-ved');if(!t)return;const ph=t.querySelector(':scope>.v70ph');if(ph){if(st.previousElementSibling!==ph)ph.after(st)}else if(t.firstElementChild!==st)t.prepend(st);
+  const s=$1('#vxSel'),has=!!(s&&s.value&&s.value!=='0'&&s.selectedIndex>=0&&s.options.length),EX=(window.LUMEN_V93&&LUMEN_V93.EX)||[];
+  const cur=EX.length?3:has?2:1;st.querySelectorAll('.st95s').forEach(b=>{const n=+b.dataset.s;b.classList.toggle('on',n===cur);b.classList.toggle('ok',n<cur||(n===3&&EX.some(x=>x.dl95&&!x.later95)))});
+  const c=st.querySelector('.st95c');c.textContent=EX.length?EX.length+' pronto(s) · toque para baixar em MP4':'sempre em MP4';
+  const w=st.querySelector('.st95w');if(!canMp4()&&window.MediaRecorder){w.hidden=false;w.textContent='⚠ Este navegador não grava vídeo em MP4. Atualize o Google Chrome (Menu › Ajuda › Sobre o Google Chrome) para os vídeos editados saírem em MP4.'}}
+ setInterval(paintSteps,1500);setTimeout(paintSteps,800);
+ const _go=window.goTab;window.goTab=function(t){const r=_go.apply(this,arguments);try{if(t==='ved')paintSteps()}catch(_){}return r};try{goTab=window.goTab}catch(_){}
+
+ window.LUMEN_V95={show,PEND,canMp4,mp4Name};
+ log('Build v95: Editor de vídeo em 3 passos e janela "quer baixar?" com os dados do vídeo editado (MP4)','ok');
+}catch(e){try{log('v95: '+e.message,'bad')}catch(_){}}})();
 </script>
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
 
