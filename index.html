@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v116</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v117</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -1516,6 +1516,17 @@ html:root body .vzEmpty{display:none!important}
 .up115l{display:flex;flex-direction:column;gap:2px;margin-top:3px;max-height:120px;overflow:auto}.up115l span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.up115l small{opacity:.6;margin-left:6px}
 .up115 label.r{display:flex!important;flex-direction:row!important;align-items:center!important;gap:10px;margin:0;padding:4px 0}.up115 label.r input{flex:0 0 auto;margin:0!important;align-self:center!important}.up115 label.r span{flex:1;line-height:1.4}
 .up115box label.r{padding:2px 0}.up115row>span{min-width:110px}.up115row button.f{width:auto!important;flex:0 0 auto;padding:7px 14px;margin:0}.up115row select{width:auto!important;flex:1 1 220px;min-width:0}
+.st116{display:flex;flex-direction:column;gap:8px}
+.st116rb{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:rgba(127,127,127,.1);border-radius:10px;padding:3px}.st116rb button{border:0;background:none;color:inherit;border-radius:8px;padding:8px 4px;font-size:12.5px;font-weight:700;cursor:pointer}.st116rb button.on{background:var(--acc,#e8b04b);color:#111}
+.st116tip{margin-top:-4px!important}
+.st116d{display:flex;flex-direction:column;gap:8px;border-radius:12px;padding:10px;border:1px solid rgba(127,127,127,.25);background:rgba(127,127,127,.05)}.st116d.bad{border-color:rgba(231,76,60,.6);background:rgba(231,76,60,.08)}.st116d.warn{border-color:rgba(232,176,75,.6)}.st116d.ok{border-color:rgba(46,204,113,.45)}
+.st116dh{display:flex;flex-direction:column;gap:2px;font-size:12.5px}.st116dh b{font-size:13px}.st116da{display:flex;gap:6px;flex-wrap:wrap}.st116da button{width:auto!important;margin:0;padding:7px 14px}
+.st116d label.r{margin:0;align-items:center}.st116lim{font-size:12px;font-weight:700;color:#e8b04b}.st116lim.ok{color:inherit;opacity:.75;font-weight:600}
+.st116msg{flex-basis:100%;font-size:12.5px;font-weight:700;color:#e8b04b;text-align:right}
+.st116more{grid-column:1/-1;width:100%}
+.bt98cnt{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;margin:6px 0}.bt98cnt .bad{color:#e74c3c}
+.bt98gap{opacity:.55;font-size:12px;padding:2px 6px}
+.lvMore{font-size:12px;opacity:.65;padding:4px 2px}
 .up115tip{font-size:12px;padding:7px 10px;border-radius:10px;background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.35)}
 </style>
 
@@ -5490,7 +5501,7 @@ E('vxGo').onclick=async()=>{const i=sel;if(!i||!i.url||run||S.rv)return;const li
   if(!okRun&&cancel){E('vxMsg').textContent='Cancelado. Nada foi salvo.';throw Object.assign(new Error('cancelado'),{quiet:true})}
   const blob=PB||new Blob(ch,{type:mt.split(';')[0]}),lkN=VP[+E('vxLk').value][0],tag='ritmo'+(useM?'_musica':'')+(P.f&&lkN!=='Natural'?'_'+slug(lkN):''),nm=i.name.replace(/\.[^.]+$/,'')+'_'+tag+(RO?'_girado'+RO:'')+(AS?'_'+({0.5625:'9x16',0.8:'4x5',1:'1x1',1.7778:'16x9'}[AS]||'corte'):'')+'.'+(PB?'mp4':EXT),ct=i.ct||i.t;
   lastBlob=blob;lastName=nm;E('vxDl').style.display='';
-  if(S.dir){await put('VideosVel',nm,blob,ct);E('vxMsg').textContent='Salvo: '+pth('VideosVel',ct)+'/'+nm}else{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=nm;a.click();E('vxMsg').textContent='Pronto: o arquivo foi baixado (escolha a pasta no Início para salvar direto nela).'}
+  if(S.dir){await put('VideosVel',nm,blob,ct);E('vxMsg').textContent='Salvo: '+pth('VideosVel',ct)+'/'+nm}else if(window.__vxBatch&&window.LUMEN_V109&&LUMEN_V109.dest&&(LUMEN_V109.dest()||{}).ok){try{await LUMEN_V93.rec(nm,blob,'fila de vídeos')}catch(_){}E('vxMsg').textContent='Pronto: indo para a pasta '+LUMEN_V109.dest().name}else{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=nm;a.click();E('vxMsg').textContent='Pronto: o arquivo foi baixado (escolha a pasta no Início para salvar direto nela).'}
   add({name:nm,kind:'video',ct,sig:'ed|'+nm+'|'+blob.size,t:Date.now(),cls:'b',blob,url:URL.createObjectURL(blob),size:blob.size});log(nm+' → vídeo editado por trechos','ok')}
  catch(err){if(!err.quiet){E('vxMsg').textContent='Não consegui: '+err.message;log('Editor por trechos: '+err.message,'bad')}try{ac&&ac.close()}catch(_){}}
  finally{try{wl&&wl.release()}catch(_){}S.rv=0;run=0;B.disabled=false;B.textContent='💾 Salvar';try{E('vxCancel').style.display='none';E('vxBar').style.width='0';E('vxPlay').disabled=false;sumUi()}catch(_){}}};
@@ -8929,8 +8940,11 @@ mqtt/dist/mqtt.esm.js:
   const old=[...(S.items||[])].find(i=>i.local&&i.name===file.name&&i.size===file.size);if(old){select(old);return old}
   const it={name:file.name,kind:'video',cls:'b',blob:file,url:URL.createObjectURL(file),size:file.size,t:Date.now(),ct:file.lastModified||Date.now(),local:true,disk:false};
   add(it);MINE.set(it.name,{it,handle});if(handle)try{await tx('readwrite',s=>s.put({k:file.name+'|'+file.size,h:handle,n:file.name,sz:file.size,t:Date.now()}))}catch(_){}
-  if(LV.copy&&S.dir&&S.perm&&!S.dir.virtual)try{const df=await put('Videos',file.name.replace(/(\.[^.]+)$/,'_local$1'),file,file.lastModified||Date.now());if(df)log('🎬 Cópia de '+file.name+' guardada na pasta do evento','ok')}catch(e){log('Editar vídeo local: não consegui copiar '+file.name+' ('+e.message+')','bad')}
-  log('🎬 Vídeo local pronto para editar: '+file.name+' ('+fmtB(file.size)+')','ok');paint();return it}
+  if(LV.copy&&S.dir&&S.perm&&!S.dir.virtual){CPQ.push(file);cpRun()}
+  log('🎬 Vídeo local pronto para editar: '+file.name+' ('+fmtB(file.size)+')','ok');clearTimeout(pT);pT=setTimeout(paint,400);return it}
+ /* v116: a cópia para a pasta do evento vai numa fila separada (não segura a chegada dos outros vídeos) */
+ const CPQ=[];let CPR=false,pT=0;
+ async function cpRun(){if(CPR)return;CPR=true;try{while(CPQ.length){const file=CPQ.shift();try{const df=await put('Videos',file.name.replace(/(\.[^.]+)$/,'_local$1'),file,file.lastModified||Date.now());if(df)log('🎬 Cópia de '+file.name+' guardada na pasta do evento','ok')}catch(e){log('Editar vídeo local: não consegui copiar '+file.name+' ('+e.message+')','bad')}}}finally{CPR=false}}
  function select(it){let n=0;const go=()=>{const s=$1('#vxSel');if(s&&[...s.options].some(o=>o.value===String(it.id))){s.value=String(it.id);s.dispatchEvent(new Event('change'));say('✔ “'+it.name+'” aberto no editor.');setTimeout(()=>{const v=$1('#t-ved .vxw')||$1('#vxTl');if(v)v.scrollIntoView({behavior:'smooth',block:'start'})},300);return}
    if(++n<40)setTimeout(go,250);else say('O vídeo foi adicionado: escolha “'+it.name+'” na lista do editor.')};go()}
  async function pick(){try{if(window.showOpenFilePicker&&!/iPhone|iPad|Android/.test(navigator.userAgent)){const hs=await showOpenFilePicker({multiple:true,types:[{description:'Vídeos',accept:{'video/*':['.mp4','.mov','.m4v','.mxf','.webm','.avi','.mkv']}}],id:'lumen-video-local'});let last=null;for(const h of hs){const f=await h.getFile();last=await addFile(f,h)||last}if(last)select(last);return}}catch(e){if(e&&e.name==='AbortError')return}
@@ -8951,7 +8965,8 @@ mqtt/dist/mqtt.esm.js:
  async function paint(){const list=card.querySelector('.lvList');const local=(S.items||[]).filter(i=>i.local&&i.kind==='video');let saved=[];try{saved=(await tx('readonly',s=>s.getAll()))||[]}catch(_){}
   const reopen=saved.filter(r=>!local.some(i=>i.name===r.n&&i.size===r.sz)).slice(-8);
   const st=card.querySelector('.lvSt');st.textContent=local.length?local.length+' na lista':'nenhum';st.className='pillS lvSt '+(local.length?'ok':'');
-  list.innerHTML=local.map(i=>'<div class="lvR"><span>🎬 '+esc(i.name)+' <small>'+fmtB(i.size||0)+'</small></span><button type="button" class="f p" data-ed="'+i.id+'">Editar</button><button type="button" class="f" data-rm="'+i.id+'">Tirar da lista</button></div>').join('')
+  const lv116=local.length>12?local.slice(-12):local;
+  list.innerHTML=(local.length>12?'<div class="lvMore">'+(local.length-12)+' vídeo(s) mais antigos na lista (todos continuam aqui; abra pelo editor)</div>':'')+lv116.map(i=>'<div class="lvR"><span>🎬 '+esc(i.name)+' <small>'+fmtB(i.size||0)+'</small></span><button type="button" class="f p" data-ed="'+i.id+'">Editar</button><button type="button" class="f" data-rm="'+i.id+'">Tirar da lista</button></div>').join('')
    +(reopen.length?'<div class="lvRe"><small>Escolhidos antes (toque para abrir de novo):</small>'+reopen.map(r=>'<button type="button" class="f" data-k="'+esc(r.k)+'">↩ '+esc(r.n)+'</button>').join('')+'</div>':'');
   list.querySelectorAll('[data-ed]').forEach(b=>b.onclick=()=>{const it=S.items.find(i=>i.id===+b.dataset.ed);if(it)select(it)});
   list.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{const i=S.items.findIndex(x=>x.id===+b.dataset.rm);if(i>=0){const it=S.items[i];S.items.splice(i,1);try{URL.revokeObjectURL(it.url)}catch(_){}try{gal()}catch(_){}}paint()});
@@ -9575,13 +9590,17 @@ mqtt/dist/mqtt.esm.js:
   for(let k=0;k<120;k++){const a=A();if(a&&a.sel===it&&a.dur>0){await wait(300);const b=A();if(b&&b.sel===it&&b.dur>0)return true}if(k%8===0&&!(a&&a.sel===it)){const s2=$1('#vxSel');if(s2){s2.value=String(it.id);s2.dispatchEvent(new Event('change'))}}await wait(250)}const a=A(),s3=$1('#vxSel');throw new Error('o vídeo não abriu'+(window.__vxDbg?' ['+(a&&a.sel&&a.sel.name)+' '+(a&&a.dur)+' '+(s3&&s3.value)+'/'+it.id+' '+(a&&a.sel===it)+' pv='+(($1('#vxPv')||{}).src===it.url)+' rs='+($1('#vxPv')||{}).readyState+' err='+(($1('#vxPv')||{}).error&&$1('#vxPv').error.code)+']':''))}
  async function one(it,rot){await selectIt(it);await wait(400);const fn9=(window.__v98map&&__v98map.get(it.id))||window.__v98apply;const r=fn9?await fn9(it):LUMEN_V93.apply(P);if(rot&&window.LUMEN_V97)LUMEN_V97.setRot(ROTD,true);else if(F.rm==='all'||F.rm==='smart'||!F.rm){}await wait(700);
   const n0=(LUMEN_V93.EX||[]).length,b=$1('#vxGo');if(!b)throw new Error('botão Salvar não encontrado');b.click();
-  await wait(800);for(;;){const a=A();if(RUN&&RUN.stop){try{$1('#vxCancel').click()}catch(_){}}if(a&&!a.run&&!S.rv)break;const bt=$1('#vxGo');RUN.pct=bt&&/(\d+)%/.test(bt.textContent)?+RegExp.$1:RUN.pct;drawRunSoft();await wait(500)}
+  await wait(800);let lastP=-1,lastT=Date.now(),hung=false;for(;;){const a=A();if(RUN&&RUN.stop){try{$1('#vxCancel').click()}catch(_){}}if(a&&!a.run&&!S.rv)break;const bt=$1('#vxGo');RUN.pct=bt&&/(\d+)%/.test(bt.textContent)?+RegExp.$1:RUN.pct;
+   /* v116: vigia — se ficar parado (sem andar) por 2 min com a aba na frente, cancela este e tenta de novo */
+   if(RUN.pct!==lastP||document.hidden){lastP=RUN.pct;lastT=Date.now()}else if(Date.now()-lastT>120000&&!hung){hung=true;try{$1('#vxCancel').click()}catch(_){}}
+   if(hung&&Date.now()-lastT>150000)break;drawRunSoft();await wait(500)}
+  if(hung)throw new Error('a gravação travou (vou tentar de novo)');
   for(let k=0;k<30&&(LUMEN_V93.EX||[]).length<=n0;k++)await wait(300);const L=LUMEN_V93.EX||[];if(L.length>n0)return L[0];if(RUN.stop)throw Object.assign(new Error('parado'),{stop:1});throw new Error(($1('#vxMsg')||{}).textContent||'não gravou')}
  async function start(){const items=vids().filter(i=>SEL.has(i.id));if(!items.length)return;const rm=ROTD?(F.rm||'smart'):'none';
   const back=A()&&A().sel;RUN={items,st:items.map(()=>'⏳'),res:[],i:0,pct:0,stop:false,t0:Date.now()};window.__vxBatch=true;drawRun();
   let wl=null;try{wl=await navigator.wakeLock.request('screen')}catch(_){}
   for(let k=0;k<items.length;k++){if(RUN.stop){RUN.st[k]='—';continue}RUN.i=k;RUN.pct=0;RUN.st[k]='⏺';drawRun();
-   try{let rot=rm==='all';if(rm==='smart'){const m=await new Promise(r=>meta(items[k],r));rot=!!(SRCM&&orient(m)&&orient(m)===orient(SRCM))}const x=await one(items[k],rot);RUN.st[k]='✔';RUN.res.push(x)}catch(e){RUN.st[k]=e.stop?'—':'✖';RUN.err=RUN.err||{};RUN.err[k]=e.message;if(!e.stop)log('Mesma edição em '+items[k].name+': '+e.message,'bad')}drawRun()}
+   try{let rot=rm==='all';if(rm==='smart'){const m=await new Promise(r=>meta(items[k],r));rot=!!(SRCM&&orient(m)&&orient(m)===orient(SRCM))}let x;try{x=await one(items[k],rot)}catch(e1){if(e1.stop||RUN.stop)throw e1;log('↻ '+items[k].name+': '+e1.message+' — tentando de novo','bad');RUN.st[k]='↻';drawRun();await wait(2500);x=await one(items[k],rot)}RUN.st[k]='✔';RUN.res.push(x);RUN.tk=(RUN.tk||[]).concat(Date.now());try{window.__b116done&&__b116done(items[k],x)}catch(_){}}catch(e){RUN.st[k]=e.stop?'—':'✖';RUN.err=RUN.err||{};RUN.err[k]=e.message;if(!e.stop)log('Mesma edição em '+items[k].name+': '+e.message,'bad')}drawRun()}
   try{wl&&wl.release()}catch(_){}window.__vxBatch=false;window.__v98apply=null;const ok=RUN.res.length;log('🎬 Mesma edição aplicada: '+ok+' de '+items.length+' vídeo(s) prontos','ok');
   try{if(back)await selectIt(back)}catch(_){}
   RUN.done=true;drawRun()}
@@ -9589,14 +9608,19 @@ mqtt/dist/mqtt.esm.js:
  function drawRun(){const R=RUN;const n=R.items.length,ok=R.res.length;
   ov.innerHTML='<div class="bt98b"><div class="bt98h"><div><b>'+(R.done?'✔ Pronto: '+ok+' de '+n+' vídeo(s)':'🎬 Aplicando a mesma edição… '+(R.i+1)+' de '+n)+'</b><small>'+(R.done?'Os vídeos estão em ③ Vídeos editados'+(S.dir&&S.perm?' e na pasta do evento':'')+'.':'Deixe esta aba aberta na frente (não minimize nem troque de aba: a gravação pausa e continua quando você voltar).')+'</small></div>'+(R.done?'<button type="button" class="bt98x" aria-label="Fechar">✕</button>':'')+'</div>'
    +'<div class="bt98pb"><i style="width:'+Math.round(((R.done?n:R.i+(R.pct||0)/100)/n)*100)+'%"></i></div>'
-   +'<div class="bt98rl">'+R.items.map((it,k)=>'<div class="'+(k===R.i&&!R.done?'cur':'')+'"><span>'+R.st[k]+'</span><b>'+esc(it.name)+'</b>'+(R.err&&R.err[k]?'<small class="bt98e">'+esc(String(R.err[k]).slice(0,120))+'</small>':'')+(k===R.i&&!R.done?'<small class="bt98cur">'+(R.pct||0)+'%</small>':'')+'</div>').join('')+'</div>'
-   +'<div class="bt98f">'+(R.done?(ok?'<button type="button" class="f p bt98dl">⬇ Baixar os '+ok+' em MP4</button>'+(window.showDirectoryPicker?'<button type="button" class="f bt98sv">📁 Escolher a pasta e salvar todos</button>':''):'')+'<button type="button" class="f bt98cl">Fechar</button>'
+   +(()=>{const bad=R.st.filter(x=>x==='✖').length,wait=R.st.filter(x=>x==='⏳').length;let eta='';if(!R.done&&R.tk&&R.tk.length){const per=(R.tk[R.tk.length-1]-R.t0)/R.tk.length,left=Math.round(per*(n-ok)/60000);eta=left<1?'menos de 1 min':left<60?'≈ '+left+' min':'≈ '+Math.floor(left/60)+' h '+(left%60)+' min'}
+     return '<div class="bt98cnt"><span>✔ <b>'+ok+'</b> prontos</span><span>⏳ <b>'+wait+'</b> esperando</span>'+(bad?'<span class="bad">✖ <b>'+bad+'</b> com erro</span>':'')+(eta?'<span>⏱ falta '+eta+'</span>':'')+(window.__b116wait&&__b116wait()?'<span>📦 <b>'+__b116wait()+'</b> no próximo lote</span>':'')+'</div>'})()
+   +'<div class="bt98rl">'+(()=>{const idx=R.items.map((_,k)=>k);let show=idx;if(n>40){const keep=new Set();R.st.forEach((x,k)=>{if(x==='✖')keep.add(k)});for(let k=Math.max(0,R.i-4);k<Math.min(n,R.i+12);k++)keep.add(k);show=idx.filter(k=>keep.has(k))}let prev=-1,out='';
+     for(const k of show){if(k>prev+1)out+='<div class="bt98gap">… '+(k-prev-1)+' vídeo(s) '+(k<=R.i?'já feitos':'')+' …</div>';prev=k;const it=R.items[k];out+='<div class="'+(k===R.i&&!R.done?'cur':'')+'"><span>'+R.st[k]+'</span><b>'+esc(it.name)+'</b>'+(R.err&&R.err[k]?'<small class="bt98e">'+esc(String(R.err[k]).slice(0,120))+'</small>':'')+(k===R.i&&!R.done?'<small class="bt98cur">'+(R.pct||0)+'%</small>':'')+'</div>'}
+     if(prev<n-1)out+='<div class="bt98gap">… mais '+(n-1-prev)+' na fila …</div>';return out})()+'</div>'
+   +'<div class="bt98f">'+(R.done&&R.st.includes('✖')?'<button type="button" class="f p bt98rf">↻ Tentar de novo os '+R.st.filter(x=>x==='✖').length+' com erro</button>':'')+(R.done?(ok?'<button type="button" class="f '+(R.st.includes('✖')?'':'p ')+'bt98dl">⬇ Baixar os '+ok+' em MP4</button>'+(window.showDirectoryPicker?'<button type="button" class="f bt98sv">📁 Escolher a pasta e salvar todos</button>':''):'')+'<button type="button" class="f bt98cl">Fechar</button>'
      :'<button type="button" class="f bt98st">■ Parar depois deste</button><button type="button" class="f bt98hide">Esconder (continua trabalhando)</button>')+'</div></div>';
   const q=s=>ov.querySelector(s);
   if(q('.bt98x'))q('.bt98x').onclick=()=>{ov.hidden=true;RUN=null};
   if(q('.bt98cl'))q('.bt98cl').onclick=()=>{ov.hidden=true;RUN=null};
   if(q('.bt98st'))q('.bt98st').onclick=()=>{R.stop=true;q('.bt98st').textContent='Parando…'};
   if(q('.bt98hide'))q('.bt98hide').onclick=()=>{ov.hidden=true;pill()};
+  if(q('.bt98rf'))q('.bt98rf').onclick=()=>{const L=R.items.filter((_,k)=>R.st[k]==='✖');const m=window.__v98map||new Map();const fn=L.length&&m.get(L[0].id);if(!L.length)return;if(fn)LUMEN_V98.runWith(L,fn);else{RUN=null;SEL=new Set(L.map(i=>i.id));start()}};
   if(q('.bt98dl'))q('.bt98dl').onclick=async()=>{for(const x of R.res){try{const b=x.blob||await LUMEN_V93.getB(x);const a=document.createElement('a'),u=URL.createObjectURL(b);a.href=u;a.download=(window.LUMEN_V95?LUMEN_V95.mp4Name(x.name,b):x.name);document.body.appendChild(a);a.dispatchEvent(new MouseEvent('click'));a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000)}catch(_){}await wait(600)}};
   if(q('.bt98sv'))q('.bt98sv').onclick=async()=>{let d;try{d=await showDirectoryPicker({id:'lumen-videos-editados',mode:'readwrite'})}catch(_){return}let k=0;for(const x of R.res){try{const b=x.blob||await LUMEN_V93.getB(x);const fh=await d.getFileHandle((window.LUMEN_V95?LUMEN_V95.mp4Name(x.name,b):x.name),{create:true});const w=await fh.createWritable();await w.write(b);await w.close();k++}catch(_){}}q('.bt98sv').textContent='✔ '+k+' salvos em '+d.name};
   pill()}
@@ -9830,13 +9854,13 @@ mqtt/dist/mqtt.esm.js:
  const PEND=new Map();   /* id → estilo a aplicar quando o vídeo abrir */
  const SEEN=new Set((S.items||[]).filter(i=>i.local).map(i=>i.id));
  let newT=0,NEW=[];
- setInterval(()=>{const L=(S.items||[]).filter(i=>i.local&&i.kind==='video'&&!SEEN.has(i.id));if(!L.length)return;L.forEach(i=>{SEEN.add(i.id);NEW.push(i)});clearTimeout(newT);newT=setTimeout(()=>{const n=NEW.splice(0);if(n.length)ask(n)},900)},700);
+ setInterval(()=>{const L=(S.items||[]).filter(i=>i.local&&i.kind==='video'&&!SEEN.has(i.id));if(!L.length)return;L.forEach(i=>{SEEN.add(i.id);NEW.push(i)});clearTimeout(newT);newT=setTimeout(()=>{const n=NEW.splice(0);if(!n.length)return;if(!ov.hidden&&CH&&ITEMS.length){const have=new Set(ITEMS.map(i=>i.id));n.forEach(i=>{if(!have.has(i.id))ITEMS.push(i)});draw();return}ask(n)},1500)},700);
  const tplBtns=()=>[...document.querySelectorAll('#vxTpl button')].filter(b=>!b.classList.contains('mst')||b.offsetParent).map(b=>b.textContent.trim());
  const myRit=()=>[...document.querySelectorAll('#vxMq button')].map(b=>b.textContent.replace(/✕/g,'').trim()).filter(t=>t&&!/Salvar/.test(t));
  const cores=()=>{const C=window.LUMENCOR;if(!C||!C.list)return[];return C.list()};
  const ov=document.createElement('div');ov.className='st103';ov.hidden=true;ov.setAttribute('role','dialog');document.body.appendChild(ov);
  let ITEMS=[],CH=null;
- function ask(items){ITEMS=items;CH=Object.assign({},ST);CH.per={};if(window.LUMEN_V97&&LUMEN_V97.END&&CH.end==null)CH.end=!!LUMEN_V97.END.on;draw()}
+ let SHOW=24;function ask(items){ITEMS=items;SHOW=24;CH=Object.assign({},ST);CH.per={};if(window.LUMEN_V97&&LUMEN_V97.END&&CH.end==null)CH.end=!!LUMEN_V97.END.on;draw()}
  function chips(list,cur,attr){return list.map(([v,t,sub])=>'<button type="button" data-'+attr+'="'+esc(v)+'" class="'+(String(cur)===String(v)?'on':'')+'">'+esc(t)+(sub?'<small>'+esc(sub)+'</small>':'')+'</button>').join('')}
  const RK2='lumen_vxrhy';
  const rhyAll=()=>{try{return JSON.parse(localStorage.getItem(RK2)||'[]')}catch(_){return[]}};
@@ -9852,7 +9876,7 @@ mqtt/dist/mqtt.esm.js:
   const optR=opt('','Normal (velocidade original)',CH.ritmo)+(myR.length?'<optgroup label="Meus ritmos">'+myR.map(n=>opt('m:'+n,n,CH.ritmo)).join('')+'</optgroup>':'')+'<optgroup label="Modelos prontos">'+T.map(t=>opt('t:'+t,t,CH.ritmo)).join('')+'</optgroup>';
   const n=ITEMS.length;
   ov.innerHTML='<div class="st103b st105"><div class="st103h"><div><b>🎬 Como você quer '+(n>1?'estes '+n+' vídeos':'este vídeo')+'?</b><small>Escolha uma vez: vale para '+(n>1?'todos':'ele')+'. Você ainda pode ajustar no editor.</small></div><button type="button" class="st103x" aria-label="Fechar">✕</button></div>'
-   +'<div class="st105g"><div class="st105L"><div class="st105lab">🖼 Agora → como vai ficar</div><div class="st103pv">'+ITEMS.map(i=>'<div class="st103it" data-id="'+i.id+'"><div class="st103pair"><figure><canvas class="a"></canvas><figcaption>agora</figcaption></figure><span class="st103ar">→</span><figure><canvas class="d"></canvas><figcaption>vai ficar</figcaption></figure></div><div class="st103nm">'+esc(i.name)+'</div><div class="st103rt"><button type="button" data-pr="'+i.id+'" data-d="-90" title="Girar este para a esquerda">↺</button><span class="st103deg">'+(rotOf(i.id)?rotOf(i.id)+'°':'sem giro')+'</span><button type="button" data-pr="'+i.id+'" data-d="90" title="Girar este para a direita">↻</button></div></div>').join('')+'</div></div>'
+   +'<div class="st105g"><div class="st105L"><div class="st105lab">🖼 Agora → como vai ficar'+(n>SHOW?' <small>(mostrando '+SHOW+' de '+n+')</small>':'')+'</div><div class="st103pv">'+ITEMS.slice(0,SHOW).map(i=>'<div class="st103it" data-id="'+i.id+'"><div class="st103pair"><figure><canvas class="a"></canvas><figcaption>agora</figcaption></figure><span class="st103ar">→</span><figure><canvas class="d"></canvas><figcaption>vai ficar</figcaption></figure></div><div class="st103nm">'+esc(i.name)+'</div><div class="st103rt"><button type="button" data-pr="'+i.id+'" data-d="-90" title="Girar este para a esquerda">↺</button><span class="st103deg">'+(rotOf(i.id)?rotOf(i.id)+'°':'sem giro')+'</span><button type="button" data-pr="'+i.id+'" data-d="90" title="Girar este para a direita">↻</button></div></div>').join('')+(n>SHOW?'<button type="button" class="f st116more">Mostrar mais '+Math.min(24,n-SHOW)+' (faltam '+(n-SHOW)+')</button>':'')+'</div></div>'
    +'<div class="st105R">'
    +'<div class="st105row"><span class="st105k">🎨 Cor</span><select class="st105c">'+optC+'</select></div>'
    +'<div class="st105row"><span class="st105k">⏱ Ritmo</span><select class="st105r">'+optR+'</select></div>'+(myR.length?'':'<div class="st105tip">Seus ritmos aparecem aqui depois de salvos no editor (aba ⏱ Ritmo › 💾 Salvar este ritmo).</div>')
@@ -9869,6 +9893,7 @@ mqtt/dist/mqtt.esm.js:
    +'<div class="st103f"><button type="button" class="f st103no">Agora não</button><button type="button" class="f st103ap">✔ Aplicar e abrir no editor</button>'+(n?'<button type="button" class="f p st103go">⚡ Aplicar e gerar '+(n>1?'os '+n+' vídeos':'o vídeo')+' (MP4)</button>':'')+'</div></div>';
   ov.hidden=false;const q=s=>ov.querySelector(s);
   {const RR=window.LUMEN_V98&&LUMEN_V98.state&&LUMEN_V98.state();if(RR&&!RR.done){const ap=q('.st103ap');if(ap)ap.hidden=true;const gg=q('.st103go');if(gg)gg.textContent='➕ Pôr na fila ('+n+' vídeo'+(n>1?'s':'')+') — entra depois dos que já estão sendo gerados'}}
+  {const mb=q('.st116more');if(mb)mb.onclick=()=>{SHOW+=24;const sc=q('.st103pv')&&q('.st103pv').scrollTop;draw();const pv=ov.querySelector('.st103pv');if(pv&&sc!=null)pv.scrollTop=sc}}
   q('.st105c').onchange=e=>{CH.cor=e.target.value;paintPrev();paintEnd()};
   q('.st105r').onchange=e=>{CH.ritmo=e.target.value};
   ov.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{CH.rot=+b.dataset.g;CH.per={};draw()});
@@ -9919,7 +9944,7 @@ mqtt/dist/mqtt.esm.js:
  /* botão para escolher o estilo depois */
  setInterval(()=>{const lv=$1('.lvC');if(!lv||lv.querySelector('.st103btn'))return;const b=document.createElement('button');b.type='button';b.className='f st103btn';b.textContent='🎨 Estilo dos vídeos trazidos (cor, ritmo, giro)';b.onclick=()=>{const L=(S.items||[]).filter(i=>i.local&&i.kind==='video');ask(L.length?L:[])};const drop=lv.querySelector('.lvDrop');drop?drop.after(b):lv.appendChild(b)},1500);
 
- window.LUMEN_V103={ask,applyStyle,PEND,vInfo:window.vInfo,ch:()=>CH,items:()=>ITEMS,rotOf:id=>rotOf(id),imgOf:it=>imgOf(it),repaint:()=>{try{paintPrev();paintEnd()}catch(_){}}};
+ window.LUMEN_V103={ask,applyStyle,PEND,vInfo:window.vInfo,ch:()=>CH,items:()=>ITEMS,redraw:()=>{if(!ov.hidden)draw()},open:()=>!ov.hidden,rotOf:id=>rotOf(id),imgOf:it=>imgOf(it),repaint:()=>{try{paintPrev();paintEnd()}catch(_){}}};
  log('Build v103: vídeos grandes sem travar (miniaturas leves) e estilo (cor, ritmo, giro) escolhido ao trazer os vídeos','ok');
 }catch(e){try{log('v103: '+e.message,'bad')}catch(_){}}})();
 </script>
@@ -10119,10 +10144,13 @@ If you want to offset all timestamps of a track such that the first one is zero,
  async function ensurePerm(){if(!dir)return false;if(perm)return true;try{perm=(await dir.requestPermission({mode:'readwrite'}))==='granted'}catch(_){perm=false}return perm}
  async function saveOne(x){if(x.s109)return;x.s109=1;const rec={name:x.name,size:x.size||0,t:Date.now(),ok:false,where:'',err:''};SAVED.unshift(rec);paint();
   try{const b=x.blob||await LUMEN_V93.getB(x);const nm=(window.LUMEN_V95?LUMEN_V95.mp4Name(x.name,b):x.name);
-   if(C.dest==='pasta'&&dir){if(!await ensurePerm())throw new Error('toque em "Liberar a pasta" (o Chrome pede permissão de novo)');const fh=await dir.getFileHandle(nm,{create:true});const w=await fh.createWritable();await w.write(b);await w.close();rec.where=dir.name;x.saved=dir.name}
+   if(C.dest==='pasta'&&dir){if(!await ensurePerm())throw new Error('toque em "Liberar a pasta" (o Chrome pede permissão de novo)');let nm2=nm;try{const ex=await(await dir.getFileHandle(nm)).getFile();if(ex.size!==b.size){let k=2;for(;;){const c=nm.replace(/(\.[^.]+)$/,' ('+k+')$1');try{await dir.getFileHandle(c);k++}catch(_){nm2=c;break}}}}catch(_){}
+    const fh=await dir.getFileHandle(nm2,{create:true});const w=await fh.createWritable();await w.write(b);await w.close();rec.where=dir.name;x.saved=dir.name;if(!x.fh)x.fh=fh}
    else if(EVOK()){if(/pasta do evento/.test(x.where||'')||x.sub){rec.where='pasta do evento › '+String(x.where||'Videos').replace(/^pasta do evento › /,'')}else{const p=pth('ExpVideos',Date.now());await writeTo(S.dir,p,nm,b);rec.where='pasta do evento › '+p.split('/').slice(-2).join('/')}x.saved=rec.where}
    else throw new Error('escolha uma pasta (📁 Escolher pasta) ou a pasta do evento no Início');
-   rec.ok=true;log('📁 Salvo sozinho: '+nm+' → '+rec.where,'ok')}catch(e){rec.err=e.message;x.s109=0;log('Salvar sozinho: '+x.name+' — '+e.message,'bad')}
+   rec.ok=true;log('📁 Salvo sozinho: '+nm+' → '+rec.where,'ok');
+   /* v116: já está na pasta → solta a memória (o vídeo é lido da pasta quando precisar) */
+   if(x.fh&&x.blob&&window.__vxBatch){x.blob=null}}catch(e){rec.err=e.message;x.s109=0;log('Salvar sozinho: '+x.name+' — '+e.message,'bad')}
   paint();try{LUMEN_V93.paintX()}catch(_){}}
  addEventListener('lumen-vx-done',e=>{const x=e.detail;if(!x||!C.auto)return;setTimeout(()=>saveOne(x),300)});
  /* painel */
@@ -10133,9 +10161,9 @@ If you want to offset all timestamps of a track such that the first one is zero,
   el.innerHTML='<div class="v70h"><b>🎬 Fila de vídeos</b><span class="pillS '+(R&&!R.done?'warn':n?'ok':'')+'">'+(R&&!R.done?'gerando '+(R.i+1)+' de '+n:n?'fila concluída':'vazia')+'</span></div>'
    +'<div class="fq109o"><label class="r"><input type="checkbox" class="fq109a"'+(C.auto?' checked':'')+'><span>💾 Salvar sozinho na pasta assim que cada vídeo ficar pronto (e seguir para o próximo)</span></label>'
    +'<div class="fq109d"><span>Destino: <b>'+esc(dname)+'</b></span><button type="button" class="f fq109p">📁 Escolher pasta</button>'+(dir?'<button type="button" class="f fq109e">'+(C.dest==='pasta'?'Usar a pasta do evento':'Usar '+esc(dir.name))+'</button>':'')+(dir&&!perm&&C.dest==='pasta'?'<button type="button" class="f p fq109l">Liberar a pasta</button>':'')+'</div></div>'
-   +(n?'<div class="fq109s"><b>Na fila</b><div class="fq109bar"><i style="width:'+Math.round(100*(done+(R&&!R.done?(R.pct||0)/100:0))/n)+'%"></i></div><div class="fq109l2">'+items.map((it,k)=>{const s=st[k];const cur=R&&!R.done&&k===R.i;return'<div class="'+(cur?'cur':'')+'"><span>'+(cur?'⏺':s)+'</span><b>'+esc(it.name)+'</b><small>'+(cur?(R.pct||0)+'%':s==='✔'?'pronto':s==='✖'?'não deu':s==='—'?'parado':'esperando')+'</small></div>'}).join('')+'</div></div>':'<div class="sub">Nenhum vídeo na fila. Traga vídeos (Editar vídeo local) e toque em ⚡ Aplicar e gerar, ou use 🎬 Em outros vídeos.</div>')
+   +(n?'<div class="fq109s"><b>Na fila</b><div class="fq109bar"><i style="width:'+Math.round(100*(done+(R&&!R.done?(R.pct||0)/100:0))/n)+'%"></i></div><div class="fq109l2">'+(n>30?'<div><span>…</span><b>'+st.filter(x=>x==='✔').length+' prontos · '+st.filter(x=>x==='⏳').length+' esperando</b><small>mostrando os próximos</small></div>':'')+items.map((it,k)=>{if(n>30&&!(R&&Math.abs(k-R.i)<=8)&&st[k]!=='✖')return'';const s=st[k];const cur=R&&!R.done&&k===R.i;return'<div class="'+(cur?'cur':'')+'"><span>'+(cur?'⏺':s)+'</span><b>'+esc(it.name)+'</b><small>'+(cur?(R.pct||0)+'%':s==='✔'?'pronto':s==='✖'?'não deu':s==='—'?'parado':'esperando')+'</small></div>'}).join('')+'</div></div>':'<div class="sub">Nenhum vídeo na fila. Traga vídeos (Editar vídeo local) e toque em ⚡ Aplicar e gerar, ou use 🎬 Em outros vídeos.</div>')
    +'<div class="fq109s"><b>📁 Salvos na pasta: '+okN+(n?' / '+n:'')+'</b><div class="fq109bar ok"><i style="width:'+(n?Math.round(100*okN/n):okN?100:0)+'%"></i></div>'
-   +(SAVED.length?'<div class="fq109l2">'+SAVED.slice(0,60).map(s=>'<div><span>'+(s.ok?'✔':s.err?'✖':'⏳')+'</span><b>'+esc(s.name)+'</b><small>'+(s.ok?esc(s.where):s.err?esc(s.err):'salvando…')+'</small></div>').join('')+'</div>':'<div class="sub">Os vídeos prontos aparecem aqui quando chegam na pasta.</div>')
+   +(SAVED.length?'<div class="fq109l2">'+SAVED.slice(0,30).map(s=>'<div><span>'+(s.ok?'✔':s.err?'✖':'⏳')+'</span><b>'+esc(s.name)+'</b><small>'+(s.ok?esc(s.where):s.err?esc(s.err):'salvando…')+'</small></div>').join('')+'</div>':'<div class="sub">Os vídeos prontos aparecem aqui quando chegam na pasta.</div>')
    +(SAVED.some(s=>!s.ok&&s.err)?'<button type="button" class="f p fq109r">↻ Tentar salvar de novo os que falharam</button>':'')+'</div>';
   const q=s=>el.querySelector(s);
   q('.fq109a').onchange=e=>{C.auto=e.target.checked;sv();if(C.auto)saveMissing()};
@@ -10148,7 +10176,7 @@ If you want to offset all timestamps of a track such that the first one is zero,
   const R=window.LUMEN_V98&&LUMEN_V98.state&&LUMEN_V98.state();const s=JSON.stringify([R&&R.i,R&&R.pct,R&&R.st,R&&R.done,SAVED.map(x=>x.ok+x.err),C,!!dir,perm]);if(s!==sig){sig=s;paint()}
   /* também dentro da janela da fila */
   const bb=$1('.bt98:not([hidden]) .bt98b');if(bb){let l=bb.querySelector('.fq109m');if(!l){l=document.createElement('div');l.className='fq109m';const pb=bb.querySelector('.bt98pb');pb?pb.after(l):bb.appendChild(l)}const okN=SAVED.filter(x=>x.ok).length,n=R?R.items.length:0;l.textContent=C.auto?((C.dest==='pasta'&&dir)||EVOK()?'📁 Salvos na pasta: '+okN+(n?' / '+n:''):'📁 Para salvar sozinho, escolha uma pasta em ③ Fila de vídeos (os vídeos continuam em ③ Vídeos editados)'):'📁 Salvar sozinho está desligado (ligue em ③ Fila de vídeos)'}},700);
- window.LUMEN_V109={C,SAVED,saveOne,saveMissing,pick};
+ window.LUMEN_V109={C,SAVED,saveOne,saveMissing,pick,ensurePerm,paint:()=>paint(),dest:()=>C.dest==='pasta'&&dir?{ok:perm,name:dir.name,kind:'pasta'}:EVOK()?{ok:true,name:S.dir.name,kind:'evento'}:dir?{ok:false,name:dir.name,kind:'pasta',off:true}:null,useDir:()=>{if(dir){C.dest='pasta';sv();paint()}}};
  log('Build v109: fila de vídeos com "salvar sozinho na pasta" e contador de salvos','ok');
 }catch(e){try{log('v109: '+e.message,'bad')}catch(_){}}})();
 </script>
@@ -10462,6 +10490,88 @@ If you want to offset all timestamps of a track such that the first one is zero,
  log('Build v115: vídeos sempre em pé (padrão) com cópia em pé indo sozinha para a pasta','ok');
 }catch(e){try{log('v115: '+e.message,'bad')}catch(_){}}})();
 </script>
+<script id="v117">
+/* ===== v117 · Vários vídeos de uma vez, sem erro (até 400 por vez)
+   - Os vídeos que você traz em várias levas entram TODOS na mesma janela (antes a janela nova trocava a anterior).
+   - Antes de gerar, o LUMEN garante onde salvar (pasta escolhida ou pasta do evento): cada vídeo pronto vai para a pasta e sai da memória.
+   - Limite de 400 por vez: o que passar disso fica no "próximo lote" e entra sozinho quando abrir espaço.
+   - Vigia: se um vídeo travar, ele é cancelado e tentado de novo; no fim, "Tentar de novo os com erro".
+   - Pular os que já foram feitos com o mesmo estilo (se a página fechar, é só trazer todos de novo).
+   - Deitados → em pé: um toque vira todos para a direita ou para a esquerda (e fica lembrado). ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s);const nf=n=>Number(n||0).toLocaleString('pt-BR');
+ const MX=()=>window.__b116max||400;
+ const DK='lumen_b116_done';let DONE=new Set();try{DONE=new Set(JSON.parse(localStorage.getItem(DK)||'[]'))}catch(_){}
+ const svD=()=>{try{localStorage.setItem(DK,JSON.stringify([...DONE].slice(-6000)))}catch(_){}};
+ let SKIP=localStorage.getItem('lumen_b116_skip')!=='0';
+ const SIGS=new Map();   /* id do vídeo → assinatura do estilo escolhido */
+ const WAIT=[];          /* próximo lote: {it,fn} */
+ const key=(it,sig)=>it.name+'|'+(it.size||0)+'|'+sig;
+ const hash=s=>{let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return(h>>>0).toString(36)};
+ const pendOf=R=>R&&!R.done?R.st.filter(x=>x==='⏳'||x==='⏺'||x==='↻').length:0;
+ window.__b116wait=()=>WAIT.length;
+ window.__b116done=(it,x)=>{const sg=SIGS.get(it.id);if(!sg)return;DONE.add(key(it,sg));svD()};
+
+ /* ---------- fila com limite de 400 e "pular os já feitos" ---------- */
+ const V98=window.LUMEN_V98;if(V98&&V98.runWith&&!V98.__b116){const orig=V98.runWith;V98.__b116=1;
+  V98.runWith=(items,fn)=>{let L=items.slice();
+   if(SKIP){const sk=L.filter(i=>SIGS.has(i.id)&&DONE.has(key(i,SIGS.get(i.id))));if(sk.length){L=L.filter(i=>!sk.includes(i));log('↷ '+nf(sk.length)+' vídeo(s) já tinham sido feitos com este mesmo estilo — pulados (desmarque "Pular os que já foram feitos" para refazer)','ok')}}
+   if(!L.length){try{LUMEN_V94.flash('✔ Todos estes vídeos já estavam prontos com este estilo')}catch(_){}return true}
+   const R=V98.state(),room=Math.max(0,MX()-pendOf(R));const now=L.slice(0,room),rest=L.slice(room);
+   rest.forEach(it=>WAIT.push({it,fn}));
+   if(rest.length)log('📦 Limite de '+MX()+' por vez: '+nf(rest.length)+' vídeo(s) ficaram no próximo lote e entram sozinhos quando abrir espaço','ok');
+   if(now.length)return orig(now,fn);return true};
+  setInterval(()=>{if(!WAIT.length)return;const R=V98.state(),room=MX()-pendOf(R);if(room<Math.min(50,WAIT.length))return;
+   const fn=WAIT[0].fn,take=[];while(WAIT.length&&take.length<room&&WAIT[0].fn===fn)take.push(WAIT.shift().it);
+   if(take.length){log('📦 Próximo lote: '+nf(take.length)+' vídeo(s) entraram na fila'+(WAIT.length?' (ainda '+nf(WAIT.length)+' esperando)':''),'ok');orig(take,fn)}},3000)}
+
+ /* ---------- janela "Como você quer estes vídeos?" ---------- */
+ const UPK='lumen_up115';
+ const UP=()=>(window.LUMEN_V115&&LUMEN_V115.UP)||{on:true,dlg:true,dir:90};
+ const svUP=()=>{try{localStorage.setItem(UPK,JSON.stringify(UP()))}catch(_){}};
+ const CHK=new WeakMap();
+ function destTxt(){const D=window.LUMEN_V109&&LUMEN_V109.dest?LUMEN_V109.dest():null;
+  if(!D)return{cls:'bad',t:'Nenhuma pasta escolhida — escolha antes de gerar (sem pasta, o Chrome baixa um por um e pode bloquear)'};
+  if(D.off)return{cls:'warn',t:'📁 '+D.name+' — toque em Liberar'};
+  if(!D.ok)return{cls:'warn',t:'📁 '+D.name+' — toque em Liberar (o Chrome pede permissão de novo)'};
+  return{cls:'ok',t:D.kind==='evento'?'📁 Pasta do evento ('+D.name+') › Videos':'📁 '+D.name}}
+ function boxHTML(n){const d=destTxt(),u=UP(),dir=+u.dir===270?270:90;
+  return '<div class="st105row st116rot"><span class="st105k">📱 Deitados</span><div class="st116rb"><button type="button" data-u="90" class="'+(dir===90?'on':'')+'">↻ em pé pela direita</button><button type="button" data-u="270" class="'+(dir===270?'on':'')+'">↺ em pé pela esquerda</button></div></div>'
+   +'<div class="st105tip st116tip">Algum ficou de cabeça para baixo? Toque no outro lado: vale para todos os deitados e fica lembrado.</div>'
+   +'<div class="st116d '+d.cls+'"><div class="st116dh"><b>📁 Onde salvar os vídeos prontos</b><span>'+esc(d.t)+'</span></div><div class="st116da"><button type="button" class="f st116p">'+(d.cls==='bad'?'📁 Escolher pasta':'📁 Trocar pasta')+'</button>'+(d.cls==='warn'?'<button type="button" class="f p st116l">Liberar a pasta</button>':'')+'</div>'
+   +'<label class="r st116sk"><input type="checkbox"'+(SKIP?' checked':'')+'><span>Pular os que já foram feitos com este mesmo estilo</span></label>'
+   +(n>MX()?'<div class="st116lim">📦 Limite de '+MX()+' por vez: os '+MX()+' primeiros vão agora e os outros '+nf(n-MX())+' entram sozinhos assim que estes terminarem. Nada fica para trás.</div>':'<div class="st116lim ok">'+nf(n)+' vídeo(s) · até '+MX()+' por vez · cada um vai para a pasta assim que fica pronto</div>')+'</div>'}
+ setInterval(async()=>{const ov=$1('.st103:not([hidden])');if(!ov||!window.LUMEN_V103)return;const R=ov.querySelector('.st105R');if(!R)return;const items=LUMEN_V103.items()||[],n=items.length;
+  let bx=R.querySelector('.st116');if(!bx){bx=document.createElement('div');bx.className='st116';const giro=[...R.querySelectorAll('.st105row')].find(r=>/Giro/.test(r.textContent));(giro||R.firstElementChild).after(bx);bx.dataset.k=''}
+  const k=JSON.stringify([n,destTxt(),SKIP,UP().dir]);if(bx.dataset.k!==k){bx.dataset.k=k;bx.innerHTML=boxHTML(n);wire(bx)}
+  const g=ov.querySelector('.st103go');if(g&&n>MX()&&!/primeiros/.test(g.textContent))g.textContent='⚡ Gerar os '+MX()+' primeiros agora (o resto vem sozinho)';
+  /* vídeos que chegaram depois (na mesma janela): deitado já fica em pé */
+  const CH=LUMEN_V103.ch();if(!CH||!UP().on||UP().dlg===false)return;let seen=CHK.get(CH);if(!seen){seen=new Set();CHK.set(CH,seen)}CH.per=CH.per||{};let ch=false;
+  for(const it of items){if(seen.has(it.id))continue;seen.add(it.id);if(CH.per[it.id]!=null)continue;try{const m=await vInfo(it);if(m&&m.w>m.h){CH.per[it.id]=+UP().dir||90;ch=true}}catch(_){}}
+  if(ch)LUMEN_V103.redraw()},700);
+ function wire(bx){bx.querySelectorAll('[data-u]').forEach(b=>b.onclick=async()=>{const d=+b.dataset.u;const u=UP();u.dir=d;svUP();const CH=LUMEN_V103.ch();if(!CH)return;CH.per=CH.per||{};
+   for(const it of (LUMEN_V103.items()||[])){try{const m=await vInfo(it);if(m&&m.w>m.h)CH.per[it.id]=d}catch(_){}}LUMEN_V103.redraw()});
+  const p=bx.querySelector('.st116p');if(p)p.onclick=async()=>{if(await LUMEN_V109.pick())LUMEN_V109.C.auto=true};
+  const l=bx.querySelector('.st116l');if(l)l.onclick=async()=>{const D=LUMEN_V109.dest();if(D&&D.off)LUMEN_V109.useDir();await LUMEN_V109.ensurePerm();LUMEN_V109.paint()};
+  const sk=bx.querySelector('.st116sk input');if(sk)sk.onchange=e=>{SKIP=e.target.checked;try{localStorage.setItem('lumen_b116_skip',SKIP?'1':'0')}catch(_){}}}
+ function sigNow(){const C=LUMEN_V103.ch()||{};let E={};try{E=LUMEN_V97.END||{}}catch(_){}
+  const base=JSON.stringify([C.cor||'',C.ritmo||'',C.asp||'',C.res||'',E.on?[E.txt,E.st,E.font,E.bg,E.tc]:0]);
+  (LUMEN_V103.items()||[]).forEach(it=>SIGS.set(it.id,hash(base+'|'+LUMEN_V103.rotOf(it.id))))}
+ function say(t){const f=$1('.st103:not([hidden]) .st103f');if(!f)return;let m=f.querySelector('.st116msg');if(!m){m=document.createElement('div');m.className='st116msg';f.prepend(m)}m.textContent=t}
+ function autoOn(){try{const C=LUMEN_V109.C;if(!C.auto){C.auto=true;localStorage.setItem('lumen_vxq109',JSON.stringify(C))}}catch(_){}}
+ /* ao tocar em "Aplicar e gerar": primeiro garante a pasta */
+ document.addEventListener('click',e=>{const btn=e.target.closest&&e.target.closest('.st103 .st103go');if(!btn||e.__b116||!window.LUMEN_V109||!LUMEN_V109.dest)return;
+  const D=LUMEN_V109.dest();const go=()=>{autoOn();sigNow();try{btn.onclick&&btn.onclick()}catch(er){log('Gerar vídeos: '+er.message,'bad')}};
+  if(D&&D.ok){autoOn();sigNow();return}
+  e.stopPropagation();e.preventDefault();
+  let p;if(!D)p=LUMEN_V109.pick();else{if(D.off)LUMEN_V109.useDir();p=LUMEN_V109.ensurePerm()}
+  p.then(ok=>{const D2=LUMEN_V109.dest();if(ok&&D2&&D2.ok)go();else say('Escolha onde salvar os vídeos prontos para começar (📁 Escolher pasta).')}).catch(()=>say('Escolha onde salvar os vídeos prontos para começar.'))},true);
+
+ window.LUMEN_V117={MX,WAIT,DONE,SIGS,skip:()=>SKIP};
+ log('Build v117: vários vídeos de uma vez sem erro (até 400 por vez), pasta garantida antes de gerar, vigia contra travadas','ok');
+}catch(e){try{log('v117: '+e.message,'bad')}catch(_){}}})();
+</script>
+
 <script id="v59boot">try{window.__LUMEN_SAFE&&(window.__LUMEN_SAFE.booted=true)}catch(_){}</script>
 
 <script id="v62hb">
