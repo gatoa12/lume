@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v129</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v132</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -6266,7 +6266,7 @@ const DB=__LUMEN_SAFE.idbLazy(()=>new Promise((res,rej)=>{const r=indexedDB.open
 const tx=async(mode,fn)=>{const db=await DB;return new Promise((res,rej)=>{const t=db.transaction('p',mode);let o;try{o=fn(t.objectStore('p'))}catch(e){rej(e);return}t.oncomplete=()=>res(o&&o.result);t.onerror=()=>rej(t.error)})};
 let MINE=[];
 async function loadMine(){try{MINE=((await tx('readonly',s=>s.getAll()))||[]).sort((a,b)=>a.t-b.t);MINE.forEach(p=>{if(p.lut)LUTS.set(p.id,p.lut);p.g=fill(p.g);if(p.lut)p.g.lut=p.id})}catch(_){MINE=[]}drawAll()}
-async function saveMine(p){const rec={id:p.id,name:p.name,kind:p.kind,g:Object.assign({},p.g,{lut:p.lut?p.id:null}),lut:p.lut||null,t:p.t||Date.now()};await tx('readwrite',s=>s.put(rec));if(rec.lut)LUTS.set(rec.id,rec.lut);
+async function saveMine(p){const rec={id:p.id,name:p.name,kind:p.kind,g:Object.assign({},p.g,{lut:p.lut?p.id:null}),lut:p.lut||null,ref:p.ref||null,from:p.from||null,t:p.t||Date.now()};await tx('readwrite',s=>s.put(rec));if(rec.lut)LUTS.set(rec.id,rec.lut);
  const i=MINE.findIndex(x=>x.id===rec.id);rec.g=fill(rec.g);if(i>=0)MINE[i]=rec;else MINE.push(rec);drawAll()}
 async function delMine(id){try{await tx('readwrite',s=>s.delete(id))}catch(_){}MINE=MINE.filter(x=>x.id!==id);LUTS.delete(id);drawAll()}
 const all=()=>BUILT.concat(MINE);
@@ -6472,7 +6472,45 @@ if(T&&RUL){const w=document.createElement('div');w.className='vxTlW';RUL.parentN
 if(VG.pid&&VG.g.lut==null&&MINE.length===0){}
 syncSliders();loadMine().then(()=>{prevNow()});
 /* v69: acesso para "Edição padrão" e "Meus presets" no Início */
-window.LUMENCOR={presetG:id=>{const p=all().find(x=>x.id===id);if(!p)return null;const g=fill(JSON.parse(JSON.stringify(p.g)));if(p.lut||LUTS.has(p.id))g.lut=p.id;return g},neu:()=>neu(),fill:g=>fill(g),gradeWith:(g,src,w,h)=>grade(fill(JSON.parse(JSON.stringify(g))),src,w,h),renderGrid:(el,t,src)=>drawGrid(el,all(),t,src||frameSrc()),renderMine:(el,t)=>mineList(el,t),all:()=>all(),list:()=>all().map(p=>({id:p.id,name:p.name,kind:p.kind||'pronto',mine:MINE.includes(p)})),use:(id,t)=>{const p=all().find(x=>x.id===id);if(p)usePreset(p,t)},video:()=>({id:VG.pid,name:VG.name||'',on:vOn()}),photo:()=>({id:PG.pid,name:PG.name||'',on:!!PG.on,active:lumenPhotoGradeOn()}),photoOn:v=>{PG.on=!!v;sv();try{drawAll()}catch(_){}},importFiles:f=>importFiles(f),mineN:()=>MINE.length,mineRaw:()=>MINE.slice(),saveP:p=>saveMine(p),delP:id=>delMine(id),lutOf:id=>LUTS.get(id)||null,curG:()=>JSON.parse(JSON.stringify(VG.g)),isNeu:g=>isNeu(fill(JSON.parse(JSON.stringify(g)))),exp:(id,f)=>{const p=all().find(x=>x.id===id);if(!p)return'';const nm=p.name.replace(/[^\w\- ]+/g,'_');if(f==='x'){if(p.lut||LUTS.has(p.id))return'lut';dl(nm+'.xmp',toXmp(p),'text/xml')}else if(f==='c')dl(nm+'.cube',toCube(p),'text/plain');else dl(nm+'.lumen.json',toJson(p),'application/json');return'ok'},gradeOk:()=>GL.ok!==false};
+/* =================== FT · o visual de uma foto sua vira preset de vídeo (FT1, FT2…) =================== */
+/* 1) Se a foto saiu do Lightroom, ela carrega as configurações dentro (XMP crs:): luz, contraste, realces, sombras,
+      brancos, pretos, temperatura, matiz, vibração, saturação, clareza, HSL das 8 cores, color grading, curva, vinheta, granulação.
+   2) Além disso o LUMEN mede a cor e a luz da foto pronta. Em CADA vídeo, mede o vídeo e ajusta para chegar no mesmo visual. */
+const TEMP=[];
+async function xmpOf(file){try{const buf=new Uint8Array(await file.slice(0,Math.min(file.size,4*1024*1024)).arrayBuffer());let s='';for(let i=0;i<buf.length;i+=65536)s+=String.fromCharCode.apply(null,buf.subarray(i,i+65536));
+  const a=s.indexOf('<x:xmpmeta');if(a<0)return null;const b=s.indexOf('</x:xmpmeta>',a);if(b<0)return null;let t=s.slice(a,b+12);try{t=decodeURIComponent(escape(t))}catch(_){}
+  return /crs:(Exposure2012|Contrast2012|Highlights2012|Shadows2012|Temperature|IncrementalTemperature|Saturation|Vibrance|HueAdjustment|ToneCurvePV2012)/.test(t)?t:null}catch(_){return null}}
+async function photoLab(file){const bm=await createImageBitmap(file),c=document.createElement('canvas'),k=240/Math.max(bm.width,bm.height);c.width=Math.max(1,Math.round(bm.width*k));c.height=Math.max(1,Math.round(bm.height*k));
+ const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(bm,0,0,c.width,c.height);try{bm.close()}catch(_){}return {st:labStats([x.getImageData(0,0,c.width,c.height).data]),thumb:(()=>{const t=document.createElement('canvas'),q=96/Math.max(c.width,c.height);t.width=Math.round(c.width*q);t.height=Math.round(c.height*q);t.getContext('2d').drawImage(c,0,0,t.width,t.height);return t.toDataURL('image/jpeg',.7)})()}}
+function lutFrom(src,ref,N){N=N||33;const d=new Uint8Array(N*N*N*3);let i=0;
+ for(let bb=0;bb<N;bb++)for(let gg=0;gg<N;gg++)for(let rr=0;rr<N;rr++){const l=lab(rr/(N-1),gg/(N-1),bb/(N-1)),o=l.map((v,j)=>(v-src[j][0])*clamp(ref[j][1]/src[j][1],j?.5:.6,j?2:1.7)+ref[j][0]),c2=rgb(o[0],o[1],o[2]);d[i++]=c2[0]*255;d[i++]=c2[1]*255;d[i++]=c2[2]*255}
+ return {n:N,data:d}}
+const NEUTRAL=[[50,21],[0,9],[4,13]];   /* um vídeo "típico" sem cor, para a prévia */
+async function makeFT(file,nameWanted){if(!/^image\//.test(file.type||'')&&!/\.(jpe?g|png|heic|webp|tiff?)$/i.test(file.name))throw new Error('use uma foto JPG/PNG (a foto já editada que saiu do Lightroom é a melhor)');
+ const xmp=await xmpOf(file);let ph;try{ph=await photoLab(file)}catch(e){throw new Error('não consegui abrir a foto ('+e.message+'). Use JPG.')}
+ let n=1;for(const p of MINE){const m=/^FT(\d+)$/.exec(p.name||'');if(m)n=Math.max(n,+m[1]+1)}const name=nameWanted||('FT'+n);
+ const id='m:ft'+Date.now().toString(36);let g=neu(),read=[],lut=null,mode;
+ if(xmp){const r=parseXmp(xmp);g=fill(r.g);mode='xmp';
+  const R=[['exp','luz (exposição)'],['con','contraste'],['hi','realces'],['sh','sombras'],['wh','brancos'],['bl','pretos'],['temp','temperatura'],['tint','matiz'],['vib','vibração'],['sat','saturação'],['clar','clareza'],['vig','vinheta'],['grain','granulação']];
+  for(const [k,t] of R)if(Math.abs(+g[k]||0)>.001)read.push(t);if(g.hh.some(Boolean)||g.hs.some(Boolean)||g.hl.some(Boolean))read.push('cores HSL');if((g.cg.sh[1]||0)+(g.cg.md[1]||0)+(g.cg.hi[1]||0))read.push('color grading');if(g.curve)read.push('curva de tons')}
+ else{mode='cor';lut=lutFrom(NEUTRAL,ph.st);g.lutAmt=.8;read=['cor média','luz e contraste','temperatura e matiz (balanço de branco)','saturação geral']}
+ const p={id,name,kind:mode==='xmp'?'Visual da foto (Lightroom)':'Visual da foto (cor)',g,lut,ref:mode==='cor'?ph.st:null,from:{file:file.name,thumb:ph.thumb,mode,read,at:Date.now()}};
+ await saveMine(p);try{log('🎨 Preset de vídeo '+name+' criado da foto '+file.name+' ('+(mode==='xmp'?'configurações do Lightroom':'cor e luz da foto')+')','ok')}catch(_){}
+ return {id,name,mode,read,thumb:ph.thumb}}
+/* mede um vídeo (6 quadros) */
+function urlFrames(url,n){n=n||6;return new Promise((res,rej)=>{const v=document.createElement('video');v.muted=true;v.playsInline=true;v.preload='auto';v.crossOrigin='anonymous';
+ const c=document.createElement('canvas'),x=c.getContext('2d',{willReadFrequently:true}),out=[];let k=0;const to=setTimeout(()=>{cleanup();out.length?res(out):rej(new Error('vídeo demorou para abrir'))},15000);
+ const cleanup=()=>{clearTimeout(to);try{v.removeAttribute('src');v.load()}catch(_){}};
+ v.onloadedmetadata=()=>{const s=160/Math.max(v.videoWidth||160,v.videoHeight||160);c.width=Math.max(1,Math.round((v.videoWidth||160)*s));c.height=Math.max(1,Math.round((v.videoHeight||90)*s));v.currentTime=Math.min((v.duration||1)*(.5/n),Math.max(0,(v.duration||1)-.1))};
+ v.onseeked=()=>{try{x.drawImage(v,0,0,c.width,c.height);out.push(x.getImageData(0,0,c.width,c.height).data)}catch(_){}k++;if(k>=n||!isFinite(v.duration)){cleanup();res(out);return}v.currentTime=Math.min(v.duration*((k+.5)/n),v.duration-.05)};
+ v.onerror=()=>{cleanup();rej(new Error('não abri o vídeo'))};v.src=url})}
+const ADA=new Map();
+async function adaptUrl(id,url){const p=MINE.find(x=>x.id===id);if(!p||!p.ref||!url)return id;const k=id+'|'+url;if(ADA.has(k))return ADA.get(k);
+ let src;try{const F=await urlFrames(url,6);if(!F.length)return id;src=labStats(F)}catch(_){return id}
+ const tid='t:'+id.slice(2)+':'+Date.now().toString(36)+Math.random().toString(36).slice(2,5);const lut=lutFrom(src,p.ref);LUTS.set(tid,lut);
+ const g=fill(JSON.parse(JSON.stringify(p.g)));g.lut=tid;g.lutAmt=p.g.lutAmt||.8;TEMP.push({id:tid,name:p.name,kind:p.kind,g,lut:true});
+ while(TEMP.length>12){const o=TEMP.shift();LUTS.delete(o.id);for(const [kk,vv] of ADA)if(vv===o.id)ADA.delete(kk)}ADA.set(k,tid);return tid}
+window.LUMENCOR={makeFT:(f,n)=>makeFT(f,n),adaptUrl:(id,u)=>adaptUrl(id,u),ftInfo:id=>{const p=MINE.find(x=>x.id===id);return p&&p.from?Object.assign({name:p.name,adaptive:!!p.ref},p.from):null},presetG:id=>{const p=all().concat(TEMP).find(x=>x.id===id);if(!p)return null;const g=fill(JSON.parse(JSON.stringify(p.g)));if(p.lut||LUTS.has(p.id))g.lut=p.id;return g},neu:()=>neu(),fill:g=>fill(g),gradeWith:(g,src,w,h)=>grade(fill(JSON.parse(JSON.stringify(g))),src,w,h),renderGrid:(el,t,src)=>drawGrid(el,all(),t,src||frameSrc()),renderMine:(el,t)=>mineList(el,t),all:()=>all(),list:()=>all().map(p=>({id:p.id,name:p.name,kind:p.kind||'pronto',mine:MINE.includes(p)})),use:(id,t)=>{const p=all().concat(TEMP).find(x=>x.id===id);if(p)usePreset(p,t)},video:()=>({id:VG.pid,name:VG.name||'',on:vOn()}),photo:()=>({id:PG.pid,name:PG.name||'',on:!!PG.on,active:lumenPhotoGradeOn()}),photoOn:v=>{PG.on=!!v;sv();try{drawAll()}catch(_){}},importFiles:f=>importFiles(f),mineN:()=>MINE.length,mineRaw:()=>MINE.slice(),saveP:p=>saveMine(p),delP:id=>delMine(id),lutOf:id=>LUTS.get(id)||null,curG:()=>JSON.parse(JSON.stringify(VG.g)),isNeu:g=>isNeu(fill(JSON.parse(JSON.stringify(g)))),exp:(id,f)=>{const p=all().find(x=>x.id===id);if(!p)return'';const nm=p.name.replace(/[^\w\- ]+/g,'_');if(f==='x'){if(p.lut||LUTS.has(p.id))return'lut';dl(nm+'.xmp',toXmp(p),'text/xml')}else if(f==='c')dl(nm+'.cube',toCube(p),'text/plain');else dl(nm+'.lumen.json',toJson(p),'application/json');return'ok'},gradeOk:()=>GL.ok!==false};
 log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-cor, copiar cor), linha do tempo com quadros e zoom','ok');
 }catch(e){try{log('v67: '+e.message,'bad')}catch(_){}}})();
 
@@ -9943,13 +9981,13 @@ mqtt/dist/mqtt.esm.js:
  const PEND=new Map();   /* id → estilo a aplicar quando o vídeo abrir */
  const SEEN=new Set((S.items||[]).filter(i=>i.local).map(i=>i.id));
  let newT=0,NEW=[];
- setInterval(()=>{const L=(S.items||[]).filter(i=>i.local&&i.kind==='video'&&!SEEN.has(i.id));if(!L.length)return;L.forEach(i=>{SEEN.add(i.id);NEW.push(i)});clearTimeout(newT);newT=setTimeout(()=>{const n=NEW.splice(0);if(!n.length)return;if(!ov.hidden&&CH&&ITEMS.length){const have=new Set(ITEMS.map(i=>i.id));n.forEach(i=>{if(!have.has(i.id))ITEMS.push(i)});draw();return}ask(n)},1500)},700);
+ setInterval(()=>{const L=(S.items||[]).filter(i=>i.local&&i.kind==='video'&&!SEEN.has(i.id));if(!L.length)return;L.forEach(i=>{SEEN.add(i.id);NEW.push(i)});clearTimeout(newT);newT=setTimeout(()=>{const n0=NEW.splice(0),n=n0.filter(i=>!(window.__aeTakes&&window.__aeTakes(i)));if(n0.length>n.length)try{log('🤖 '+(n0.length-n.length)+' vídeo(s) da pasta vão sair editados sozinhos com '+(window.__aeName?__aeName():'o seu preset')+' (Início › Vídeos: como vão sair)','ok')}catch(_){}if(!n.length)return;if(!ov.hidden&&CH&&ITEMS.length){const have=new Set(ITEMS.map(i=>i.id));n.forEach(i=>{if(!have.has(i.id))ITEMS.push(i)});draw();return}ask(n)},1500)},700);
  const tplBtns=()=>[...document.querySelectorAll('#vxTpl button')].filter(b=>!b.classList.contains('mst')||b.offsetParent).map(b=>b.textContent.trim());
  const myRit=()=>[...document.querySelectorAll('#vxMq button')].map(b=>b.textContent.replace(/✕/g,'').trim()).filter(t=>t&&!/Salvar/.test(t));
  const cores=()=>{const C=window.LUMENCOR;if(!C||!C.list)return[];return C.list()};
  const ov=document.createElement('div');ov.className='st103';ov.hidden=true;ov.setAttribute('role','dialog');document.body.appendChild(ov);
  let ITEMS=[],CH=null;
- let SHOW=24;function ask(items){ITEMS=items;SHOW=24;CH=Object.assign({},ST);CH.per={};if(window.LUMEN_V97&&LUMEN_V97.END&&CH.end==null)CH.end=!!LUMEN_V97.END.on;draw()}
+ let SHOW=24;function ask(items){ITEMS=items;SHOW=24;CH=Object.assign({},ST);CH.per={};try{const dc=window.__aeDefaultCor&&__aeDefaultCor();if(dc&&!CH.cor)CH.cor=dc}catch(_){}if(window.LUMEN_V97&&LUMEN_V97.END&&CH.end==null)CH.end=!!LUMEN_V97.END.on;draw()}
  function chips(list,cur,attr){return list.map(([v,t,sub])=>'<button type="button" data-'+attr+'="'+esc(v)+'" class="'+(String(cur)===String(v)?'on':'')+'">'+esc(t)+(sub?'<small>'+esc(sub)+'</small>':'')+'</button>').join('')}
  const RK2='lumen_vxrhy';
  const rhyAll=()=>{try{return JSON.parse(localStorage.getItem(RK2)||'[]')}catch(_){return[]}};
@@ -9968,6 +10006,7 @@ mqtt/dist/mqtt.esm.js:
    +'<div class="st105g"><div class="st105L"><div class="st105lab">🖼 Agora → como vai ficar'+(n>SHOW?' <small>(mostrando '+SHOW+' de '+n+')</small>':'')+'</div><div class="st103pv">'+ITEMS.slice(0,SHOW).map(i=>'<div class="st103it" data-id="'+i.id+'"><div class="st103pair"><figure><canvas class="a"></canvas><figcaption>agora</figcaption></figure><span class="st103ar">→</span><figure><canvas class="d"></canvas><figcaption>vai ficar</figcaption></figure></div><div class="st103nm">'+esc(i.name)+'</div><div class="st103rt"><button type="button" data-pr="'+i.id+'" data-d="-90" title="Girar este para a esquerda">↺</button><span class="st103deg">'+(rotOf(i.id)?rotOf(i.id)+'°':'sem giro')+'</span><button type="button" data-pr="'+i.id+'" data-d="90" title="Girar este para a direita">↻</button></div></div>').join('')+(n>SHOW?'<button type="button" class="f st116more">Mostrar mais '+Math.min(24,n-SHOW)+' (faltam '+(n-SHOW)+')</button>':'')+'</div></div>'
    +'<div class="st105R">'
    +'<div class="st105row"><span class="st105k">🎨 Cor</span><select class="st105c">'+optC+'</select></div>'
+   +'<div class="ft130slot"></div>'
    +'<div class="st105row"><span class="st105k">⏱ Ritmo</span><select class="st105r">'+optR+'</select></div>'+(myR.length?'':'<div class="st105tip">Seus ritmos aparecem aqui depois de salvos no editor (aba ⏱ Ritmo › 💾 Salvar este ritmo).</div>')
    +'<div class="st105row"><span class="st105k">🔄 Giro</span><div class="st105seg">'+[[0,'Sem giro'],[90,'↻ 90°'],[270,'↺ 90°'],[180,'180°']].map(([v,t])=>'<button type="button" data-g="'+v+'" class="'+((CH.rot||0)===v&&!Object.keys(CH.per||{}).length?'on':'')+'">'+t+'</button>').join('')+'</div></div>'
    +'<div class="st105end'+(E.on?'':' off')+'"><label class="st105sw1"><input type="checkbox" class="st103e"'+(E.on?' checked':'')+'><b>✨ Final com o meu Instagram</b></label>'
@@ -9984,6 +10023,7 @@ mqtt/dist/mqtt.esm.js:
   {const RR=window.LUMEN_V98&&LUMEN_V98.state&&LUMEN_V98.state();if(RR&&!RR.done){const ap=q('.st103ap');if(ap)ap.hidden=true;const gg=q('.st103go');if(gg)gg.textContent='➕ Pôr na fila ('+n+' vídeo'+(n>1?'s':'')+') — entra depois dos que já estão sendo gerados'}}
   {const mb=q('.st116more');if(mb)mb.onclick=()=>{SHOW+=24;const sc=q('.st103pv')&&q('.st103pv').scrollTop;draw();const pv=ov.querySelector('.st103pv');if(pv&&sc!=null)pv.scrollTop=sc}}
   q('.st105c').onchange=e=>{CH.cor=e.target.value;paintPrev();paintEnd()};
+  try{window.__ftMount&&__ftMount(q('.ft130slot'),id=>{CH.cor=id;draw()},CH.cor)}catch(_){}
   q('.st105r').onchange=e=>{CH.ritmo=e.target.value};
   ov.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{CH.rot=+b.dataset.g;CH.per={};draw()});
   ov.querySelectorAll('[data-pr]').forEach(b=>b.onclick=()=>{const id=+b.dataset.pr,cur=rotOf(id);CH.per[id]=((cur+(+b.dataset.d))%360+360)%360;draw()});
@@ -10020,7 +10060,7 @@ mqtt/dist/mqtt.esm.js:
  async function applyStyle(st,it){const wait=ms=>new Promise(r=>setTimeout(r,ms));
   for(let k=0;k<40;k++){if(window.VXAPI&&VXAPI.dur>0)break;await wait(200)}
   /* cor */
-  try{if(st.cor)LUMENCOR.use(st.cor,'video');else{const z=$1('#clReset');z&&z.click()}}catch(_){}
+  try{if(st.cor){let c=st.cor;try{if(LUMENCOR.adaptUrl&&it){if(!it.url&&it.blob)it.url=URL.createObjectURL(it.blob);if(it.url)c=await LUMENCOR.adaptUrl(c,it.url)}}catch(_){}LUMENCOR.use(c,'video')}else{const z=$1('#clReset');z&&z.click()}}catch(_){}
   /* ritmo */
   try{if(st.ritmo){const [kind,...rest]=st.ritmo.split(':'),t=rest.join(':');if(kind==='m'){const R=rhyAll().find(x=>x.n===t),A=window.VXAPI;if(R&&A&&A.dur){A.SEG=R.s.map(([a,e,r,c])=>({s:a*A.dur,e:e*A.dur,rate:r,cut:!!c}));A.selI=0;try{A.refresh()}catch(_){}}}else{const b=[...document.querySelectorAll('#vxTpl button')].find(x=>x.textContent.trim()===t);if(b)b.click()}}
    else{const b=[...document.querySelectorAll('#vxTpl button')].find(x=>x.textContent.trim()==='Tudo normal');if(b)b.click()}}catch(_){}
@@ -10677,7 +10717,7 @@ If you want to offset all timestamps of a track such that the first one is zero,
    organizado (Evento › dia › Editados). O original nunca é apagado. Painel no Início, logo abaixo da pasta dos vídeos. ===== */
 (function(){try{
  const $1=s=>document.querySelector(s);const nf=n=>Number(n||0).toLocaleString('pt-BR');
- const K='lumen_ae118';const AE=Object.assign({on:true,mode:'girar',cor:'',ritmo:'',asp:'0',res:'1920',wm:0,flu:1,enh:0,end:true,txt:'@invictorcliques',sub:'Editados'},(()=>{try{return JSON.parse(localStorage.getItem(K)||'{}')}catch(_){return{}}})());
+ const K='lumen_ae118';const AE=Object.assign({on:true,mode:'girar',cor:'',ritmo:'',asp:'0',res:'1920',wm:0,flu:1,enh:0,end:true,txt:'@invictorcliques',sub:'Editados',src:'tudo'},(()=>{try{return JSON.parse(localStorage.getItem(K)||'{}')}catch(_){return{}}})());
  const sv=()=>{try{localStorage.setItem(K,JSON.stringify(AE))}catch(_){}};
  if(!localStorage.getItem('lumen_ae118_t0'))localStorage.setItem('lumen_ae118_t0',String(Date.now()));
  let T0=+localStorage.getItem('lumen_ae118_t0')||Date.now();
@@ -10691,6 +10731,10 @@ If you want to offset all timestamps of a track such that the first one is zero,
  const clean=s=>String(s||'').replace(/[\\/:*?"<>|]+/g,'_').trim();
 
  /* ---------- 1) quais vídeos entram ---------- */
+ const isFolderVid=it=>it&&it.kind==='video'&&!/^ed\|/.test(it.sig||'')&&!it.peer&&!it.remote&&!/_(ritmo|girado\d+|em_pe|corrigido\d+|COR|look|FT\d+)/i.test(it.name||'');
+ window.__aeTakes=()=>false;   /* vídeos da pasta: a janela "Como você quer este vídeo?" SEMPRE aparece (já com o seu FT escolhido) */
+ window.__aeDefaultCor=()=>(AE.on&&AE.mode==='editar'&&AE.cor)?AE.cor:'';
+ window.__aeName=()=>{try{return (LUMENCOR.ftInfo(AE.cor)||{}).name||'o seu preset'}catch(_){return 'o seu preset'}};
  function want(it){const u=U();if(!u||!u.isCam(it))return false;if(DONE.has(keyOf(it))||IDS.has(it.id))return false;return (it.t||it.ct||0)>=T0}
  setInterval(()=>{if(!AE.on||AE.mode!=='editar')return;for(const it of (S.items||[])){if(SEEN.has(it.id))continue;if(!want(it))continue;SEEN.add(it.id);it.ae117=1;WAITQ.push(it);paint()}},2500);
  /* ---------- 2) quando já está em pé (ou não precisa), vai para a edição ---------- */
@@ -10698,7 +10742,7 @@ If you want to offset all timestamps of a track such that the first one is zero,
  setInterval(async()=>{if(busy||!AE.on||!WAITQ.length)return;busy=true;try{
    if(!dest()){paint();return}
    const ready=[];for(const it of WAITQ.slice(0,20)){const u=U();let m=null;try{m=await vInfo(it)}catch(_){}
-    const land=!!(m&&m.w>m.h),needUp=land&&u.UP.on&&u.UP.auto;
+    const land=!!(m&&m.w>m.h),needUp=land&&u.UP.on&&u.UP.auto&&u.isCam(it);
     if(needUp&&!u.done(u.keyOf(it)))continue;          /* espera a cópia em pé ficar pronta primeiro */
     ready.push({it,deg:land&&u.UP.on?(+u.UP.dir||90):0})}
    if(!ready.length)return;
@@ -10720,7 +10764,8 @@ If you want to offset all timestamps of a track such that the first one is zero,
  async function styleFor(it){const x=IDS.get(it.id);snap();
   try{const E=LUMEN_V97.END;E.on=!!AE.end;if(AE.txt)E.txt=AE.txt;const c=$1('#vxEndOn');if(c)c.checked=E.on}catch(_){}
   try{LUMEN_V108.Q.flu=+AE.flu||0;LUMEN_V108.Q.enh=+AE.enh||0;LUMEN_V108.applyQ();LUMEN_V108.setWm(!!+AE.wm)}catch(_){}
-  const st={cor:AE.cor,ritmo:AE.ritmo,rot:0,per:{[it.id]:x?x.deg:0},asp:AE.asp,res:AE.res};
+  let cor=AE.cor;try{if(cor&&window.LUMENCOR&&LUMENCOR.adaptUrl&&it.url)cor=await LUMENCOR.adaptUrl(cor,it.url)}catch(_){}
+  const st={cor,ritmo:AE.ritmo,rot:0,per:{[it.id]:x?x.deg:0},asp:AE.asp,res:AE.res};
   return await LUMEN_V103.applyStyle(st,it)}
  /* quando o editado fica pronto: vai para a pasta, organizado */
  addEventListener('lumen-vx-done',e=>{const x=e.detail;const R=window.LUMEN_V98&&LUMEN_V98.state();if(!x||!R||R.done)return;const cur=R.items[R.i];if(!cur||!IDS.has(cur.id))return;
@@ -10749,15 +10794,43 @@ If you want to offset all timestamps of a track such that the first one is zero,
   const oc=opt('','Sem cor',AE.cor)+(mine.length?'<optgroup label="Meus presets">'+mine.map(p=>opt(p.id,p.name,AE.cor)).join('')+'</optgroup>':'')+(ready.length?'<optgroup label="Presets prontos">'+ready.map(p=>opt(p.id,p.name,AE.cor)).join('')+'</optgroup>':'');
   const or=opt('','Normal (velocidade original)',AE.ritmo)+(myR.length?'<optgroup label="Meus ritmos">'+myR.map(n=>opt('m:'+n,n,AE.ritmo)).join('')+'</optgroup>':'')+(T.length?'<optgroup label="Modelos prontos">'+[...new Set(T)].map(t=>opt('t:'+t,t,AE.ritmo)).join('')+'</optgroup>':'');
   return{oc,or,nc:P.length,nr:myR.length+T.length}}
+ /* ---------- 🖼 solte uma foto sua → preset de vídeo FT1, FT2… ---------- */
+ let ftMsg='',ftBusy=false;
+ function ftBox(){let inf=null;try{inf=AE.cor&&LUMENCOR.ftInfo(AE.cor)}catch(_){}
+  return '<div class="ft129'+(ftBusy?' busy':'')+'" tabindex="0" role="button"><input type="file" accept="image/*" hidden class="ft129in">'
+   +(inf&&inf.thumb?'<img src="'+inf.thumb+'" alt="">':'<i>🖼</i>')
+   +'<div><b>'+(inf?'Visual <u>'+esc(inf.name)+'</u> ligado em todos os vídeos':'Solte aqui uma foto sua já editada')+'</b>'
+   +'<small>'+(ftBusy?'Lendo a foto…':ftMsg?ftMsg:inf?('Da foto '+esc(inf.file)+' · '+(inf.mode==='xmp'?'configurações do Lightroom: '+esc((inf.read||[]).join(', ')):'cor e luz da foto, ajustadas a cada vídeo')+'. Solte outra foto para criar o próximo (FT2…).'):'Ela vira o preset de vídeo <b>FT1</b> (luz, contraste, cores, balanço de branco, HSL, curva…). Vídeo novo da câmera já sai com esse visual; vídeo da pasta abre a janela já com ele escolhido.')+'</small></div></div>'}
+ async function ftUse(f){if(!f||ftBusy)return;ftBusy=true;ftMsg='';sigL='';paint();
+  try{const r=await LUMENCOR.makeFT(f);AE.cor=r.id;AE.mode='editar';AE.on=true;if(AE.src!=='cam')AE.src='tudo';T0=Date.now();localStorage.setItem('lumen_ae118_t0',String(T0));sv();
+   ftMsg='✔ '+r.name+' criado'+(r.mode==='xmp'?' com as configurações do Lightroom da foto ('+r.read.length+' ajustes)':' com a cor e a luz da foto (ajusta em cada vídeo)')+'. Vídeos da câmera já saem assim; os da pasta abrem a janela com '+r.name+' escolhido.';
+   try{navigator.vibrate&&navigator.vibrate(30)}catch(_){}}
+  catch(e){ftMsg='✖ '+e.message}finally{ftBusy=false;sigL='';paint()}}
+ function ftBind(q){const b=q('.ft129'),inp=q('.ft129in');if(!b||!inp)return;b.onclick=e=>{if(e.target!==inp)inp.click()};b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();inp.click()}};
+  inp.onchange=()=>{const f=inp.files&&inp.files[0];inp.value='';ftUse(f)};
+  b.ondragover=e=>{e.preventDefault();b.classList.add('over')};b.ondragleave=()=>b.classList.remove('over');
+  b.ondrop=e=>{e.preventDefault();b.classList.remove('over');const f=[...(e.dataTransfer&&e.dataTransfer.files||[])].find(x=>/^image\//.test(x.type)||/\.(jpe?g|png|heic|webp|tiff?)$/i.test(x.name));if(f)ftUse(f);else{ftMsg='✖ Solte uma foto (JPG/PNG).';sigL='';paint()}}}
+ if(!document.getElementById('ft129css')){const s=document.createElement('style');s.id='ft129css';s.textContent='.ft129{display:flex;gap:12px;align-items:center;border:2px dashed #f5c542;border-radius:14px;padding:12px 14px;margin:6px 0 10px;cursor:pointer;background:rgba(245,197,66,.06)}.ft129.over{background:rgba(245,197,66,.18)}.ft129.busy{opacity:.6}.ft129 i{font-size:28px;font-style:normal}.ft129 img{width:64px;height:64px;object-fit:cover;border-radius:10px}.ft129 b{display:block}.ft129 small{display:block;opacity:.85;margin-top:2px;line-height:1.35}';document.head.appendChild(s)}
+ let ftM='',ftB=false;
+ window.__ftMount=function(slot,onPick,cur){if(!slot)return;let inf=null;try{inf=cur&&LUMENCOR.ftInfo(cur)}catch(_){}
+  slot.innerHTML='<div class="ft129 sm'+(ftB?' busy':'')+'" tabindex="0" role="button"><input type="file" accept="image/*" hidden class="ft129in">'+(inf&&inf.thumb?'<img src="'+inf.thumb+'" alt="">':'<i>🖼</i>')
+   +'<div><b>'+(inf?'Visual <u>'+esc(inf.name)+'</u> neste vídeo':'Envie uma foto sua → vira preset')+'</b><small>'+(ftB?'Lendo a foto…':ftM?ftM:inf?(inf.mode==='xmp'?'Configurações do Lightroom da foto '+esc(inf.file):'Cor e luz da foto '+esc(inf.file)+', ajustadas a este vídeo')+'. Envie outra para criar a próxima (FT2…).':'Solte aqui ou toque para escolher. A foto vira o preset <b>FT1</b> (luz, contraste, cores, balanço de branco, HSL, curva…) e é aplicada neste vídeo.')+'</small></div></div>';
+  const b=slot.querySelector('.ft129'),inp=slot.querySelector('.ft129in');
+  const go=async f=>{if(!f||ftB)return;ftB=true;ftM='';window.__ftMount(slot,onPick,cur);try{const r=await LUMENCOR.makeFT(f);ftM='✔ '+r.name+' criado'+(r.mode==='xmp'?' com as configurações do Lightroom ('+r.read.length+' ajustes)':' com a cor e a luz da foto')+' e escolhido aqui.';ftB=false;onPick&&onPick(r.id);try{sigL='';paint()}catch(_){}}catch(e){ftB=false;ftM='✖ '+e.message;window.__ftMount(slot,onPick,cur)}};
+  b.onclick=e=>{if(e.target!==inp)inp.click()};b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();inp.click()}};inp.onchange=()=>{const f=inp.files&&inp.files[0];inp.value='';go(f)};
+  b.ondragover=e=>{e.preventDefault();b.classList.add('over')};b.ondragleave=()=>b.classList.remove('over');
+  b.ondrop=e=>{e.preventDefault();e.stopPropagation();b.classList.remove('over');const f=[...(e.dataTransfer&&e.dataTransfer.files||[])].find(x=>/^image\//.test(x.type)||/\.(jpe?g|png|heic|webp|tiff?)$/i.test(x.name));if(f)go(f);else{ftM='✖ Solte uma foto (JPG/PNG).';window.__ftMount(slot,onPick,cur)}}};
+ if(!document.getElementById('ft130css')){const s=document.createElement('style');s.id='ft130css';s.textContent='.ft129.sm{margin:2px 0 10px;padding:10px 12px}.ft129.sm img{width:48px;height:48px}.ft129.sm i{font-size:22px}.ft129.sm small{font-size:12px}';document.head.appendChild(s)}
  let sigL='';
  function paint(){const L=lists(),R=window.LUMEN_V98&&LUMEN_V98.state(),T=dest();
   const inQ=R&&!R.done?R.items.filter((it,k)=>IDS.has(it.id)&&(R.st[k]==='⏳'||R.st[k]==='⏺'||R.st[k]==='↻')).length:0;const curIt=R&&!R.done&&R.items[R.i]&&IDS.has(R.items[R.i].id)?R.items[R.i]:null;
   const waitUp=WAITQ.length;const old=(S.items||[]).filter(it=>U()&&U().isCam(it)&&!DONE.has(keyOf(it))&&!IDS.has(it.id)&&!WAITQ.includes(it)&&(it.t||it.ct||0)<T0).length;
-  const sig=JSON.stringify([AE,L.nc,L.nr,inQ,curIt&&curIt.id,R&&R.pct,waitUp,okN,failN,LAST.length,!!T,old]);if(sig===sigL&&card.isConnected)return;sigL=sig;
+  const sig=JSON.stringify([AE,L.nc,L.nr,inQ,curIt&&curIt.id,R&&R.pct,waitUp,okN,failN,LAST.length,!!T,old,ftMsg,ftBusy]);if(sig===sigL&&card.isConnected)return;sigL=sig;
   card.innerHTML='<div class="v70h"><b>🎬 Vídeos: como vão sair</b><span class="pillS '+(T?'ok':'warn')+'">'+(T?(AE.mode==='editar'?'em pé + editar':'só em pé'):'falta a pasta')+'</span></div>'
    +'<div class="ae118flow"><span>🎥 Gravou</span><i>→</i><span>📱 Em pé</span><i>→</i><span>🎨 Editado</span><i>→</i><span>📁 Pasta</span></div>'
    +'<div class="ae118mode"><button type="button" data-m="girar" class="'+(AE.mode!=='editar'?'on':'')+'"><b>📱 Só deixar em pé</b><small>Rápido: o mesmo vídeo, só que em pé, direto na pasta</small></button><button type="button" data-m="editar" class="'+(AE.mode==='editar'?'on':'')+'"><b>🎨 Em pé + editar</b><small>Com a cor, o ritmo e o final que você escolher abaixo</small></button></div>'
    +(!T?'<div class="up115warn">⚠ Escolha a pasta do evento (passo 2) ou uma pasta no quadro "📱 Vídeos sempre em pé". Os vídeos ficam esperando, nenhum se perde.</div>':'')
+   +ftBox()
    +'<div class="ae118g'+(AE.mode==='editar'?'':' off')+'">'
    +'<div class="ae118row"><span>🎨 Cor</span><select class="ae-cor">'+L.oc+'</select></div>'
    +'<div class="ae118row"><span>⏱ Ritmo</span><select class="ae-rit">'+L.or+'</select></div>'
@@ -10775,7 +10848,7 @@ If you want to offset all timestamps of a track such that the first one is zero,
    +(old&&AE.mode==='editar'?'<button type="button" class="f ae-old">🤖 Editar também os '+nf(old)+' vídeo(s) que já tinham chegado</button>':'');
   const q=s=>card.querySelector(s);
   card.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{const was=AE.mode;AE.mode=b.dataset.m;AE.on=true;if(AE.mode==='editar'&&was!=='editar'){T0=Date.now();localStorage.setItem('lumen_ae118_t0',String(T0))}sv();sigL='';paint()});
-  q('.ae-cor').onchange=e=>{AE.cor=e.target.value;sv()};q('.ae-rit').onchange=e=>{AE.ritmo=e.target.value;sv()};
+  q('.ae-cor').onchange=e=>{AE.cor=e.target.value;sv();sigL='';paint()};ftBind(q);q('.ae-rit').onchange=e=>{AE.ritmo=e.target.value;sv()};
   q('.ae-asp').onchange=e=>{AE.asp=e.target.value;sv()};q('.ae-res').onchange=e=>{AE.res=e.target.value;sv()};
   card.querySelectorAll('.ae118seg').forEach(g=>g.querySelectorAll('button').forEach(b=>b.onclick=()=>{AE[g.dataset.k]=+b.dataset.v;sv();paint()}));
   q('.ae-end').onchange=e=>{AE.end=e.target.checked;sv()};q('.ae-txt').onchange=e=>{AE.txt=e.target.value.trim();sv()};
@@ -11842,7 +11915,7 @@ setState('idle');
  setInterval(wave,60000);setTimeout(wave,8000);
  setInterval(()=>{try{window.__homeOrder()}catch(_){}},3000);setTimeout(()=>window.__homeOrder(),1500);
  /* versão visível + aviso de versão nova no servidor */
- const BUILD=129;window.LUMEN_BUILD=BUILD;
+ const BUILD=132;window.LUMEN_BUILD=BUILD;
  try{document.title='LUMEN Campo · Fotógrafo v'+BUILD}catch(_){}
  const chip=document.createElement('div');chip.id='ver129';chip.textContent='versão '+BUILD;
  chip.style.cssText='position:fixed;left:10px;bottom:8px;z-index:9;font:600 11px system-ui;color:#9a9a9a;background:rgba(20,20,20,.85);border:1px solid #333;border-radius:8px;padding:3px 8px;pointer-events:none';
