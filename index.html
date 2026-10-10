@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v127</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v129</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -11841,7 +11841,18 @@ setState('idle');
    cur.beat=Date.now();cur.folder=S.dir.name;const w=await fh.createWritable();await w.write(JSON.stringify(cur));await w.close()}catch(_){}}
  setInterval(wave,60000);setTimeout(wave,8000);
  setInterval(()=>{try{window.__homeOrder()}catch(_){}},3000);setTimeout(()=>window.__homeOrder(),1500);
- window.LUMEN_V128={wave};
+ /* versão visível + aviso de versão nova no servidor */
+ const BUILD=129;window.LUMEN_BUILD=BUILD;
+ try{document.title='LUMEN Campo · Fotógrafo v'+BUILD}catch(_){}
+ const chip=document.createElement('div');chip.id='ver129';chip.textContent='versão '+BUILD;
+ chip.style.cssText='position:fixed;left:10px;bottom:8px;z-index:9;font:600 11px system-ui;color:#9a9a9a;background:rgba(20,20,20,.85);border:1px solid #333;border-radius:8px;padding:3px 8px;pointer-events:none';
+ document.body.appendChild(chip);
+ async function checkNew(){try{const r=await fetch(location.pathname+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const BUILD=(\d+);window\.LUMEN_BUILD/);
+   if(m&&+m[1]>BUILD&&!document.getElementById('newVer')){const b=document.createElement('button');b.id='newVer';b.type='button';b.textContent='⬆ Versão '+m[1]+' do LUMEN disponível — toque para atualizar (nada se perde)';
+    b.style.cssText='position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:9999;background:#f5c542;color:#111;font:700 14px system-ui;border:0;border-radius:12px;padding:12px 18px;box-shadow:0 6px 24px rgba(0,0,0,.5);cursor:pointer';
+    b.onclick=async()=>{try{const rs=await navigator.serviceWorker?.getRegistrations?.();for(const x of rs||[])await x.update()}catch(_){}location.reload()};document.body.appendChild(b)}}catch(_){}}
+ setTimeout(checkNew,20000);setInterval(checkNew,5*60000);
+ window.LUMEN_V128={wave,checkNew};
  log('Build v128: Início sem pular (ordem fixa), motivos claros e o robô do Lightroom acha a pasta sozinho (2.9)','ok');
 }catch(e){try{log('v128: '+e.message,'bad')}catch(_){}}})();
 </script>
