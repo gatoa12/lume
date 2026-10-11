@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v136</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v139</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -2629,7 +2629,8 @@ function galNow(){
   b.onclick=()=>{if(S.gm){S.gs.has(i.id)?S.gs.delete(i.id):S.gs.add(i.id);gal()}else openV(i)};G.appendChild(b)})}
 async function walkTo(path){let d=S.dir;for(const g of path.split('/').filter(Boolean))d=await d.getDirectoryHandle(g);return d}
 /* apaga o arquivo em TODAS as pastas do dia (original, qualquer versão, quarentena, com look) e qualquer .xmp antigo */
-async function delFiles(i){if(!S.dir)return 0;let n=0;const base=i.name.replace(/\.[^.]+$/,''),t=i.ct||i.t,par=pth(i.kind==='video'?'Videos':'Originais',t).split('/').slice(0,-1).join('/');
+async function delFiles(i){if(!S.dir||!(window.__lumenDelDisk&&__lumenDelDisk()))return 0;   /* v137: só apaga da pasta se você ligar essa opção (padrão: a pasta nunca é tocada) */
+ let n=0;const base=i.name.replace(/\.[^.]+$/,''),t=i.ct||i.t,par=pth(i.kind==='video'?'Videos':'Originais',t).split('/').slice(0,-1).join('/');
  let P;try{P=await walkTo(par)}catch(e){return 0}
  const subs=[];for await(const [nm,h] of P.entries())if(h.kind==='directory')subs.push(h);
  for(const D of subs){const hit=[];for await(const [fn] of D.entries())if(fn===i.name||fn.startsWith(base+'.')||fn.startsWith(base+'_'))hit.push(fn);
@@ -2637,18 +2638,17 @@ async function delFiles(i){if(!S.dir)return 0;let n=0;const base=i.name.replace(
  return n}
 async function delOne(i){const base=i.name.replace(/\.[^.]+$/,''),mine=j=>j.name===i.name||j.name.startsWith(base+'_')||j.name.startsWith(base+'.');
  for(const arr of [S.uq,S.upF])for(let k=arr.length-1;k>=0;k--)if(mine(arr[k])){const j=arr.splice(k,1)[0];try{if(j.idp&&eps().length)OB.del(await j.idp)}catch(e){}}
- let n=0;try{n=await delFiles(i)}catch(e){}try{await(await walkTo('LR_Entrada')).removeEntry(i.name)}catch(e){}
+ let n=0;try{n=await delFiles(i)}catch(e){}if(window.__lumenDelDisk&&__lumenDelDisk())try{await(await walkTo('LR_Entrada')).removeEntry(i.name)}catch(e){}
  if(i.kind==='video')S.u.v=Math.max(0,S.u.v-1);else{if(S.c[i.cls]>0)S.c[i.cls]--;if(i.cls!=='d')S.u.f=Math.max(0,S.u.f-1)}
  if(S.aud){S.aud=S.aud.filter(r=>r.n!==i.name);try{audSave()}catch(e){}}
  for(const u of [i.url,i.thumb])try{if(u&&String(u).startsWith('blob:'))URL.revokeObjectURL(u)}catch(e){}
  return n}
 async function delItems(L){if(!L.length)return;
- if(!confirm('Excluir '+L.length+' item(ns)?\n\nApaga da galeria, da pasta do evento (original e todas as versões) e da fila de envio.\nO que já subiu para o site não é removido por aqui.\n\nNão dá para desfazer.'))return;
+ if(!confirm((window.__lumenDelDisk&&__lumenDelDisk())?'Excluir '+L.length+' item(ns)?\n\nApaga da galeria, da PASTA do evento (original e todas as versões) e da fila de envio.\n(Configurações › Backup e espaço › "Ao excluir no LUMEN" está ligado.)\n\nNão dá para desfazer.':'Tirar '+L.length+' item(ns) do LUMEN?\n\nSai da galeria e da fila de envio.\nOs arquivos nas suas pastas continuam lá, intactos.'))return;
  let files=0;for(const i of L)files+=await delOne(i);
  const ids=new Set(L.map(i=>i.id));S.items=S.items.filter(i=>!ids.has(i.id));if(S.sel&&ids.has(S.sel.id))S.sel=null;
  S.gs.clear();S.gm=false;S.del=(S.del||0)+L.length;
- log(L.length+' item(ns) excluído(s): galeria'+(S.dir?' + '+files+' arquivo(s) da pasta':'')+' + fila de envio','ok');
- if(S.dir&&!files)log('Nenhum arquivo encontrado na pasta para apagar (já removidos, pasta trocada ou permissão perdida).');
+ log(L.length+' item(ns) tirado(s) do LUMEN (galeria + fila de envio)'+(files?' + '+files+' arquivo(s) apagado(s) da pasta':' · as suas pastas não foram mexidas'),'ok');
  gal()}
 let cur=null;
 const vlook=()=>{const f=[...BUILT,...C.custom.map(c=>[c.n,c.p])].find(x=>x[0]===(C.vn||'Cinema'));return(f||BUILT[0])[1]};
@@ -4031,7 +4031,7 @@ const T=document.createElement('div');T.style.cssText='position:fixed;left:10px;
 T.innerHTML='<span id="tTx" style="flex:1"></span><button class="p" id="tUn">Desfazer</button>';document.body.appendChild(T);
 const pend=[];
 async function fin(b){const k=pend.indexOf(b);if(k>=0)pend.splice(k,1);if(!pend.length)T.style.display='none';let f=0;
- for(const i of b.L){try{f+=await delOne(i)}catch(e){}tx('i','readwrite',s=>s.delete(key(i))).catch(()=>{})}log(b.L.length+' item(ns) excluído(s) de vez ('+f+' arquivo(s) na pasta)','ok')}
+ for(const i of b.L){try{f+=await delOne(i)}catch(e){}tx('i','readwrite',s=>s.delete(key(i))).catch(()=>{})}log(b.L.length+' item(ns) tirado(s) do LUMEN'+(f?' ('+f+' arquivo(s) apagado(s) da pasta)':' · as suas pastas não foram mexidas'),'ok')}
 window.delItems=function(L){if(!L.length)return;if(L.length>30&&!confirm('Excluir '+L.length+' itens?'))return;
  const ids=new Set(L.map(i=>i.id));S.items=S.items.filter(i=>!ids.has(i.id));if(S.sel&&ids.has(S.sel.id))S.sel=null;S.gs.clear();S.gm=false;
  const b={L};b.t=setTimeout(()=>fin(b),8000);pend.push(b);$('#tTx').textContent=L.length+' item(ns) excluído(s)';T.style.display='flex';gal()};
@@ -5126,7 +5126,7 @@ async function walk(d,p,dep){for await(const[nm,h]of d.entries()){if(h.kind==='d
 async function scan(force){const M=q('#vlMsg');if(V.busy||(!force&&Date.now()-V.ts<30000&&V.all.length))return render();
  if(!S.dir||!S.perm){M.textContent='Escolha (ou reative) a pasta de destino no Início. A biblioteca lê todas as subpastas dela.';return render()}
  V.busy=true;V.all=[];V.ph={n:0,b:0};M.textContent='Lendo pastas…';
- try{const km=new Map(((await tx('readonly',s=>s.getAll()))||[]).map(m=>[m.k,m]));await walk(S.dir,'',0);V.all.forEach(r=>r.m=km.get(r.k)||{k:r.k});
+ try{const km=new Map(((await tx('readonly',s=>s.getAll()))||[]).map(m=>[m.k,m]));await walk(S.dir,'',0);if(window.__lumenVHide&&__lumenVHide.size)V.all=V.all.filter(r=>!__lumenVHide.has(r.k));V.all.forEach(r=>r.m=km.get(r.k)||{k:r.k});
   S.items.filter(i=>i.kind==='video'&&i.blob&&!V.all.some(r=>r.name===i.name)).forEach(i=>{const k='mem|'+i.name+'|'+i.size;V.all.push({name:i.name,f:i.blob,path:i.name,dir:'(só na memória)',size:i.size||i.blob.size,t:i.ct||i.t||0,k,m:{k}})});
   M.textContent='';V.ts=Date.now()}catch(e){M.textContent='Erro ao ler as pastas: '+e.message}finally{V.busy=false}
  render()}
@@ -5166,8 +5166,8 @@ async function openV2(r){cv=r;const f=await fileOf(r);cu=URL.createObjectURL(f);
 function info(){const r=cv,m=r.m;q('#vwI').innerHTML='<b>'+E(r.name)+'</b><br>'+E(r.dir)+' · '+B(r.size)+(m.w?' · '+m.w+'×'+m.h:'')+(m.dur?' · '+dur(m.dur):'')+(m.fps?' · '+m.fps+' fps':'')+' · <b>'+(slow(r)?'Câmera lenta':'Câmera normal')+'</b>';q('#vwT').textContent=slow(r)?'Marcar como normal':'Marcar como lenta'}
 function closeV(){const v=q('#vw video');v.pause();v.removeAttribute('src');v.load();if(cu)URL.revokeObjectURL(cu);cu=null;q('#vw').classList.remove('on')}
 async function dl(r){const f=await fileOf(r),a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=r.name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),60000)}
-async function del(L){if(!L.length||!confirm('Excluir '+L.length+' vídeo(s)? Os arquivos serão apagados da pasta.'))return;const gone=new Set();
- for(const r of L){try{if(r.par)await r.par.removeEntry(r.name);gone.add(r);tx('readwrite',s=>s.delete(r.k)).catch(()=>{});S.items=S.items.filter(i=>!(i.kind==='video'&&i.name===r.name))}catch(e){log('Não apaguei '+r.name+': '+e.message,'bad')}}
+async function del(L){const disk=!!(window.__lumenDelDisk&&__lumenDelDisk());if(!L.length||!confirm(disk?'Excluir '+L.length+' vídeo(s)? Os arquivos serão APAGADOS da pasta.':'Tirar '+L.length+' vídeo(s) desta lista?\nOs arquivos continuam nas suas pastas (para ver de novo: Configurações › Backup e espaço › Mostrar de novo os vídeos tirados).'))return;const gone=new Set();
+ for(const r of L){try{if(disk&&r.par)await r.par.removeEntry(r.name);else if(window.__lumenVHide)__lumenVHide.add(r.k);gone.add(r);tx('readwrite',s=>s.delete(r.k)).catch(()=>{});S.items=S.items.filter(i=>!(i.kind==='video'&&i.name===r.name))}catch(e){log('Não apaguei '+r.name+': '+e.message,'bad')}}
  V.all=V.all.filter(r=>!gone.has(r));V.sel.clear();V.gm=false;try{gal()}catch(e){}render()}
 async function edit(r,pre){const f=await fileOf(r);let it=S.items.find(i=>i.kind==='video'&&i.name===r.name);
  if(!it){it={name:r.name,kind:'video',ct:r.t,sig:'lib|'+r.k,t:Date.now(),cls:'b',blob:f,url:URL.createObjectURL(f),size:r.size};add(it)}else if(!it.url){it.blob=f;it.url=URL.createObjectURL(f)}
@@ -6028,7 +6028,7 @@ applyLook();refresh();
   try{LRS.exists=true}catch(_){}
   ['#lrOn','#frW','#frH'].forEach(id=>{const e=$1(id);if(e)e.checked=true});
   try{modeUi();verUi();lrUi();lrPoll()}catch(_){}
-  countEd();say('✔ Lightroom automático ligado: cada foto vai para '+S.dir.name+'/LR_Entrada; o que o Lightroom exportar em '+S.dir.name+'/Editadas/Fotos sobe sozinho para o site. Agora instale e ligue o plug-in LUMEN 2.0 (aba Lightroom › Assistente do Lightroom).')}
+  countEd();say('✔ Lightroom automático ligado: cada foto vai para '+S.dir.name+'/LR_Entrada; o que o Lightroom exportar em '+S.dir.name+'/Editadas/Fotos sobe sozinho para o site. Agora instale e ligue o robô LUMEN 3.0 (aba Lightroom › Assistente do Lightroom).')}
  window.lrAuto=lrAuto;
  const lrCard=()=>{const d=document.createElement('div');d.className='c lrx';d.innerHTML=
   '<div class="l">Lightroom automático <small>câmera → Lightroom edita → site</small></div>'
@@ -7490,7 +7490,7 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
  async function pairStart(btn){
   if(!S.dir){const b=$1('#fs2b');if(b)b.click();lrpMsg('Primeiro escolha a pasta do evento (ela abre agora). Depois toque de novo aqui.');return}
   if(window.lrAuto)await lrAuto(btn);
-  C.lrPair=true;store();lrpMsg('✔ Ligado. A câmera fica no LUMEN (fotografando normalmente) e o Lightroom recebe cada foto pela pasta LR_Entrada. Agora no Lightroom Classic: instale o plug-in LUMEN 2.0 e ligue em Arquivo › Extras de plug-in › LUMEN: ligar. O Assistente do Lightroom confere tudo e corrige sozinho.');render()}
+  C.lrPair=true;store();lrpMsg('✔ Ligado. A câmera fica no LUMEN (fotografando normalmente) e o Lightroom recebe cada foto pela pasta LR_Entrada. Agora no Lightroom Classic: instale o robô LUMEN 3.0 e ligue em Arquivo › Extras de plug-in › LUMEN: ligar. O Assistente do Lightroom confere tudo e corrige sozinho.');render()}
  function lrpMsg(t){$$('.lrpM').forEach(e=>e.textContent=t)}
  function mkPair(){const d=mk('div','c v70c lrPair');d.innerHTML='<div class="v70h"><b>🅻 Câmera + Lightroom juntos</b><span class="pillS lrpSt">—</span></div>'
   +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Só um programa por vez consegue usar o cabo. Se o Lightroom usar a câmera pela <b>Captura conectada</b>, ele toma o USB do LUMEN: a câmera vai para a tela da bateria e as fotos param de ir para o site. O jeito certo é: <b>a câmera fica no LUMEN</b>, que entrega cada foto ao Lightroom por uma pasta. Assim você fotografa sem parar, o Lightroom edita e o site recebe.</div>'
@@ -7814,7 +7814,7 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
   const fold=!!(LRS.exists&&LA.ed&&C.lrOn);
   L.push(fold?{k:'cp',s:'ok',t:'Cada foto vai para a LR_Entrada',d:(LRS.n||0)+' esperando o Lightroom agora.'}:{k:'cp',s:'bad',t:C.lrOn?'Faltam as pastas LR_Entrada e Editadas/Fotos':'A cópia para o Lightroom está desligada',d:'Sem isso o Lightroom não recebe nada. Toque em Corrigir.',fix:'fold'});
   L.push(C.edWatch?{k:'up',s:'ok',t:'O que chega em Editadas/Fotos vai para o site',d:'Envio das editadas ligado.'}:{k:'up',s:'bad',t:'Envio das editadas desligado',d:'As fotos editadas ficariam só no computador. Toque em Corrigir.',fix:'up'});
-  L.push(ps==='on'?{k:'plg',s:'ok',t:'Plug-in LUMEN 2.0 ligado no Lightroom',d:(s.imported||0)+' importada(s) · '+(s.count||0)+' exportada(s)'+(s.last?' · última às '+s.last:'')}
+  L.push(ps==='on'?{k:'plg',s:'ok',t:'Robô LUMEN ligado no Lightroom',d:(s.imported||0)+' importada(s) · '+(s.count||0)+' exportada(s)'+(s.last?' · última às '+s.last:'')}
    :ps==='none'?{k:'plg',s:'bad',t:'O Lightroom ainda não respondeu',d:'Instale e ligue o plug-in (passos 1 a 4 abaixo). Se já ligou, você escolheu outra pasta: no Lightroom faça Arquivo › Extras de plug-in › LUMEN: ligar e escolha a pasta '+(S.dir?'"'+S.dir.name+'"':'do evento')+'.',how:1}
    :ps==='old'?{k:'plg',s:'bad',t:'Plug-in antigo (1.x) instalado',d:'Ele dependia da Importação automática da Adobe. Baixe o 2.0 abaixo, troque a pasta e, no Gerenciador de plug-ins, toque em Recarregar.',how:1}
    :ps==='off'?{k:'plg',s:'bad',t:'Plug-in desligado',d:'No Lightroom Classic: Arquivo › Extras de plug-in › LUMEN: ligar (importar + editar + exportar).'}
@@ -7889,7 +7889,7 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
   ['O Lightroom não funciona de jeito nenhum','Use o <b>Plano B</b> (cartão logo abaixo): suba o seu preset .xmp e escolha <b>Sempre o LUMEN</b>. O LUMEN edita cada foto na hora e manda ao site, sem Lightroom. Depois, com calma, toque em Devolver ao Lightroom se quiser a versão dele.'],
   ['Quero retocar uma foto à mão','Edite no Lightroom e use Arquivo › Exportar para a pasta Editadas/Fotos com o mesmo nome (substituir). O LUMEN vê que mudou e manda a nova versão.']];
  const HTML='<div class="v70h"><b>🧭 Assistente do Lightroom</b><span class="pillS laSt">—</span></div>'
-  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Com o <b>plug-in LUMEN 2.0</b> você não precisa da Importação automática da Adobe. Ele mesmo pega cada foto da <b>LR_Entrada</b>, importa numa <b>sessão</b>, aplica o seu <b>preset</b> e exporta o JPEG editado para <b>Editadas/Fotos</b>; o LUMEN manda ao site. Este assistente confere cada etapa a cada 4 s, corrige sozinho o que é do lado do LUMEN e diz exatamente o que fazer no Lightroom.</div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Com o <b>robô LUMEN 3.0</b> você não precisa da Importação automática da Adobe. Ele mesmo pega cada foto da <b>LR_Entrada</b>, importa numa <b>sessão</b>, aplica o seu <b>preset</b> e exporta o JPEG editado para <b>Editadas/Fotos</b>; o LUMEN manda ao site. Este assistente confere cada etapa a cada 4 s, corrige sozinho o que é do lado do LUMEN e diz exatamente o que fazer no Lightroom.</div>'
   +'<div class="v75pipe laPipe"><div data-k="in"><i>📥</i><b>0</b><small>LR_Entrada</small></div><u>→</u><div data-k="imp"><i>🅻</i><b>0</b><small>importadas</small></div><u>→</u><div data-k="pre"><i>🎨</i><b>–</b><small>preset</small></div><u>→</u><div data-k="ex"><i>📁</i><b>0</b><small>editadas</small></div><u>→</u><div data-k="up"><i>🌐</i><b>0</b><small>no site</small></div></div>'
   +'<div class="fx3a"><button type="button" class="f p laFix">🛠 Corrigir tudo sozinho</button><button type="button" class="f laTest">▶ Testar agora (10 a 30 s)</button></div>'
   +'<div class="sub wrap laMsg" data-ex="1" hidden style="white-space:normal;color:var(--ink);font-weight:600"></div>'
@@ -7903,7 +7903,7 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
   +'<label>Tamanho<select class="laMx"><option value="0">original</option><option value="4000">4000 px</option><option value="3000">3000 px</option><option value="2048">2048 px</option></select></label></div>'
   +'<div class="fx3a"><button type="button" class="f p laSend">Mandar para o Lightroom</button></div><div class="sub wrap laSendM" data-ex="1" style="white-space:normal"></div></details>'
   +'<details class="ex laInst" data-ex="1"><summary>⬇ Instalar ou atualizar o plug-in (4 passos, uma vez só)</summary>'
-  +'<div class="fx3a"><button type="button" class="f p laDl">⬇ Baixar o plug-in LUMEN 2.2</button></div>'
+  +'<div class="fx3a"><button type="button" class="f p laDl">⬇ Baixar o plug-in LUMEN 3.0</button></div>'
   +'<ol class="steps" data-ex="1"><li><b>Descompacte.</b><small>Dois cliques no LUMEN-AutoExport-1.lrplugin.zip em Downloads. Mova a pasta <b>LUMEN-AutoExport-1.lrplugin</b> para Documentos. <b>Já tinha o antigo?</b> Substitua a pasta antiga por esta.</small></li>'
   +'<li><b>Instale ou recarregue.</b><small>Lightroom Classic › Arquivo › <b>Gerenciador de plug-ins</b>. Novo: <b>Adicionar</b> › escolha a pasta. Já tinha: selecione LUMEN e toque em <b>Recarregar plug-in</b>. Concluído.</small></li>'
   +'<li><b>Desligue a Importação automática da Adobe.</b><small>Arquivo › Importação automática › <b>Ativar</b>: clique para ficar <b>sem ✓</b>. (Ela disputaria as fotos com o plug-in.)</small></li>'
@@ -7921,9 +7921,9 @@ log('Build v67: estúdio de cor (presets .xmp/.cube, HSL, color grading, auto-co
  function place(){const t=$1('#t-lr');if(!t)return;const p=t.querySelector(':scope>.lrPair'),h=t.querySelector(':scope>.v70ph'),mon=t.querySelector(':scope>#lrMon');if(p&&mon&&mon.previousElementSibling!==p)p.after(mon);const ref=(p&&mon)?mon:(p||h);if(ref&&A.previousElementSibling!==ref)ref.after(A);else if(!ref&&A.parentNode!==t)t.prepend(A);
   const more=$1('#lrMore');if(more&&!more.querySelector('.laOld')){const n=document.createElement('div');n.className='sub wrap laOld';n.setAttribute('data-ex','1');n.style.cssText='white-space:normal;color:var(--ink);background:rgba(255,190,40,.12);border-radius:10px;padding:8px 10px;margin:8px 0';n.innerHTML='⚠ <b>Com o plug-in LUMEN 2.0 não use a Importação automática da Adobe</b> (deixe desligada). Os guias abaixo são do método antigo ou manual; use só se não puder instalar o plug-in.';const s=more.querySelector('summary');s?s.after(n):more.prepend(n)}}
  /* versão curta dentro dos cartões "Câmera + Lightroom" (Conectar e Lightroom) */
- const SHORT='<div class="v70h" style="margin-top:12px"><b>⚡ Lightroom 100% sozinho (plug-in LUMEN 2.0)</b><span class="pillS lpSt">—</span></div>'
+ const SHORT='<div class="v70h" style="margin-top:12px"><b>⚡ Lightroom 100% sozinho (robô LUMEN 3.0)</b><span class="pillS lpSt">—</span></div>'
   +'<div class="sub wrap" data-ex="1" style="white-space:normal;color:var(--ink)">Sem Importação automática da Adobe: o plug-in importa da LR_Entrada numa sessão, aplica o preset e exporta para Editadas/Fotos. Você só fotografa.</div>'
-  +'<div class="fx3a"><button type="button" class="f p lpDl">⬇ Baixar o plug-in 2.2</button><button type="button" class="f lpGo">🧭 Abrir o assistente (corrige sozinho)</button></div>'
+  +'<div class="fx3a"><button type="button" class="f p lpDl">⬇ Baixar o plug-in 3.0</button><button type="button" class="f lpGo">🧭 Abrir o assistente (corrige sozinho)</button></div>'
   +'<div class="sub wrap lpS" data-ex="1" style="white-space:normal"></div>';
  function short(){$$('.lrPair .lrPlug').forEach(c=>{if(c.dataset.v78)return;c.dataset.v78=1;c.innerHTML=SHORT;c.querySelector('.lpDl').onclick=e=>dlPlugin(e.target);c.querySelector('.lpGo').onclick=()=>{goTab('lr');setTimeout(()=>A.scrollIntoView({behavior:'smooth'}),250)}});
   $$('.lrPair details.ex > summary').forEach(s=>{if(/Sem o plug-in/.test(s.textContent))s.textContent='Sem o plug-in: método antigo (Importação automática da Adobe)'})}
@@ -11922,7 +11922,7 @@ setState('idle');
  setInterval(wave,60000);setTimeout(wave,8000);
  setInterval(()=>{try{window.__homeOrder()}catch(_){}},3000);setTimeout(()=>window.__homeOrder(),1500);
  /* versão visível + aviso de versão nova no servidor */
- const BUILD=136;window.LUMEN_BUILD=BUILD;
+ const BUILD=139;window.LUMEN_BUILD=BUILD;
  try{document.title='LUMEN Campo · Fotógrafo v'+BUILD}catch(_){}
  const chip=document.createElement('div');chip.id='ver129';chip.textContent='versão '+BUILD;
  chip.style.cssText='position:fixed;left:10px;bottom:8px;z-index:9;font:600 11px system-ui;color:#9a9a9a;background:rgba(20,20,20,.85);border:1px solid #333;border-radius:8px;padding:3px 8px;pointer-events:none';
@@ -11991,7 +11991,8 @@ html{scroll-behavior:smooth}
 #t-ig .ig133act{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-top:12px}
 #t-ig .ig133msg{margin-top:8px;font-size:13px;min-height:18px}
 #t-ig .ig133row .f{width:auto!important;flex:0 0 auto}
-#pg133home[hidden]{display:none!important}
+#pg133home[hidden],.pg133[data-for][hidden]{display:none!important}
+.pg133[data-for]:has(+ section.tab:not(.on)){display:none!important}
 #map133 .mp133{display:grid;gap:10px;margin-top:10px}#map133 .mp133t{border:1px solid var(--line);border-radius:14px;padding:10px}
 #map133 .mp133h{background:none;border:0;color:var(--ink);font-weight:800;font-size:15px;cursor:pointer;padding:0 0 6px}#map133 .mp133h small{color:var(--mut);font-weight:600;margin-left:6px}
 #map133 .mp133p{display:flex;flex-wrap:wrap;gap:6px}#map133 .mp133p button{border:1px solid var(--line);background:#121217;color:var(--ink);border-radius:999px;padding:6px 10px;font-size:12.5px;cursor:pointer}
@@ -12059,14 +12060,24 @@ html{scroll-behavior:smooth}
  function setFold(c,v){if(c.tagName==='DETAILS'){c.open=!v;return}c.classList.toggle('f133',!!v);const k=keyOf(c);if(v)FOLD[k]=1;else delete FOLD[k];LS(FK,FOLD)}
  function foldBtns(sec){topCards(sec).forEach(c=>{if(c.tagName==='DETAILS')return;const hd=c.querySelector(':scope>.v70h');if(!hd)return;
    if(!c.dataset.f133i){c.dataset.f133i=1;if(FOLD[keyOf(c)])c.classList.add('f133')}
-   if(!hd.querySelector(':scope>.fold133')){const b=document.createElement('button');b.type='button';b.className='fold133';b.title='Recolher / abrir este cartão';b.setAttribute('aria-label','Recolher ou abrir este cartão');
-    b.onclick=e=>{e.preventDefault();e.stopPropagation();setFold(c,!c.classList.contains('f133'))};hd.appendChild(b)}})}
- function buildIndex(sec){if(!sec||sec.id==='t-pv'||sec.id==='t-ig')return;const L=topCards(sec).map(c=>[c,cardTitle(c)]).filter(x=>x[1]&&x[1].length>2);
-  const bars=[...sec.querySelectorAll('.pg133')].concat(sec.id==='t-home'?[...document.querySelectorAll('#pg133home')]:[]);let bar=bars.shift();bars.forEach(b=>b.remove());if(L.length<4){if(bar)bar.remove();return}
+   addFold(c);
+   /* v139: cartões que se redesenham sozinhos (ex.: Status ao vivo) perdiam o botão ▾ e a tela tremia; agora o botão volta na mesma hora, antes de aparecer na tela */
+   if(!c.__f133mo&&window.MutationObserver){c.__f133mo=new MutationObserver(()=>addFold(c));c.__f133mo.observe(c,{childList:true,subtree:true})}})}
+ function addFold(c){const hd=c.querySelector(':scope>.v70h');if(!hd||hd.querySelector(':scope>.fold133'))return;const b=document.createElement('button');b.type='button';b.className='fold133';b.title='Recolher / abrir este cartão';b.setAttribute('aria-label','Recolher ou abrir este cartão');
+    b.onclick=e=>{e.preventDefault();e.stopPropagation();setFold(c,!c.classList.contains('f133'))};hd.appendChild(b)}
+ function buildIndex(sec){if(!sec||sec.id==='t-pv'||sec.id==='t-ig')return;
+  /* v139: no Início a barra não aparece (ele já é um painel e os cartões mudam o tempo todo: a barra ficava piscando) */
+  if(sec.id==='t-home'){const hb=document.getElementById('pg133home');if(hb)hb.remove();sec.querySelectorAll(':scope>.pg133').forEach(b=>b.remove());return}
+  const L0=topCards(sec).map(c=>[c,cardTitle(c)]).filter(x=>x[1]&&x[1].length>2);
+  /* v139: só muda a barra quando a lista de cartões fica igual por 3 conferências seguidas (nada pisca) */
+  const k0=L0.map(x=>x[1].replace(/[\d.,:%]+/g,'#')).join('|'),D=buildIndex.D||(buildIndex.D={});const st=D[sec.id]||(D[sec.id]={k:'',n:0,L:null});
+  if(st.k!==k0){st.k=k0;st.n=1}else st.n++;
+  if(st.L&&st.n<3)return;st.L=L0;const L=L0;
+  const bid=sec.id==='t-home'?'pg133home':'pg133-'+sec.id;const bars=[...sec.querySelectorAll('.pg133')];{const ex=document.getElementById(bid);if(ex&&!bars.includes(ex))bars.unshift(ex)}let bar=bars.shift();bars.forEach(b=>b.remove());if(L.length<4){if(bar)bar.remove();return}
   if(!bar){bar=document.createElement('div');bar.className='pg133';bar.setAttribute('role','navigation');bar.setAttribute('aria-label','Partes desta página')}
-    if(sec.id==='t-home'){bar.id='pg133home';if(sec.previousElementSibling!==bar)sec.before(bar)}   /* no Início fica logo acima da página (o Início reorganiza os blocos dele sozinho) */
-  else{let ph=sec.querySelector(':scope>.v70ph');while(ph&&ph.nextElementSibling&&ph.nextElementSibling!==bar&&ph.nextElementSibling.classList.contains('camId'))ph=ph.nextElementSibling;   /* a situação da câmera fica no topo, a barra logo depois */
-   if(ph){if(ph.nextElementSibling!==bar)ph.after(bar)}else if(sec.firstElementChild!==bar)sec.prepend(bar)}
+  /* v137: a barra fica FORA da página, logo acima dela. Dentro, os cartões de cada aba brigavam com ela pelo lugar
+     e a barra ficava indo e voltando (Lightroom, Registro). Fora, ninguém mexe nela. */
+  bar.id=bid;bar.dataset.for=sec.id;if(sec.previousElementSibling!==bar)sec.before(bar);
   const G=[...(sec.id==='t-home'?[]:sec.querySelectorAll(':scope>.grp134:not([hidden])'))];
   const chips=G.length>=2?G.map(g=>[g,(g.dataset.icon||'')+' '+g.querySelector('b').textContent]):L;
   const sig=chips.map(x=>x[1]).join('|')+'#'+L.length;if(bar.dataset.sig===sig)return;
@@ -12076,7 +12087,8 @@ html{scroll-behavior:smooth}
    const y=c.getBoundingClientRect().top+scrollY-(bar.offsetHeight+70);scrollTo({top:Math.max(0,y),behavior:'smooth'});c.classList.add('v70flash');setTimeout(()=>c.classList.remove('v70flash'),1600)});
   bar.querySelector('[data-a=fold]').onclick=()=>L.forEach(([c])=>{if(c.tagName!=='DETAILS')setFold(c,true)});
   bar.querySelector('[data-a=open]').onclick=()=>L.forEach(([c])=>{if(c.tagName==='DETAILS')c.open=true;else setFold(c,false)})}
- function tidy(){const s=$1('section.tab.on');const hb=$1('#pg133home');if(hb)hb.hidden=!(s&&s.id==='t-home');if(!s)return;try{foldBtns(s);buildIndex(s)}catch(_){}}
+ function tidy(){const s=$1('section.tab.on');document.querySelectorAll('.pg133[data-for]').forEach(b=>{const h=!(s&&b.dataset.for===s.id);if(b.hidden!==h)b.hidden=h;
+   if(!h&&b.id!=='pg133home'){const cs=getComputedStyle(s),st=b.style;[['marginLeft',cs.marginLeft],['marginRight',cs.marginRight],['paddingLeft',cs.paddingLeft],['paddingRight',cs.paddingRight],['maxWidth',cs.maxWidth],['boxSizing',cs.boxSizing]].forEach(([k,v])=>{if(st[k]!==v)st[k]=v})}});   /* alinhada com a página */if(!s)return;try{foldBtns(s);buildIndex(s)}catch(_){}}
  setInterval(tidy,2500);setTimeout(tidy,2500);
  {const _g=window.goTab;if(_g){window.goTab=function(t){const r=_g.apply(this,arguments);setTimeout(tidy,250);if(t==='ig')setTimeout(igDraw,60);return r};try{goTab=window.goTab}catch(_){}}}
 
@@ -12590,7 +12602,7 @@ body.eco135 *{animation-play-state:paused!important;transition:none!important}
    const st=cstem(f.name),xt=XMPS.get(st)||(XMPS.size===1?[...XMPS.values()][0]:'');
    const r=await chartPreset(bm,{xmp:xt,name:/cartela/i.test(f.name)?'':f.name.replace(/\.[^.]+$/,''),file:f.name});if(!r)return false;
    chartDone(r);return true}finally{try{bm.close()}catch(_){}}}
- function chartDone(r){const box=CAL.querySelector('.c6st');const line='✔ <b>'+esc(r.name)+'</b> '+(r.updated?'atualizado':'criado')+' fiel ao Lightroom (diferença média '+r.err.toFixed(1)+' de 255'+(r.vig?' · vinheta '+Math.round(r.vig):'')+(r.grain?' · granulação '+Math.round(r.grain):'')+').';
+ function chartDone(r){window.__lastChart=r;const box=CAL.querySelector('.c6st');const line='✔ <b>'+esc(r.name)+'</b> '+(r.updated?'atualizado':'criado')+' fiel ao Lightroom (diferença média '+r.err.toFixed(1)+' de 255'+(r.vig?' · vinheta '+Math.round(r.vig):'')+(r.grain?' · granulação '+Math.round(r.grain):'')+').';
   if(box){box.innerHTML=(box.dataset.n?box.innerHTML+'<br>':'')+line+' <button type="button" class="f s c6v" data-id="'+esc(r.id)+'">🎬 Vídeos</button> <button type="button" class="f s c6p" data-id="'+esc(r.id)+'">📷 Fotos</button>';box.dataset.n=1;
    box.querySelectorAll('.c6v').forEach(b=>b.onclick=()=>{LUMENCOR.use(b.dataset.id,'video');b.textContent='✔ Vídeos'});box.querySelectorAll('.c6p').forEach(b=>b.onclick=()=>{LUMENCOR.use(b.dataset.id,'foto');b.textContent='✔ Fotos'})}
   L('🎯 Preset "'+r.name+'" '+(r.updated?'atualizado':'criado')+' igual ao Lightroom pela cartela (diferença média '+r.err.toFixed(1)+'/255)','ok')}
@@ -12668,9 +12680,158 @@ body.eco135 *{animation-play-state:paused!important;transition:none!important}
   }catch(e){say('Não deu: '+esc(e.message),'bad');GO.textContent=old}finally{GO.disabled=!PAIRS.length;if(!PAIRS.length)GO.textContent='🎯 Criar preset fiel'}};
  function placeCal(){const t=$1('#t-pre');if(!t)return;if(window.LUMEN_V134&&LUMEN_V134.GIVEUP.has(CAL))return;const h=document.getElementById('grp134-pre-0');if(h){if(CAL.parentNode!==t)h.after(CAL)}else if(!CAL.parentNode){const ph=t.querySelector(':scope>.v70ph');ph?ph.after(CAL):t.prepend(CAL)}}
  plan('pre',0,'cal135');placeCal();setTimeout(placeCal,2500);
- window.LUMEN_V135={eco:E,enter,fit,PAIRS,addFiles,chartTiff,chartRGB,readChart,chartPreset,scanCharts,ensureChart,CT,drawApp,checkMan,icon,man,state:()=>({conAt,last,MAN})};
+ window.LUMEN_V135={eco:E,enter,fit,PAIRS,addFiles,chartFile,autoFaithful,chartTiff,chartRGB,readChart,chartPreset,scanCharts,ensureChart,CT,drawApp,checkMan,icon,man,state:()=>({conAt,last,MAN})};
  L('Build v135: vídeos na aba Vídeos · economia de bateria sozinha · instalar como aplicativo · 🎯 preset igual ao Lightroom','ok');
 }catch(e){try{log('v135: '+e.message,'bad')}catch(_){}}})();
+</script>
+
+<script id="v137">
+/* ===== v137 · Tirar do LUMEN NUNCA apaga das suas pastas
+   - Excluir na Galeria/Vídeos tira só do LUMEN (galeria e fila de envio). O arquivo na pasta continua lá.
+   - Quem quiser apagar da pasta também liga a opção em Configurações › Backup e espaço (vem desligada).
+   - A barra "Nesta página" fica fora da página e não fica mais indo e voltando. ===== */
+(function(){try{
+ const K='lumen_deldisk136',KH='lumen_vhide136';
+ window.__lumenDelDisk=()=>{try{return localStorage.getItem(K)==='1'}catch(_){return false}};
+ let H=[];try{H=JSON.parse(localStorage.getItem(KH)||'[]')}catch(_){H=[]}
+ const VH=new Set(H);const svH=()=>{try{localStorage.setItem(KH,JSON.stringify([...VH].slice(-5000)))}catch(_){}};
+ window.__lumenVHide={has:k=>VH.has(k),add:k=>{VH.add(k);svH()},get size(){return VH.size},clear:()=>{VH.clear();svH()}};
+ const c=document.createElement('div');c.className='c v70c';c.id='del137';
+ function draw(){const on=__lumenDelDisk();c.innerHTML='<div class="v70h"><b>🗑 Ao tirar fotos e vídeos do LUMEN</b><span class="pillS '+(on?'warn':'ok')+'">'+(on?'apaga da pasta':'pasta protegida')+'</span></div>'
+  +'<div class="sub wrap" data-ex="1" style="white-space:normal">Quando você exclui na Galeria ou em Vídeos, o LUMEN tira da galeria e da fila de envio. <b>Os arquivos nas suas pastas ficam intactos</b>.</div>'
+  +'<label class="r"><input type="checkbox" class="d1"'+(on?' checked':'')+'><span>Apagar também da pasta do evento (não recomendado)</span></label>'
+  +(VH.size?'<div class="fx3a"><button type="button" class="f d2">↺ Mostrar de novo os '+VH.size+' vídeo(s) tirados da lista</button></div>':'');
+  c.querySelector('.d1').onchange=e=>{if(e.target.checked&&!confirm('Ligar: ao excluir no LUMEN, o arquivo também é APAGADO da sua pasta (original e versões).\n\nTem certeza?')){e.target.checked=false;return}try{localStorage.setItem(K,e.target.checked?'1':'0')}catch(_){}try{log(e.target.checked?'Excluir no LUMEN agora apaga também da pasta':'Excluir no LUMEN não mexe mais nas suas pastas','ok')}catch(_){}draw()};
+  const d2=c.querySelector('.d2');if(d2)d2.onclick=()=>{window.__lumenVHide.clear();try{log('Vídeos tirados da lista voltam na próxima atualização (aba Vídeos › Atualizar)','ok')}catch(_){}draw()}}
+ draw();
+ try{const P=window.LUMEN_V134&&LUMEN_V134.PLAN;if(P&&P.cfg&&P.cfg[4]&&!P.cfg[4][2].some(r=>r.id==='del137'))P.cfg[4][2].unshift({id:'del137'})}catch(_){}
+ const pl=()=>{const t=document.getElementById('t-cfg');if(t&&!c.parentNode)t.appendChild(c)};pl();setTimeout(pl,2000);
+ log('Build v137: excluir no LUMEN não apaga mais das suas pastas · barra "Nesta página" parada no lugar','ok');
+}catch(e){try{log('v137: '+e.message,'bad')}catch(_){}}})();
+</script>
+<style id="v138css">
+#fluxo .fx3s{counter-reset:fx138}
+#fluxo .fx3s>li>i{font-size:0!important}
+#fluxo .fx3s>li>i::before{counter-increment:fx138;content:counter(fx138);font-size:14px;font-style:normal;font-weight:800}
+#fs138 .pr138now{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap}
+#fs138 .pr138now img{width:22px;height:22px;border-radius:6px;object-fit:cover}
+li.pr138p{display:block!important;list-style:none;border:1px solid rgba(255,204,26,.35);border-radius:16px;padding:14px;margin:-4px 0 10px;background:rgba(255,204,26,.04)}
+li.pr138p[hidden]{display:none!important}
+.pr138p .m3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:640px){.pr138p .m3{grid-template-columns:1fr}}
+.pr138p .m3 button{text-align:left;border:1px solid var(--line);background:#121217;color:var(--ink);border-radius:12px;padding:10px 12px;cursor:pointer}
+.pr138p .m3 button b{display:block;font-size:14px}
+.pr138p .m3 button small{display:block;color:var(--mut);font-size:12px;margin-top:2px}
+.pr138p .m3 button.on,.pr138p .pg138 button.on{border-color:var(--acc);background:rgba(255,204,26,.12)}
+.pr138p .pg138{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.pr138p .pg138 button{flex:0 0 auto!important;width:auto!important;min-height:34px!important;height:auto!important;line-height:1.2!important;border-radius:999px!important;padding:7px 12px!important;border:1px solid var(--line);background:#121217;color:var(--ink);border-radius:999px;padding:7px 12px;font-size:13px;cursor:pointer}
+.pr138p .pg138 button em{font-style:normal;font-size:10px;font-weight:800;margin-left:6px;padding:1px 6px;border-radius:999px;background:rgba(52,199,89,.2);color:#6be38a}
+.pr138p .pg138 button em.ap{background:rgba(255,176,32,.18);color:#ffb020}
+.pr138p .tit{font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--acc);margin:12px 0 4px}
+.pr138p .to{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0}
+.pr138p .to label{display:flex;gap:6px;align-items:center}
+.pr138p .dz{border:2px dashed rgba(255,255,255,.2);border-radius:14px;padding:14px;text-align:center;cursor:pointer;margin:6px 0}
+.pr138p .dz.over{border-color:var(--acc);background:rgba(255,204,26,.06)}
+.pr138p .dz small{display:block;color:var(--mut);margin-top:4px;white-space:normal}
+.pr138p .msg{margin-top:8px;white-space:normal}
+</style>
+<script id="v138">
+/* ===== v138 · Passo 3 no "Fotografar e enviar": ESCOLHA O PRESET das fotos e dos vídeos
+   Ordem: 1 Câmera · 2 Pasta · 3 Preset · 4 Vídeos (pasta e como saem) · 5 Receber · 6 Conferir …
+   - Original da câmera, Melhorar sem preset, ou um preset (os seus, os fiéis ao Lightroom ou os prontos).
+   - Trazer do Lightroom: solte o .xmp, uma foto exportada do Lightroom, a cartela ou o par de fotos — o LUMEN
+     analisa ali mesmo e deixa fiel. Com o robô 3.0, ele refaz o preset fiel sozinho (mesmo nome). ===== */
+(function(){try{
+ const $1=s=>document.querySelector(s),esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const L=(m,k)=>{try{log(m,k)}catch(_){}};
+ const K='lumen_pr138';let P={mode:'',id:'',foto:true,video:true};try{Object.assign(P,JSON.parse(localStorage.getItem(K)||'{}'))}catch(_){}
+ const svP=()=>{try{localStorage.setItem(K,JSON.stringify(P))}catch(_){}};
+ const LC=()=>window.LUMENCOR,AEo=()=>window.LUMEN_V118&&LUMEN_V118.AE;
+ const raw=()=>{try{return LC().mineRaw()||[]}catch(_){return []}};
+ const fiel=p=>p&&(p.kind==='Fiel ao Lightroom'||(p.from&&(p.from.mode==='chart'||p.from.mode==='calib')));
+ const aprox=p=>p&&/Lightroom \(\.(xmp|lrtemplate)\)/.test(p.kind||'');
+ const nameOf=id=>{try{const p=(LC().list()||[]).find(x=>x.id===id);return p?p.name:''}catch(_){return ''}};
+ /* estado atual (lê o que já está ligado no LUMEN, para não mudar nada sozinho) */
+ function cur(){let ph=null,ae=AEo();try{ph=LC().photo()}catch(_){}
+  if(P.mode)return P;
+  const vid=ae&&ae.mode==='editar'&&ae.cor?ae.cor:'',pid=ph&&ph.on?ph.id:'';
+  if(pid||vid)return {mode:'preset',id:pid||vid,foto:!!pid,video:!!vid};
+  return {mode:(typeof RAWM==='function'&&!RAWM())||(ae&&ae.mode==='editar')?'auto':'orig',id:'',foto:true,video:true}}
+ function statusTxt(){const c=cur(),lr=typeof C!=='undefined'&&C.lrOn;
+  if(c.mode==='preset'&&c.id){const p=raw().find(x=>x.id===c.id);const nm=nameOf(c.id)||'(preset)';
+   return '<span class="pr138now">'+(p&&p.from&&p.from.thumb?'<img src="'+p.from.thumb+'" alt="">':'🎨')+'<b>'+esc(nm)+'</b>'+(fiel(p)?' <span class="pillS ok">fiel ao Lightroom</span>':aprox(p)?' <span class="pillS warn">aproximado</span>':'')+'</span> · '+[c.foto?'fotos':'',c.video?'vídeos':''].filter(Boolean).join(' e ')+(lr&&c.foto?' (fotos: o Lightroom usa o preset de mesmo nome)':'')}
+  if(c.mode==='auto')return '✨ Melhorar sem preset (automático)';
+  return '📷 Original da câmera, sem preset. Toque em <b>Escolher preset</b> para as fotos e vídeos já saírem editados.'}
+ /* aplica nas fotos e nos vídeos */
+ async function apply(n){P=Object.assign({},P,n);svP();const c=P,ae=AEo(),lr=typeof C!=='undefined'&&C.lrOn;let note=[];
+  if(c.foto){try{
+    if(c.mode==='preset'&&c.id){LC().use(c.id,'foto');if(!lr&&typeof RAWM==='function'&&RAWM()){C.mode='edit';note.push('modo Editar fotos ligado')}}
+    else{LC().photoOn(false);if(!lr){const want=c.mode==='auto'?'edit':'raw';if(C.mode!==want){C.mode=want}}}
+    if(typeof store==='function')store();try{modeUi()}catch(_){}try{verUi()}catch(_){}}catch(e){note.push('fotos: '+e.message)}}
+  if(c.video&&ae){try{const was=ae.mode;
+    if(c.mode==='preset'&&c.id){ae.cor=c.id;ae.mode='editar';ae.on=true;try{LC().use(c.id,'video')}catch(_){}}
+    else if(c.mode==='auto'){ae.cor='';ae.mode='editar';ae.on=true;ae.enh=ae.enh||1}
+    else{ae.cor='';ae.mode='girar'}
+    if(ae.mode==='editar'&&was!=='editar'){try{localStorage.setItem('lumen_ae118_t0',String(Date.now()))}catch(_){}}
+    try{localStorage.setItem('lumen_ae118',JSON.stringify(ae))}catch(_){}try{LUMEN_V118.paint()}catch(_){}}catch(e){note.push('vídeos: '+e.message)}}
+  L('🎨 Preset das fotos e vídeos: '+(c.mode==='preset'?nameOf(c.id):c.mode==='auto'?'melhorar sem preset':'original da câmera')+(note.length?' ('+note.join(', ')+')':''),'ok');
+  paint(true)}
+ /* trazer do Lightroom: .xmp, foto exportada, cartela ou par de fotos */
+ let busy=false,msg='';
+ async function bring(files){files=[...files];if(!files.length||busy)return;busy=true;msg='⏳ Analisando…';paint(true);
+  try{const xm=files.filter(f=>/\.xmp$/i.test(f.name)),im=files.filter(f=>/^image\//.test(f.type||'')||/\.(jpe?g|png|webp|heic|tiff?)$/i.test(f.name));let pick='',how='';
+   /* cartela (com o .xmp junto, se veio) */
+   const V=window.LUMEN_V135;const rest=[];
+   for(const f of im){let ok=false;window.__lastChart=null;try{if(V&&V.chartFile){if(xm.length)await V.addFiles(xm,'');ok=await V.chartFile(f)}}catch(_){}
+    if(ok&&window.__lastChart){pick=__lastChart.id;how='✔ "'+__lastChart.name+'" pela cartela: <b>fiel ao Lightroom</b>.'}else rest.push(f)}
+   if(!pick&&rest.length>=2&&V){/* par: original + Lightroom */const before=new Set(raw().map(p=>p.id));await V.addFiles(rest,'');const go=$1('#cal135 .go');if(go&&!go.disabled){go.click();for(let k=0;k<120;k++){await new Promise(r=>setTimeout(r,500));const nw=raw().find(p=>!before.has(p.id));if(nw){pick=nw.id;how='✔ "'+nw.name+'" pelo par de fotos: <b>fiel ao Lightroom</b>.';break}}}}
+   else if(!pick&&rest.length===1){const r=await LC().makeFT(rest[0]);pick=r.id;how='✔ "'+r.name+'" criado da foto '+(r.mode==='xmp'?'(configurações do Lightroom que vieram dentro da foto)':'(cor e luz da foto)')+'. Para ficar idêntico, mande também a cartela ou use o robô.'}
+   if(!pick&&xm.length){const before=new Set(raw().map(p=>p.id));await LC().importFiles(xm);const nw=raw().filter(p=>!before.has(p.id));
+    let name='';try{name=((await xm[0].text()).match(/<crs:Name>[\s\S]*?<rdf:li[^>]*>([^<]+)</)||[])[1]||''}catch(_){}
+    const p=nw[0]||raw().find(x=>name&&x.name.trim().toLowerCase()===name.trim().toLowerCase());
+    if(p){pick=p.id;how='✔ "'+p.name+'" chegou do Lightroom (aproximado).';
+     const st=window.LUMEN_V122&&LUMEN_V122.st&&LUMEN_V122.st();if(st&&st.mode==='import'&&V&&V.autoFaithful){V.autoFaithful().catch(()=>{});how+=' 🤖 Pedi ao robô do Lightroom para deixar <b>fiel</b>: em alguns segundos ele atualiza este mesmo preset sozinho.'}
+     else how+=' Para ficar <b>fiel</b>: toque em <b>🤖 Deixar fiel com o robô</b>, ou exporte a cartela (Presets › Deixar igual ao Lightroom › jeito B).'}}
+   if(pick){msg=how;await apply({mode:'preset',id:pick})}else msg='✖ Não reconheci. Mande o preset .xmp do Lightroom, uma foto exportada do Lightroom, a cartela ou o par de fotos (original + Lightroom).'}
+  catch(e){msg='✖ '+esc(e.message)}finally{busy=false;paint(true)}}
+ /* passo na lista */
+ const li=document.createElement('li');li.id='fs138';li.dataset.s='';
+ const pan=document.createElement('li');pan.className='pr138p';pan.hidden=true;
+ let open=false,sig='';
+ function paint(force){const c=cur(),mine=raw(),all=(()=>{try{return LC().list()||[]}catch(_){return []}})();
+  li.dataset.s=c.mode==='preset'&&c.id?'ok':c.mode==='auto'?'ok':'';
+  const s=JSON.stringify([c,mine.map(p=>p.id+p.name+p.kind),open,msg,busy,typeof C!=='undefined'&&C.lrOn]);if(s===sig&&!force)return;sig=s;
+  li.innerHTML='<i>3</i><div><b>Preset das fotos e vídeos</b><span>'+statusTxt()+'</span></div><div class="fx3b2"><button type="button" class="f'+(c.mode==='preset'?'':' p')+' pr138o">'+(open?'Fechar':'🎨 Escolher preset')+'</button></div>';
+  li.querySelector('.pr138o').onclick=()=>{open=!open;paint(true)};
+  pan.hidden=!open;if(!open)return;
+  const ae=document.activeElement;if(!force&&ae&&pan.contains(ae))return;
+  const fav=mine.slice().sort((a,b)=>(fiel(b)?1:0)-(fiel(a)?1:0)||(b.t||0)-(a.t||0)),built=all.filter(p=>!p.mine);
+  const btn=p=>'<button type="button" data-id="'+esc(p.id)+'" class="'+(c.mode==='preset'&&c.id===p.id?'on':'')+'">'+esc(p.name)+(fiel(p)?'<em>fiel</em>':aprox(p)?'<em class="ap">aprox.</em>':'')+'</button>';
+  pan.innerHTML='<div class="m3">'
+   +'<button type="button" data-m="orig" class="'+(c.mode==='orig'?'on':'')+'"><b>📷 Original da câmera</b><small>Sem preset e sem edição (o Lightroom pode editar depois)</small></button>'
+   +'<button type="button" data-m="auto" class="'+(c.mode==='auto'?'on':'')+'"><b>✨ Melhorar sem preset</b><small>Nitidez e ajustes automáticos, sem mudar a cor</small></button>'
+   +'<button type="button" data-m="preset" class="'+(c.mode==='preset'?'on':'')+'"><b>🎨 Com um preset</b><small>Escolha abaixo ou traga do Lightroom</small></button></div>'
+   +'<div class="to"><label><input type="checkbox" class="t1"'+(P.foto!==false?' checked':'')+'> Aplicar nas fotos</label><label><input type="checkbox" class="t2"'+(P.video!==false?' checked':'')+'> Aplicar nos vídeos</label></div>'
+   +'<div class="tit">Seus presets</div><div class="pg138">'+(fav.length?fav.map(btn).join(''):'<span class="sub">Nenhum ainda. Traga do Lightroom aqui embaixo.</span>')+'</div>'
+   +'<div class="tit">Trazer do Lightroom (fica fiel)</div>'
+   +'<div class="dz" tabindex="0" role="button"><b>Solte aqui o seu preset do Lightroom</b><small>.xmp do preset · uma foto exportada do Lightroom · a cartela · ou o par (original + Lightroom). O LUMEN analisa na hora e deixa a cor igual à do Lightroom.</small></div>'
+   +'<div class="fx3a"><button type="button" class="f rb">🤖 Deixar fiel com o robô (todos os presets)</button><button type="button" class="f mo">Mais opções (Presets)</button></div>'
+   +'<details><summary class="sub">Presets prontos do LUMEN ('+built.length+')</summary><div class="pg138">'+built.map(btn).join('')+'</div></details>'
+   +(msg?'<div class="sub wrap msg" data-ex="1">'+msg+'</div>':'');
+  pan.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{const m=b.dataset.m;if(m==='preset'){if(c.id||P.id){apply({mode:'preset',id:c.id||P.id})}else{msg='Escolha um preset da lista ou traga do Lightroom.';paint(true)}return}apply({mode:m,id:''})});
+  pan.querySelectorAll('.pg138 [data-id]').forEach(b=>b.onclick=()=>apply({mode:'preset',id:b.dataset.id}));
+  pan.querySelector('.t1').onchange=e=>{P.foto=e.target.checked;svP();if(P.mode)apply({})};pan.querySelector('.t2').onchange=e=>{P.video=e.target.checked;svP();if(P.mode)apply({})};
+  const dz=pan.querySelector('.dz');dz.onclick=()=>{const i=document.createElement('input');i.type='file';i.multiple=true;i.accept='image/*,.xmp';i.onchange=()=>bring(i.files);i.click()};
+  dz.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();dz.click()}};
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add('over')};dz.ondragleave=()=>dz.classList.remove('over');dz.ondrop=e=>{e.preventDefault();e.stopPropagation();dz.classList.remove('over');bring(e.dataTransfer&&e.dataTransfer.files||[])};
+  pan.querySelector('.rb').onclick=()=>{const V=window.LUMEN_V135;if(V&&V.autoFaithful){V.autoFaithful().catch(()=>{});msg='🤖 Pedido enviado ao robô do Lightroom 3.0: cada preset seu volta fiel, com o mesmo nome (deixe o Lightroom aberto). O andamento aparece em Presets › Deixar igual ao Lightroom.'}else msg='O robô ainda está carregando.';paint(true)};
+  pan.querySelector('.mo').onclick=()=>{try{goTab('pre')}catch(_){}setTimeout(()=>{const c=document.getElementById('cal135');c&&c.scrollIntoView({behavior:'smooth',block:'start'})},300)}}
+ function place(){const f2=$1('#fs2');if(!f2||!f2.parentNode)return;if(f2.nextElementSibling!==li)f2.after(li);if(li.nextElementSibling!==pan)li.after(pan)}
+ place();paint(true);
+ setInterval(()=>{place();if(!$1('#t-home.on'))return;paint()},2000);
+ window.LUMEN_V138={apply,bring,cur,paint:()=>paint(true),open:()=>{open=true;paint(true)}};
+ log('Build v138: passo 3 "Preset das fotos e vídeos" no Fotografar e enviar (traz do Lightroom e deixa fiel)','ok');
+}catch(e){try{log('v138: '+e.message,'bad')}catch(_){}}})();
 </script>
 
 </body>
