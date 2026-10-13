@@ -2,8 +2,10 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<script id="v140boot">(function(){try{var p=sessionStorage.getItem('lumen_v140_apply');if(!p)return;sessionStorage.removeItem('lumen_v140_apply');var o=JSON.parse(p),n=0;for(var k in o){try{localStorage.setItem(k,o[k]);n++}catch(e){}}sessionStorage.setItem('lumen_v140_done',String(n))}catch(e){}})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v139</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v141</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -11922,7 +11924,7 @@ setState('idle');
  setInterval(wave,60000);setTimeout(wave,8000);
  setInterval(()=>{try{window.__homeOrder()}catch(_){}},3000);setTimeout(()=>window.__homeOrder(),1500);
  /* versão visível + aviso de versão nova no servidor */
- const BUILD=139;window.LUMEN_BUILD=BUILD;
+ const BUILD=141;window.LUMEN_BUILD=BUILD;
  try{document.title='LUMEN Campo · Fotógrafo v'+BUILD}catch(_){}
  const chip=document.createElement('div');chip.id='ver129';chip.textContent='versão '+BUILD;
  chip.style.cssText='position:fixed;left:10px;bottom:8px;z-index:9;font:600 11px system-ui;color:#9a9a9a;background:rgba(20,20,20,.85);border:1px solid #333;border-radius:8px;padding:3px 8px;pointer-events:none';
@@ -12834,5 +12836,480 @@ li.pr138p[hidden]{display:none!important}
 }catch(e){try{log('v138: '+e.message,'bad')}catch(_){}}})();
 </script>
 
+<style id="v140css">
+/* ===== v140 · INTERVALO + Cofre de dados + Guardião de conexão + Pasta única por módulos (tudo aditivo) ===== */
+#ivStrip{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px;cursor:pointer}
+#ivStrip span{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:5px 10px;border-radius:99px;background:var(--card);border:1px solid var(--line);color:var(--mut)}
+#ivStrip i{width:8px;height:8px;border-radius:50%;background:var(--mut);display:inline-block}
+#ivStrip [data-s=ok] i{background:var(--ok)}#ivStrip [data-s=warn] i{background:var(--warn)}#ivStrip [data-s=bad] i{background:var(--bad)}
+#ivStrip [data-s=bad]{color:var(--ink);border-color:var(--bad)}
+nav button.ivPulse{animation:ivp 1.4s infinite}
+@keyframes ivp{50%{box-shadow:inset 0 0 0 2px var(--acc)}}
+#t-int .ivV{border-radius:var(--r,18px);padding:16px;margin-bottom:10px;border:1px solid var(--line);background:var(--card)}
+#t-int .ivV b.big{display:block;font-size:22px;margin:2px 0 4px}
+#t-int .ivV[data-s=ok]{border-color:var(--ok);background:#0f2517}
+#t-int .ivV[data-s=warn]{border-color:var(--warn);background:#2a2008}
+#t-int .ivV[data-s=bad]{border-color:var(--bad);background:#2c110e}
+#t-int .ivPh{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:3px 9px;border-radius:99px;background:rgba(255,255,255,.1)}
+#t-int .ivIt{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+#t-int .ivIt:last-child{border:0}
+#t-int .ivIt>i{flex:0 0 10px;height:10px;border-radius:50%;margin-top:5px;background:var(--mut)}
+#t-int .ivIt[data-s=ok]>i{background:var(--ok)}#t-int .ivIt[data-s=warn]>i{background:var(--warn)}#t-int .ivIt[data-s=bad]>i{background:var(--bad)}
+#t-int .ivIt div{flex:1;min-width:0;font-size:14px}
+#t-int .ivIt small{display:block;color:var(--mut);font-size:12px;margin-top:2px;white-space:normal}
+#t-int .ivIt button{padding:7px 11px;font-size:12px;flex:0 0 auto}
+#t-int .ivM{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+#t-int .ivM small{grid-column:1/3;color:var(--mut);font-size:12px}
+#t-int .ivM em{font-style:normal;font-size:11px;font-weight:800;padding:2px 9px;border-radius:99px;align-self:start}
+#t-int .ivM[data-s=use] em{background:#12301b;color:var(--ok)}
+#t-int .ivM[data-s=opt] em{background:#26262b;color:var(--mut)}
+#t-int .ivM[data-s=no] em{background:#33150f;color:#ff8a7a}
+#t-int .ivlog{font:12px/1.5 ui-monospace,monospace;color:var(--mut);white-space:pre-wrap;max-height:160px;overflow:auto;margin-top:8px}
+#t-int .ivmsg{font-size:13px;color:var(--ink);margin-top:8px;white-space:normal}
+#t-int table.ivT{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+#t-int table.ivT td,#t-int table.ivT th{padding:6px 4px;border-bottom:1px solid var(--line);text-align:left}
+#t-int table.ivT td:last-child,#t-int table.ivT th:last-child{text-align:right}
+#t-int details>summary{cursor:pointer}
+</style>
+<style id="v141css">
+/* ===== v141 · UM SÓ PADRÃO de cartão, cabeçalho, pílula e botão de recolher (todas as abas, tema claro e escuro) ===== */
+:root{--u-r:18px;--u-bd:rgba(255,255,255,.10);--u-sh:0 1px 0 rgba(255,255,255,.04) inset,0 10px 28px rgba(0,0,0,.32);--u-bg:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01)),var(--card);--u-tog:rgba(255,255,255,.07);--u-in:color-mix(in srgb,var(--ink) 5%,var(--card))}
+[data-theme=light]{--u-bd:rgba(20,20,30,.11);--u-sh:0 1px 2px rgba(20,20,30,.05),0 8px 22px rgba(20,20,30,.07);--u-bg:var(--card);--u-tog:rgba(20,20,30,.06)}
+/* cartão de nível superior = .c ou details.fold que NÃO está dentro de outro cartão (minicartões de números ficam como estão) */
+html:root body section.tab :is(.c,details.fold):not(.c .c):not(details .c):not(.g2>.c):not(.g3>.c):not(.g4>.c):not(.k){
+ border:1px solid var(--u-bd)!important;border-radius:var(--u-r)!important;background:var(--u-bg)!important;box-shadow:var(--u-sh)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html:root body section.tab details.fold:not(.c details):not(details details){padding:16px!important;margin-bottom:10px}
+html:root body section.tab :is(.c,details.fold):not(.c .c):not(details .c):hover{border-color:color-mix(in srgb,var(--acc) 35%,var(--u-bd))!important}
+/* cartão dentro de "details.fold" vira só o corpo (acaba o cartão dentro de cartão) */
+html:root body section.tab details.fold>.c,html:root body section.tab details.fold>div.g4,html:root body section.tab details.fold>.cntBar{border:0!important;box-shadow:none!important;background:none!important;padding:0!important;border-radius:0!important;margin:0 0 10px!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html:root body section.tab details.fold>:last-child{margin-bottom:0!important}
+/* ---------- cabeçalho único: [título] [pílula] [botão] ---------- */
+html:root body section.tab .c>.v70h{display:flex!important;flex-wrap:nowrap!important;align-items:center;gap:10px;min-height:44px;margin:0 0 10px!important;padding:0}
+html:root body section.tab .c>.v70h>b{flex:1 1 0;min-width:0;font-size:17px;font-weight:800;letter-spacing:-.01em;line-height:1.2}
+html:root body section.tab .c>.v70h>.pillS{flex:0 0 auto;margin:0!important;white-space:nowrap}
+html:root body section.tab .c>.v70h>button:not(.fold133){flex:0 0 auto;margin:0}
+html:root body section.tab .fold133{flex:0 0 32px!important;width:32px!important;height:32px!important;margin:0!important;border-radius:10px!important;border:1px solid var(--u-bd)!important;background:var(--u-tog)!important;color:var(--mut)!important;font-size:13px!important;display:inline-grid;place-items:center}
+html:root body section.tab .c.f133{padding-bottom:16px!important}
+html:root body section.tab .c.f133>.v70h{margin-bottom:0!important}
+html:root body section.tab .c.f133>.v70h::after{content:none!important}
+/* ---------- mesma coisa nos cartões "details" (summary = cabeçalho) ---------- */
+html:root body section.tab :is(details.fold,details.c)>summary{display:grid!important;grid-template-columns:minmax(0,1fr) 32px;column-gap:10px;align-items:center;min-height:44px;padding:0!important;margin:0!important;border:0!important;border-left:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;list-style:none;cursor:pointer;color:var(--ink)}
+html:root body section.tab :is(details.fold,details.c)>summary::-webkit-details-marker{display:none}
+html:root body section.tab :is(details.fold,details.c)>summary::marker{content:""}
+html:root body section.tab :is(details.fold,details.c)>summary>*{grid-column:1;min-width:0}
+html:root body section.tab :is(details.fold,details.c)>summary>h2,html:root body section.tab :is(details.fold,details.c)>summary>b{margin:0!important;font-size:17px!important;font-weight:800!important;letter-spacing:-.01em;line-height:1.2;display:block}
+html:root body section.tab :is(details.fold,details.c)>summary>h2 small{font-size:12px;font-weight:700;margin-left:6px}
+html:root body section.tab :is(details.fold,details.c)>summary::after{content:"▸";grid-column:2;grid-row:1/span 3;align-self:center;justify-self:end;width:32px;height:32px;border-radius:10px;border:1px solid var(--u-bd);background:var(--u-tog);color:var(--mut);font-size:13px;display:grid;place-items:center;transform:none!important}
+html:root body section.tab :is(details.fold,details.c)[open]>summary::after{content:"▾"}
+html:root body section.tab :is(details.fold,details.c)[open]>summary{margin-bottom:10px!important}
+/* ---------- "Última foto" sem brilho próprio ---------- */
+html:root body section.tab #hero{border:1px solid var(--u-bd)!important;box-shadow:var(--u-sh)!important;background:var(--u-bg)!important}
+/* ---------- "Saiba mais" e quadros internos: seguem o tema ---------- */
+html:root body details.ex,html:root body .c details.ex{background:var(--u-in)!important;border:1px solid var(--line)!important;border-radius:12px!important}
+html:root body details.ex>summary{color:var(--ink)!important;font-weight:700}
+</style>
+<script id="v140">
+(function(){try{
+if(window.LUMEN_V140)return;
+const D=document,$1=s=>D.querySelector(s);
+const G=(f,d)=>{try{const r=f();return r===undefined?d:r}catch(_){return d}};
+const esc=t=>String(t==null?'':t).replace(/[<>&"]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+const SS=()=>G(()=>S,{}),CC=()=>G(()=>C,{});
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const say=(t,k)=>G(()=>log(t,k||''));
+const LS=(k,v)=>{try{if(v===undefined){const x=localStorage.getItem(k);return x?JSON.parse(x):null}localStorage.setItem(k,JSON.stringify(v))}catch(_){return null}};
+const fmtB=n=>n>=1073741824?(n/1073741824).toFixed(2)+' GB':n>=1048576?(n/1048576).toFixed(1)+' MB':n>=1024?Math.round(n/1024)+' KB':(n||0)+' B';
+const fmtD=ms=>{ms=Math.max(0,ms|0);const s=Math.round(ms/1000);if(s<60)return s+'s';const m=Math.floor(s/60);if(m<60)return m+' min '+(s%60)+'s';return Math.floor(m/60)+'h '+(m%60)+'min'};
+const hhmm=t=>t?new Date(t).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}):'—';
+const dayStr=()=>new Date().toISOString().slice(0,10);
+const dlJson=(name,obj)=>{const a=D.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(obj)],{type:'application/json'}));a.download=name;D.body.appendChild(a);a.click();setTimeout(()=>{try{URL.revokeObjectURL(a.href)}catch(_){}a.remove()},4000)};
+
+/* ---------- IndexedDB próprio (nunca mexe nos bancos do app) ---------- */
+let _db=null;
+function idb(){return _db||(_db=new Promise((res,rej)=>{try{const r=indexedDB.open('lumen-v140',1);r.onupgradeneeded=()=>{const d=r.result;[['ls','k'],['snap','id'],['h','id']].forEach(([n,kp])=>{if(!d.objectStoreNames.contains(n))d.createObjectStore(n,{keyPath:kp})})};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);r.onblocked=()=>rej(new Error('bloqueado'))}catch(e){rej(e)}}).catch(e=>{_db=null;throw e}))}
+async function tx(st,mode,fn){const d=await idb();return new Promise((res,rej)=>{const t=d.transaction(st,mode);let out;try{out=fn(t.objectStore(st),t)}catch(e){rej(e);return}t.oncomplete=()=>res(out&&typeof out==='object'&&'result' in out?out.result:out);t.onerror=()=>rej(t.error);t.onabort=()=>rej(t.error)})}
+
+/* ---------- Espelho do localStorage (aditivo: nunca apaga do espelho sozinho) ---------- */
+const RX=/^lumen/i,SKIPK=/^lumen_v140_(apply|done|note|rl)$/;
+const sigOf=v=>{let h=5381;for(let i=0;i<v.length;i++)h=((h<<5)+h+v.charCodeAt(i))|0;return v.length+':'+h};
+function lsAll(){const o={};try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(RX.test(k)&&!SKIPK.test(k))o[k]=localStorage.getItem(k)}}catch(_){}return o}
+const M={last:0,n:0,snapAt:0,snapN:0,err:'',snaps:0};const cache=new Map();let dirtyT=0;
+async function pruneSnaps(){const ks=(await tx('snap','readonly',s=>s.getAllKeys()))||[];const nums=ks.filter(k=>typeof k==='number').sort((a,b)=>b-a);M.snaps=Math.min(nums.length,4);const old=nums.slice(4);if(old.length)await tx('snap','readwrite',s=>{old.forEach(k=>s.delete(k))})}
+async function syncMirror(force){try{const cur=lsAll(),keys=Object.keys(cur),ch=[];for(const k of keys){const sg=sigOf(cur[k]);if(force||cache.get(k)!==sg)ch.push([k,sg])}
+ if(ch.length){await tx('ls','readwrite',s=>{ch.forEach(([k])=>s.put({k,v:cur[k],t:Date.now()}))});ch.forEach(([k,sg])=>cache.set(k,sg))}
+ M.last=Date.now();M.n=keys.length;M.err='';
+ if(force||Date.now()-M.snapAt>10*60e3){if(keys.length>=Math.max(1,Math.floor((M.snapN||0)*.5))){await tx('snap','readwrite',s=>{s.put({id:Date.now(),t:Date.now(),n:keys.length,ls:cur})});M.snapAt=Date.now();M.snapN=keys.length;await pruneSnaps()}}
+ return{changed:ch.length,n:keys.length}}catch(e){M.err=e&&e.message||'erro';return{changed:0,n:0,err:M.err}}}
+const markDirty=()=>{clearTimeout(dirtyT);dirtyT=setTimeout(()=>syncMirror(false),1200)};
+try{const P=Storage.prototype,si=P.setItem,ri=P.removeItem;
+ P.setItem=function(k){const r=si.apply(this,arguments);try{if(this===localStorage&&RX.test(k))markDirty()}catch(_){}return r};
+ P.removeItem=function(k){const r=ri.apply(this,arguments);try{if(this===localStorage&&RX.test(k)){cache.delete(k);tx('ls','readwrite',s=>s.delete(k)).catch(()=>{})}}catch(_){}return r}}catch(_){}
+
+/* ---------- Restauração inteligente ---------- */
+const isEmpty=v=>v==null||v===''||v===false||(Array.isArray(v)&&!v.length)||(typeof v==='object'&&!Array.isArray(v)&&!Object.keys(v).length);
+const isDefaultish=s=>{try{const o=JSON.parse(s);return!(o&&(o.ev||o.eps||o.pair||o.tk))}catch(_){return true}};
+function mergeVal(cur,bak,prefer){if(cur==null)return bak;if(cur===bak)return null;let a,b;try{a=JSON.parse(cur);b=JSON.parse(bak)}catch(_){return prefer==='backup'?bak:null}
+ const ob=x=>x&&typeof x==='object'&&!Array.isArray(x);
+ if(ob(a)&&ob(b)){const o={};for(const x of new Set([...Object.keys(a),...Object.keys(b)])){const av=a[x],bv=b[x];o[x]=av===undefined?bv:bv===undefined?av:prefer==='backup'?bv:(isEmpty(av)?bv:av)}const s=JSON.stringify(o);return s===cur?null:s}
+ if(Array.isArray(a)&&Array.isArray(b))return prefer==='backup'?bak:(a.length?null:bak);
+ return prefer==='backup'?bak:(isEmpty(a)?bak:null)}
+function planRestore(ls,prefer){const out={};for(const k of Object.keys(ls||{})){if(!RX.test(k)||SKIPK.test(k)||typeof ls[k]!=='string')continue;const r=mergeVal(localStorage.getItem(k),ls[k],prefer);if(r!=null)out[k]=r}return out}
+function applyAndReload(map,note){let size=0;const small={},big={};for(const k in map){const l=map[k].length;if(size+l<3.5e6){small[k]=map[k];size+=l}else big[k]=map[k]}
+ for(const k in big){try{localStorage.setItem(k,big[k])}catch(_){}}
+ try{sessionStorage.setItem('lumen_v140_apply',JSON.stringify(small));sessionStorage.setItem('lumen_v140_note',note||'')}catch(e){for(const k in small){try{localStorage.setItem(k,small[k])}catch(_){}}}
+ setTimeout(()=>{try{location.reload()}catch(_){}},700)}
+async function preSnap(){try{await tx('snap','readwrite',s=>{s.put({id:'prerestore',t:Date.now(),n:0,ls:lsAll()})})}catch(_){}}
+async function restoreLS(ls,prefer,note){const plan=planRestore(ls,prefer),n=Object.keys(plan).length;if(!n)return{n:0};await preSnap();applyAndReload(plan,note||'Dados restaurados');return{n}}
+async function undoRestore(){const r=await tx('snap','readonly',s=>s.get('prerestore'));if(!r||!r.ls)return{n:0};const map={};for(const k of Object.keys(r.ls))map[k]=r.ls[k];applyAndReload(map,'Restauração desfeita');return{n:Object.keys(map).length}}
+async function listSnaps(){const rows=(await tx('snap','readonly',s=>s.getAll()))||[];return rows.filter(r=>typeof r.id==='number').sort((a,b)=>b.id-a.id).map(r=>({id:r.id,t:r.t,n:r.n}))}
+async function restoreSnap(id){const r=await tx('snap','readonly',s=>s.get(id));if(!r)return{n:0};return restoreLS(r.ls,'backup','Ponto de '+new Date(r.t).toLocaleString('pt-BR')+' restaurado')}
+async function bootCheck(){try{const rows=(await tx('ls','readonly',s=>s.getAll()))||[];if(!rows.length)return{n:0};const add={};
+ for(const r of rows){if(SKIPK.test(r.k))continue;const cur=localStorage.getItem(r.k);if(cur==null)add[r.k]=r.v;else if(r.k==='lumen2'&&isDefaultish(cur)&&!isDefaultish(r.v))add[r.k]=r.v}
+ const n=Object.keys(add).length;if(!n)return{n:0};
+ const crit=!!(add.lumen2),tries=+sessionStorage.getItem('lumen_v140_rl')||0;
+ if(crit&&tries<1){sessionStorage.setItem('lumen_v140_rl','1');await preSnap();applyAndReload(add,'Dados recuperados do espelho do navegador ('+n+' item(ns))');return{n,reload:true}}
+ for(const k in add){try{localStorage.setItem(k,add[k])}catch(_){}}return{n}}catch(_){return{n:0}}}
+
+/* ---------- Backup completo (localStorage + dados leves dos bancos lumen-*) ---------- */
+const SKIP={};
+const isBlob=v=>(typeof Blob!=='undefined'&&v instanceof Blob);
+const isHandle=v=>(typeof FileSystemHandle!=='undefined'&&v instanceof FileSystemHandle);
+const b64=u8=>{let s='';for(let i=0;i<u8.length;i+=8192)s+=String.fromCharCode.apply(null,u8.subarray(i,i+8192));return btoa(s)};
+function enc(v,d){d=d||0;if(v==null||typeof v==='number'||typeof v==='string'||typeof v==='boolean')return v;if(d>8||typeof v==='function'||typeof v==='symbol'||isBlob(v)||isHandle(v))throw SKIP;
+ if(v instanceof ArrayBuffer){if(v.byteLength>262144)throw SKIP;return{__t:'ArrayBuffer',b:b64(new Uint8Array(v))}}
+ if(ArrayBuffer.isView(v)){if(v.byteLength>262144)throw SKIP;return{__t:v.constructor.name,b:b64(new Uint8Array(v.buffer,v.byteOffset,v.byteLength))}}
+ if(v instanceof Date)return{__t:'Date',v:v.getTime()};
+ if(Array.isArray(v))return v.map(x=>enc(x,d+1));
+ if(v instanceof Map)return{__t:'Map',v:[...v].map(([a,b])=>[enc(a,d+1),enc(b,d+1)])};
+ if(v instanceof Set)return{__t:'Set',v:[...v].map(x=>enc(x,d+1))};
+ const o={};for(const k of Object.keys(v))o[k]=enc(v[k],d+1);return o}
+function dec(v){if(v==null||typeof v!=='object')return v;if(Array.isArray(v))return v.map(dec);
+ if(v.__t){const t=v.__t;if(t==='Date')return new Date(v.v);if(t==='Map')return new Map(v.v.map(([a,b])=>[dec(a),dec(b)]));if(t==='Set')return new Set(v.v.map(dec));
+  const u8=Uint8Array.from(atob(v.b),c=>c.charCodeAt(0));if(t==='ArrayBuffer')return u8.buffer;const T=globalThis[t];return T&&T!==Uint8Array?new T(u8.buffer):u8}
+ const o={};for(const k of Object.keys(v))o[k]=dec(v[k]);return o}
+const openExisting=name=>new Promise((res,rej)=>{const r=indexedDB.open(name);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);r.onupgradeneeded=()=>{try{r.transaction.abort()}catch(_){}rej(new Error('não existe'))}});
+async function dbNames(){try{return((await indexedDB.databases())||[]).map(d=>d.name).filter(n=>n&&/^lumen/i.test(n)&&n!=='lumen-v140')}catch(_){return[]}}
+async function dumpFull(){const out={app:'LUMEN Campo',kind:'v140-full',v:2,t:new Date().toISOString(),device:navigator.userAgent,ls:lsAll(),idb:{},skipped:{}};
+ for(const name of await dbNames()){let db;try{db=await openExisting(name)}catch(_){continue}const o={};
+  for(const sn of[...db.objectStoreNames]){const rows=[];let kp=null;await new Promise(res=>{try{const t=db.transaction(sn,'readonly'),st=t.objectStore(sn);kp=st.keyPath;const rq=st.openCursor();rq.onsuccess=()=>{const c=rq.result;if(!c||rows.length>=20000)return;try{rows.push({k:enc(c.key),v:enc(c.value)})}catch(e){if(e===SKIP)out.skipped[name+'/'+sn]=(out.skipped[name+'/'+sn]||0)+1}c.continue()};t.oncomplete=res;t.onerror=res;t.onabort=res}catch(_){res()}});
+   if(rows.length||out.skipped[name+'/'+sn])o[sn]={kp,rows}}
+  try{db.close()}catch(_){}if(Object.keys(o).length)out.idb[name]=o}
+ return out}
+async function restoreIDB(obj){let n=0,skip=0;const have=new Set(await dbNames());
+ for(const name of Object.keys(obj.idb||{})){if(!have.has(name))continue;let db;try{db=await openExisting(name)}catch(_){continue}
+  for(const sn of Object.keys(obj.idb[name])){if(!db.objectStoreNames.contains(sn))continue;const rows=obj.idb[name][sn].rows||[];
+   await new Promise(res=>{try{const t=db.transaction(sn,'readwrite'),st=t.objectStore(sn);for(const r of rows){let k,v;try{k=dec(r.k);v=dec(r.v)}catch(_){continue}const g=st.getKey(k);g.onsuccess=()=>{if(g.result!==undefined){skip++;return}try{st.keyPath!=null?st.put(v):st.put(v,k);n++}catch(_){}}}t.oncomplete=res;t.onerror=res;t.onabort=res}catch(_){res()}})}
+  try{db.close()}catch(_){}}
+ return{n,skip}}
+async function restoreFull(obj){if(!obj||obj.app!=='LUMEN Campo'||!obj.ls)throw new Error('este arquivo não é um backup do LUMEN');
+ const r=obj.idb?await restoreIDB(obj):{n:0,skip:0};const l=await restoreLS(obj.ls,'backup','Backup restaurado');return{ls:l.n,idb:r.n,keep:r.skip}}
+
+/* ---------- Backup na pasta ---------- */
+async function folderBackup(){const s=SS();if(!s.dir||!s.perm||s.dir.virtual||typeof writeTo!=='function')return{ok:false,why:'Escolha a pasta de destino no Início primeiro.'};
+ try{const full=await dumpFull();await writeTo(s.dir,'LUMEN_backup','lumen_completo_'+dayStr()+'.json',new Blob([JSON.stringify(full)],{type:'application/json'}));
+  try{if(window.LUMEN_BACKUP)await LUMEN_BACKUP.toFolder(true)}catch(_){}
+  try{localStorage.setItem('lumen_v140_fbk',String(Date.now()))}catch(_){}return{ok:true,idb:Object.keys(full.idb).length}}catch(e){return{ok:false,why:e.message}}}
+async function newestFolderBackup(){const s=SS();if(!s.dir||!s.perm||s.dir.virtual)throw new Error('Escolha a pasta de destino no Início primeiro.');
+ let d;try{d=await s.dir.getDirectoryHandle('LUMEN_backup')}catch(_){throw new Error('Não há pasta LUMEN_backup aqui ainda.')}
+ const L=[];for await(const[n,h]of d.entries()){if(h.kind==='file'&&/^(config|lumen_completo)_.*\.json$/.test(n))L.push(n)}
+ if(!L.length)throw new Error('A pasta LUMEN_backup está vazia.');L.sort();const nm=L[L.length-1];return{name:nm,obj:JSON.parse(await(await d.getFileHandle(nm)).getFile().then(f=>f.text()))}}
+
+/* ---------- Checkpoint de sessão (retomar depois de queda) ---------- */
+const L_=a=>Array.isArray(a)?a.length:0;
+const pendN=()=>{const s=SS();return L_(s.q)+L_(s.uq)+L_(s.pq)+L_(s.upF)+L_(s.pF)};
+const failN=()=>{const s=SS();return L_(s.upF)+L_(s.pF)};
+const lastPhotoT=()=>{let m=0;for(const i of(SS().items||[])){const t=i&&i.t||0;if(t>m)m=t}return m};
+const PREV=LS('lumen_v140_ckpt');
+function ckpt(why){const s=SS(),c=CC();LS('lumen_v140_ckpt',{t:Date.now(),why:why||'',run:!!s.run,ev:c.ev||'',n:L_(s.items),pend:pendN(),fail:failN(),last:lastPhotoT()})}
+
+window.__V140={D,$1,G,esc,SS,CC,sleep,say,LS,fmtB,fmtD,hhmm,dayStr,dlJson,tx,idb,M,syncMirror,bootCheck,lsAll,planRestore,mergeVal,restoreLS,restoreFull,undoRestore,listSnaps,restoreSnap,dumpFull,restoreIDB,enc,dec,folderBackup,newestFolderBackup,pendN,failN,lastPhotoT,PREV,ckpt,isDefaultish,applyAndReload,dbNames};
+}catch(e){try{console.error('v140 p1',e)}catch(_){}}})();
+
+(function(){try{
+const X=window.__V140;if(!X||window.LUMEN_V140)return;
+const{D,$1,G,SS,CC,sleep,say,LS,fmtB,fmtD,hhmm,dayStr,pendN,failN,lastPhotoT,tx,M}=X;
+const eps_=()=>G(()=>typeof eps==='function'?eps():[],[]);
+
+/* ---------- Estado ao vivo ---------- */
+const camOn=()=>G(()=>$1('#dCam').classList.contains('on'),false)||!!(SS().sess);
+const svcOn=()=>G(()=>$1('#dSvc').classList.contains('on'),false);
+const ST={q:0,u:0,p:null,at:0},BT={lv:null,ch:null};
+function refreshEnv(){if(Date.now()-ST.at<30000)return;ST.at=Date.now();
+ G(()=>navigator.storage.estimate().then(e=>{ST.q=e.quota||0;ST.u=e.usage||0}).catch(()=>{}));
+ G(()=>navigator.storage.persisted().then(p=>{ST.p=p}).catch(()=>{}));
+ if(BT.lv===null&&navigator.getBattery)G(()=>navigator.getBattery().then(b=>{const u=()=>{BT.lv=b.level;BT.ch=b.charging};u();b.addEventListener('levelchange',u);b.addEventListener('chargingchange',u)}).catch(()=>{BT.lv=-1}))}
+function phase(){const s=SS(),lp=lastPhotoT();if(!s.run)return lp?'parado':'pre';return Date.now()-lp<90e3?'disparo':'intervalo'}
+const PH={pre:'Antes do evento',parado:'Parado',disparo:'Disparando',intervalo:'Intervalo'};
+
+/* ---------- Diagnóstico: o que serve e o que não serve agora ---------- */
+function analyze(){refreshEnv();const s=SS(),c=CC(),now=Date.now(),ph=phase(),items=s.items||[],K=[],run=!!s.run,cam=camOn(),dirOk=!!(s.dir&&s.perm),online=navigator.onLine!==false,epl=eps_(),lp=lastPhotoT();
+ const add=(id,g,st,t,w,a,al)=>K.push({id,g,st,t,w,a:a||'',al:al||''});
+ const nonUsb=s.src==='files'||s.src==='folder'||s.src==='wifi';
+ /* conexões */
+ if(nonUsb)add('cam','Conexões','ok','Origem: '+({files:'arquivos escolhidos',folder:'pasta da câmera/cartão',wifi:'Wi-Fi da câmera'}[s.src]),'Não depende do cabo USB.');
+ else if(cam)add('cam','Conexões','ok','Câmera conectada','Pronta para receber as fotos.');
+ else add('cam','Conexões',run?'bad':'warn','Câmera desconectada',run?'A sessão está rodando sem câmera: nada novo chega. Confira cabo, modo USB da câmera e bateria.':'Conecte antes de iniciar.','cam','Reconectar');
+ if(dirOk)add('dir','Conexões','ok','Pasta de destino liberada',(s.dir.name||'pasta')+(s.dir.virtual?' (interna)':'')+' · gravando com segurança.');
+ else if(s.dir)add('dir','Conexões','bad','A pasta perdeu a permissão','O navegador pediu a permissão de novo. Enquanto isso, as fotos vão para o cofre do navegador (não se perdem).','dir','Liberar pasta');
+ else add('dir','Conexões',run?'bad':'warn','Nenhuma pasta escolhida','Sem pasta, nada é salvo no disco.','dir','Escolher pasta');
+ const conn=G(()=>navigator.connection,null),slow=conn&&(/(^|-)2g$/.test(conn.effectiveType||'')||conn.saveData);
+ if(!online)add('net','Conexões',epl.length?'warn':'ok','Sem internet',epl.length?'O app continua gravando e a fila sobe sozinha quando o sinal voltar.':'Você só grava na pasta: não precisa de internet.');
+ else if(slow)add('net','Conexões','warn','Internet lenta ('+(conn.effectiveType||'economia de dados')+')','O envio ao site vai demorar; a gravação na pasta não é afetada.');
+ else add('net','Conexões','ok','Internet ok'+(conn&&conn.downlink?' · ~'+conn.downlink+' Mbps':''),epl.length?'Destinos configurados: '+epl.length+'.':'Nenhum destino de envio configurado (ok se só grava na pasta).');
+ if(epl.length&&online&&!svcOn())add('svc','Conexões','warn','Destino de envio sem resposta','O último teste não passou. Em Config > Destinos use "Salvar e testar".','go:cfg','Abrir Config');
+ /* dados */
+ const pend=pendN(),fail=failN();
+ if(fail>0)add('fila','Dados','bad',fail+' arquivo(s) com erro de envio','Nada foi perdido: ficam guardados. Tente de novo agora.','retry','Tentar de novo');
+ else if(pend>0)add('fila','Dados','warn',pend+' na fila','Em andamento. '+(ph==='disparo'?'Normal durante o disparo.':'Se não baixar, toque para reenviar.'),pend>5&&ph!=='disparo'?'retry':'',pend>5?'Reenviar':'');
+ else add('fila','Dados','ok','Fila vazia','Tudo que chegou já foi tratado.');
+ if((s.cofre||0)>0)add('cofre','Dados','warn',(s.cofre)+' arquivo(s) no cofre do navegador','Esperando a pasta responder. Voltam sozinhos para a pasta.','drain','Mover agora');
+ const tot=G(()=>(s.c.o||0)+(s.c.b||0)+(s.c.a||0)+(s.c.d||0),0),dq=G(()=>s.c.d||0,0);
+ if(tot>=20&&dq/tot>.25)add('quar','Dados','warn',Math.round(dq/tot*100)+'% das fotos foram para a quarentena','Pode ser limite de foco/escuridão rígido demais para esta luz. Ajuste em Config > Triagem.','go:cfg','Ajustar');
+ const bk=Math.max(+localStorage.getItem('lumen_bk_last')||0,+localStorage.getItem('lumen_v140_fbk')||0);
+ if(!bk)add('bk','Dados','warn','Nenhum backup na pasta ainda','O espelho do navegador protege contra falhas, mas só o arquivo na pasta sobrevive a "limpar dados".','backup','Salvar agora');
+ else if(now-bk>2*864e5)add('bk','Dados','warn','Último backup na pasta: '+new Date(bk).toLocaleDateString('pt-BR'),'Já faz mais de 2 dias.','backup','Salvar agora');
+ else add('bk','Dados','ok','Backup na pasta em dia','Último: '+new Date(bk).toLocaleString('pt-BR'));
+ add('mir','Dados',M.err?'warn':M.last?'ok':'warn','Espelho de dados '+(M.last?'ativo':'iniciando'),M.err?'Erro: '+M.err:M.last?M.n+' itens guardados · última cópia '+hhmm(M.last)+' · '+M.snaps+' ponto(s) de volta.':'Aguarde alguns segundos.');
+ if(ST.q){const r=ST.u/ST.q;if(r>.85)add('sto','Dados','bad','Armazenamento do navegador quase cheio ('+Math.round(r*100)+'%)',fmtB(ST.u)+' de '+fmtB(ST.q)+'. Libere espaço exportando e apagando já exportados.','go:home','Ir ao Início');
+  else if(r>.7)add('sto','Dados','warn','Armazenamento do navegador em '+Math.round(r*100)+'%',fmtB(ST.u)+' de '+fmtB(ST.q)+'.');}
+ if(ST.p===false)add('per','Dados','warn','O navegador pode apagar os dados do app','O armazenamento ainda não é "persistente". Peça agora; instalar o app na tela inicial ajuda.','persist','Proteger');
+ /* ambiente */
+ if(!window.isSecureContext)add('sec','Ambiente','bad','Página fora de HTTPS','USB e pastas não funcionam num arquivo .html aberto direto. Abra pelo endereço https.');
+ if(BT.lv!==null&&BT.lv>=0){const p=Math.round(BT.lv*100);if(p<20&&!BT.ch)add('bat','Ambiente','bad','Bateria do aparelho em '+p+'%','Ligue na tomada: se desligar no meio, a sessão cai.');else if(p<40&&!BT.ch)add('bat','Ambiente','warn','Bateria do aparelho em '+p+'%','Aproveite o intervalo para carregar.');else add('bat','Ambiente','ok','Bateria do aparelho '+p+'%'+(BT.ch?' (carregando)':''),'')}
+ if(run&&cam&&lp&&now-lp>10*60e3)add('idle','Ambiente','warn','Sem fotos há '+fmtD(now-lp),'Câmera conectada, mas parada. Ela pode ter dormido: acorde-a (toque no disparo).');
+ const prev=X.PREV;if(prev&&prev.run&&!run&&!window.__V140seen&&now-prev.t>5000)add('prev','Ambiente','warn','A sessão anterior foi interrompida às '+hhmm(prev.t),(prev.n||0)+' arquivos já tratados · '+(prev.pend||0)+' pendente(s). Reconecte e toque Iniciar: repetidos são ignorados.','resume','Retomar');
+ /* módulos */
+ const heavyBusy=ph==='disparo';
+ const mods=[];const md=(id,n,st,w)=>mods.push({id,n,st,w});
+ const photos=items.filter(i=>i&&i.kind==='foto').length,vids=items.filter(i=>i&&i.kind==='video').length;
+ md('usb','Câmera por cabo USB',nonUsb?'opt':window.isSecureContext&&('usb' in navigator)?'use':'no',nonUsb?'Você está usando outra origem.':('usb' in navigator)?window.isSecureContext?'É o caminho mais estável.':'Precisa de HTTPS.':'Este navegador não tem WebUSB (use pasta/arquivos).');
+ md('wifi','Wi-Fi da câmera (beta)',s.src==='wifi'?'use':'opt',s.src==='wifi'?'Em uso.':cam?'Dispensável: o cabo já está conectado.':'Alternativa se o cabo falhar. É experimental.');
+ md('pasta','Pasta de destino',dirOk?'use':'no',dirOk?'Gravando no disco.':'Sem pasta liberada nada é salvo no disco.');
+ md('envio','Envio ao site',epl.length?(online?'use':'no'):'opt',epl.length?(online?'Destinos ativos.':'Sem internet agora; a fila espera.'):'Nenhum destino configurado.');
+ md('edit','Edição, looks e nitidez',c.mode==='edit'?'use':'no',c.mode==='edit'?'Modo Editar ativo.':'Modo fotos cruas: look e nitidez NÃO são aplicados. Ative em Fotos se quiser.');
+ md('lr','Lightroom (LR_Entrada)',c.lrOn?'use':'opt',c.lrOn?'Copiando cada foto para o Lightroom.':'Desligado: ligue só se for editar no Lightroom.');
+ md('tri','Triagem automática',tot>=20&&dq/tot>.25?'no':'use',tot>=20&&dq/tot>.25?'Está descartando demais: revise os limites.':'Separa tremidas e escuras sozinho.');
+ md('auto','Foco automático e intervalômetro',cam?(run?'use':'opt'):'no',cam?'Câmera conectada.':'Precisa da câmera conectada.');
+ const hv=(id,n,okTxt,needs,needTxt)=>md(id,n,heavyBusy?'no':needs===false?'no':'use',heavyBusy?'Pesa CPU/bateria e disputa com a captura: deixe para o intervalo.':needs===false?needTxt:okTxt);
+ hv('fx','Efeitos (dupla exposição, blur, Penny)','Bom momento: não está disparando.',photos>0,'Ainda não há fotos.');
+ hv('ig','Instagram (posts e legendas)','Bom momento para montar os posts.',photos>0,'Ainda não há fotos.');
+ hv('vid','Editor de vídeo / look de vídeo','Bom momento para editar vídeos.',vids>0||!!c.upv,'Nenhum vídeo recebido ainda.');
+ hv('zip','Exportar ZIP e liberar espaço','Bom momento para exportar.',photos>0,'Nada para exportar ainda.');
+ hv('org','Organizar em pasta única (módulos)','Bom momento: copia sem apagar nada.',!!s.dir&&!s.dir.virtual,'Precisa de uma pasta real (no iPhone use o ZIP).');
+ hv('bkf','Backup completo','Bom momento para salvar tudo.',true,'');
+ const nb=K.filter(k=>k.st==='bad').length,nw=K.filter(k=>k.st==='warn').length,no=K.filter(k=>k.st==='ok').length;
+ const verdict=nb?'bad':nw?'warn':'ok';
+ return{t:now,phase:ph,run,photos,vids,pend,fail,idle:lp?now-lp:0,checks:K,mods,verdict,nb,nw,no}}
+
+/* ---------- Histórico de intervalos ---------- */
+function saveHist(a){const h=LS('lumen_v140_hist')||[];h.unshift({t:a.t,ph:a.phase,v:a.verdict,ok:a.no,w:a.nw,b:a.nb,f:a.photos,p:a.pend});LS('lumen_v140_hist',h.slice(0,20))}
+
+/* ---------- Guardião de conexão (reconecta e reenvia sozinho, com limites) ---------- */
+const GD=Object.assign({auto:true},LS('lumen_v140_gd')||{}),GS={usbAt:0,usbTries:0,retryAt:0,drainAt:0,camSeen:Date.now(),log:[]};
+const glog=t=>{GS.log.unshift(hhmm(Date.now())+' '+t);GS.log.length=Math.min(GS.log.length,8);say('Guardião: '+t)};
+function guard(){try{if(!GD.auto)return;const s=SS(),now=Date.now(),cam=camOn();if(cam){GS.camSeen=now;GS.usbTries=0}
+ if(navigator.onLine!==false&&failN()>0&&now-GS.retryAt>30000&&typeof retryFailed==='function'){GS.retryAt=now;retryFailed();glog('internet ok: reenviando '+failN()+' pendente(s)')}
+ if((s.cofre||0)>0&&s.dir&&s.perm&&now-GS.drainAt>30000&&typeof drenar==='function'){GS.drainAt=now;drenar();glog('movendo o cofre do navegador para a pasta')}
+ if(s.run&&!cam&&(!s.src||s.src==='usb')&&'usb' in navigator&&now-GS.camSeen>15000&&now-GS.usbAt>20000&&GS.usbTries<8&&typeof scheduleFind==='function'){GS.usbAt=now;GS.usbTries++;
+  navigator.usb.getDevices().then(L=>{if(L.some(d=>d.vendorId===0x04a9)){try{s.cool=0;s.fails=0}catch(_){}scheduleFind(300);glog('câmera autorizada encontrada: tentando reconectar ('+GS.usbTries+'/8)')}}).catch(()=>{})}
+ }catch(_){}}
+function onDrop(w){try{X.ckpt(w);X.syncMirror(false)}catch(_){}}
+G(()=>navigator.usb.addEventListener('disconnect',()=>onDrop('usb-desconectou')));
+G(()=>navigator.usb.addEventListener('connect',()=>{GS.usbTries=0;onDrop('usb-conectou')}));
+addEventListener('offline',()=>onDrop('sem-internet'));
+addEventListener('online',()=>{onDrop('internet-voltou');setTimeout(guard,2500)});
+addEventListener('pagehide',()=>{try{X.ckpt('fechou');X.syncMirror(false)}catch(_){}});
+D.addEventListener('visibilitychange',()=>{if(D.hidden)onDrop('segundo-plano')});
+
+/* ---------- Pasta única por módulos (só COPIA, nunca apaga) ---------- */
+const MODS={orig:'01_Fotos_Originais',edit:'02_Fotos_Editadas',vid:'03_Videos',vidl:'04_Videos_Com_Look',quar:'05_Quarentena',raw:'06_RAW',esc:'07_Escolhidas',bak:'08_Backups'};
+const MODN={orig:'Fotos originais',edit:'Fotos editadas',vid:'Vídeos',vidl:'Vídeos com look',quar:'Quarentena',raw:'RAW',esc:'Escolhidas',bak:'Backups'};
+function classify(dirs,isV){const fn=G(()=>CC().fn,null)||{};
+ if(isV)return{m:dirs.some(x=>/look/i.test(x))?'vidl':'vid',rel:dirs};
+ const top=dirs[0];
+ if(top==='LR_Entrada'||top==='LUMEN_Organizado'||top==='Quarentena_LR')return{m:'skip'};
+ if(top==='Editadas')return{m:'edit',rel:['Lightroom',...dirs.slice(1)]};
+ if(top==='Escolhidas')return{m:'esc',rel:dirs.slice(1)};
+ if(top==='LUMEN_backup')return{m:'bak',rel:dirs.slice(1)};
+ const i=dirs.findIndex((x,ix)=>ix<=2&&(x==='Fotos'||x==='Videos'||x==='RAW'));if(i<0)return{m:'skip'};
+ const pre=dirs.slice(0,i),kind=dirs[i],leaf=dirs[i+1],tail=dirs.slice(i+2);
+ if(kind==='RAW')return{m:'raw',rel:[...pre,...dirs.slice(i+1)]};
+ if(kind==='Videos')return{m:[fn.Videos_look,'Com_look'].filter(Boolean).includes(leaf)?'vidl':'vid',rel:[...pre,...tail]};
+ if(leaf==null)return{m:'skip'};
+ if([fn.Originais,'Originais'].filter(Boolean).includes(leaf))return{m:'orig',rel:[...pre,...tail]};
+ if([fn.Quarentena,'Quarentena'].filter(Boolean).includes(leaf))return{m:'quar',rel:[...pre,...tail]};
+ return{m:'edit',rel:[...pre,leaf,...tail]}}
+const JUNK=/^(\.|~\$)|\.(tmp|crswap|lrdata|part|crdownload)$|^(thumbs\.db|desktop\.ini)$/i;
+const ORG={list:null,dest:null,destOk:false,busy:false,cancel:false,msg:'',prog:null,force:false,sum:null};
+async function loadDest(){try{const r=await tx('h','readonly',s=>s.get('dest'));if(r&&r.h){ORG.dest=r.h;ORG.destOk=(await r.h.queryPermission({mode:'readwrite'}))==='granted'}}catch(_){}}
+async function pickDest(){if(!window.showDirectoryPicker)throw new Error('Este navegador não deixa escolher pastas (no iPhone use o ZIP organizado do Início).');
+ const h=await showDirectoryPicker({mode:'readwrite',id:'lumen-unica'}),s=SS();
+ if(s.dir&&!s.dir.virtual&&s.dir.isSameEntry){if(await s.dir.isSameEntry(h))throw new Error('Escolha uma pasta DIFERENTE da pasta onde o LUMEN grava.');if(s.dir.resolve&&await h.resolve(s.dir))throw new Error('Essa pasta contém a pasta do LUMEN. Escolha uma pasta separada.')}
+ await tx('h','readwrite',st=>{st.put({id:'dest',h})});ORG.dest=h;ORG.destOk=(await h.requestPermission({mode:'readwrite'}))==='granted';return h}
+async function grantDest(){if(!ORG.dest)return false;ORG.destOk=(await ORG.dest.requestPermission({mode:'readwrite'}))==='granted';return ORG.destOk}
+async function* walk(dir,dirs,skipTop){for await(const[name,h]of dir.entries()){if(h.kind==='directory'){if(dirs.length===0&&skipTop&&name===skipTop)continue;if(name.startsWith('.'))continue;yield*walk(h,[...dirs,name],skipTop)}else if(!JUNK.test(name))yield{h,dirs,name}}}
+async function inventory(onP){const s=SS();if(!s.dir||s.dir.virtual||!s.dir.entries)throw new Error('Precisa de uma pasta real escolhida no Início.');
+ let skipTop=null;if(ORG.dest&&s.dir.resolve){try{const r=await s.dir.resolve(ORG.dest);if(r&&r.length)skipTop=r[0]}catch(_){}}
+ const L=[],cnt={};let n=0;const roots=[[s.dir,false,skipTop]];
+ try{const v=window.vRoot&&vRoot();if(v&&v.entries&&!(await v.isSameEntry(s.dir)))roots.push([v,true,null])}catch(_){}
+ for(const[root,isV,sk]of roots){for await(const it of walk(root,[],sk)){const c=classify(it.dirs,isV);if(c.m==='skip')continue;let size=0;try{size=(await it.h.getFile()).size}catch(_){continue}
+   L.push({h:it.h,name:it.name,size,m:c.m,rel:c.rel});const k=cnt[c.m]||(cnt[c.m]={n:0,b:0});k.n++;k.b+=size;if(++n%100===0){onP&&onP(n);await sleep(0)}}}
+ ORG.list=L;ORG.sum={cnt,total:L.length,bytes:L.reduce((a,x)=>a+x.size,0),at:Date.now()};return ORG.sum}
+async function getDirP(root,parts){let d=root;for(const p of parts.filter(Boolean))d=await d.getDirectoryHandle(p.replace(/[\\/:*?"<>|]+/g,'_'),{create:true});return d}
+async function copyAll(onP){if(!ORG.dest||!(ORG.destOk||await grantDest()))throw new Error('Libere a pasta única primeiro.');
+ if(!ORG.list)await inventory();const L=ORG.list,tot=L.length,res={copied:0,skipped:0,err:0,bytes:0,errs:[]};ORG.cancel=false;
+ try{await getDirP(ORG.dest,[]);const rd=await ORG.dest.getFileHandle('LEIA-ME_LUMEN.txt',{create:true}),w=await rd.createWritable();await w.write('Pasta organizada pelo LUMEN Campo.\nCada pasta numerada é um módulo (fotos originais, editadas, vídeos...).\nAs fotos e vídeos foram COPIADOS: a pasta original do LUMEN continua intacta.\nArquivos repetidos (mesmo nome e tamanho) são ignorados.\n');await w.close()}catch(_){}
+ for(let i=0;i<L.length;i++){if(ORG.cancel)break;
+  while(!ORG.force&&phase()==='disparo'&&!ORG.cancel){ORG.msg='Pausado: você está disparando. Volta sozinho no intervalo.';onP&&onP(i,tot,res);await sleep(3000)}
+  const it=L[i];try{const f=await it.h.getFile(),d=await getDirP(ORG.dest,[MODS[it.m],...it.rel]);let nm=it.name;
+   try{const ex=await(await d.getFileHandle(nm)).getFile();if(ex.size===f.size){res.skipped++;onP&&i%25===0&&onP(i,tot,res);continue}const dot=nm.lastIndexOf('.');nm=(dot>0?nm.slice(0,dot):nm)+'__'+f.size+(dot>0?nm.slice(dot):'')}catch(_){}
+   const fh=await d.getFileHandle(nm,{create:true});const w=await fh.createWritable();if(f.size>8e6&&f.stream)await f.stream().pipeTo(w);else{await w.write(f);await w.close()}
+   if((await fh.getFile()).size!==f.size){try{await d.removeEntry(nm)}catch(_){}throw new Error('tamanho diferente após copiar')}
+   res.copied++;res.bytes+=f.size}catch(e){res.err++;if(res.errs.length<5)res.errs.push(it.name+': '+(e&&e.message||e))}
+  if(i%5===0){onP&&onP(i,tot,res);await sleep(0)}}
+ onP&&onP(tot,tot,res);res.cancelled=ORG.cancel;return res}
+
+window.LUMEN_V140=Object.assign({},X,{analyze,phase,PH,saveHist,GD,GS,guard,glog,classify,MODS,MODN,ORG,loadDest,pickDest,grantDest,inventory,copyAll,camOn,JUNK});
+}catch(e){try{console.error('v140 p2',e)}catch(_){}}})();
+
+(function(){try{
+const V=window.LUMEN_V140;if(!V||V.__ui)return;V.__ui=1;
+const{D,$1,G,esc,SS,CC,sleep,say,LS,fmtB,fmtD,hhmm,dayStr,dlJson,analyze,PH,phase,M,GD,GS,ORG}=V;
+const ICON={ok:'Serve agora',warn:'Atenção',bad:'Não serve / resolver'};
+const toast=(m,k)=>G(()=>window.toast&&window.toast(m,k||'ok'));
+
+/* ---------- ações ---------- */
+const busy={};
+const A={
+ cam:()=>{const s=SS();try{s.cool=0;s.fails=0;s.settle=0}catch(_){}if(typeof scheduleFind==='function')scheduleFind(300);toast('Procurando a câmera…');setTimeout(()=>goTab('con'),600)},
+ dir:()=>{const b=$1('#bDir');b&&b.click()},
+ retry:()=>{if(typeof retryFailed==='function'){retryFailed();toast('Reenviando pendentes…')}},
+ drain:()=>{if(typeof drenar==='function'){drenar();toast('Movendo o cofre para a pasta…')}},
+ persist:async()=>{const p=G(()=>navigator.storage.persist(),null);const r=p?await p:false;toast(r?'Armazenamento protegido':'O navegador não concedeu (instale o app na tela inicial)',r?'ok':'bad')},
+ backup:async()=>{await V.syncMirror(true);const r=await V.folderBackup();toast(r.ok?'Backup salvo na pasta':'Backup só no espelho: '+r.why,r.ok?'ok':'bad')},
+ resume:()=>{const b=$1('#bGo');if(b&&!b.disabled){b.click();toast('Retomando…')}else{toast('Conecte a câmera e escolha a pasta; depois toque Iniciar.','bad');goTab('home')}}
+};
+function runAct(a){if(!a)return;if(a.startsWith('go:')){goTab(a.slice(3));return}if(A[a])Promise.resolve(A[a]()).then(()=>setTimeout(()=>paint(true),800)).catch(e=>toast(e.message,'bad'))}
+
+/* ---------- aba + navegação + faixa de status ---------- */
+const sec=D.createElement('section');sec.className='tab w';sec.id='t-int';
+{const ref=$1('#t-reg')||$1('#t-cfg');ref?ref.after(sec):D.body.appendChild(sec)}
+sec.innerHTML='<h2>Intervalo <small id="ivPhase"></small></h2>'
++'<div class="ivV" id="ivVer" data-s="warn"></div>'
++'<div class="c"><button class="f p" id="ivPit" style="font-size:16px;padding:16px">⏸ Fazer o intervalo agora (salvar, reenviar, conferir)</button><div class="ivlog" id="ivLog" hidden></div>'
++'<label class="r" style="margin-top:10px;display:block"><input type="checkbox" id="ivNote"> Avisar (piscar o botão Intervalo) quando eu parar de fotografar por 90 segundos</label></div>'
++'<div id="ivRes"></div>'
++'<h2>Módulos neste momento <small>usar · dispensável · não serve</small></h2><div class="c" id="ivMods"></div>'
++'<h2>Cofre de dados <small id="ivSafeS"></small></h2><div class="c" id="ivSafe"></div>'
++'<h2>Guardião de conexão</h2><div class="c" id="ivConn"></div>'
++'<h2>Pasta única por módulos <small>só copia</small></h2><div class="c" id="ivOrg"></div>'
++'<h2>Histórico de intervalos</h2><div class="c" id="ivHist"></div>';
+const nav=$1('nav');let nb=null;
+if(nav&&!nav.querySelector('button[data-t="int"]')){nb=D.createElement('button');nb.type='button';nb.dataset.t='int';nb.innerHTML='<i>⏸</i><span class="v70l">Intervalo</span><span class="v70s">Intervalo</span>';nb.title='Intervalo · o que serve e o que não serve agora';nb.setAttribute('aria-label','Intervalo');nb.onclick=()=>goTab('int');
+ const place=()=>{const an=nav.querySelector('button[data-t="avisos"]')||nav.querySelector('button[data-t="home"]');if(an&&nb.previousElementSibling!==an)an.after(nb)};place();setInterval(place,1500)}
+{const g0=window.goTab;window.goTab=function(t){const r=g0.apply(this,arguments);try{if(t==='int'){nb&&nb.classList.remove('ivPulse');pulsed=false;paint(true)}}catch(_){}return r};try{goTab=window.goTab}catch(_){}}
+const top=$1('.top');let strip=null;
+if(top){strip=D.createElement('div');strip.id='ivStrip';strip.setAttribute('role','button');strip.setAttribute('aria-label','Abrir Intervalo');strip.onclick=()=>goTab('int');top.after(strip)}
+
+/* ---------- pintura ---------- */
+const sig={};const same=(k,v)=>{if(sig[k]===v)return true;sig[k]=v;return false};
+const open=()=>sec.classList.contains('on');
+const inUse=()=>{const a=D.activeElement;return a&&sec.contains(a)&&/INPUT|SELECT|TEXTAREA/.test(a.tagName)};
+let pulsed=false,lastA=null;
+function stripPaint(a){if(!strip)return;const s=SS(),by=id=>a.checks.find(k=>k.id===id)||{st:'ok'};
+ const P=[['Câmera',by('cam').st],['Pasta',by('dir').st],['Internet',by('net').st],['Fila',by('fila').st],['Dados',[by('bk').st,by('mir').st,by('cofre').st].includes('bad')?'bad':[by('bk').st,by('mir').st,by('cofre').st].includes('warn')?'warn':'ok']];
+ const h=P.map(p=>'<span data-s="'+p[1]+'"><i></i>'+p[0]+'</span>').join('');if(!same('strip',h))strip.innerHTML=h}
+function paint(force){const a=analyze();lastA=a;if(a.run)window.__V140seen=true;stripPaint(a);
+ if(a.phase==='intervalo'&&a.idle>90e3&&V.GD.note!==false&&!pulsed&&!open()&&nb){nb.classList.add('ivPulse');pulsed=true;toast('⏸ Intervalo: veja o que serve agora')}
+ if(a.phase!=='intervalo'&&nb&&!open())nb.classList.remove('ivPulse');
+ if(!open())return;if(!force&&inUse())return;
+ $1('#ivPhase').textContent=PH[a.phase]+(a.phase==='intervalo'&&a.idle?' · parado há '+fmtD(a.idle):'');
+ const vt={ok:['Tudo pronto','Pode fotografar tranquilo.'],warn:['Atenção','Há '+a.nw+' ponto(s) para olhar, nada crítico.'],bad:['Resolver antes de voltar',a.nb+' problema(s) podem fazer você perder fotos ou envio.']}[a.verdict];
+ const vh='<span class="ivPh">'+esc(PH[a.phase])+'</span><b class="big">'+vt[0]+'</b><div class="sub wrap">'+vt[1]+' · '+a.photos+' foto(s), '+a.vids+' vídeo(s), '+a.pend+' na fila · analisado às '+hhmm(a.t)+'</div>';
+ const vE=$1('#ivVer');if(!same('ver',a.verdict+vh.replace(/às \d\d:\d\d/,''))){vE.dataset.s=a.verdict;vE.innerHTML=vh}else{vE.dataset.s=a.verdict}
+ /* grupos */
+ const order=['bad','warn','ok'],g={bad:[],warn:[],ok:[]};a.checks.forEach(k=>g[k.st].push(k));
+ const rh=order.filter(s=>g[s].length).map(s=>'<h2>'+ICON[s]+' <small>'+g[s].length+'</small></h2><div class="c">'+g[s].map(k=>'<div class="ivIt" data-s="'+k.st+'"><i></i><div><b>'+esc(k.t)+'</b><small>'+esc(k.w)+'</small></div>'+(k.a?'<button type="button" data-a="'+esc(k.a)+'">'+esc(k.al||'Abrir')+'</button>':'')+'</div>').join('')+'</div>').join('');
+ if(!same('res',rh))$1('#ivRes').innerHTML=rh;
+ const mh=a.mods.map(m=>'<div class="ivM" data-s="'+m.st+'"><b>'+esc(m.n)+'</b><em>'+({use:'Usar agora',opt:'Dispensável',no:'Não serve agora'}[m.st])+'</em><small>'+esc(m.w)+'</small></div>').join('');if(!same('mods',mh))$1('#ivMods').innerHTML=mh;
+ $1('#ivNote').checked=V.GD.note!==false;
+ paintSafe();paintConn();paintOrg();paintHist()}
+const btn=(id,t,p)=>'<button type="button" class="f'+(p?' p':'')+'" id="'+id+'">'+t+'</button>';
+async function paintSafe(){const pst=G(()=>navigator.storage.persisted(),null);const pr=pst?await pst:null;const fb=+localStorage.getItem('lumen_v140_fbk')||+localStorage.getItem('lumen_bk_last')||0;
+ $1('#ivSafeS').textContent=M.last?'espelho '+hhmm(M.last):'iniciando';
+ const h='<div class="sub wrap" style="color:var(--ink)">Tudo que o LUMEN lembra (ajustes, presets, salas, Lightroom, Instagram, registro) é copiado sozinho para um espelho no navegador, com <b>'+M.snaps+' ponto(s) de volta</b> (máquina do tempo). Armazenamento persistente: <b>'+(pr===true?'sim':pr===false?'não':'—')+'</b>. Backup na pasta: <b>'+(fb?new Date(fb).toLocaleString('pt-BR'):'ainda não')+'</b>. Se você limpar os dados do navegador, só o backup na pasta ou o arquivo baixado sobrevivem: por isso salve um.</div>'
+ +'<div class="g2" style="margin-top:10px">'+btn('ivSaveAll','💾 Salvar tudo agora',1)+btn('ivDlFull','⬇ Baixar backup completo')+'</div>'
+ +'<div class="g2">'+btn('ivFromFolder','📁 Restaurar da pasta')+'<label class="f" role="button" style="cursor:pointer;display:block;text-align:center;border-radius:12px;padding:12px 14px;font-weight:700;background:#26262b;margin-top:10px">⬆ Restaurar de arquivo<input type="file" id="ivFile" accept=".json,application/json" hidden></label></div>'
+ +'<details><summary class="sub">Voltar a um ponto anterior</summary><div id="ivSnaps" class="sub wrap">Carregando…</div>'+btn('ivUndo','↩ Desfazer a última restauração')+'</details><div class="ivmsg" id="ivSafeMsg"></div>';
+ if(!same('safe',h)&&!inUse()){$1('#ivSafe').innerHTML=h;bindSafe();loadSnaps()}}
+async function loadSnaps(){const el=$1('#ivSnaps');if(!el)return;try{const L=await V.listSnaps();el.innerHTML=L.length?L.map(s=>'<button type="button" class="f" data-snap="'+s.id+'" style="margin-top:6px;font-size:13px;padding:9px">'+new Date(s.t).toLocaleString('pt-BR')+' · '+s.n+' itens</button>').join(''):'Ainda não há pontos (o primeiro aparece em poucos segundos).'}catch(_){el.textContent='Indisponível neste navegador.'}}
+const smsg=t=>{const e=$1('#ivSafeMsg');e&&(e.textContent=t);say(t)};
+function bindSafe(){const on=(id,f)=>{const e=$1('#'+id);if(e)e.onclick=f};
+ on('ivSaveAll',async()=>{smsg('Salvando…');await V.syncMirror(true);const r=await V.folderBackup();smsg(r.ok?'✔ Espelho atualizado e backup completo salvo em '+SS().dir.name+'/LUMEN_backup.':'✔ Espelho atualizado. Pasta: '+r.why)});
+ on('ivDlFull',async()=>{smsg('Montando…');const o=await V.dumpFull();dlJson('LUMEN_completo_'+dayStr()+'.json',o);const sk=Object.values(o.skipped).reduce((a,b)=>a+b,0);smsg('✔ Baixado: '+Object.keys(o.ls).length+' itens + '+Object.keys(o.idb).length+' banco(s) leve(s).'+(sk?' '+sk+' registro(s) com arquivos grandes ficam só nas suas pastas.':''))});
+ on('ivFromFolder',async()=>{try{const b=await V.newestFolderBackup();if(!confirm('Restaurar '+b.name+'? Os dados do backup passam a valer; um ponto de volta é guardado antes.'))return;const r=b.obj.kind==='v140-full'?await V.restoreFull(b.obj):{ls:(await V.restoreLS(b.obj.ls,'backup','Backup da pasta restaurado')).n};smsg('✔ '+r.ls+' item(ns) restaurado(s). A página vai recarregar.')}catch(e){smsg('Não deu: '+e.message)}});
+ on('ivUndo',async()=>{const r=await V.undoRestore();smsg(r.n?'Desfazendo… a página vai recarregar.':'Não há restauração para desfazer.')});
+ const f=$1('#ivFile');if(f)f.onchange=async e=>{const file=e.target.files[0];e.target.value='';if(!file)return;try{const o=JSON.parse(await file.text());if(!confirm('Restaurar este backup? Um ponto de volta é guardado antes.'))return;const r=o.kind==='v140-full'?await V.restoreFull(o):{ls:(await V.restoreLS(o.ls,'backup','Backup restaurado')).n};smsg('✔ '+r.ls+' item(ns) restaurado(s)'+(r.idb?', '+r.idb+' registro(s) leve(s)':'')+'. A página vai recarregar.')}catch(er){smsg('Não deu: '+er.message)}};
+ const sn=$1('#ivSnaps');if(sn)sn.onclick=async e=>{const b=e.target.closest('[data-snap]');if(!b)return;if(!confirm('Voltar a este ponto?'))return;const r=await V.restoreSnap(+b.dataset.snap);smsg(r.n?'Voltando… a página vai recarregar.':'Esse ponto já é igual ao atual.')}}
+function paintConn(){const s=SS(),cam=V.camOn(),L=GS.log;
+ const h='<div class="sub wrap" style="color:var(--ink)">Vigia a cada 5 segundos, com limites para não atrapalhar: reenvia pendentes quando a internet volta, move o cofre do navegador para a pasta e tenta religar a câmera USB já autorizada (até 8 vezes). Cada queda grava um ponto de retomada.</div>'
+ +'<label class="r" style="margin-top:8px;display:block"><input type="checkbox" id="ivGd"'+(GD.auto?' checked':'')+'> Reconectar e reenviar sozinho</label>'
+ +'<div class="sub wrap" style="margin-top:6px">Câmera: <b>'+(cam?'conectada':'desconectada')+'</b> · Internet: <b>'+(navigator.onLine!==false?'ok':'sem sinal')+'</b> · Pasta: <b>'+(s.dir&&s.perm?'liberada':s.dir?'sem permissão':'não escolhida')+'</b></div>'
+ +(L.length?'<div class="ivlog">'+L.map(esc).join('\n')+'</div>':'');
+ if(!same('conn',h)&&!inUse()){$1('#ivConn').innerHTML=h;const g=$1('#ivGd');g.onchange=()=>{GD.auto=g.checked;LS('lumen_v140_gd',GD)}}}
+function paintOrg(){const s=SS(),vir=s.dir&&s.dir.virtual,can=!!window.showDirectoryPicker&&s.dir&&!vir&&s.dir.entries;
+ let h='<div class="sub wrap" style="color:var(--ink)">Reúne tudo numa <b>pasta única</b>, separada por módulos: <b>01 Fotos originais · 02 Fotos editadas (inclui as do Lightroom) · 03 Vídeos · 04 Vídeos com look · 05 Quarentena · 06 RAW · 07 Escolhidas · 08 Backups</b>, cada uma com Evento › Dia. Só <b>copia e confere o tamanho</b>: a sua pasta atual não é alterada nem apagada, e o Galeria/ZIP/Lightroom continuam funcionando como hoje. Durante o disparo a cópia pausa sozinha.</div>';
+ if(!can)h+='<div class="sub wrap" style="color:var(--warn);margin-top:8px">'+(vir?'Você está na pasta interna (iPhone): use o ZIP organizado no Início.':!window.showDirectoryPicker?'Este navegador não deixa escolher pastas.':'Escolha primeiro a pasta de destino no Início.')+'</div>';
+ else{h+='<div class="sub wrap" style="margin-top:8px">Pasta única: <b>'+(ORG.dest?esc(ORG.dest.name)+(ORG.destOk?'':' (precisa liberar)'):'não escolhida')+'</b></div>'
+  +'<div class="g2">'+btn('ivDest',ORG.dest?'Trocar pasta única':'📁 Escolher pasta única',!ORG.dest)+(ORG.dest&&!ORG.destOk?btn('ivGrant','Liberar pasta','p'):btn('ivInv','🔎 Fazer inventário'))+'</div>';
+  if(ORG.sum){const c=ORG.sum.cnt;h+='<table class="ivT"><tr><th>Módulo</th><th>Arquivos</th><th>Tamanho</th></tr>'+Object.keys(V.MODS).filter(k=>c[k]).map(k=>'<tr><td>'+V.MODS[k]+'</td><td>'+c[k].n+'</td><td>'+fmtB(c[k].b)+'</td></tr>').join('')+'<tr><th>Total</th><th>'+ORG.sum.total+'</th><th>'+fmtB(ORG.sum.bytes)+'</th></tr></table>'}
+  if(ORG.dest&&ORG.destOk)h+=(ORG.busy?btn('ivStop','⏹ Parar a cópia'):btn('ivCopy','▶ Organizar agora (copiar)',1))+'<label class="r" style="margin-top:8px;display:block"><input type="checkbox" id="ivForce"'+(ORG.force?' checked':'')+'> Copiar mesmo enquanto estou disparando</label>';
+  h+='<div class="ivmsg" id="ivOrgMsg">'+esc(ORG.msg)+'</div>'}
+ if(same('org',h+(ORG.prog||'')))return;if(inUse()&&!ORG.busy)return;$1('#ivOrg').innerHTML=h;bindOrg()}
+const omsg=t=>{ORG.msg=t;const e=$1('#ivOrgMsg');e&&(e.textContent=t)};
+function bindOrg(){const on=(id,f)=>{const e=$1('#'+id);if(e)e.onclick=f};
+ on('ivDest',async()=>{try{await V.pickDest();omsg('Pasta única: '+ORG.dest.name);paint(true)}catch(e){if(e.name!=='AbortError')omsg(e.message)}});
+ on('ivGrant',async()=>{try{await V.grantDest();paint(true)}catch(e){omsg(e.message)}});
+ on('ivInv',async()=>{omsg('Lendo as pastas…');try{await V.inventory(n=>omsg('Lendo as pastas… '+n+' arquivos'));omsg('Inventário pronto: '+ORG.sum.total+' arquivo(s), '+fmtB(ORG.sum.bytes)+'.');ORG.prog='inv'+Date.now();paint(true)}catch(e){omsg(e.message)}});
+ on('ivStop',()=>{ORG.cancel=true;omsg('Parando…')});
+ const fc=$1('#ivForce');if(fc)fc.onchange=()=>{ORG.force=fc.checked};
+ on('ivCopy',async()=>{if(ORG.busy)return;ORG.busy=true;paint(true);try{const r=await V.copyAll((i,t,r)=>{ORG.prog=i+'/'+t;omsg(ORG.msg&&/^Pausado/.test(ORG.msg)&&V.phase()==='disparo'?ORG.msg:('Copiando '+i+' de '+t+' · '+r.copied+' novos, '+r.skipped+' já existiam'+(r.err?', '+r.err+' erro(s)':'')))});
+   omsg((r.cancelled?'Interrompido. ':'✔ Pronto. ')+r.copied+' copiado(s) ('+fmtB(r.bytes)+'), '+r.skipped+' já estavam lá'+(r.err?', '+r.err+' com erro: '+r.errs.join(' | '):'')+'. Nada foi apagado da origem.');say('Pasta única: '+r.copied+' copiados, '+r.err+' erros','ok')}catch(e){omsg('Não deu: '+e.message)}
+  ORG.busy=false;ORG.prog='fim'+Date.now();paint(true)}) }
+function paintHist(){const H=LS('lumen_v140_hist')||[];const h=H.length?'<table class="ivT"><tr><th>Quando</th><th>Momento</th><th>Resultado</th></tr>'+H.slice(0,8).map(x=>'<tr><td>'+new Date(x.t).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})+'</td><td>'+esc(PH[x.ph]||x.ph)+'</td><td>'+(x.b?x.b+' problema(s)':x.w?x.w+' atenção':'tudo ok')+' · '+x.p+' na fila</td></tr>').join('')+'</table>':'<div class="sub">Cada vez que você faz o intervalo, a análise fica registrada aqui.</div>';if(!same('hist',h))$1('#ivHist').innerHTML=h}
+
+/* ---------- Intervalo em 1 toque ---------- */
+let pit=false;
+$1('#ivPit').onclick=async()=>{if(pit)return;pit=true;const L=$1('#ivLog'),b=$1('#ivPit');L.hidden=false;L.textContent='';b.disabled=true;const w=t=>{L.textContent+=t+'\n';L.scrollTop=1e9};
+ try{w('1/5 Espelho e pontos de volta…');const r=await V.syncMirror(true);w('   '+r.n+' itens guardados.');
+  w('2/5 Backup na pasta…');const f=await V.folderBackup();w('   '+(f.ok?'salvo em LUMEN_backup.':f.why));
+  if(V.failN()>0&&typeof retryFailed==='function'){w('3/5 Reenviando '+V.failN()+' com erro…');retryFailed()}else w('3/5 Nada com erro de envio.');
+  if((SS().cofre||0)>0&&typeof drenar==='function'){w('4/5 Movendo o cofre para a pasta…');await drenar()}else w('4/5 Cofre vazio.');
+  try{navigator.storage.persist&&await navigator.storage.persist()}catch(_){}
+  w('5/5 Analisando…');await sleep(400);V.ckpt('intervalo');const a=analyze();V.saveHist(a);w(a.verdict==='ok'?'✔ Tudo pronto para voltar.':a.verdict==='warn'?'• Há '+a.nw+' ponto(s) de atenção abaixo.':'✖ Resolva '+a.nb+' ponto(s) abaixo antes de voltar.')}
+ catch(e){w('Erro: '+e.message)}b.disabled=false;pit=false;paint(true)};
+sec.addEventListener('click',e=>{const b=e.target.closest('button[data-a]');if(b)runAct(b.dataset.a)});
+$1('#ivNote').onchange=e=>{GD.note=e.target.checked;LS('lumen_v140_gd',GD)};
+
+/* ---------- boot ---------- */
+setInterval(()=>{try{paint(false)}catch(_){}},3000);
+setInterval(()=>{try{V.guard()}catch(_){}},5000);
+setInterval(()=>{try{V.syncMirror(false)}catch(_){}},30000);
+setInterval(()=>{try{if(SS().run||pendN0())V.ckpt('ritmo')}catch(_){}},20000);
+const pendN0=()=>V.pendN()>0;
+setTimeout(()=>{V.syncMirror(true).catch(()=>{})},4000);
+setTimeout(()=>{V.loadDest().then(()=>paint(false))},1500);
+setTimeout(()=>{try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(_){}},2500);
+setTimeout(()=>{try{paint(false)}catch(_){}},800);
+try{const n=sessionStorage.getItem('lumen_v140_note'),d=sessionStorage.getItem('lumen_v140_done');if(n){sessionStorage.removeItem('lumen_v140_note');sessionStorage.removeItem('lumen_v140_done');setTimeout(()=>{say('✔ '+n+(d?' ('+d+' itens)':''),'ok');toast('✔ '+n)},1200)}}catch(_){}
+V.bootCheck().then(r=>{if(r&&r.n&&!r.reload)say('Espelho: '+r.n+' item(ns) ausente(s) recuperado(s)','ok')});
+say('Build v140: aba Intervalo (o que serve agora), cofre de dados com pontos de volta, guardião de conexão e pasta única por módulos','ok');
+}catch(e){try{log('v140: '+e.message,'bad')}catch(_){}}})();
+
+</script>
+<script id="v141">
+/* v141 js placeholder */
+
+</script>
 </body>
 </html>
