@@ -5,7 +5,7 @@
 <script id="v140boot">(function(){try{var p=sessionStorage.getItem('lumen_v140_apply');if(!p)return;sessionStorage.removeItem('lumen_v140_apply');var o=JSON.parse(p),n=0;for(var k in o){try{localStorage.setItem(k,o[k]);n++}catch(e){}}sessionStorage.setItem('lumen_v140_done',String(n))}catch(e){}})();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v149</title>
+<meta name="theme-color" content="#08080a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>LUMEN Campo · Fotógrafo v150</title>
 <style id="lumen-styles">
 /* ===== Variaveis globais ===== */
 :root{
@@ -11924,7 +11924,7 @@ setState('idle');
  setInterval(wave,60000);setTimeout(wave,8000);
  setInterval(()=>{try{window.__homeOrder()}catch(_){}},3000);setTimeout(()=>window.__homeOrder(),1500);
  /* versão visível + aviso de versão nova no servidor */
- const BUILD=149;window.LUMEN_BUILD=BUILD;
+ const BUILD=150;window.LUMEN_BUILD=BUILD;
  try{document.title='LUMEN Campo · Fotógrafo v'+BUILD}catch(_){}
  const chip=document.createElement('div');chip.id='ver129';chip.textContent='versão '+BUILD;
  chip.style.cssText='position:fixed;left:10px;bottom:8px;z-index:9;font:600 11px system-ui;color:#9a9a9a;background:rgba(20,20,20,.85);border:1px solid #333;border-radius:8px;padding:3px 8px;pointer-events:none';
@@ -13529,7 +13529,12 @@ say('Build v140: aba Intervalo (o que serve agora), cofre de dados com pontos de
  async function ligar(trocar){if(!/^\d{1,2}\/\d{1,2}\/\d{2,4}$/.test(B.data||hoje())){msg='✖ A data precisa ser DD/MM/AAAA.';paint(true);return}
   if(!window.showDirectoryPicker){msg='✖ Este navegador não deixa escolher pastas. Use o Chrome no computador.';paint(true);return}
   let h=H;
-  if(trocar||!pastaOk()){try{h=await showDirectoryPicker({id:'foco-pasta',mode:'readwrite',startIn:H||'pictures'})}catch(e){if(e.name!=='AbortError'){msg='✖ '+esc(e.message);paint(true)}return}}
+  /* ▶ Ligar SEMPRE abre a janela para você escolher a pasta (abre na última pasta usada) */
+  try{h=await showDirectoryPicker({id:'foco-pasta',mode:'readwrite'})}
+  catch(e){if(e.name==='AbortError'){msg='Nenhuma pasta escolhida. Toque em ▶ Ligar de novo e escolha a pasta das fotos.'}
+   else if(e.name==='SecurityError'&&/gesture|activation/i.test(e.message)){msg='✖ O navegador não abriu a janela. Toque em ▶ Ligar de novo.'}
+   else{msg='✖ Essa pasta não pode ser usada ('+esc(e.message)+'). Escolha uma pasta DENTRO dela (ex.: Imagens › Evento).'}
+   paint(true);return}
   /* a pasta antiga para de valer (o bot nunca envia duas pastas misturadas) */
   if(H&&h!==H){try{if(!(await H.isSameEntry(h))&&(await H.queryPermission({mode:'readwrite'}))==='granted')await escrever(H,Object.assign(pedido(),{ativo:false,ligado:false}))}catch(_){}}
   let n=0;try{for await(const [nm,x] of h.entries()){if(x.kind==='file'&&/\.(jpe?g|png)$/i.test(nm))n++}}catch(_){}
@@ -13658,7 +13663,7 @@ say('Build v140: aba Intervalo (o que serve agora), cofre de dados com pontos de
  const placeT=()=>{const t=$1('#t-cfg');if(t&&!tc.parentNode)t.appendChild(tc)};placeT();setInterval(()=>{placeT();if($1('#t-cfg.on'))paintTabs()},3000);setTimeout(paintTabs,1500);
 
  window.LUMEN_V143={pedido,gravar,lerStatus,paint:()=>paint(true),open:()=>{goTab('bot')},applyTabs,HID:()=>HID,st:()=>ST,baixarBot,ligar,B:()=>B};
- L('Build v149: 🤖 Bot da Foco — espera a verificação de segurança da Foco, acha o evento (Minha Agenda › lupa › calendário), teste com 1 foto e envio de todas','ok');
+ L('Build v150: 🤖 Bot da Foco — ▶ Ligar sempre pede a pasta · espera a verificação de segurança da Foco, acha o evento (Minha Agenda › lupa › calendário), teste com 1 foto e envio de todas','ok');
 }catch(e){try{log('v143: '+e.message,'bad')}catch(_){}}})();
 </script>
 
